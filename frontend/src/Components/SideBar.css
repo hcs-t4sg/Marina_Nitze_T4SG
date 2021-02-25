@@ -1,0 +1,57 @@
+﻿.nav-background {
+    display: flex;
+    flex-direction: column;
+    width: 15%;
+    border: 3px solid black;
+    justify-content: start;
+    left: 0%;
+    transition: 850ms;
+    position: absolute;
+    background: white;
+    height: 100%;
+}
+
+.nav-item {
+    display: flex;
+    flex: 1;
+    justify-content: center;
+    align-items: center;
+}
+
+.nav-link {
+    text-decoration: none;
+    color: black;
+    text-align: left;
+    align-items: center;
+    display: flex;
+    font-size: 21px;
+    padding: 0px 0px;
+    font-variant: small-caps;
+    line-height: 80%;
+    height: 80%;
+    margin-left: 5%;
+}
+
+.nav-block {
+    display: flex;
+    flex-direction: row;
+    justify-content: left;
+    height: 40px;
+    padding: 5px;
+    margin-left: 10%;
+    margin-top: 10px;
+}
+
+.side-image{
+    height: 80%;
+    
+}
+
+.nav-inactive{
+    left: -100%;
+    width: 15%;
+    position: absolute;
+    transition: 850ms;
+    background: white;
+    height: 100%;
+}

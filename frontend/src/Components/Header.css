@@ -1,0 +1,19 @@
+﻿.header{
+    height: 60px;
+    background-color: #0E7088;
+}
+
+.header-btn {
+    color: white;
+    background-color: #0E7088;
+    border: 2px solid #CAE8EF;
+    height: 80%;
+    margin-top: 6px; 
+    margin-left: 0px;
+    margin-right: 90%;
+}
+
+.header-btn:focus{
+    outline: none;
+    box-shadow: none;
+}
