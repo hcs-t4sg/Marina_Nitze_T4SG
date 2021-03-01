@@ -19,12 +19,18 @@ class State(models.Model):
     population = models.IntegerField()
     bestPractices = models.ManyToManyField(BestPractice)
 
+    def get_best_practices(self):
+        return "\n".join([p.bestPractices for p in self.bestPractices.all()])
+
     def __str__(self):
         return self.name
 
 class IssueArea(models.Model):
     title = models.CharField(max_length=200)
     states = models.ManyToManyField(State)
+
+    def get_states(self):
+        return "\n".join([p.states for p in self.states.all()])
 
     def __str__(self):
         return self.title
