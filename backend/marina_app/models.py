@@ -6,11 +6,25 @@ from django.db import models
 #   update admin.py
 #   update views.py
 #   update serializers.py
+# instance example: Adam Walsh? Licensing? -- ask Monica
 
-class IssueArea(models.Model): # instance example: Adam Walsh? Licensing? -- ask Monica
+class BestPractice(models.Model):
     title = models.CharField(max_length=200)
-    state = models.TextField()
-    fee = models.BooleanField(default = False)
+
+    def __str__(self):
+        return self.title
+
+class State(models.Model):
+    name = models.CharField(max_length=200)
+    population = models.IntegerField()
+    bestPractices = models.ManyToManyField(BestPractice)
+
+    def __str__(self):
+        return self.name
+
+class IssueArea(models.Model):
+    title = models.CharField(max_length=200)
+    states = models.ManyToManyField(State)
 
     def __str__(self):
         return self.title
