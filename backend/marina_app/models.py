@@ -2,25 +2,18 @@ from django.db import models
 
 # Create your models here.
 
-# WHEN WE MAKE/CHANGE A MODEL:
-#   update admin.py
-#   update views.py
-#   update serializers.py
-# instance example: Adam Walsh? Licensing? -- ask Monica
-
-class BestPractice(models.Model):
-    title = models.CharField(max_length=200)
-
-    def __str__(self):
-        return self.title
+# WHEN WE MAKE/CHANGE A MODEL, UPDATE:
+#   admin.py
+#   views.py
+#   serializers.py
+#   urls.py
 
 class State(models.Model):
     name = models.CharField(max_length=200)
     population = models.IntegerField()
-    bestPractices = models.ManyToManyField(BestPractice)
-
-    def get_best_practices(self):
-        return "\n".join([p.title for p in self.bestPractices.all()])
+    bestPractice1 = models.BooleanField(default = False)
+    bestPractice2 = models.BooleanField(default = False)
+    bestPractice3 = models.IntegerField(default = 0)
 
     def __str__(self):
         return self.name
