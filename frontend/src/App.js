@@ -11,6 +11,7 @@ import FAQ from "./Views/FAQ"
 import { useState } from "react";
 import Header from "./Components/Header"
 
+
 function App() {
     const [sidebar, setSidebar] = useState(false)
     const showSideBar = () => {
