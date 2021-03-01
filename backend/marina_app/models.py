@@ -20,7 +20,7 @@ class State(models.Model):
     bestPractices = models.ManyToManyField(BestPractice)
 
     def get_best_practices(self):
-        return "\n".join([p.bestPractices for p in self.bestPractices.all()])
+        return "\n".join([p.title for p in self.bestPractices.all()])
 
     def __str__(self):
         return self.name
