@@ -7,7 +7,6 @@ class Scorecard extends Component {
         this.myRef = React.createRef();
       }
       componentDidUpdate() {
-          var color = d3.scaleOrdinal(d3.schemeBlues[9]);
 
           d3.selectAll("svg").remove()
 
