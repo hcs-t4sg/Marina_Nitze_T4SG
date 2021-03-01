@@ -30,7 +30,7 @@ class IssueArea(models.Model):
     states = models.ManyToManyField(State)
 
     def get_states(self):
-        return "\n".join([p.states for p in self.states.all()])
+        return "\n".join([p.name for p in self.states.all()])
 
     def __str__(self):
         return self.title
