@@ -17,7 +17,7 @@ class Scorecard extends Component {
              .attr('height', 400)
              .style("margin-left", 100);
 
-          d3.json('http://localhost:8000/api/todos/')
+          d3.json('http://localhost:8000/api/states/')
           .then(function(data) {
             console.log(data);
 
