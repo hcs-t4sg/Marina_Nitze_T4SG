@@ -1,7 +1,5 @@
 from rest_framework import serializers
-from .models import IssueArea
-from .models import BestPractice
-from .models import State
+from .models import IssueArea, State
 
 class IssueAreaSerializer(serializers.ModelSerializer):
     class Meta:
@@ -11,9 +9,4 @@ class IssueAreaSerializer(serializers.ModelSerializer):
 class StateSerializer(serializers.ModelSerializer):
     class Meta:
         model = State
-        fields = ('name', 'population', 'bestPractices')
-
-class BestPracticeSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = BestPractice
-        fields = ('title')
+        fields = ('name', 'population', 'bestPractice1', 'bestPractice2', 'bestPractice3')
