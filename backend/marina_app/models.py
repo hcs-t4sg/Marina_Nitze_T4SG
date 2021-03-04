@@ -10,10 +10,14 @@ from django.db import models
 
 class State(models.Model):
     name = models.CharField(max_length=200)
+    abbreviation = models.CharField(max_length = 3, default = "")
     population = models.IntegerField()
-    bestPractice1 = models.BooleanField(default = False)
-    bestPractice2 = models.BooleanField(default = False)
-    bestPractice3 = models.IntegerField(default = 0)
+
+    electronic_request = models.BooleanField(default = False)
+    no_notary_required = models.BooleanField(default = False)
+    no_fee = models.BooleanField(default = False)
+    office_contact = models.BooleanField(default = False)
+    no_witness_required = models.BooleanField(default = False)
 
     def __str__(self):
         return self.name

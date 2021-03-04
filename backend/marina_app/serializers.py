@@ -9,4 +9,5 @@ class IssueAreaSerializer(serializers.ModelSerializer):
 class StateSerializer(serializers.ModelSerializer):
     class Meta:
         model = State
-        fields = ('name', 'population', 'bestPractice1', 'bestPractice2', 'bestPractice3')
+        fields = ('name', 'abbreviation', 'population', 
+            'electronic_request', 'no_notary_required', 'no_fee', 'office_contact', 'no_witness_required')

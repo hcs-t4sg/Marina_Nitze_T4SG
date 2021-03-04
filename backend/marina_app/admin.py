@@ -5,7 +5,8 @@ class IssueAreaAdmin(admin.ModelAdmin):
     list_display = ('title', 'get_states')
 
 class StateAdmin(admin.ModelAdmin):
-    list_display = ('name', 'population','bestPractice1', 'bestPractice2', 'bestPractice3')
+    list_display = ('name', 'abbreviation', 'population',
+        'electronic_request', 'no_notary_required', 'no_fee', 'office_contact', 'no_witness_required')
 
 
 
