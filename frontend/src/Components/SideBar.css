@@ -5,6 +5,7 @@
     border: 3px solid black;
     justify-content: start;
     left: 0%;
+    top: 60px;
     transition: 850ms;
     position: absolute;
     background: white;
