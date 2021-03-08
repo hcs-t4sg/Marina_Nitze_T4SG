@@ -47,7 +47,7 @@ class Scorecard extends Component {
             .catch(err => console.log(err));
     }
 
-        render() {
+    render() {
 
 
         var newStates = this.state.data;
@@ -147,9 +147,8 @@ class Scorecard extends Component {
 
                 ))}
 
-                <div>
-                    <Glyphs states={newStates}/>
-                </div>
+                <Glyphs states={newStates}/>
+
             </div>
 
         );

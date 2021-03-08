@@ -18,10 +18,16 @@ const bestPractices = [
 
 class Glyphs extends Component {
 
+	constructor(props) {
+        super(props);
+        this.state = {
+            states:props.states
+        };
+    }
+
 	componentDidMount() {
-        this.displayData = this.props.states;
+        // this.displayData = this.props.states;
         this.initVis();
-        console.log(this.props.states);
     }
 
     initVis() {
@@ -44,22 +50,23 @@ class Glyphs extends Component {
     updateVis() {
         var vis = this;
 
-        console.log(this.props.states);
+        const testState = {
+        	'name' : 'Alabama',
+        	'no_fee' : true,
+			'no_notary_required' : true,
+			'no_witness_required' : false,
+			'office_contact' : true,
+			'electronic_request' : true
+        }
 
-   //      const testState = {
-   //      	'name' : 'Alabama',
-   //      	'no_fee' : true,
-			// 'no_notary_required' : true,
-			// 'no_witness_required' : false,
-			// 'office_contact' : true,
-			// 'electronic_request' : true
-   //      }
+        // vis.drawSingleGlyph(testState);
 
-   //      vis.drawSingleGlyph(testState);
 
-   		this.props.newStates.forEach( function(value, index) {
-   			vis.drawSingleGlyph(value);
-        });
+   		// this.state.states.forEach( function(value, index) {
+   		// 	vis.drawSingleGlyph(value);
+   		// 	console.log("test");
+     //    });
+
 
     }
 
@@ -78,8 +85,6 @@ class Glyphs extends Component {
 	    		}
 		    }
 		}
-
-        console.log("all practices" + allPractices);
 
     	const width = 50;
     	const height = 50;
@@ -142,7 +147,20 @@ class Glyphs extends Component {
 	}
 
     render() {
-    	return <div className="scorecard"></div>
+    	console.log(this.state.states);
+    	return ( <div>
+    				<div className="scorecard"></div>
+
+    			{this.state.states.map(item => (
+                    <h1>
+                        {item["name"]}
+                    </h1>
+
+                ))}
+
+    		</div>
+
+    	)
     }
 
 }
