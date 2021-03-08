@@ -1,0 +1,23 @@
+// Glyphs
+
+#glyphs {
+  background-color: $white;
+  border-top: solid $gray 1px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  padding-bottom: $space-component-sm;
+  padding-top: $space-component-sm;
+  width: 100%;
+}
+
+#glyphs .glyph {
+  margin: 10px 0;
+  padding: 5px;
+  width: 110px;
+  height: 115px;
+}
+
+#glyphs svg {
+  overflow: visible;
+}

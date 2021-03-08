@@ -77,6 +77,11 @@ class Scorecard extends Component {
                 state => state.no_witness_required === true);
         }
 
+        if (newStates.length != 0) {
+            var glyphs = <Glyphs states={newStates}/>
+        } else {
+            var glyphs = null;
+        }
 
     return (
             <div className="landing-page">
@@ -147,7 +152,7 @@ class Scorecard extends Component {
                     </li>
 
                 ))}
-                <Glyphs states={newStates}/>
+                <div>{glyphs}</div>
             </div>
 
         );

@@ -1,6 +1,7 @@
 import axios from "axios";
 import React, { Component } from "react";
 import * as d3 from "d3";
+import "./Glyphs.css";
 
 const backgroundColor = '#fff';
 const primaryTextColor = '#000';
@@ -26,7 +27,6 @@ class Glyphs extends Component {
     }
 
 	componentDidMount() {
-        // this.displayData = this.props.states;
         this.initVis();
     }
 
@@ -44,33 +44,10 @@ class Glyphs extends Component {
             .append("g")
             .attr("transform", "translate(" + vis.margin.left + "," + vis.margin.top + ")");
 
-        vis.updateVis();
+        vis.drawGlyphs();
     }
 
-    updateVis() {
-        var vis = this;
-
-        const testState = {
-        	'name' : 'Alabama',
-        	'no_fee' : true,
-			'no_notary_required' : true,
-			'no_witness_required' : false,
-			'office_contact' : true,
-			'electronic_request' : true
-        }
-
-        // vis.drawSingleGlyph(testState);
-
-
-   		// this.state.states.forEach( function(value, index) {
-   		// 	vis.drawSingleGlyph(value);
-   		// 	console.log("test");
-     //    });
-
-
-    }
-
-    drawSingleGlyph(state) {
+    drawSingleGlyph(state, g) {
     	var vis = this;
 
     	const practicesUnavailble = bestPractices.filter(p => state[p] === false);
@@ -86,8 +63,8 @@ class Glyphs extends Component {
 		    }
 		}
 
-    	const width = 50;
-    	const height = 50;
+    	const width = 80;
+    	const height = 80;
 		const center = { x: width / 2, y: height / 2 };
 		const glyphRadius = Math.round(height / 3);
 		const circleRadius = Math.round(glyphRadius / 4);
@@ -99,7 +76,7 @@ class Glyphs extends Component {
 		    };
 	    }
 
-	    const integration = vis.svg.selectAll('.integration')
+	    const integration = g.selectAll('.integration')
 		    .data(state)
 		    .enter().append('g')
 		    .attr('class', 'integration');
@@ -110,25 +87,23 @@ class Glyphs extends Component {
 		        return p === true ? pentagonVertex(i) : null;
 		      }).filter(p => p);
 		      if (points.length === 2) {
-		        // draw a line
 		        return 'M' + points.map(p => [p.x, p.y].join(',')).join('L');
 		      } else {
-		        // draw a polygon
 		        return 'M' + points.map(p => [p.x, p.y].join(',')).join('L') + 'Z';
 		      }
 		    })
-		    .attr('fill', site => site.practicesCount > 2 ? availableColorLighter : 'none')
+		    .attr('fill', site => site.practicesCount > 2 ? availableColorLighter : availableColorLighter)
 		    .attr('stroke', site => site.practicesCount > 2 ? 'none' : availableColorLighter)
 		    .attr('stroke-width', circleRadius * 2);
 
 
-		const practice = vis.svg.selectAll('.practice')
+		const practice = g.selectAll('.practice')
 		    .data(practicesAvailble)
 		    .enter().append('g')
 		    .attr('class', 'practice')
 		    .attr('transform', (d, i) => {
-		      const v = pentagonVertex(i);
-		      return `translate(${v.x},${v.y})`;
+		    	const v = pentagonVertex(i);
+		    	return `translate(${v.x},${v.y})`;
 		    });
 
     	practice.append('circle')
@@ -146,20 +121,33 @@ class Glyphs extends Component {
 
 	}
 
+	drawGlyphs() {
+		var vis = this;
+
+		const glyph = vis.svg.selectAll('.glyph')
+		    .data(this.state.states)
+		    .enter().append('g')
+		    .attr('class', 'glyph');
+
+			const width = 80;
+			const topMargin = 15;
+
+	    glyph.each(function (d, i) {
+
+	    	const g = d3.select(this).append('g');
+		    g.attr('transform', `translate(${100 * i}, ${topMargin})`);
+		    g.append('text')
+		    	.attr('x', width / 2)
+		    	.attr('text-anchor', 'middle')
+		    	.text(d['name']);
+		    vis.drawSingleGlyph(d, g);
+		});
+	}
+
     render() {
-    	console.log(this.state.states);
     	return ( <div>
     				<div className="scorecard"></div>
-
-    			{this.state.states.map(item => (
-                    <h1>
-                        {item["name"]}
-                    </h1>
-
-                ))}
-
-    		</div>
-
+    			</div>
     	)
     }
 
