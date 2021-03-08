@@ -1,6 +1,5 @@
 import axios from "axios";
 import React, { Component } from "react";
-import * as d3 from "d3";
 import Glyphs from '../Components/Glyphs'
 import "../App.css"
 
@@ -77,10 +76,9 @@ class Scorecard extends Component {
                 state => state.no_witness_required === true);
         }
 
-        if (newStates.length != 0) {
-            var glyphs = <Glyphs states={newStates}/>
-        } else {
-            var glyphs = null;
+        var glyphs = null;
+        if (newStates.length !== 0) {
+            glyphs = <Glyphs states={newStates}/>
         }
 
     return (

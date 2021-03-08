@@ -1,14 +1,10 @@
-import axios from "axios";
 import React, { Component } from "react";
 import * as d3 from "d3";
 import "./Glyphs.css";
 
-const backgroundColor = '#fff';
-const primaryTextColor = '#000';
 const availableColor = '#0D77AC';
 const availableColorLighter = '#C1D6E4';
 const unavailableColor = '#d8d8d8';
-const unavailableColorLighter = '#ddd';
 const bestPractices = [
 		'no_fee',
 		'no_notary_required',
@@ -35,8 +31,8 @@ class Glyphs extends Component {
 
         vis.margin = { top: 20, right: 60, bottom: 200, left: 60 };
 
-        vis.width = 600 - vis.margin.left - vis.margin.right;
-        vis.height = 500 - vis.margin.top - vis.margin.bottom;
+        vis.width = 1000 - vis.margin.left - vis.margin.right;
+        vis.height = 900 - vis.margin.top - vis.margin.bottom;
 
         vis.svg = d3.select(".scorecard").append("svg")
             .attr("width", vis.width + vis.margin.left + vis.margin.right)
@@ -48,11 +44,8 @@ class Glyphs extends Component {
     }
 
     drawSingleGlyph(state, g) {
-    	var vis = this;
 
-    	const practicesUnavailble = bestPractices.filter(p => state[p] === false);
     	const practicesAvailble = bestPractices.filter(p => state[p] === true);
-    	const practicesCount = practicesAvailble.length
 
     	var allPractices = []
     	for (var key in state) {
@@ -77,23 +70,28 @@ class Glyphs extends Component {
 	    }
 
 	    const integration = g.selectAll('.integration')
-		    .data(state)
+		    .data(practicesAvailble)
 		    .enter().append('g')
 		    .attr('class', 'integration');
 
 		integration.append('path')
-		    .attr('d', site => {
-		      const points = Object.values(state).map((p, i) => {
-		        return p === true ? pentagonVertex(i) : null;
-		      }).filter(p => p);
-		      if (points.length === 2) {
-		        return 'M' + points.map(p => [p.x, p.y].join(',')).join('L');
-		      } else {
-		        return 'M' + points.map(p => [p.x, p.y].join(',')).join('L') + 'Z';
-		      }
+		    .attr('d', d => {
+		    	const points = []
+		    	var i = 0;
+		    	for (var key in state) {
+				    if (state[key] === true) {
+				    	points.push(pentagonVertex(i));
+				    }
+				    i++;
+				}
+		    	if (points.length === 2) {
+		        	return 'M' + points.map(p => [p.x, p.y].join(',')).join('L');
+		    	} else {
+		        	return 'M' + points.map(p => [p.x, p.y].join(',')).join('L') + 'Z';
+		    	}
 		    })
-		    .attr('fill', site => site.practicesCount > 2 ? availableColorLighter : availableColorLighter)
-		    .attr('stroke', site => site.practicesCount > 2 ? 'none' : availableColorLighter)
+		    .attr('fill', practicesAvailble.length > 2 ? availableColorLighter : 'none')
+		    .attr('stroke', practicesAvailble.length > 2 ? 'none' : availableColorLighter)
 		    .attr('stroke-width', circleRadius * 2);
 
 
@@ -111,14 +109,6 @@ class Glyphs extends Component {
 		    .style('fill', availableColor)
 		    .style('stroke', unavailableColor);
 
-  		practice.append('text')
-		    .text("")
-		    .attr('text-anchor', 'middle')
-		    .attr('dy', '0.35em')
-		    .attr('class', 'label')
-		    .style('fill', backgroundColor)
-		    .style('font-size', (circleRadius + 3) + 'px');
-
 	}
 
 	drawGlyphs() {
@@ -129,7 +119,7 @@ class Glyphs extends Component {
 		    .enter().append('g')
 		    .attr('class', 'glyph');
 
-			const width = 80;
+			const width = 110;
 			const topMargin = 15;
 
 	    glyph.each(function (d, i) {
