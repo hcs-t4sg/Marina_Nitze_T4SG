@@ -1,11 +1,13 @@
 import React, { Component } from "react";
 import * as d3 from "d3";
 
-
+// var displayData = [];
 
 class Scorecard extends Component {
 
+
     componentDidMount() {
+        this.displayData = [];
         this.initVis();
     }
 
@@ -32,16 +34,25 @@ class Scorecard extends Component {
 
         d3.json('http://localhost:8000/api/states/')
             .then(function(data) {
-                console.log(data);
+                // console.log(data);
 
             data.forEach( function(value, index) {
+
+                // vis.displayData.append(value);
+
                 vis.svg.append("text")
                     .attr("x", 100)
                     .attr("y", 100 * index)
                     .text(value.name + " " + value.population);
 
             });
+
+
         });
+
+        // console.log(vis.displayData);
+
+        // console.log(globalThis.displayData);
 
 
         vis.updateVis();
@@ -50,7 +61,19 @@ class Scorecard extends Component {
     updateVis() {
         var vis = this;
 
-        console.log("did this worksksksksksks")
+    }
+
+    drawSingleGlyph(state, g, width, height) {
+        const center = { x: width / 2, y: height / 2 };
+        const glyphRadius = Math.round(height / 3);
+        const circleRadius = Math.round(glyphRadius / 4);
+        function pentagonVertex(i) {
+            const angle = i / 5 * Math.PI * 2 + 1.1 * Math.PI;
+            return {
+                x: Math.cos(angle) * glyphRadius + center.x,
+                y: Math.sin(angle) * glyphRadius + center.y
+            };
+        }
     }
 
     render(){
@@ -58,6 +81,8 @@ class Scorecard extends Component {
     return (
         <div>
             <div class="scorecard"></div>
+
+
         </div>
         );
 
