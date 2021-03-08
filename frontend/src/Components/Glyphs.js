@@ -5,8 +5,9 @@ import * as d3 from "d3";
 class Glyphs extends Component {
 
 	componentDidMount() {
-        this.displayData = [];
+        this.displayData = this.props.states;
         this.initVis();
+        console.log(this.props.states);
     }
 
     initVis() {
@@ -24,56 +25,19 @@ class Glyphs extends Component {
             .append("g")
             .attr("transform", "translate(" + vis.margin.left + "," + vis.margin.top + ")");
 
-            vis.wrangleData();
-    }
-
-    wrangleData() {
-        var vis = this;
-
-        d3.json('http://localhost:8000/api/states/')
-            .then(function(data) {
-                // console.log(data);
-
-            data.forEach( function(value, index) {
-
-                // vis.displayData.append(value);
-
-                vis.svg.append("text")
-                    .attr("x", 100)
-                    .attr("y", 100 * index)
-                    .text(value.name + " " + value.population);
-
-            });
-
-
-        });
-
-        // console.log(vis.displayData);
-
-        // console.log(globalThis.displayData);
-
-
         vis.updateVis();
     }
 
     updateVis() {
         var vis = this;
 
+        console.log(this.props.states);
+
     }
 
-    drawSingleGlyph(state, g, width, height) {
-        const center = { x: width / 2, y: height / 2 };
-        const glyphRadius = Math.round(height / 3);
-        const circleRadius = Math.round(glyphRadius / 4);
-        function pentagonVertex(i) {
-            const angle = i / 5 * Math.PI * 2 + 1.1 * Math.PI;
-            return {
-                x: Math.cos(angle) * glyphRadius + center.x,
-                y: Math.sin(angle) * glyphRadius + center.y
-            };
-        }
+    render() {
+    	return <div className="scorecard"></div>
     }
-
 
 }
 
