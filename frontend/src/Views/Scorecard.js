@@ -77,10 +77,11 @@ class Scorecard extends Component {
                 state => state.no_witness_required === true);
         }
 
-        return (
+
+    return (
             <div className="landing-page">
 
-                <h1> Scorecard </h1>
+                <h1> LandingPage </h1>
                 <div className="filter-box">
                     <label className="filter-label">
 
@@ -146,18 +147,12 @@ class Scorecard extends Component {
                     </li>
 
                 ))}
-
                 <Glyphs states={newStates}/>
-
             </div>
 
         );
     }
 
-
 }
 
-export default Scorecard;
-
-
-
+export default Scorecard
