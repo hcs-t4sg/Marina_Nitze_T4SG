@@ -22,6 +22,7 @@
   align-items: center;
   font-size: calc(10px + 2vmin);
   color: black;
+
 }
 
 .App-link {
@@ -35,4 +36,22 @@
   to {
     transform: rotate(360deg);
   }
+}
+
+.filter-box{
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+}
+
+.landing-page{
+    width: 100%;
+}
+
+.filter-check{
+    width: 10%;
+}
+
+.filter-label {
+    flex: 1;
 }
