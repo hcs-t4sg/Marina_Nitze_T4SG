@@ -48,15 +48,6 @@ class Glyphs extends Component {
     	const practicesAvailble = bestPractices.filter(p => state[p] === true);
     	const allPractices = bestPractices.filter(p => state[p] === true || state[p] === false);
 
-  //   	var allPractices = []
-  //   	for (var key in state) {
-		//     if (state.hasOwnProperty(key)) {
-		//         if (bestPractices.includes(key)) {
-	 //    			allPractices.push(key)
-	 //    		}
-		//     }
-		// }
-
     	const width = 80;
     	const height = 80;
 		const center = { x: width / 2, y: height / 2 };
