@@ -46,15 +46,16 @@ class Glyphs extends Component {
     drawSingleGlyph(state, g) {
 
     	const practicesAvailble = bestPractices.filter(p => state[p] === true);
+    	const allPractices = bestPractices.filter(p => state[p] === true || state[p] === false);
 
-    	var allPractices = []
-    	for (var key in state) {
-		    if (state.hasOwnProperty(key)) {
-		        if (bestPractices.includes(key)) {
-	    			allPractices.push(key)
-	    		}
-		    }
-		}
+  //   	var allPractices = []
+  //   	for (var key in state) {
+		//     if (state.hasOwnProperty(key)) {
+		//         if (bestPractices.includes(key)) {
+	 //    			allPractices.push(key)
+	 //    		}
+		//     }
+		// }
 
     	const width = 80;
     	const height = 80;
@@ -96,7 +97,7 @@ class Glyphs extends Component {
 
 
 		const practice = g.selectAll('.practice')
-		    .data(practicesAvailble)
+		    .data(allPractices)
 		    .enter().append('g')
 		    .attr('class', 'practice')
 		    .attr('transform', (d, i) => {
@@ -106,8 +107,8 @@ class Glyphs extends Component {
 
     	practice.append('circle')
 		    .attr('r', circleRadius)
-		    .style('fill', availableColor)
-		    .style('stroke', unavailableColor);
+		    .style('fill', d => state[d] === true ? availableColor : unavailableColor)
+    		.style('stroke', d => state[d] === true ? 'none' : unavailableColor);
 
 	}
 
