@@ -141,15 +141,6 @@ class Scorecard extends Component {
                     No Witness Needed
                     </label>
                 </div>
-
-                {newStates.map(item => (
-                    <li
-                        key={item.id}
-                    >
-                        {item["name"]}
-                    </li>
-
-                ))}
                 <div>{glyphs}</div>
             </div>
 
