@@ -2,6 +2,7 @@
 import "./Header.css"
 export default function Header(props) {
 
+
 	// var toggle = document.createElement('a', { is : 'toggle' });
 	var toggle = document.createElement('a');
 	toggle.innerHTML = '<span></span>';
@@ -45,9 +46,9 @@ export default function Header(props) {
 	return (
 		<div>
 			<div className="header">
+				<a id="toggle" onClick={props.onClick}><span></span></a>
 			</div>
 			<div className="header-teal-section"></div>
 		</div>
-
 	)
 }
