@@ -6,7 +6,7 @@
     justify-content: start;
     left: 0%;
     top: 60px;
-    transition: 850ms;
+    transition: 450ms;
     position: absolute;
     background: white;
     height: 100%;
@@ -48,11 +48,13 @@
     
 }
 
-.nav-inactive{
-    left: -100%;
+.nav-inactive {
+    top: 60px;
+    left: -20%;
     width: 15%;
     position: absolute;
     transition: 850ms;
     background: white;
     height: 100%;
+    border: 3px solid black;
 }

@@ -20,10 +20,11 @@ function App() {
 
     return (
         <div className="App">
-            <Header onClick={showSideBar}/>
+            <Header onClick={showSideBar} toggle={sidebar}/>
 
             <header className="App-header">
                 <Router>
+
                     <SideBar className="side-bar" click={showSideBar} show={sidebar}/>
                     <Switch>
                         <Route path={"/home"} component={LandingPage} />

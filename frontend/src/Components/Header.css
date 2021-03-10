@@ -1,18 +1,19 @@
 ﻿.header{
     height: 40px;
+    margin: 15px;
     background-color: #FFFFFF;
 }
 
-#toggle {
+.menu-btn {
   display: block;
   margin-top: 20px;
   margin-left: 15px;
   margin-right: 90%;
-  width: 28px;
+  width: 30px;
   height: 30px;
 }
 
-#toggle:hover {
+.menu-btn:hover{
   cursor: pointer;
 }
 
@@ -21,36 +22,67 @@
   content: "";
   position: absolute;
   left: 0;
-  top: -9px;
+  top:0px;
 }
-#toggle span:after{
-  top: 9px;
-}
+
 #toggle span {
   position: relative;
   display: block;
+  top: 0px;
 }
 
-#toggle span,
-#toggle span:after,
-#toggle span:before {
-  width: 100%;
-  height: 5px;
-  background-color: #888;
-  transition: all 0.3s;
-  backface-visibility: hidden;
-  border-radius: 2px;
-}
+    #toggle span:before {
+        top: 9px;
+    }
+
+    #toggle span:after {
+        top: 18px;
+    }
+
+    #toggle span,
+    #toggle span:after,
+    #toggle span:before {
+        width: 100%;
+        height: 5px;
+        background-color: #888;
+        transition: all 0.4s;
+        backface-visibility: hidden;
+        border-radius: 2px;
+    }
 
 /* on activation */
-#toggle.on span {
-  background-color: transparent;
+
+#toggle-on span:before,
+#toggle-on span:after {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 0px;
 }
-#toggle.on span:before {
-  transform: rotate(45deg) translate(5px, 5px);
+
+#toggle-on span {
+    position: relative;
+    display: block;
+    top: 0px;
+    color: #FFFFFF;
 }
-#toggle.on span:after {
-  transform: rotate(-45deg) translate(7px, -8px);
+
+    #toggle-on span:before {
+        transform: rotate(45deg) translate(5px, 5px);
+    }
+
+    #toggle-on span:after {
+        transform: rotate(-45deg) translate(-5px, 5px);
+    }
+
+#toggle-on span:after,
+#toggle-on span:before{
+    width: 100%;
+    height: 5px;
+    background-color: #888;
+    transition: all 0.4s;
+    backface-visibility: hidden;
+    border-radius: 2px;
 }
 
 .header-teal-section {
@@ -58,7 +90,7 @@
     width: 100%;
     height: 40%;
     left: 0px;
-    top: 40px;
+    top: 60px;
 
     background: url(solidteal.jpg);
     filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25)), drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
