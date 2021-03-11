@@ -34,10 +34,10 @@ class Glyphs extends Component {
         vis.width = 1000 - vis.margin.left - vis.margin.right;
         vis.height = 900 - vis.margin.top - vis.margin.bottom;
 
-        vis.svg = d3.select(".scorecard").append("svg")
+        vis.svg = d3.select(".scorecard").append("div")
             .attr("width", vis.width + vis.margin.left + vis.margin.right)
             .attr("height", vis.height + vis.margin.top + vis.margin.bottom)
-            .append("g")
+            .attr("class", "scorecard-container")
             .attr("transform", "translate(" + vis.margin.left + "," + vis.margin.top + ")");
 
         vis.drawGlyphs();
@@ -106,18 +106,21 @@ class Glyphs extends Component {
 	drawGlyphs() {
 		var vis = this;
 
-		const glyph = vis.svg.selectAll('.glyph')
+		const glyph = d3.select('.scorecard-container')
+			.selectAll('.glyph')
 		    .data(this.state.states)
-		    .enter().append('g')
-		    .attr('class', 'glyph');
+		    .enter().append('div')
+		    .attr('class', 'glyph')
+		    .append('svg').attr('width', '20%').attr('height', '100%');
 
 			const width = 110;
 			const topMargin = 15;
 
 	    glyph.each(function (d, i) {
+	    	console.log(this)
 
 	    	const g = d3.select(this).append('g');
-		    g.attr('transform', `translate(${100 * i}, ${topMargin})`);
+		    g.attr('transform', `translate(0, ${topMargin})`);
 		    g.append('text')
 		    	.attr('x', width / 2)
 		    	.attr('text-anchor', 'middle')
