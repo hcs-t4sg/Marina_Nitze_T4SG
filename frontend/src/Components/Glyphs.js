@@ -122,6 +122,7 @@ class Glyphs extends Component {
 	    	const g = d3.select(this).append('g');
 		    g.attr('transform', `translate(0, ${topMargin})`);
 		    g.append('text')
+		    	.attr('class', 'glyph-titles')
 		    	.attr('x', width / 2)
 		    	.attr('text-anchor', 'middle')
 		    	.text(d['name']);
