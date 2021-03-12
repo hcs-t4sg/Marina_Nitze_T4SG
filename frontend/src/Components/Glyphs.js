@@ -14,7 +14,6 @@ const bestPractices = [
 	];
 
 class Glyphs extends Component {
-
 	constructor(props) {
         super(props);
         this.state = {
@@ -26,11 +25,11 @@ class Glyphs extends Component {
         this.initVis();
     }
 
+    // Define parameters and Playbook drawing area (scorecard-container)
     initVis() {
         var vis = this;
 
         vis.margin = { top: 20, right: 60, bottom: 200, left: 60 };
-
         vis.width = 1000 - vis.margin.left - vis.margin.right;
         vis.height = 900 - vis.margin.top - vis.margin.bottom;
 
@@ -43,8 +42,8 @@ class Glyphs extends Component {
         vis.drawGlyphs();
     }
 
+    // Use data from one state and g element to draw a glyph
     drawSingleGlyph(state, g) {
-
     	const practicesAvailble = bestPractices.filter(p => state[p] === true);
     	const allPractices = bestPractices.filter(p => state[p] === true || state[p] === false);
 
@@ -81,12 +80,11 @@ class Glyphs extends Component {
 		    .attr('stroke', practicesAvailble.length > 2 ? 'none' : availableColorLighter)
 		    .attr('stroke-width', circleRadius * 2)
 		    .attr('practice-status', d => {
-		      return state[d] === true;
+		    	return state[d] === true;
 		    })
 		    .attr('practice-name', d => {
-		      return d;
+		    	return d;
 		    });
-
 
 		const practice = g.selectAll('.practice')
 		    .data(allPractices)
@@ -97,19 +95,19 @@ class Glyphs extends Component {
 		    	return `translate(${v.x},${v.y})`;
 		    })
 		    .attr('practice-status', d => {
-		      return state[d] === true;
+		    	return state[d] === true;
 		    })
 		    .attr('practice-name', d => {
-		      return d;
+		    	return d;
 		    });
 
     	practice.append('circle')
 		    .attr('r', circleRadius)
 		    .style('fill', d => state[d] === true ? availableColor : unavailableColor)
     		.style('stroke', d => state[d] === true ? 'none' : unavailableColor);
-
 	}
 
+	// Iterate through state data, creating a glyph svg for each
 	drawGlyphs() {
 		var vis = this;
 
@@ -120,8 +118,8 @@ class Glyphs extends Component {
 		    .attr('class', 'glyph')
 		    .append('svg').attr('width', '20%').attr('height', '100%');
 
-			const width = 110;
-			const topMargin = 15;
+		const width = 110;
+		const topMargin = 15;
 
 	    glyph.each(function (d, i) {
 	    	const g = d3.select(this).append('g');
@@ -136,12 +134,8 @@ class Glyphs extends Component {
 	}
 
     render() {
-    	return ( <div>
-    				<div className="scorecard"></div>
-    			</div>
-    	)
+    	return (<div><div className="scorecard"></div></div>)
     }
-
 }
 
 export default Glyphs;

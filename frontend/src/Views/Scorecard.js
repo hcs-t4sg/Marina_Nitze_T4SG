@@ -20,34 +20,25 @@ class Scorecard extends Component {
     changeReq = (req) => {
         this.setState({ electronic_request: !req})
     }
-
     changeNotary = (n) => {
         this.setState({ notary: !n })
     }
-
-
-
     changeFee = (f) => {
         this.setState({ fee: !f })
     }
-
     changeOffice = (o) => {
         this.setState({ office: !o })
     }
-
     changeWitness = (w) => {
         this.setState({ witness: !w })
     }
-
     componentDidMount() {
         axios
             .get("http://localhost:8000/api/states/")
             .then(res => this.setState({ data: res.data }))
             .catch(err => console.log(err));
     }
-
     render() {
-
 
         var newStates = this.state.data;
 
@@ -55,27 +46,22 @@ class Scorecard extends Component {
             newStates = newStates.filter(
                 state => state.electronic_request === true);
         }
-
         if (this.state.notary) {
             newStates = newStates.filter(
                 state => state.no_notary_required === true);
         }
-
         if (this.state.fee) {
             newStates = newStates.filter(
                 state => state.no_fee === true);
         }
-
         if (this.state.office) {
             newStates = newStates.filter(
                 state => state.office_contact === true);
         }
-
         if (this.state.witness) {
             newStates = newStates.filter(
                 state => state.no_witness_required === true);
         }
-
         var glyphs = null;
         if (newStates.length !== 0) {
             glyphs = <Glyphs states={newStates}/>
@@ -83,11 +69,9 @@ class Scorecard extends Component {
 
     return (
             <div className="landing-page">
-
                 <h1> Playbook </h1>
                 <div className="filter-box">
                     <label className="filter-label">
-
                     <input
                         className="filter-check"
                         type="checkbox"
@@ -96,9 +80,7 @@ class Scorecard extends Component {
                     />
                     Electronic Request
                     </label>
-
                     <label className="filter-label">
-
                         <input
                             className="filter-check"
                             type="checkbox"
@@ -107,9 +89,7 @@ class Scorecard extends Component {
                         />
                     No Notary
                     </label>
-
                     <label className="filter-label">
-
                         <input
                             className="filter-check"
                             type="checkbox"
@@ -118,9 +98,7 @@ class Scorecard extends Component {
                         />
                     No Fee
                     </label>
-
                     <label className="filter-label">
-
                         <input
                             className="filter-check"
                             type="checkbox"
@@ -129,9 +107,7 @@ class Scorecard extends Component {
                         />
                     Office Contact
                     </label>
-
                     <label className="filter-label">
-
                         <input
                             className="filter-check"
                             type="checkbox"
@@ -143,10 +119,7 @@ class Scorecard extends Component {
                 </div>
                 <div>{glyphs}</div>
             </div>
-
         );
     }
-
 }
-
 export default Scorecard
