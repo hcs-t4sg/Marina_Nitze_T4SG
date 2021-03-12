@@ -62,9 +62,11 @@ class Glyphs extends Component {
 	    }
 
 	    const integration = g.selectAll('.integration')
-		    .data(practicesAvailble)
+		    .data(allPractices)
 		    .enter().append('g')
 		    .attr('class', 'integration');
+
+		console.log(practicesAvailble)
 
 		integration.append('path')
 		    .attr('d', d => {
@@ -84,7 +86,13 @@ class Glyphs extends Component {
 		    })
 		    .attr('fill', practicesAvailble.length > 2 ? availableColorLighter : 'none')
 		    .attr('stroke', practicesAvailble.length > 2 ? 'none' : availableColorLighter)
-		    .attr('stroke-width', circleRadius * 2);
+		    .attr('stroke-width', circleRadius * 2)
+		    .attr('practice-status', d => {
+		      return state[d] === true;
+		    })
+		    .attr('practice-name', d => {
+		      return d;
+		    });
 
 
 		const practice = g.selectAll('.practice')
@@ -94,6 +102,12 @@ class Glyphs extends Component {
 		    .attr('transform', (d, i) => {
 		    	const v = pentagonVertex(i);
 		    	return `translate(${v.x},${v.y})`;
+		    })
+		    .attr('practice-status', d => {
+		      return state[d] === true;
+		    })
+		    .attr('practice-name', d => {
+		      return d;
 		    });
 
     	practice.append('circle')
@@ -117,8 +131,6 @@ class Glyphs extends Component {
 			const topMargin = 15;
 
 	    glyph.each(function (d, i) {
-	    	console.log(this)
-
 	    	const g = d3.select(this).append('g');
 		    g.attr('transform', `translate(0, ${topMargin})`);
 		    g.append('text')

@@ -84,7 +84,7 @@ class Scorecard extends Component {
     return (
             <div className="landing-page">
 
-                <h1> Scorecard </h1>
+                <h1> Playbook </h1>
                 <div className="filter-box">
                     <label className="filter-label">
 
