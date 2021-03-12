@@ -10,4 +10,4 @@ class StateSerializer(serializers.ModelSerializer):
     class Meta:
         model = State
         fields = ('name', 'abbreviation', 'population', 
-            'electronic_request', 'no_notary_required', 'no_fee', 'office_contact', 'no_witness_required')
+            'electronic_request', 'no_notary_required', 'no_fee', 'no_contact', 'no_witness_required','county_administered')
