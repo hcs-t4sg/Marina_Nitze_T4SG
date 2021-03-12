@@ -66,18 +66,11 @@ class Glyphs extends Component {
 		    .enter().append('g')
 		    .attr('class', 'integration');
 
-		console.log(practicesAvailble)
-
 		integration.append('path')
 		    .attr('d', d => {
-		    	const points = []
-		    	var i = 0;
-		    	for (var key in state) {
-				    if (state[key] === true) {
-				    	points.push(pentagonVertex(i));
-				    }
-				    i++;
-				}
+				const points = allPractices.map((p, i) => {
+		        	return state[p] === true ? pentagonVertex(i) : null;
+		        }).filter(p => p);
 		    	if (points.length === 2) {
 		        	return 'M' + points.map(p => [p.x, p.y].join(',')).join('L');
 		    	} else {
