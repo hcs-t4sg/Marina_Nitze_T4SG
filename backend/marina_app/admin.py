@@ -6,7 +6,7 @@ class IssueAreaAdmin(admin.ModelAdmin):
 
 class StateAdmin(admin.ModelAdmin):
     list_display = ('name', 'abbreviation', 'population',
-        'electronic_request', 'no_notary_required', 'no_fee', 'office_contact', 'no_witness_required')
+        'electronic_request', 'no_notary_required', 'no_fee', 'no_contact', 'no_witness_required', 'county_administered')
 
 
 
