@@ -2,6 +2,8 @@
 import axios from "axios";
 import React, { Component } from "react";
 import "../App.css"
+import Subheader from "../Components/Subheader";
+import StateCard from "../Components/State Scorecard/StateCard"
 
 
 class LandingPage extends Component {
@@ -79,6 +81,8 @@ class LandingPage extends Component {
         return (
             <div className="landing-page">
 
+                <Subheader title="Hello" />
+                <StateCard state="Alaska" />
                 <h1> LandingPage </h1>
                 <div className="filter-box">
                     <label className="filter-label">

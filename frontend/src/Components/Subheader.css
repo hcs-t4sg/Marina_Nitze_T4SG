@@ -1,0 +1,10 @@
+﻿.subheader {
+    border: 2px solid black;
+    margin: 10px;
+    width: 30%;
+    box-shadow: #0E7088 6px 6px;
+}
+
+.subtitle {
+    margin: 10px;
+}
