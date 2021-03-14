@@ -16,14 +16,17 @@ const bestPractices = [
 class Glyphs extends Component {
 	constructor(props) {
         super(props);
-        this.state = {
-            states:props.states
-        };
     }
 
 	componentDidMount() {
         this.initVis();
     }
+
+    // Redraw the glyphs each time a checkbox is selected
+    componentDidUpdate(prevProps, prevState) {
+    	var vis = this;
+	    vis.drawGlyphs();
+	}
 
     // Define parameters and Playbook drawing area (scorecard-container)
     initVis() {
@@ -111,17 +114,23 @@ class Glyphs extends Component {
 	drawGlyphs() {
 		var vis = this;
 
-		const glyph = d3.select('.scorecard-container')
+		d3.select('.scorecard-container').selectAll('*').remove();
+		d3.select('.glyph').selectAll('*').remove();
+
+		var glyph = d3.select('.scorecard-container')
 			.selectAll('.glyph')
-		    .data(this.state.states)
+		    .data(this.props.states)
 		    .enter().append('div')
 		    .attr('class', 'glyph')
 		    .append('svg').attr('width', '20%').attr('height', '100%');
+
+		glyph.exit().remove();
 
 		const width = 110;
 		const topMargin = 15;
 
 	    glyph.each(function (d, i) {
+
 	    	const g = d3.select(this).append('g');
 		    g.attr('transform', `translate(0, ${topMargin})`);
 		    g.append('text')
