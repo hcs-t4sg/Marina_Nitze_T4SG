@@ -68,7 +68,7 @@ class LandingPage extends Component {
 
         if (this.state.office) {
             newStates = newStates.filter(
-                state => state.office_contact === true);
+                state => state.no_contact === true);
         }
 
         if (this.state.witness) {
@@ -119,10 +119,10 @@ class LandingPage extends Component {
                         <input
                             className="filter-check"
                             type="checkbox"
-                            label="Office Contact"
+                            label="No Contact"
                             onChange={() => this.changeOffice(this.state.office)}
                         />
-                    Office Contact
+                    No Contact
                     </label> 
 
                     <label className="filter-label">
