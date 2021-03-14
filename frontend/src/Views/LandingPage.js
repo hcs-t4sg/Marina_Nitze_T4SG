@@ -43,7 +43,7 @@ class LandingPage extends Component {
     componentDidMount() {
         axios
             .get("http://localhost:8000/api/states/")
-            .then(res => this.setState({ data: res.data }))
+            .then(res => this.setState({ data: res.data }, this.render))
             .catch(err => console.log(err));
 
     }
@@ -52,7 +52,7 @@ class LandingPage extends Component {
 
 
         var newStates = this.state.data;
-        
+
         if (this.state.electronic_request) {
             newStates = newStates.filter(
                 state => state.electronic_request === true);
@@ -77,12 +77,26 @@ class LandingPage extends Component {
             newStates = newStates.filter(
                 state => state.no_witness_required === true);
         }
+        if (newStates[0]) {
 
+            console.log(newStates[0])
+        }
         return (
             <div className="landing-page">
 
                 <Subheader title="Hello" />
-                <StateCard state="Alaska" />
+                <StateCard state="Alabama" state_data={{
+                    abbreviation: "AL",
+                    county_administered: true,
+                    electronic_request: false,
+                    name: "Alabama",
+                    no_contact: false,
+                    no_fee: true,
+                    no_notary_required: true,
+                    no_witness_required: false,
+                    population: 4779736
+                }} />
+
                 <h1> LandingPage </h1>
                 <div className="filter-box">
                     <label className="filter-label">

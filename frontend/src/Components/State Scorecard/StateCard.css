@@ -1,3 +1,62 @@
-﻿body
-{
+﻿.diamond-filled {
+    width: 0;
+    height: 0;
+    border: 15px solid transparent;
+    border-bottom: 25px solid #3595AC;
+    position: relative;
+    top: -15px;
+    margin-left: 2px;
+    margin-right: 2px;
+}
+
+    .diamond-filled:after {
+        content: '';
+        position: absolute;
+        left: -15px;
+        top: 25px;
+        width: 0;
+        height: 0;
+        border: 15px solid transparent;
+        border-top: 25px solid #3595AC;
+    }
+
+.diamond-empty {
+    width: 0;
+    height: 0;
+    border: 15px solid transparent;
+    border-bottom: 25px solid #C8EAEF;
+    position: relative;
+    top: -15px;
+    margin-left: 2px;
+    margin-right: 2px;
+}
+
+    .diamond-empty:after {
+        content: '';
+        position: absolute;
+        left: -15px;
+        top: 25px;
+        width: 0;
+        height: 0;
+        border: 15px solid transparent;
+        border-top: 25px solid #C8EAEF;
+    }
+
+.top-info{
+    display: flex;
+    flex-direction: row;
+    padding: 10px;
+}
+
+.diamond-area {
+    display: flex;
+    flex-direction: row;
+}
+
+.state-scorecard {
+    border: 2px solid black;
+}
+
+.title-area {
+    width: 60%;
 }
