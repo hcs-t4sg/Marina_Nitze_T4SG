@@ -3,7 +3,8 @@ import axios from "axios";
 import React, { Component } from "react";
 import "../App.css"
 
-
+const high_pop = 7500000;
+const low_pop = 2500000;
 class LandingPage extends Component {
 
     constructor(props) {
@@ -126,15 +127,15 @@ class LandingPage extends Component {
 
         if (this.state.population_filter === 1) {
             newStates = newStates.filter(
-                state => state.population < 2500000);
+                state => state.population < low_pop);
         }
         else if (this.state.population_filter === 2) {
             newStates = newStates.filter(
-                state => state.population > 2500000 && state.population < 7500000);
+                state => state.population >= low_pop && state.population < high_pop);
         }
         else if (this.state.population_filter === 3) {
             newStates = newStates.filter(
-                state => state.population > 7500000);
+                state => state.population >= high_pop);
         }
         if (this.state.implemented_sort === 1) {
 
@@ -148,7 +149,6 @@ class LandingPage extends Component {
             newStates.sort((a, b) => (a.name > b.name) ? 1: -1)
         }
 
-        console.log(newStates[0]["implemented"]);
 
         return (
             <div className="landing-page">
