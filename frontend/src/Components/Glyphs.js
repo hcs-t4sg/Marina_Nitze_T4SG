@@ -108,6 +108,14 @@ class Glyphs extends Component {
 		    .attr('r', circleRadius)
 		    .style('fill', d => state[d] === true ? availableColor : unavailableColor)
     		.style('stroke', d => state[d] === true ? 'none' : unavailableColor);
+
+        practice.append('text')
+            .text(d => allPractices.indexOf(d) + 1)
+            .attr('text-anchor', 'middle')
+            .attr('dy', '0.35em')
+            .attr('class', 'label')
+            .style('fill', '#fff')
+            .style('font-size', (circleRadius + 3) + 'px');
 	}
 
 	// Iterate through state data, creating a glyph svg for each
