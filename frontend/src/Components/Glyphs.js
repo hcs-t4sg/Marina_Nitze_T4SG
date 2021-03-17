@@ -1,9 +1,10 @@
 import React, { Component } from "react";
 import * as d3 from "d3";
+// import tip from "d3-v6-tip";
 import "./Glyphs.css";
 
-const availableColor = '#0D77AC';
-const availableColorLighter = '#C1D6E4';
+const availableColor = '#276a82';
+const availableColorLighter = '#c8e0e3';
 const unavailableColor = '#d8d8d8';
 const bestPractices = [
 		'no_fee',
@@ -42,11 +43,16 @@ class Glyphs extends Component {
             .attr("class", "scorecard-container")
             .attr("transform", "translate(" + vis.margin.left + "," + vis.margin.top + ")");
 
+        vis.tooltip = d3.select(".scorecard").append("div")   
+            .attr("class", "tooltip");              
+
         vis.drawGlyphs();
     }
 
     // Use data from one state and g element to draw a glyph
     drawSingleGlyph(state, g) {
+        var vis = this;
+
     	const practicesAvailble = bestPractices.filter(p => state[p] === true);
     	const allPractices = bestPractices.filter(p => state[p] === true || state[p] === false);
 
@@ -107,7 +113,25 @@ class Glyphs extends Component {
     	practice.append('circle')
 		    .attr('r', circleRadius)
 		    .style('fill', d => state[d] === true ? availableColor : unavailableColor)
-    		.style('stroke', d => state[d] === true ? 'none' : unavailableColor);
+    		.style('stroke', d => state[d] === true ? 'none' : unavailableColor)
+            .on('mouseover', function (event,d, i) {
+                vis.tooltip
+                    .html(
+                      `<div>Practice: ${d}</div><div>Status: ${state[d]}</div>`
+                    )
+                    .style('visibility', 'visible');
+                  d3.select(this).transition().attr('fill', availableColor);
+            })
+            .on('mousemove', function (event) {
+                vis.tooltip
+                    .style('top', event.pageY - 315 + 'px')
+                    .style('left', event.pageX - 45 + 'px');
+                console.log(event.pageX);
+            })
+            .on('mouseout', function (event) {
+                vis.tooltip.html("").style('visibility', 'hidden');
+                d3.select(this).transition().attr('fill', '#fff');
+            });
 
         practice.append('text')
             .text(d => allPractices.indexOf(d) + 1)
@@ -116,6 +140,7 @@ class Glyphs extends Component {
             .attr('class', 'label')
             .style('fill', '#fff')
             .style('font-size', (circleRadius + 3) + 'px');
+
 	}
 
 	// Iterate through state data, creating a glyph svg for each
