@@ -16,8 +16,10 @@ class State(models.Model):
     electronic_request = models.BooleanField(default = False)
     no_notary_required = models.BooleanField(default = False)
     no_fee = models.BooleanField(default = False)
-    office_contact = models.BooleanField(default = False)
+    no_contact = models.BooleanField(default = False)
     no_witness_required = models.BooleanField(default = False)
+
+    county_administered = models.BooleanField(default = False)
 
     def __str__(self):
         return self.name
