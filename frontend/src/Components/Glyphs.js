@@ -124,8 +124,8 @@ class Glyphs extends Component {
             })
             .on('mousemove', function (event) {
                 vis.tooltip
-                    .style('top', event.pageY - 315 + 'px')
-                    .style('left', event.pageX - 45 + 'px');
+                    .style('top', event.pageY - 280 + 'px')
+                    .style('left', event.pageX - 60 + 'px');
                 console.log(event.pageX);
             })
             .on('mouseout', function (event) {
