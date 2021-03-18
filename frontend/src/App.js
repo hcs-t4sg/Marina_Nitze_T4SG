@@ -20,7 +20,7 @@ function App() {
 
     return (
         <div className="App">
-            <Header onClick={showSideBar}/>
+            <Header onClick={showSideBar} toggle={sidebar}/>
 
             <header className="App-header">
                 <Router>

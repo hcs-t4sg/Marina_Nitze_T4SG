@@ -2,6 +2,8 @@
 
 .scorecard {
   position: relative;
+  width: 75%;
+  margin: 0 auto;
 }
 
 .scorecard-container {
@@ -9,7 +11,8 @@
   flex-wrap: wrap;
   justify-content: center;
   padding-bottom: 10px;
-  padding-top: 20px;
+  padding-top: 110px;
+  margin-top: 10px;
   width: 100%;
 }
 
