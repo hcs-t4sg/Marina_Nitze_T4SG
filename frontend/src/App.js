@@ -27,11 +27,11 @@ function App() {
                     <SideBar className="side-bar" click={showSideBar} show={sidebar}/>
                     <Switch>
                         <Route path={"/home"} component={LandingPage} />
-                        <Route path="/scorecard" component={Scorecard} />
                         <Route path="/map" component={Map} />
                         <Route path="/practices" component={Practices} />
                         <Route path="/resources" component={Resources} />
                         <Route path="/faq" component={FAQ} />
+                        <Route path={["", "/scorecard"]} component={Scorecard} />
 
                     </Switch>
                 </Router>

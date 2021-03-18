@@ -28,7 +28,8 @@ class LandingPage extends Component {
             office: false,
             witness: false,
             population_filter: 0,
-            implemented_sort: 0
+            implemented_sort: 0,
+            county_filter: 0
         };
     }
 
@@ -149,6 +150,20 @@ class LandingPage extends Component {
             newStates.sort((a, b) => (a.name > b.name) ? 1: -1)
         }
 
+        if (this.state.county_filter === 0) {
+            newStates = newStates;
+        }
+        else if (this.state.county_filter === 1) {
+            newStates = newStates.filter(
+                state => state.county_administered === true
+            )
+        }
+        else if (this.state.county_filter === 2) {
+            newStates = newStates.filter(
+                state => state.county_administered === false
+            )
+        }
+
 
         return (
             <div className="landing-page">
@@ -255,6 +270,27 @@ class LandingPage extends Component {
                                 <option value="least">Least Practices Implemented</option>
                             </select>
                         Metric
+                    </label> 
+
+                    <label className="filter-label">
+
+                        <select onChange={(e) => {
+                            if (e.target.value === "no-filter") {
+                                this.setState({ county_filter: 0 })
+                            }
+
+                            else if (e.target.value === "county") {
+                                this.setState({ county_filter: 1 })
+                            }
+                            else if (e.target.value === "state") {
+                                this.setState({ county_filter: 2 })
+                            }
+                        }}>
+                            <option value="no-filter">County or State</option>
+                            <option value="county">County Administered</option>
+                            <option value="state">State Administered</option>
+                        </select>
+                    State vs County
                     </label> 
 
                 </div>
