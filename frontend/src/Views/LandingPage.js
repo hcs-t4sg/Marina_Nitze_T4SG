@@ -150,14 +150,17 @@ class LandingPage extends Component {
             newStates.sort((a, b) => (a.name > b.name) ? 1: -1)
         }
 
-        if (this.state.county_filter === 1) {
+        if (this.state.county_filter === 0) {
+            newStates = newStates;
+        }
+        else if (this.state.county_filter === 1) {
             newStates = newStates.filter(
-                state => state.county_administered
+                state => state.county_administered === true
             )
         }
         else if (this.state.county_filter === 2) {
             newStates = newStates.filter(
-                state => !state.county_administered
+                state => state.county_administered === false
             )
         }
 
@@ -273,7 +276,7 @@ class LandingPage extends Component {
 
                         <select onChange={(e) => {
                             if (e.target.value === "no-filter") {
-                                this.setState({ population_filter: 0 })
+                                this.setState({ county_filter: 0 })
                             }
 
                             else if (e.target.value === "county") {
