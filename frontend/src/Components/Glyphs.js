@@ -10,7 +10,7 @@ const bestPractices = [
 		'no_fee',
 		'no_notary_required',
 		'no_witness_required',
-		'office_contact',
+		'county_administered',
 		'electronic_request'
 	];
 
