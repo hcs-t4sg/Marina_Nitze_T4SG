@@ -5,7 +5,7 @@ import "./Glyphs.css";
 
 const availableColor = '#276a82';
 const availableColorLighter = '#c8e0e3';
-const unavailableColor = '#d8d8d8';
+const unavailableColor = '#ccb6c5';
 const bestPractices = [
 		'no_fee',
 		'no_notary_required',
@@ -124,8 +124,8 @@ class Glyphs extends Component {
             })
             .on('mousemove', function (event) {
                 vis.tooltip
-                    .style('top', event.pageY - 280 + 'px')
-                    .style('left', event.pageX - 60 + 'px');
+                    .style('top', event.pageY - 310 + 'px')
+                    .style('left', event.pageX - 210 + 'px');
                 console.log(event.pageX);
             })
             .on('mouseout', function (event) {
