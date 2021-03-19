@@ -10,9 +10,10 @@ const bestPractices = [
 		'no_fee',
 		'no_notary_required',
 		'no_witness_required',
-		'county_administered',
-		'electronic_request'
+		'electronic_request', 
+		'no_contact'
 	];
+
 
 class Glyphs extends Component {
 	constructor(props) {
@@ -52,6 +53,8 @@ class Glyphs extends Component {
     // Use data from one state and g element to draw a glyph
     drawSingleGlyph(state, g) {
         var vis = this;
+
+        console.log(state);
 
     	const practicesAvailble = bestPractices.filter(p => state[p] === true);
     	const allPractices = bestPractices.filter(p => state[p] === true || state[p] === false);
