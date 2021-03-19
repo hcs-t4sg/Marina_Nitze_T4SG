@@ -56,3 +56,10 @@
 .filter-label {
     flex: 1;
 }
+
+
+.searchbar{
+  width: 40%;
+  padding: 1%;
+  margin: 1%;
+}

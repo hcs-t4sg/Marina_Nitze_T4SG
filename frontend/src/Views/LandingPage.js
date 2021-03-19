@@ -31,7 +31,7 @@ class LandingPage extends Component {
             witness: false,
             population_filter: 0,
             implemented_sort: 0,
-            county_filter: 0
+            county_filter: 0,
         };
     }
 
@@ -174,8 +174,6 @@ class LandingPage extends Component {
 
         return (
             <div className="landing-page">
-
-                <Subheader title="Hello" />
                 
 
                 <h1> LandingPage </h1>

@@ -1,5 +1,5 @@
 import axios from "axios";
-import React, { Component } from "react";
+import React, { Component , useState } from "react";
 import Glyphs from '../Components/Glyphs'
 import "../App.css"
 import StateCard from "../Components/State Scorecard/StateCard"
@@ -8,7 +8,7 @@ const high_pop = 7500000;
 const low_pop = 2500000;
 
 class Scorecard extends Component {
-
+    
     constructor(props) {
         super(props);
         this.state = {
@@ -31,7 +31,8 @@ class Scorecard extends Component {
             witness: false,
             population_filter: 0,
             implemented_sort: 0,
-            county_filter: 0
+            county_filter: 0,
+            searchedState: ""
         };
     }
 
@@ -49,6 +50,10 @@ class Scorecard extends Component {
     }
     changeWitness = (w) => {
         this.setState({ witness: !w })
+    }
+
+    updateSearchedState = (s) => {
+        this.setState({ searchedState: s.target.value })
     }
 
     countImplementations(data) {
@@ -99,9 +104,16 @@ class Scorecard extends Component {
 
         var newStates = this.state.data;
         var scoreCardStates = [];
+        var searchedStates = []
 
         if (this.state.data[0]["name"]) {
-            scoreCardStates = this.state.data;
+             scoreCardStates = this.state.data;
+             searchedStates = scoreCardStates;
+             if(this.state.searchedState !== ""){
+                searchedStates = searchedStates.filter(
+                    state => state.name.toLowerCase().includes( this.state.searchedState.toLowerCase() )===true)
+             }
+             
         }
 
         if (this.state.electronic_request) {
@@ -292,8 +304,18 @@ class Scorecard extends Component {
             <div>{glyphs}</div>
 
             
+            <input
+                className = "searchbar"
+                type = "text"
+                value = {this.state.searchedState}
+                placeholder={"search"}
+                onChange={this.updateSearchedState}
+            />
+
+            <div>{this.state.searchedState}</div>
+
             {
-                scoreCardStates.map(state =>
+                searchedStates.map(state =>
                     <StateCard state={state["name"]} state_data={state} />
                 )}
             
