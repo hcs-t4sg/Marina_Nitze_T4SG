@@ -33,3 +33,14 @@ class IssueArea(models.Model):
 
     def __str__(self):
         return self.title
+
+class ImplementationGuidance(models.Model):
+    name = models.CharField(max_length=200)
+    question = models.TextField()
+    why = models.TextField()
+    quote = models.TextField()
+    link = models.URLField(max_length=200)
+
+
+    def __str__(self):
+        return self.name
