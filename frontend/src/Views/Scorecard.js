@@ -312,8 +312,6 @@ class Scorecard extends Component {
                 onChange={this.updateSearchedState}
             />
 
-            <div>{this.state.searchedState}</div>
-
             {
                 searchedStates.map(state =>
                     <StateCard state={state["name"]} state_data={state} />
