@@ -1,22 +1,12 @@
 {
   "ExpandedNodes": [
     "",
-<<<<<<< HEAD
-    "\\backend\\backend",
-    "\\backend\\marina_app",
     "\\frontend",
     "\\frontend\\src",
     "\\frontend\\src\\Components",
     "\\frontend\\src\\Components\\State Scorecard",
     "\\frontend\\src\\Views"
   ],
-  "SelectedNode": "\\frontend\\src\\Components\\State Scorecard\\StateCard.js",
-=======
-    "\\frontend",
-    "\\frontend\\src",
-    "\\frontend\\src\\Views"
-  ],
-  "SelectedNode": "\\frontend\\src\\Views\\LandingPage.js",
->>>>>>> master
+  "SelectedNode": "\\frontend\\src\\Views\\Scorecard.js",
   "PreviewInSolutionExplorer": false
 }
