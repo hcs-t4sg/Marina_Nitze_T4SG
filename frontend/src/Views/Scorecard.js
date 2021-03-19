@@ -13,6 +13,7 @@ class Scorecard extends Component {
         super(props);
         this.state = {
             data: [{
+                id: 0,
                 abbreviation: "",
                 county_administered: false,
                 electronic_request: false,
@@ -75,6 +76,7 @@ class Scorecard extends Component {
 
             tempData.push(
                 {
+                    id: i,
                     abbreviation: item["abbreviation"],
                     county_administered: item["county_administered"],
                     electronic_request: item["electronic_request"],
@@ -314,7 +316,7 @@ class Scorecard extends Component {
 
             {
                 searchedStates.map(state =>
-                    <StateCard state={state["name"]} state_data={state} />
+                    <StateCard state={state["name"]} state_data={state} key={state.id} />
                 )}
             
 
