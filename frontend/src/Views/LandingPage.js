@@ -5,18 +5,33 @@ import "../App.css"
 import Subheader from "../Components/Subheader";
 import StateCard from "../Components/State Scorecard/StateCard"
 
-
+const high_pop = 7500000;
+const low_pop = 2500000;
 class LandingPage extends Component {
 
     constructor(props) {
         super(props);
         this.state = {
-            data: [],
+            data: [{
+                abbreviation: "",
+                county_administered: false,
+                electronic_request: false,
+                name: "",
+                no_contact: false,
+                no_fee: false,
+                no_notary_required: false,
+                no_witness_required: false,
+                population: 0,
+                implemented: 0
+            }],
             electronic_request: false,
             notary: false,
             fee: false,
             office: false,
-            witness: false
+            witness: false,
+            population_filter: 0,
+            implemented_sort: 0,
+            county_filter: 0
         };
     }
 
@@ -40,17 +55,52 @@ class LandingPage extends Component {
         this.setState({ witness: !w })
     }
 
+
     componentDidMount() {
         axios
             .get("http://localhost:8000/api/states/")
             .then(res => this.setState({ data: res.data }, this.render))
             .catch(err => console.log(err));
+    }
 
+    countImplementations(data) {
+        let tempData = [];
+        for (var i = 0; i < data.length; i++) {
+            var count = 0;
+            var item = data[i];
+
+            if (item["electronic_request"])
+                count+=1;
+            if (item["no_contact"])
+                count+=1;
+            if (item["no_fee"])
+                count+=1;
+            if (item["no_notary_required"])
+                count+=1;
+            if (item["no_witness_required"])
+                count += 1;
+
+            tempData.push(
+            {
+                abbreviation: item["abbreviation"],
+                county_administered: item["county_administered"],
+                electronic_request: item["electronic_request"],
+                name: item["name"],
+                no_contact: item["no_contact"],
+                no_fee: item["no_fee"],
+                no_notary_required: item["no_notary_required"],
+                no_witness_required: item["no_witness_required"],
+                population: item["population"],
+                implemented: count
+            })
+
+
+        }
+
+        this.setState({ data: tempData });
     }
 
     render() {
-
-
         var newStates = this.state.data;
 
         if (this.state.electronic_request) {
@@ -70,7 +120,7 @@ class LandingPage extends Component {
 
         if (this.state.office) {
             newStates = newStates.filter(
-                state => state.office_contact === true);
+                state => state.no_contact === true);
         }
 
         if (this.state.witness) {
@@ -79,8 +129,49 @@ class LandingPage extends Component {
         }
         if (newStates[0]) {
 
-            console.log(newStates[0])
+
         }
+
+        if (this.state.population_filter === 1) {
+            newStates = newStates.filter(
+                state => state.population < low_pop);
+        }
+        else if (this.state.population_filter === 2) {
+            newStates = newStates.filter(
+                state => state.population >= low_pop && state.population < high_pop);
+        }
+        else if (this.state.population_filter === 3) {
+            newStates = newStates.filter(
+                state => state.population >= high_pop);
+        }
+        if (this.state.implemented_sort === 1) {
+
+            newStates.sort((a, b) => (a.implemented < b.implemented) ? 1 : -1)
+        }
+        else if (this.state.implemented_sort === -1) {
+
+            newStates.sort((a, b) => (a.implemented > b.implemented) ? 1 : -1)
+        }
+        else if (this.state.implemented_sort === 0){
+            newStates.sort((a, b) => (a.name > b.name) ? 1: -1)
+        }
+
+        if (this.state.county_filter === 0) {
+            newStates = newStates;
+        }
+        else if (this.state.county_filter === 1) {
+            newStates = newStates.filter(
+                state => state.county_administered === true
+            )
+        }
+        else if (this.state.county_filter === 2) {
+            newStates = newStates.filter(
+                state => state.county_administered === false
+            )
+        }
+
+
+
         return (
             <div className="landing-page">
 
@@ -137,10 +228,10 @@ class LandingPage extends Component {
                         <input
                             className="filter-check"
                             type="checkbox"
-                            label="Office Contact"
+                            label="No Contact"
                             onChange={() => this.changeOffice(this.state.office)}
                         />
-                    Office Contact
+                    No Contact
                     </label> 
 
                     <label className="filter-label">
@@ -148,11 +239,80 @@ class LandingPage extends Component {
                         <input
                             className="filter-check"
                             type="checkbox"
-                            label="First"
+                            label="No Witness"
                             onChange={() => this.changeWitness(this.state.witness)}
                         />
                     No Witness Needed
                     </label> 
+                </div>
+                <div className="filter-box">
+                    <label className="filter-label">
+
+                        <select onChange={(e) => {
+                            if (e.target.value === "no-filter") {
+                                this.setState({ population_filter: 0 })
+                            }
+
+                            else if (e.target.value === "small") {
+                                this.setState({ population_filter: 1 })
+                            }
+                            else if (e.target.value === "medium") {
+                                this.setState({ population_filter: 2 })
+                            }
+                            else if (e.target.value === "large") {
+                                this.setState({ population_filter: 3 })
+                            }
+                        }}>
+                            <option value="no-filter">Select a Population</option>
+                            <option value="small">Less than 2.5 M</option>
+                            <option value="medium">2.5M to 7.5 M</option>
+                            <option value="large">7.5M +</option>
+                        </select>
+                    Population Size
+                    </label> 
+
+                        <label className="filter-label">
+
+                        <select onChange={(e) => {
+                            if (e.target.value === "most") {
+                                this.setState({ implemented_sort: 1 })
+                            }
+
+                            else if (e.target.value === "least") {
+                                this.setState({ implemented_sort: -1 })
+                            }
+                            else if (e.target.value === "no-sort") {
+                                this.setState({ implemented_sort: 0 })
+                            }
+                        }}>
+                                <option value="no-sort">No Sort</option>
+                                <option value="most">Most Practices Implemented</option>
+                                <option value="least">Least Practices Implemented</option>
+                            </select>
+                        Metric
+                    </label> 
+
+                    <label className="filter-label">
+
+                        <select onChange={(e) => {
+                            if (e.target.value === "no-filter") {
+                                this.setState({ county_filter: 0 })
+                            }
+
+                            else if (e.target.value === "county") {
+                                this.setState({ county_filter: 1 })
+                            }
+                            else if (e.target.value === "state") {
+                                this.setState({ county_filter: 2 })
+                            }
+                        }}>
+                            <option value="no-filter">County or State</option>
+                            <option value="county">County Administered</option>
+                            <option value="state">State Administered</option>
+                        </select>
+                    State vs County
+                    </label> 
+
                 </div>
 
                 {newStates.map(item => (

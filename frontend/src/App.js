@@ -11,6 +11,7 @@ import FAQ from "./Views/FAQ"
 import { useState } from "react";
 import Header from "./Components/Header"
 
+
 function App() {
     const [sidebar, setSidebar] = useState(false)
     const showSideBar = () => {
@@ -19,18 +20,18 @@ function App() {
 
     return (
         <div className="App">
-            <Header onClick={showSideBar}/>
+            <Header onClick={showSideBar} toggle={sidebar}/>
 
             <header className="App-header">
                 <Router>
                     <SideBar className="side-bar" click={showSideBar} show={sidebar}/>
                     <Switch>
                         <Route path={"/home"} component={LandingPage} />
-                        <Route path="/scorecard" component={Scorecard} />
                         <Route path="/map" component={Map} />
                         <Route path="/practices" component={Practices} />
                         <Route path="/resources" component={Resources} />
                         <Route path="/faq" component={FAQ} />
+                        <Route path={["", "/scorecard"]} component={Scorecard} />
 
                     </Switch>
                 </Router>
