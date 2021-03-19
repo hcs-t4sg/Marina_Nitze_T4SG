@@ -1,13 +1,15 @@
 import { Component } from "react";
 import Diamond from "./Diamond"
 import ImplementedIndicator from "./ImplementedIndicator"
+import PopulationIndicator from "./PopulationIndicator"
+import SCIndicator from "./SCIndicator"
 
 // JavaScript source code
 export default class StateCard extends Component{
     constructor(props){
         super(props);
         this.state = {
-            state: props.state,
+            state: props.state_data["name"],
             state_data: props.state_data,
             expanded: false,
             test: true
@@ -21,7 +23,7 @@ export default class StateCard extends Component{
                 <div className="state-scorecard">
                     <div className="top-info">
                         <div className="title-area">
-                            <h1> {this.state.state} </h1>
+                            <h1> {this.state.state_data["name"]} </h1>
                             <h4 onClick={() => this.setState({ expanded: !this.state.expanded })}>  See Less </h4>
                         </div>
                         <div className="diamond-area" >
@@ -31,6 +33,12 @@ export default class StateCard extends Component{
                             <Diamond implemented={data.no_contact} symbol={"C"}/>
                             <Diamond implemented={data.no_witness_required} symbol={"W"}/>
                         </div>
+                    </div>
+
+                    <div className="demographics-div">
+                        <h4> Demographics </h4>
+                        <PopulationIndicator population={this.state.state_data["population"]} />
+                        <SCIndicator county={this.state.state_data["county_administered"]} />
                     </div>
                     <div className="expanded-info">
                         <div className="column-left">
@@ -65,7 +73,7 @@ export default class StateCard extends Component{
             <div className="state-scorecard">
                 <div className="top-info">
                     <div className="title-area">
-                        <h1> {this.state.state} </h1>
+                        <h1> {this.state.state_data["name"]} </h1>
                         <h4 onClick={() => this.setState({ expanded: !this.state.expanded })}>  See More </h4>
                     </div>
                     <div className="diamond-area" >

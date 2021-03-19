@@ -61,6 +61,7 @@
 
 .state-scorecard {
     border: 2px solid black;
+    margin-bottom: 20px;
 }
 
 .title-area {
@@ -111,4 +112,12 @@
     width: 50px;
     height: 30px;
     margin-top: 4px;
+}
+
+.demographics-div{
+    display: flex;
+    flex-direction: row;
+   padding-left: 30px;
+   padding-right: 30px;
+   justify-content: center;
 }

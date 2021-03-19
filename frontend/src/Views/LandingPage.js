@@ -176,17 +176,7 @@ class LandingPage extends Component {
             <div className="landing-page">
 
                 <Subheader title="Hello" />
-                <StateCard state="Alabama" state_data={{
-                    abbreviation: "AL",
-                    county_administered: true,
-                    electronic_request: false,
-                    name: "Alabama",
-                    no_contact: false,
-                    no_fee: true,
-                    no_notary_required: true,
-                    no_witness_required: false,
-                    population: 4779736
-                }} />
+                
 
                 <h1> LandingPage </h1>
                 <div className="filter-box">

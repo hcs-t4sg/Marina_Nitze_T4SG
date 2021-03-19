@@ -2,6 +2,7 @@ import axios from "axios";
 import React, { Component } from "react";
 import Glyphs from '../Components/Glyphs'
 import "../App.css"
+import StateCard from "../Components/State Scorecard/StateCard"
 
 const high_pop = 7500000;
 const low_pop = 2500000;
@@ -93,9 +94,15 @@ class Scorecard extends Component {
             .then(res => this.countImplementations(res.data))
             .catch(err => console.log(err));
     }
+
     render() {
 
         var newStates = this.state.data;
+        var scoreCardStates = [];
+
+        if (this.state.data[0]["name"]) {
+            scoreCardStates = this.state.data;
+        }
 
         if (this.state.electronic_request) {
             newStates = newStates.filter(
@@ -282,7 +289,15 @@ class Scorecard extends Component {
 
             </div>
 
-                <div>{glyphs}</div>
+            <div>{glyphs}</div>
+
+            
+            {
+                scoreCardStates.map(state =>
+                    <StateCard state={state["name"]} state_data={state} />
+                )}
+            
+
             </div>
         );
     }
