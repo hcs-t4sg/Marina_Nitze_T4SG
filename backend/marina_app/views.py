@@ -11,6 +11,6 @@ class StateView(viewsets.ModelViewSet):
     serializer_class = StateSerializer
     queryset = State.objects.all()
 
-class ImplementationGuidance(viewsets.ModelViewSet):
+class ImplementationGuidanceView(viewsets.ModelViewSet):
     serializer_class = ImplementationGuidanceSerializer
     queryset = ImplementationGuidance.objects.all()
