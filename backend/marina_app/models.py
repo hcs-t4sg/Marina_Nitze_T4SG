@@ -38,7 +38,7 @@ class ImplementationGuidance(models.Model):
     name = models.CharField(max_length=200)
     question = models.TextField()
     why = models.TextField()
-    quote = models.TextField()
+    quote = models.TextField(blank=True)
     link = models.URLField(max_length=200)
 
 
