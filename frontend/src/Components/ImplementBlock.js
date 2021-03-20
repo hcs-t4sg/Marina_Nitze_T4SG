@@ -5,11 +5,12 @@ import ImplementationModal from "./ImplementationModal"
 class ImplementBlock extends Component {
     constructor(props) {
         super(props);
+        console.log(props);
         this.state = {
             expanded: false,
-            title: "Fee for Background Checks",
-            body: "Some description text outlining the issue with the requirement and the benefits of the promising practice. Perhaps there should also be a link to Marina's resource guide for states regarding implementing this promising practice.",
-            link: this.props.link
+            title: props.guidance.name,
+            body: props.guidance.why,
+            link: props.guidance.link
             
         }
     }

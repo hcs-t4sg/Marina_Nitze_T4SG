@@ -60,6 +60,11 @@ class LandingPage extends Component {
             .get("http://localhost:8000/api/states/")
             .then(res => this.countImplementations(res.data))
             .catch(err => console.log(err));
+
+        axios
+            .get("http://localhost:8000/api/implementation_guidance/")
+            .then(res => this.createImplementationBlocks(res.data))
+            .catch(err => console.log(err));
     }
 
     countImplementations(data) {
@@ -97,6 +102,14 @@ class LandingPage extends Component {
         }
 
         this.setState({ data: tempData });
+    }
+
+    createImplementationBlocks(data) {
+        this.implementBlocks = [];
+        for (var i = 0; i < data.length; i++) {
+            let implementBlock = <ImplementBlock link="https://www.childwelfareplaybook.com/" guidance={data[i]} />
+            this.implementBlocks.push(implementBlock);
+        }
     }
 
     render() {
@@ -168,13 +181,7 @@ class LandingPage extends Component {
 
         return (
             <div className="landing-page">
-                <div className="implementation-div">
-                    <ImplementBlock link="https://www.childwelfareplaybook.com/"/>
-                    <ImplementBlock link="https://www.childwelfareplaybook.com/"/>
-                    <ImplementBlock link="https://www.childwelfareplaybook.com/"/>
-                    <ImplementBlock link="https://www.childwelfareplaybook.com/"/>
-                    <ImplementBlock link="https://www.childwelfareplaybook.com/"/>
-                </div>
+                <div className="implementation-div"> {this.implementBlocks} </div>
             </div>
 
         );
