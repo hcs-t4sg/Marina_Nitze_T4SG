@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import IssueArea, State
+from .models import IssueArea, State, ImplementationGuidance
 
 class IssueAreaAdmin(admin.ModelAdmin):
     list_display = ('title', 'get_states')

@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from .models import IssueArea, State
+from .models import IssueArea, State, ImplementationGuidance
 
 class IssueAreaSerializer(serializers.ModelSerializer):
     class Meta:
