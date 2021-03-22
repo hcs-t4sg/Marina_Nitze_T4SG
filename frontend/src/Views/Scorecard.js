@@ -3,6 +3,8 @@ import React, { Component , useState } from "react";
 import Glyphs from '../Components/Glyphs'
 import "../App.css"
 import StateCard from "../Components/State Scorecard/StateCard"
+import ImplementedIndicator from "../Components/State Scorecard/ImplementedIndicator"
+
 
 const high_pop = 7500000;
 const low_pop = 2500000;
@@ -15,13 +17,13 @@ class Scorecard extends Component {
             data: [{
                 id: 0,
                 abbreviation: "",
-                county_administered: false,
                 electronic_request: false,
                 name: "",
-                no_contact: false,
                 no_fee: false,
+                no_contact: false,
                 no_notary_required: false,
                 no_witness_required: false,
+                county_administered: false,
                 population: 0,
                 implemented: 0
             }],
@@ -106,7 +108,7 @@ class Scorecard extends Component {
 
         var newStates = this.state.data;
         var scoreCardStates = [];
-        var searchedStates = []
+        var searchedStates = [];
 
         if (this.state.data[0]["name"]) {
              scoreCardStates = this.state.data;
@@ -132,7 +134,7 @@ class Scorecard extends Component {
         }
         if (this.state.office) {
             newStates = newStates.filter(
-                state => state.office_contact === true);
+                state => state.no_contact === true);
         }
         if (this.state.witness) {
             newStates = newStates.filter(
@@ -185,6 +187,7 @@ class Scorecard extends Component {
     return (
             <div className="landing-page">
                 <h1> Playbook </h1>
+
                 <div className="filter-box">
                     <label className="filter-label">
                     <input
