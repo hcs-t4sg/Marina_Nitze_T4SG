@@ -72,7 +72,7 @@
 .expanded-info{
     display: flex;
     flex-direction: row;
-    padding: 10px;
+    padding-bottom: 2%;
     justify-content: center;
 }
 
@@ -81,7 +81,7 @@
     flex-direction: row;
     justify-content: left;
     align-items: center;
-    padding-left: 13%;
+    padding-left: 11%;
 }
 
 .population-indicator{
@@ -109,7 +109,7 @@
     width: 30%;
     color:black;
     align-items: flex-start;
-    padding-left: 50px;
+    padding-left: 2%
 }
 
 .column-center{

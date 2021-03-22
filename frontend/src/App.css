@@ -65,7 +65,7 @@
 .playbook-region-header{
   display: flex;
   flex-direction: row;
-  align-items: left;
+  align-items: flex-start;
   align-content: left;
   align-items: baseline;
   padding: 2%;
