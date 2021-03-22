@@ -1,9 +1,9 @@
 import axios from "axios";
-import React, { Component , useState } from "react";
+import React, { Component } from "react";
 import Glyphs from '../Components/Glyphs'
 import "../App.css"
 import StateCard from "../Components/State Scorecard/StateCard"
-import ImplementedIndicator from "../Components/State Scorecard/ImplementedIndicator"
+import Subheader from "../Components/Subheader"
 
 
 const high_pop = 7500000;
@@ -188,6 +188,11 @@ class Scorecard extends Component {
             <div className="landing-page">
                 <h1> Playbook </h1>
 
+                <div className="playbook-region-header">
+                    <Subheader title = "National Comparison"/>
+                </div>
+                
+
                 <div className="filter-box">
                     <label className="filter-label">
                     <input
@@ -308,21 +313,23 @@ class Scorecard extends Component {
 
             <div>{glyphs}</div>
 
-            
-            <input
-                className = "searchbar"
-                type = "text"
-                value = {this.state.searchedState}
-                placeholder={"search"}
-                onChange={this.updateSearchedState}
-            />
+    
 
-            {
-                searchedStates.map(state =>
-                    <StateCard state={state["name"]} state_data={state} key={state.id} />
-                )}
-            
+            <div className="state-by-state-area">
+                <div className="playbook-region-header">
+                <Subheader title="State-by-State Scorecard"/>
+                <input
+                    className = "searchbar"
+                    type = "text"
+                    value = {this.state.searchedState}
+                    placeholder={"search"}
+                    onChange={this.updateSearchedState}
+                />
+                </div>
 
+                {searchedStates.map(state =>
+                        <StateCard state={state["name"]} state_data={state} key={state.id} />)}
+                </div>
             </div>
         );
     }

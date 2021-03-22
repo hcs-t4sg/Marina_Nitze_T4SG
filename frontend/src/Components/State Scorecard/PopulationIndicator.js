@@ -13,7 +13,7 @@ export default function PopulationIndicator(props) {
 
     return (
         <div className="population-indicator">
-            <p> {output} </p>
+            {output}
         </div>
     )
 }// JavaScript source code
