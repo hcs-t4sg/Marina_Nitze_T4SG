@@ -24,8 +24,8 @@ class ImplementBlock extends Component {
 
             return (
                 <div className="implement-block">
-                    <h2> {this.state.title} </h2>
-                    <p> {this.state.body} </p>
+                    <h2 className="implement-title"> {this.state.title} </h2>
+                    <p className="implement-body"> {this.state.body} </p>
                     <button className="expand-btn" onClick={this.updateExpand}> See More </button>
                 </div>
             )
@@ -33,10 +33,9 @@ class ImplementBlock extends Component {
 
         return (
             <div className="modal-view">
-
                 <div className="implement-block">
-                    <h2> {this.state.title} </h2>
-                    <p> {this.state.body} </p>
+                    <h2 className="implement-title"> {this.state.title} </h2>
+                    <p className="implement-body"> {this.state.body} </p>
                     <button className="expand-btn" onClick={this.updateExpand}> See Less </button>
                 </div>
                 <ImplementationModal

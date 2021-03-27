@@ -60,5 +60,30 @@
 .implementation-div{
     display: grid;
     grid-template-columns: auto auto;
-    grid-template-rows: auto auto auto;
+    grid-auto-rows: 1fr;
+}
+
+.vary-block {
+    background-color: #D9F2F5;
+    height: 80%;
+    width: 85%;
+    margin: auto;
+
+}
+
+.vary-header {
+    font-size: 36px;
+    font-weight: normal;
+    color: #363D3F;
+    width: 80%;
+    text-align: left;
+    margin: auto;
+    margin-top: 9%;
+    margin-bottom: 2%;
+}
+
+.vary-text {
+    width: 80%;
+    text-align: left;
+    margin: auto;
 }
