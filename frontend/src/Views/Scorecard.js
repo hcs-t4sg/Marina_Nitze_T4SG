@@ -212,9 +212,6 @@ class Scorecard extends Component {
                         />
                     No Witness Needed
                     </label>
-            </div>
-
-            <div className="filter-box">
                 <label className="filter-label">
 
                     <select onChange={(e) => {

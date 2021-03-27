@@ -2,7 +2,7 @@
 
 .outer-box {
   background-color: white;
-  border: solid #d8d8d8 1px;
+  border: solid #bdbdbd 1px;
   display: flex;
   flex-direction: column;
   margin-bottom: 32px;
