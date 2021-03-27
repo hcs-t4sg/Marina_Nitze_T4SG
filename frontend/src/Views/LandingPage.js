@@ -170,7 +170,6 @@ class LandingPage extends Component {
                 <h1> LandingPage </h1>
 
                 <div className="filter-outside-container">
-                
                     <div className="filter-box">
                         <label className="filter-label">
                             
