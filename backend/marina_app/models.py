@@ -44,3 +44,25 @@ class ImplementationGuidance(models.Model):
 
     def __str__(self):
         return self.name
+
+class IntroductionText(models.Model):
+    title = models.TextField()
+    text = models.TextField()
+
+    def __str__(self):
+        return self.title
+
+class ConclusionText(models.Model):
+    title = models.TextField()
+    text = models.TextField()
+
+    def __str__(self):
+        return self.title
+
+
+
+
+
+
+
+
