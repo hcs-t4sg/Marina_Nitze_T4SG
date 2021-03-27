@@ -35,13 +35,10 @@ class Glyphs extends Component {
         var vis = this;
 
         vis.margin = { top: 20, right: 60, bottom: 200, left: 60 };
-        vis.width = 1000 - vis.margin.left - vis.margin.right;
-        vis.height = 900 - vis.margin.top - vis.margin.bottom;
-
         vis.svg = d3.select(".scorecard").append("div")
-            .attr("width", vis.width + vis.margin.left + vis.margin.right)
-            .attr("height", vis.height + vis.margin.top + vis.margin.bottom)
+            .attr("height", "100%")
             .attr("class", "scorecard-container")
+            .attr("width", "100%")
             .attr("transform", "translate(" + vis.margin.left + "," + vis.margin.top + ")");
 
         vis.tooltip = d3.select(".scorecard").append("div")   
@@ -179,7 +176,10 @@ class Glyphs extends Component {
 	}
 
     render() {
-    	return (<div><div className="scorecard"></div></div>)
+    	return (<div class="outer-box">
+    				<div><div className="scorecard"></div></div>
+    			</div>
+    			)
     }
 }
 
