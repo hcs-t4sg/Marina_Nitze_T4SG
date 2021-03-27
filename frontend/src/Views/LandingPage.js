@@ -106,7 +106,10 @@ class LandingPage extends Component {
 
     createImplementationBlocks(data) {
         this.implementBlocks = [
-            
+            <div className="vary-block">
+                <h1 className="vary-header"> Practices vary greatly state by state </h1>
+                <p className="vary-text"> The following are descriptions of each practice, with implementation guides linked. </p>
+            </div>
         ];
         for (var i = 0; i < data.length; i++) {
             let implementBlock = <ImplementBlock link="https://www.childwelfareplaybook.com/" guidance={data[i]} />
@@ -184,10 +187,7 @@ class LandingPage extends Component {
         return (
             <div className="landing-page">
                 <div className="implementation-div">
-                    <div className="vary-block">
-                        <h1 className="vary-header"> Practices vary greatly state by state </h1>
-                        <p className="vary-text"> The following are descriptions of each practice, with implementation guides linked. </p>
-                    </div>
+
                     {this.implementBlocks}
                 </div>
             </div>
