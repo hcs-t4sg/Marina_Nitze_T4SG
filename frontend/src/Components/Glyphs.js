@@ -1,19 +1,10 @@
 import React, { Component } from "react";
 import * as d3 from "d3";
-// import tip from "d3-v6-tip";
 import "./Glyphs.css";
 
 const availableColor = '#276a82';
 const availableColorLighter = '#c8e0e3';
 const unavailableColor = '#ccb6c5';
-const bestPractices = [
-		'no_fee',
-		'no_notary_required',
-		'no_witness_required',
-		'electronic_request', 
-		'no_contact'
-	];
-
 
 class Glyphs extends Component {
 	constructor(props) {
@@ -36,9 +27,7 @@ class Glyphs extends Component {
 
         vis.margin = { top: 20, right: 60, bottom: 200, left: 60 };
         vis.svg = d3.select(".scorecard").append("div")
-            .attr("height", "100%")
             .attr("class", "scorecard-container")
-            .attr("width", "100%")
             .attr("transform", "translate(" + vis.margin.left + "," + vis.margin.top + ")");
 
         vis.tooltip = d3.select(".scorecard").append("div")   
@@ -53,8 +42,8 @@ class Glyphs extends Component {
 
         console.log(state);
 
-    	const practicesAvailble = bestPractices.filter(p => state[p] === true);
-    	const allPractices = bestPractices.filter(p => state[p] === true || state[p] === false);
+    	const practicesAvailble = Object.keys(state).filter(p => state[p] === true && p != "county_administered");
+    	const allPractices = Object.keys(state).filter(p => (state[p] === true || state[p] === false) && p != "county_administered");
 
     	const width = 80;
     	const height = 80;
