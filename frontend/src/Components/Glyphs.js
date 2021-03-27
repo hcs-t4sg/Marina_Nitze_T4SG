@@ -167,8 +167,7 @@ class Glyphs extends Component {
     render() {
     	return (<div class="outer-box">
     				<div><div className="scorecard"></div></div>
-    			</div>
-    			)
+    			</div>)
     }
 }
 

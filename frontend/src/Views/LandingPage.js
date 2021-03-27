@@ -167,132 +167,134 @@ class LandingPage extends Component {
 
         return (
             <div className="landing-page">
-
                 <h1> LandingPage </h1>
-                <div className="filter-box">
-                    <label className="filter-label">
-                        
-                    <input
-                        className="filter-check"
-                        type="checkbox"
-                        label="Electronic Request"
-                        onChange={() => this.changeReq(this.state.electronic_request)}
-                    />
-                    Electronic Request
-                    </label> 
 
-                    <label className="filter-label">
-
+                <div className="filter-outside-container">
+                
+                    <div className="filter-box">
+                        <label className="filter-label">
+                            
                         <input
                             className="filter-check"
                             type="checkbox"
-                            label=" No Notary"
-                            onChange={() => this.changeNotary(this.state.notary)}
+                            label="Electronic Request"
+                            onChange={() => this.changeReq(this.state.electronic_request)}
                         />
-                    No Notary
-                    </label> 
-
-                    <label className="filter-label">
-
-                        <input
-                            className="filter-check"
-                            type="checkbox"
-                            label="No Fee"
-                            onChange={() => this.changeFee(this.state.fee)}
-                        />
-                    No Fee
-                    </label> 
-
-                    <label className="filter-label">
-
-                        <input
-                            className="filter-check"
-                            type="checkbox"
-                            label="No Contact"
-                            onChange={() => this.changeOffice(this.state.office)}
-                        />
-                    No Contact
-                    </label> 
-
-                    <label className="filter-label">
-
-                        <input
-                            className="filter-check"
-                            type="checkbox"
-                            label="No Witness"
-                            onChange={() => this.changeWitness(this.state.witness)}
-                        />
-                    No Witness Needed
-                    </label> 
-                </div>
-                <div className="filter-box">
-                    <label className="filter-label">
-
-                        <select onChange={(e) => {
-                            if (e.target.value === "no-filter") {
-                                this.setState({ population_filter: 0 })
-                            }
-
-                            else if (e.target.value === "small") {
-                                this.setState({ population_filter: 1 })
-                            }
-                            else if (e.target.value === "medium") {
-                                this.setState({ population_filter: 2 })
-                            }
-                            else if (e.target.value === "large") {
-                                this.setState({ population_filter: 3 })
-                            }
-                        }}>
-                            <option value="no-filter">Select a Population</option>
-                            <option value="small">Less than 2.5 M</option>
-                            <option value="medium">2.5M to 7.5 M</option>
-                            <option value="large">7.5M +</option>
-                        </select>
-                    Population Size
-                    </label> 
+                        Electronic Request
+                        </label> 
 
                         <label className="filter-label">
 
-                        <select onChange={(e) => {
-                            if (e.target.value === "most") {
-                                this.setState({ implemented_sort: 1 })
-                            }
+                            <input
+                                className="filter-check"
+                                type="checkbox"
+                                label=" No Notary"
+                                onChange={() => this.changeNotary(this.state.notary)}
+                            />
+                        No Notary
+                        </label> 
 
-                            else if (e.target.value === "least") {
-                                this.setState({ implemented_sort: -1 })
-                            }
-                            else if (e.target.value === "no-sort") {
-                                this.setState({ implemented_sort: 0 })
-                            }
-                        }}>
-                                <option value="no-sort">No Sort</option>
-                                <option value="most">Most Practices Implemented</option>
-                                <option value="least">Least Practices Implemented</option>
+                        <label className="filter-label">
+
+                            <input
+                                className="filter-check"
+                                type="checkbox"
+                                label="No Fee"
+                                onChange={() => this.changeFee(this.state.fee)}
+                            />
+                        No Fee
+                        </label> 
+
+                        <label className="filter-label">
+
+                            <input
+                                className="filter-check"
+                                type="checkbox"
+                                label="No Contact"
+                                onChange={() => this.changeOffice(this.state.office)}
+                            />
+                        No Contact
+                        </label> 
+
+                        <label className="filter-label">
+
+                            <input
+                                className="filter-check"
+                                type="checkbox"
+                                label="No Witness"
+                                onChange={() => this.changeWitness(this.state.witness)}
+                            />
+                        No Witness Needed
+                        </label> 
+                    </div>
+                    <div className="filter-box">
+                        <label className="filter-label">
+
+                            <select onChange={(e) => {
+                                if (e.target.value === "no-filter") {
+                                    this.setState({ population_filter: 0 })
+                                }
+
+                                else if (e.target.value === "small") {
+                                    this.setState({ population_filter: 1 })
+                                }
+                                else if (e.target.value === "medium") {
+                                    this.setState({ population_filter: 2 })
+                                }
+                                else if (e.target.value === "large") {
+                                    this.setState({ population_filter: 3 })
+                                }
+                            }}>
+                                <option value="no-filter">Select a Population</option>
+                                <option value="small">Less than 2.5 M</option>
+                                <option value="medium">2.5M to 7.5 M</option>
+                                <option value="large">7.5M +</option>
                             </select>
-                        Metric
-                    </label> 
+                        Population Size
+                        </label> 
 
-                    <label className="filter-label">
+                            <label className="filter-label">
 
-                        <select onChange={(e) => {
-                            if (e.target.value === "no-filter") {
-                                this.setState({ county_filter: 0 })
-                            }
+                            <select onChange={(e) => {
+                                if (e.target.value === "most") {
+                                    this.setState({ implemented_sort: 1 })
+                                }
 
-                            else if (e.target.value === "county") {
-                                this.setState({ county_filter: 1 })
-                            }
-                            else if (e.target.value === "state") {
-                                this.setState({ county_filter: 2 })
-                            }
-                        }}>
-                            <option value="no-filter">County or State</option>
-                            <option value="county">County Administered</option>
-                            <option value="state">State Administered</option>
-                        </select>
-                    State vs County
-                    </label> 
+                                else if (e.target.value === "least") {
+                                    this.setState({ implemented_sort: -1 })
+                                }
+                                else if (e.target.value === "no-sort") {
+                                    this.setState({ implemented_sort: 0 })
+                                }
+                            }}>
+                                    <option value="no-sort">No Sort</option>
+                                    <option value="most">Most Practices Implemented</option>
+                                    <option value="least">Least Practices Implemented</option>
+                                </select>
+                            Metric
+                        </label> 
 
+                        <label className="filter-label">
+
+                            <select onChange={(e) => {
+                                if (e.target.value === "no-filter") {
+                                    this.setState({ county_filter: 0 })
+                                }
+
+                                else if (e.target.value === "county") {
+                                    this.setState({ county_filter: 1 })
+                                }
+                                else if (e.target.value === "state") {
+                                    this.setState({ county_filter: 2 })
+                                }
+                            }}>
+                                <option value="no-filter">County or State</option>
+                                <option value="county">County Administered</option>
+                                <option value="state">State Administered</option>
+                            </select>
+                        State vs County
+                        </label> 
+                    </div>
                 </div>
 
                 {newStates.map(item => (

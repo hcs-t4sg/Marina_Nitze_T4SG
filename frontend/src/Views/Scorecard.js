@@ -2,6 +2,7 @@ import axios from "axios";
 import React, { Component } from "react";
 import Glyphs from '../Components/Glyphs'
 import "../App.css"
+import "../Views/LandingPage.css"
 
 const high_pop = 7500000;
 const low_pop = 2500000;
@@ -164,6 +165,7 @@ class Scorecard extends Component {
     return (
             <div className="landing-page">
                 <h1> Playbook </h1>
+
                 <div className="filter-box">
                     <label className="filter-label">
                     <input
@@ -282,7 +284,7 @@ class Scorecard extends Component {
 
             </div>
 
-                <div>{glyphs}</div>
+            <div>{glyphs}</div>
             </div>
         );
     }
