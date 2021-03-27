@@ -65,7 +65,7 @@
 }
 
 .title-area {
-    width: 60%;
+    width: 50%;
     align-content: left;
 }
 
@@ -138,4 +138,9 @@
     background-color: #FFDCDC;
     width: 50px;
     height: 90%;
+}
+
+.score-percentage{
+    margin: 3.5%;
+    font-size: 18px;
 }

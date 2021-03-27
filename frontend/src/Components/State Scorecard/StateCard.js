@@ -3,6 +3,7 @@ import Diamond from "./Diamond"
 import ImplementedIndicator from "./ImplementedIndicator"
 import PopulationIndicator from "./PopulationIndicator"
 import SCIndicator from "./SCIndicator"
+import ProgressBar from "./ProgressBar"
 
 // JavaScript source code
 export default class StateCard extends Component{
@@ -12,27 +13,25 @@ export default class StateCard extends Component{
             state: props.state_data["name"],
             state_data: props.state_data,
             expanded: false,
-            test: true
+            test: true,
+            total: props.total,
+            completed: props.completed
         };
     }
 
     render() {
         var data = this.state.state_data;
+        const implemented_string = this.state.completed + "/" + this.state.total;
         if (this.state.expanded) {
             return (
                 <div className="state-scorecard">
                     <div className="top-info">
                         <div className="title-area">
                             <h1> {this.state.state_data["name"]} </h1>
-                            <h4 onClick={() => this.setState({ expanded: !this.state.expanded })}> <font color="#0E7088"> Hide Details </font></h4>
+                            <h4 onClick={() => this.setState({ expanded: !this.state.expanded })}> <font color="#0E7088"> View Details </font> </h4>
                         </div>
-                        <div className="diamond-area" >
-                            <Diamond implemented={data.no_fee} symbol={"F"}/>
-                            <Diamond implemented={data.no_notary_required} symbol={"N"}/>
-                            <Diamond implemented={data.electronic_request} symbol={"E"}/>
-                            <Diamond implemented={data.no_contact} symbol={"C"}/>
-                            <Diamond implemented={data.no_witness_required} symbol={"W"}/>
-                        </div>
+                        <ProgressBar completed={this.state.completed} total={this.state.total} />
+                        <p className="score-percentage"> {implemented_string} </p>
                     </div>
 
                     <div className="demographics-div">
@@ -76,13 +75,8 @@ export default class StateCard extends Component{
                         <h1> {this.state.state_data["name"]} </h1>
                         <h4 onClick={() => this.setState({ expanded: !this.state.expanded })}> <font color="#0E7088"> View Details </font> </h4>
                     </div>
-                    <div className="diamond-area" >
-                            <Diamond implemented={data.no_fee} symbol={"F"}/>
-                            <Diamond implemented={data.no_notary_required} symbol={"N"}/>
-                            <Diamond implemented={data.electronic_request} symbol={"E"}/>
-                            <Diamond implemented={data.no_contact} symbol={"C"}/>
-                            <Diamond implemented={data.no_witness_required} symbol={"W"}/>
-                    </div>
+                    <ProgressBar completed={this.state.completed} total={this.state.total} />
+                    <p className="score-percentage"> {implemented_string} </p>
                 </div>
             </div>
         )

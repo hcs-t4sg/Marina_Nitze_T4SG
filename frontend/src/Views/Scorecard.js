@@ -35,7 +35,8 @@ class Scorecard extends Component {
             population_filter: 0,
             implemented_sort: 0,
             county_filter: 0,
-            searchedState: ""
+            searchedState: "",
+            total_practices: 5
         };
     }
 
@@ -328,7 +329,7 @@ class Scorecard extends Component {
                 </div>
 
                 {searchedStates.map(state =>
-                        <StateCard state={state["name"]} state_data={state} key={state.id} />)}
+                    <StateCard state={state["name"]} state_data={state} key={state.id} total={this.state.total_practices} completed={state.implemented} />)}
                 </div>
             </div>
         );
