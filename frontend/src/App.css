@@ -39,20 +39,48 @@
 }
 
 .filter-box {
-    margin-top: 100px;
-    display: flex;
-    flex-direction: row;
-    width: 100%;
+  margin-top: 100px;
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  background-color: #dce3e6;
+  border: solid #bdbdbd 1px;
+  font-size: 16px;
+  padding: 60px;
 }
 
 .landing-page{
-    width: 100%;
+  width: 100%;
 }
 
 .filter-check{
-    width: 10%;
+  width: 10%;
 }
 
 .filter-label {
-    flex: 1;
+    /*flex: 1;*/
+  padding: 3px;
+}
+
+.sort-boxes .checkboxes {
+  width: 90%;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+}
+
+select {
+  border: none;
+  padding: 5px;
+}
+
+h1 {
+  border: solid #a1a1a1 1px;
+  font-size: 1.5em;
+  font-weight: normal;
+  display: inline;
+  padding: 7px;
+  padding-right: 15px;
+  padding-left: 15px;
+  box-shadow: 5px 5px #ccb6c5;
 }
