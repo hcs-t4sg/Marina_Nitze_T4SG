@@ -3,13 +3,13 @@ import "./Subheader.css"
 
 export default function Subheader(props) {
     return (
-        < div
+        < span
             className="subheader"
         >
             <h3 className="subtitle">
                 {props.title}
             </h3>
-        </div >
+        </span >
 
     )
 }

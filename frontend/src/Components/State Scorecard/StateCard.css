@@ -1,4 +1,14 @@
-﻿.diamond-filled {
+﻿.top-info{
+    display: flex;
+    flex-direction: row;
+}
+
+.diamond-area {
+    display: flex;
+    flex-direction: row;
+    margin-top: 1%;
+}
+.diamond-filled {
     width: 0;
     height: 0;
     border: 15px solid transparent;
@@ -48,32 +58,50 @@
         color: white;
     }
 
-.top-info{
-    display: flex;
-    flex-direction: row;
-}
-
-.diamond-area {
-    display: flex;
-    flex-direction: row;
-    margin-top: 50px;
-}
-
 .state-scorecard {
     border: 2px solid black;
-    margin-bottom: 20px;
+    margin-bottom: 1%;
+    font-size: medium;
 }
 
 .title-area {
     width: 60%;
+    align-content: left;
 }
 
 .expanded-info{
     display: flex;
     flex-direction: row;
-    padding: 10px;
+    padding-bottom: 2%;
     justify-content: center;
 }
+
+.demographics-div{
+    display: flex;
+    flex-direction: row;
+    justify-content: left;
+    align-items: center;
+    padding-left: 11%;
+}
+
+.population-indicator{
+    background: #C29FA1;
+    color: white;
+    margin-left: 3%;
+    align-content: center;
+    align-items: baseline;
+    padding: 0.5%;
+}
+
+.sc-indicator{
+    background: #C29FA1;
+    color: white;
+    margin-left: 3%;
+    align-content: center;
+    align-items: baseline;
+    padding: 0.5%;
+}
+
 
 .column-left{
     display: flex;
@@ -81,7 +109,7 @@
     width: 30%;
     color:black;
     align-items: flex-start;
-    padding-left: 50px;
+    padding-left: 2%
 }
 
 .column-center{
@@ -103,21 +131,11 @@
 .implemented-yes{
     background-color: #C8EAEF;
     width: 50px;
-    height: 30px;
-    margin-top: 4px;
+    height: 90%;
 }
 
 .implemented-no{
     background-color: #FFDCDC;
     width: 50px;
-    height: 30px;
-    margin-top: 4px;
-}
-
-.demographics-div{
-    display: flex;
-    flex-direction: row;
-   padding-left: 30px;
-   padding-right: 30px;
-   justify-content: center;
+    height: 90%;
 }

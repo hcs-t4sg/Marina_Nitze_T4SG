@@ -24,7 +24,7 @@ export default class StateCard extends Component{
                     <div className="top-info">
                         <div className="title-area">
                             <h1> {this.state.state_data["name"]} </h1>
-                            <h4 onClick={() => this.setState({ expanded: !this.state.expanded })}>  See Less </h4>
+                            <h4 onClick={() => this.setState({ expanded: !this.state.expanded })}> <font color="#0E7088"> Hide Details </font></h4>
                         </div>
                         <div className="diamond-area" >
                             <Diamond implemented={data.no_fee} symbol={"F"}/>
@@ -36,7 +36,7 @@ export default class StateCard extends Component{
                     </div>
 
                     <div className="demographics-div">
-                        <h4> Demographics </h4>
+                        <h4> <font color="#0E7088">Demographics </font></h4>
                         <PopulationIndicator population={this.state.state_data["population"]} />
                         <SCIndicator county={this.state.state_data["county_administered"]} />
                     </div>
@@ -74,7 +74,7 @@ export default class StateCard extends Component{
                 <div className="top-info">
                     <div className="title-area">
                         <h1> {this.state.state_data["name"]} </h1>
-                        <h4 onClick={() => this.setState({ expanded: !this.state.expanded })}>  See More </h4>
+                        <h4 onClick={() => this.setState({ expanded: !this.state.expanded })}> <font color="#0E7088"> View Details </font> </h4>
                     </div>
                     <div className="diamond-area" >
                             <Diamond implemented={data.no_fee} symbol={"F"}/>
