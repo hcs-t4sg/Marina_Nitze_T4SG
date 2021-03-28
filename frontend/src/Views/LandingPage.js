@@ -167,6 +167,7 @@ class LandingPage extends Component {
 
         return (
             <div className="landing-page">
+                <div className="teal-section"></div>
                 <h1> LandingPage </h1>
 
                 <div className="filter-outside-container">
