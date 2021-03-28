@@ -65,6 +65,16 @@ class LandingPage extends Component {
             .get("http://localhost:8000/api/implementation_guidance/")
             .then(res => this.createImplementationBlocks(res.data))
             .catch(err => console.log(err));
+
+        axios
+            .get("http://localhost:8000/api/introduction_text/")
+            .then(res => this.introduction_text = String(res.data[0].text))
+            .catch(err => console.log(err));
+
+        axios
+            .get("http://localhost:8000/api/conclusion_text/")
+            .then(res => this.conclusion_text = res.data[0].text)
+            .catch(err => console.log(err));
     }
 
     countImplementations(data) {
@@ -110,6 +120,10 @@ class LandingPage extends Component {
             let implementBlock = <ImplementBlock link="https://www.childwelfareplaybook.com/" guidance={data[i]} />
             this.implementBlocks.push(implementBlock);
         }
+    }
+
+    handleBlockText(data) {
+
     }
 
     render() {
@@ -178,9 +192,13 @@ class LandingPage extends Component {
             )
         }
 
-
+        var introduction_text = this.introduction_text;
         return (
             <div className="landing-page">
+                <div className="introduction_area">
+                    <h1> Introduction </h1>
+                    <div id="introduction_text" dangerouslySetInnerHTML={{__html: introduction_text}}></div>
+                </div>
                 <div className="implementation-div"> {this.implementBlocks} </div>
             </div>
 

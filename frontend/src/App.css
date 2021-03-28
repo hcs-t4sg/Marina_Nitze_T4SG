@@ -62,3 +62,18 @@
     grid-template-columns: auto auto;
     grid-template-rows: auto auto auto;
 }
+
+.introduction_area {
+  margin-right: 15%;
+  margin-left: 15%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  min-height: 70vh;
+}
+
+#introduction_text {
+  font-size: .7em;
+}
