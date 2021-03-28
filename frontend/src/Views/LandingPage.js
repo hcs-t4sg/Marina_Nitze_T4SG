@@ -2,6 +2,8 @@
 import axios from "axios";
 import React, { Component } from "react";
 import "../App.css"
+import Subheader from "../Components/Subheader";
+import StateCard from "../Components/State Scorecard/StateCard"
 
 const high_pop = 7500000;
 const low_pop = 2500000;
@@ -29,7 +31,7 @@ class LandingPage extends Component {
             witness: false,
             population_filter: 0,
             implemented_sort: 0,
-            county_filter: 0
+            county_filter: 0,
         };
     }
 
@@ -57,7 +59,7 @@ class LandingPage extends Component {
     componentDidMount() {
         axios
             .get("http://localhost:8000/api/states/")
-            .then(res => this.countImplementations(res.data))
+            .then(res => this.setState({ data: res.data }, this.render))
             .catch(err => console.log(err));
     }
 
@@ -100,7 +102,7 @@ class LandingPage extends Component {
 
     render() {
         var newStates = this.state.data;
-        
+
         if (this.state.electronic_request) {
             newStates = newStates.filter(
                 state => state.electronic_request === true);
@@ -124,6 +126,10 @@ class LandingPage extends Component {
         if (this.state.witness) {
             newStates = newStates.filter(
                 state => state.no_witness_required === true);
+        }
+        if (newStates[0]) {
+
+
         }
 
         if (this.state.population_filter === 1) {
@@ -165,8 +171,10 @@ class LandingPage extends Component {
         }
 
 
+
         return (
             <div className="landing-page">
+                
 
                 <h1> LandingPage </h1>
                 <div className="filter-box">

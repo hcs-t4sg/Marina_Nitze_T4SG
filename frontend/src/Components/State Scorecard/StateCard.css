@@ -1,0 +1,146 @@
+﻿.top-info{
+    display: flex;
+    flex-direction: row;
+}
+
+.diamond-area {
+    display: flex;
+    flex-direction: row;
+    margin-top: 1%;
+}
+.diamond-filled {
+    width: 0;
+    height: 0;
+    border: 15px solid transparent;
+    border-bottom: 25px solid #3595AC;
+    position: relative;
+    top: -15px;
+    margin-left: 2px;
+    margin-right: 2px;
+    color: white;
+    text-align: center;
+}
+
+    .diamond-filled:after {
+        content: '';
+        position: absolute;
+        left: -15px;
+        top: 25px;
+        width: 0;
+        height: 0;
+        border: 15px solid transparent;
+        border-top: 25px solid #3595AC;
+        justify-content: center;
+        color: white;
+    }
+
+.diamond-empty {
+    width: 0;
+    height: 0;
+    border: 15px solid transparent;
+    border-bottom: 25px solid #C8EAEF;
+    position: relative;
+    top: -15px;
+    margin-left: 2px;
+    margin-right: 2px;
+    color: white;
+}
+
+    .diamond-empty:after {
+        content: '';
+        position: absolute;
+        left: -15px;
+        top: 25px;
+        width: 0;
+        height: 0;
+        border: 15px solid transparent;
+        border-top: 25px solid #C8EAEF;
+        color: white;
+    }
+
+.state-scorecard {
+    border: 2px solid black;
+    margin-bottom: 1%;
+    font-size: medium;
+}
+
+.title-area {
+    width: 50%;
+    align-content: left;
+}
+
+.expanded-info{
+    display: flex;
+    flex-direction: row;
+    padding-bottom: 2%;
+    justify-content: center;
+}
+
+.demographics-div{
+    display: flex;
+    flex-direction: row;
+    justify-content: left;
+    align-items: center;
+    padding-left: 11%;
+}
+
+.population-indicator{
+    background: #C29FA1;
+    color: white;
+    margin-left: 3%;
+    align-content: center;
+    align-items: baseline;
+    padding: 0.5%;
+}
+
+.sc-indicator{
+    background: #C29FA1;
+    color: white;
+    margin-left: 3%;
+    align-content: center;
+    align-items: baseline;
+    padding: 0.5%;
+}
+
+
+.column-left{
+    display: flex;
+    flex-direction: column;
+    width: 30%;
+    color:black;
+    align-items: flex-start;
+    padding-left: 2%
+}
+
+.column-center{
+    display: flex;
+    flex-direction: column;
+    width: 25%;
+    color:black;
+    align-items: center;
+}
+
+.column-right{
+    display: flex;
+    flex-direction: column;
+    width: 25%;
+    color:#4B9CAF;
+    text-decoration: underline;
+}
+
+.implemented-yes{
+    background-color: #C8EAEF;
+    width: 50px;
+    height: 90%;
+}
+
+.implemented-no{
+    background-color: #FFDCDC;
+    width: 50px;
+    height: 90%;
+}
+
+.score-percentage{
+    margin: 3.5%;
+    font-size: 18px;
+}
