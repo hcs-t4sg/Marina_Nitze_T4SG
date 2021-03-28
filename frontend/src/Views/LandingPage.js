@@ -197,17 +197,18 @@ class LandingPage extends Component {
             )
         }
 
-        var introduction_text = this.introduction_text;
         return (
             <div className="landing-page">
-                <div className="introduction_area">
+                <div className="general_text_area">
                     <h1> Introduction </h1>
-                    <div id="introduction_text" dangerouslySetInnerHTML={{__html: introduction_text}}></div>
+                    <div id="block_text" dangerouslySetInnerHTML={{__html: this.introduction_text}}></div>
                 </div>
             
                 <div className="implementation-div">
-
                     {this.implementBlocks}
+                </div>
+                <div className="general_text_area">
+                    <div id="block_text" dangerouslySetInnerHTML={{__html: this.conclusion_text}}></div>
                 </div>
             </div>
 

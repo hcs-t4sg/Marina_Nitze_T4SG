@@ -63,7 +63,7 @@
     grid-auto-rows: 1fr;
 }
 
-.introduction_area {
+.general_text_area {
   margin-right: 15%;
   margin-left: 15%;
   display: flex;
@@ -74,7 +74,7 @@
   min-height: 70vh;
 }
 
-#introduction_text {
+#block_text {
   font-size: .7em;
 }
 
