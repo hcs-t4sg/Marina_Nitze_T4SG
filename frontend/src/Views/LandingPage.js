@@ -115,7 +115,12 @@ class LandingPage extends Component {
     }
 
     createImplementationBlocks(data) {
-        this.implementBlocks = [];
+        this.implementBlocks = [
+            <div className="vary-block">
+                <h1 className="vary-header"> Practices vary greatly state by state </h1>
+                <p className="vary-text"> The following are descriptions of each practice, with implementation guides linked. </p>
+            </div>
+        ];
         for (var i = 0; i < data.length; i++) {
             let implementBlock = <ImplementBlock link="https://www.childwelfareplaybook.com/" guidance={data[i]} />
             this.implementBlocks.push(implementBlock);
@@ -199,7 +204,11 @@ class LandingPage extends Component {
                     <h1> Introduction </h1>
                     <div id="introduction_text" dangerouslySetInnerHTML={{__html: introduction_text}}></div>
                 </div>
-                <div className="implementation-div"> {this.implementBlocks} </div>
+            
+                <div className="implementation-div">
+
+                    {this.implementBlocks}
+                </div>
             </div>
 
         );

@@ -1,10 +1,32 @@
 ﻿body
 {
 }
+
+.implement-title{
+    font-size: 28px;
+    font-style: normal;
+    font-weight: bold;
+    margin: 10px;
+    height: 15%;
+}
+
+.implement-body{
+    width: 80%;
+    text-align: left;
+    margin: auto;
+    margin-bottom: 10px;
+    height: 60%;
+
+    display: flex;
+    align-items: center;
+
+}
+
 h3 {
     margin: 5px;
     font-size: 24px;
     color: #0E7088;
+    font-weight: normal;
 }
 
 h4 {
@@ -26,11 +48,12 @@ p{
     margin-right: 30px;
 }
 
-.implement-block{
-    width: 95%;
-    border: 2px solid black;
+.implement-block {
+    width: 90%;
+    border: 1px solid black;
     padding: 10px;
-    margin: 5px;
+    margin: 15px;
+    box-shadow: #C8D2D5 5px 5px;
 }
 
 .expand-btn {
@@ -139,3 +162,5 @@ p{
     width: 50%;
     text-align: center;
 }
+
+
