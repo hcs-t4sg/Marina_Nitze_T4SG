@@ -14,9 +14,7 @@
 }
 
 .App-header {
-  min-height: 100vh;
-  width: 90%;
-  margin: auto;
+  min-height: 200vh;
   display: flex;
   flex-direction: row;
   align-items: center;
@@ -38,19 +36,44 @@
   }
 }
 
-.filter-box {
-    margin-top: 100px;
-    display: flex;
-    flex-direction: row;
-    width: 100%;
+.teal-section {
+  background-image: url("res/teal1.png");
+  margin: 0;
+  padding: 0;
+  min-height: 50vh;
+  width: 100%;
+  background-size: cover;
+  filter: brightness(65%) saturate(55%);
 }
 
-.landing-page{
-    width: 100%;
+.filter-box {
+  margin-top: 100px;
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  background-color: #dce3e6;
+  border: solid #bdbdbd 1px;
+  font-size: 16px;
+  padding: 60px;
+}
+
+.landing-page {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.filter-box {
+  margin-top: 5%;
+  display: flex;
+  flex-direction: row;
+  width: 80%;
+  font-size: medium;
 }
 
 .filter-check{
-    width: 10%;
+  width: 10%;
 }
 
 .filter-label {
@@ -86,4 +109,38 @@
     width: 80%;
     text-align: left;
     margin: auto;
+}
+
+
+.sort-boxes .checkboxes {
+  width: 90%;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+}
+
+select {
+  border: none;
+  padding: 5px;
+}
+
+.playbook-region-header{
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  align-content: flex-start;
+  align-items: baseline;
+  padding: 2%;
+}
+
+.searchbar{
+  width: 40%;
+  padding: 1%;
+  height: 0.5%;
+  margin-left: 5%
+}
+
+.state-by-state-area {
+  width: 75%;
+  justify-self: center;
 }

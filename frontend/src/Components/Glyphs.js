@@ -1,18 +1,10 @@
 import React, { Component } from "react";
 import * as d3 from "d3";
-// import tip from "d3-v6-tip";
 import "./Glyphs.css";
 
 const availableColor = '#276a82';
 const availableColorLighter = '#c8e0e3';
 const unavailableColor = '#ccb6c5';
-const bestPractices = [
-		'no_fee',
-		'no_notary_required',
-		'no_witness_required',
-		'county_administered',
-		'electronic_request'
-	];
 
 class Glyphs extends Component {
 	constructor(props) {
@@ -34,12 +26,7 @@ class Glyphs extends Component {
         var vis = this;
 
         vis.margin = { top: 20, right: 60, bottom: 200, left: 60 };
-        vis.width = 1000 - vis.margin.left - vis.margin.right;
-        vis.height = 900 - vis.margin.top - vis.margin.bottom;
-
         vis.svg = d3.select(".scorecard").append("div")
-            .attr("width", vis.width + vis.margin.left + vis.margin.right)
-            .attr("height", vis.height + vis.margin.top + vis.margin.bottom)
             .attr("class", "scorecard-container")
             .attr("transform", "translate(" + vis.margin.left + "," + vis.margin.top + ")");
 
@@ -53,8 +40,10 @@ class Glyphs extends Component {
     drawSingleGlyph(state, g) {
         var vis = this;
 
-    	const practicesAvailble = bestPractices.filter(p => state[p] === true);
-    	const allPractices = bestPractices.filter(p => state[p] === true || state[p] === false);
+        console.log(state);
+
+    	const practicesAvailble = Object.keys(state).filter(p => state[p] === true && p != "county_administered");
+    	const allPractices = Object.keys(state).filter(p => (state[p] === true || state[p] === false) && p != "county_administered");
 
     	const width = 80;
     	const height = 80;
@@ -176,7 +165,9 @@ class Glyphs extends Component {
 	}
 
     render() {
-    	return (<div><div className="scorecard"></div></div>)
+    	return (<div class="outer-box">
+    				<div><div className="scorecard"></div></div>
+    			</div>)
     }
 }
 
