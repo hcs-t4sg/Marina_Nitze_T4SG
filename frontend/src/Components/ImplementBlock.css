@@ -14,9 +14,8 @@
     width: 80%;
     text-align: left;
     margin: auto;
-    margin-bottom: 10px;
+    margin-bottom: 20px;
     height: 60%;
-
     display: flex;
     align-items: center;
 
@@ -52,7 +51,6 @@ p{
     width: 90%;
     border: 1px solid black;
     padding: 10px;
-    margin: 15px;
     box-shadow: #C8D2D5 5px 5px;
 }
 
@@ -61,12 +59,18 @@ p{
     color: white;
     border: 0px solid #C29FA1;
     padding: 10px;
+    margin-bottom: 20px;
     border-radius: 0px;
+    font-family: nunito;
+    src: '/components/Nunito/Nunito-Semibold.ttf';
+    
 }
+    
 
     .expand-btn:focus {
         outline: 0;
     }
+    
 
 .modal {
     position: fixed;
@@ -143,6 +147,7 @@ p{
     padding: 10px;
     border-radius: 0px;
     margin: 5px;
+    font-family: nunito;
 }
 
 .button-div{
@@ -162,5 +167,4 @@ p{
     width: 50%;
     text-align: center;
 }
-
 

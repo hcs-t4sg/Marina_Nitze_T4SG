@@ -203,11 +203,11 @@ class LandingPage extends Component {
             )
         }
 
-
+        console.log(this.introduction_text);
         return (
             <div className="landing-page">
+                
                 <div className="teal-section"></div>
-
                 <div className="general_text_area">
                     <h1 className="introduction-title"> Introduction </h1>
                     <div id="block_text" dangerouslySetInnerHTML={{__html: this.introduction_text}}></div>

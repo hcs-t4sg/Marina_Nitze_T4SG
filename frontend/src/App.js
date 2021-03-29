@@ -7,7 +7,7 @@ import Map from "./Views/Map"
 import Scorecard from "./Views/Scorecard"
 import Practices from "./Views/Practices"
 import Resources from "./Views/Resources"
-import FAQ from "./Views/FAQ"
+import About from "./Views/About"
 import { useState } from "react";
 import Header from "./Components/Header"
 
@@ -30,7 +30,7 @@ function App() {
                         <Route path="/map" component={Map} />
                         <Route path="/practices" component={Practices} />
                         <Route path="/resources" component={Resources} />
-                        <Route path="/faq" component={FAQ} />
+                        <Route path="/faq" component={About} />
                         <Route path={["", "/scorecard"]} component={Scorecard} />
 
                     </Switch>

@@ -84,27 +84,36 @@
     display: grid;
     grid-template-columns: auto auto;
     grid-auto-rows: 1fr;
+    font-family: nunito;
 }
 
 .general_text_area {
+  background-color: #EBF1F2;
+  width: 75%;
   margin-right: 15%;
   margin-left: 15%;
+  margin-top: 20px;
+  margin-bottom: 20px;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   text-align: center;
   min-height: 70vh;
+  
 }
 
 #block_text {
   font-size: .7em;
+  font-family: nunito;
+  src: '/components/Nunito/Nunito-Regular.ttf';
+  padding: 20px;
 }
 
 .vary-block {
     background-color: #D9F2F5;
     height: 80%;
-    width: 85%;
+    width: 75%;
     margin: auto;
 
 }
@@ -113,6 +122,8 @@
     font-size: 36px;
     font-weight: normal;
     color: #363D3F;
+    font-family: nunito;
+    src: '/components/Nunito/Nunito-SemiBold.ttf';
     width: 80%;
     text-align: left;
     margin: auto;
@@ -126,6 +137,8 @@
     margin: auto;
     /*flex: 1;*/
     padding: 3px;
+    font-family: nunito;
+    
 }
 
 .sort-boxes .checkboxes {
@@ -141,6 +154,8 @@ select {
 }
 
 .introduction-title {
+  position: left;
+  background-color: white;
   border: solid #a1a1a1 1px;
   font-size: 1.5em;
   font-weight: normal;
@@ -149,6 +164,8 @@ select {
   padding-right: 15px;
   padding-left: 15px;
   box-shadow: 5px 5px #ccb6c5;
+  font-family: nunito;
+  src: '/nunito/Nunito-Semibold.ttf';
 }
 
 .playbook-region-header{
