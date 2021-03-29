@@ -7,17 +7,19 @@ import ImplementBlock from "../Components/ImplementBlock"
 import Subheader from "../Components/Subheader";
 import StateCard from "../Components/State Scorecard/StateCard"
 
-const high_pop = 7500000;
-const low_pop = 2500000;
 class LandingPage extends Component {
 
     constructor(props) {
         super(props);
+        this.state = {
+            implementationBlocks: [],
+            introduction_text: "",
+            conclusion_text: ""
 
+        }
     }
 
     componentDidMount() {
-
         axios
             .get("http://localhost:8000/api/implementation_guidance/")
             .then(res => this.createImplementationBlocks(res.data))
@@ -25,17 +27,17 @@ class LandingPage extends Component {
 
         axios
             .get("http://localhost:8000/api/introduction_text/")
-            .then(res => this.introduction_text = String(res.data[0].text))
+            .then((res) => this.setState({ introduction_text: res.data[0].text }))
             .catch(err => console.log(err));
 
         axios
             .get("http://localhost:8000/api/conclusion_text/")
-            .then(res => this.conclusion_text = res.data[0].text)
+            .then((res) => this.setState({ conclusion_text: res.data[0].text }))
             .catch(err => console.log(err));
     }
 
     createImplementationBlocks(data) {
-        this.implementBlocks = [
+        var tempImplementBlocks = [
             <div className="vary-block">
                 <h1 className="vary-header"> Practices vary greatly state by state </h1>
                 <p className="vary-text"> The following are descriptions of each practice, with implementation guides linked. </p>
@@ -43,13 +45,12 @@ class LandingPage extends Component {
         ];
         for (var i = 0; i < data.length; i++) {
             let implementBlock = <ImplementBlock link="https://www.childwelfareplaybook.com/" guidance={data[i]} />
-            this.implementBlocks.push(implementBlock);
+            tempImplementBlocks.push(implementBlock);
         }
+
+        this.setState({ implementationBlocks: tempImplementBlocks });
     }
 
-    handleBlockText(data) {
-
-    }
 
     render() {
         return (
@@ -58,10 +59,13 @@ class LandingPage extends Component {
 
                 <div className="general_text_area">
                     <Subheader title="Introduction"/>
-                    <div id="block_text" dangerouslySetInnerHTML={{__html: this.introduction_text}}></div>
+                    <div id="block_text" dangerouslySetInnerHTML={{__html: this.state.introduction_text}}></div>
                 </div>
 
-                <div className="implementation-div">{this.implementBlocks}</div>
+                <div className="implementation-div">{this.state.implementationBlocks}</div>
+
+
+                <div id="block_text" dangerouslySetInnerHTML={{ __html: this.state.conclusion_text }}></div>
             </div>
 
         );
