@@ -70,7 +70,6 @@ export default class ImplementationModal extends Component {
                             <a href={this.state.playbook_link} target="blank">
                                 <button className="info-btn">
                                     View Marina's Resource Guide
-                                     
                                 </button>
                             </a>
                         </div>
