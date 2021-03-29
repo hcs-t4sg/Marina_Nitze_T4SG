@@ -213,11 +213,10 @@ class LandingPage extends Component {
                     <div id="block_text" dangerouslySetInnerHTML={{__html: this.introduction_text}}></div>
                 </div>
 
-                <div className="implementation-div">
-                    {this.implementBlocks}
-                </div>
+                <div className="implementation-div">{this.implementBlocks}</div>
                 <div className="general_text_area">
                     <div id="block_text" dangerouslySetInnerHTML={{__html: this.conclusion_text}}></div>
+                </div>
 
                 <div className="filter-outside-container">
                     <div className="filter-box">
@@ -346,7 +345,6 @@ class LandingPage extends Component {
                     </div>
                 </div>
             </div>
-
         );
     }
 
