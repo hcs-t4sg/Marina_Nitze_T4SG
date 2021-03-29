@@ -124,8 +124,6 @@
     width: 80%;
     text-align: left;
     margin: auto;
-    /*flex: 1;*/
-    padding: 3px;
 }
 
 .sort-boxes .checkboxes {
@@ -155,7 +153,7 @@ select {
   display: flex;
   flex-direction: row;
   align-items: flex-start;
-  align-content: left;
+  align-content: flex-start;
   align-items: baseline;
   padding: 2%;
 }
