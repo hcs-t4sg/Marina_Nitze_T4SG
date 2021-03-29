@@ -72,7 +72,7 @@
   background-color: #dce3e6;
   border: solid #bdbdbd 1px;
   font-size: 16px;
-  padding: 60px;
+  padding: 20px 60px;
 }
 
 .landing-page {
@@ -90,13 +90,23 @@
   font-size: medium;
 }
 
-.filter-check{
-  width: 10%;
+.filter-label {
+    display: flex;
+    flex-direction: column;
+    margin: 0px 5px;
+    font-size: 14px;
+    align-content: center;
+    text-align: center;
+    
 }
 
-.filter-label {
+.sort-label {
     flex: 1;
+    display: flex;
+    flex-direction: column;
+    margin: 5px;
 }
+
 
 .implementation-div {
     display: grid;
@@ -144,11 +154,25 @@
     margin: auto;
 }
 
-.sort-boxes .checkboxes {
-  width: 90%;
-  display: flex;
-  flex-direction: column;
-  flex-wrap: wrap;
+.sort-boxes {
+    margin: auto;
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    flex: 2;
+}
+
+.filter-check{
+    margin: auto;
+    margin-top: 10px;
+}
+
+.checkboxes {
+    margin: auto;
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    flex: 1;
 }
 
 select {
@@ -186,4 +210,31 @@ select {
 .state-by-state-area {
   width: 75%;
   justify-self: center;
+}
+
+.filter-titles{
+    text-align: left;
+    margin-bottom: 0px;
+}
+
+h4 {
+    margin-top: 0;
+    margin-bottom: 10px;
+}
+
+h2 {
+    margin-top: 0;
+    margin-bottom: 0;
+}
+
+h5 {
+    font-weight: normal;
+    margin-top: 0px;
+    margin-bottom: 5px;
+    font-size: 18px;
+    text-align: left;
+}
+
+.right-header {
+    margin-top: 6%;
 }
