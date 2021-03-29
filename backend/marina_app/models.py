@@ -12,6 +12,9 @@ class State(models.Model):
     name = models.CharField(max_length=200)
     abbreviation = models.CharField(max_length = 3, default = "")
     population = models.IntegerField()
+    
+    county_administered = models.BooleanField(default = False)
+
 
     electronic_request = models.BooleanField(default = False)
     no_notary_required = models.BooleanField(default = False)
@@ -19,7 +22,6 @@ class State(models.Model):
     no_contact = models.BooleanField(default = False)
     no_witness_required = models.BooleanField(default = False)
 
-    county_administered = models.BooleanField(default = False)
 
     def __str__(self):
         return self.name
