@@ -80,10 +80,25 @@
     flex: 1;
 }
 
-.implementation-div{
+.implementation-div {
     display: grid;
     grid-template-columns: auto auto;
     grid-auto-rows: 1fr;
+}
+
+.general_text_area {
+  margin-right: 15%;
+  margin-left: 15%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  min-height: 70vh;
+}
+
+#block_text {
+  font-size: .7em;
 }
 
 .vary-block {
@@ -111,7 +126,6 @@
     margin: auto;
 }
 
-
 .sort-boxes .checkboxes {
   width: 90%;
   display: flex;
@@ -122,6 +136,17 @@
 select {
   border: none;
   padding: 5px;
+}
+
+.introduction-title {
+  border: solid #a1a1a1 1px;
+  font-size: 1.5em;
+  font-weight: normal;
+  display: inline;
+  padding: 7px;
+  padding-right: 15px;
+  padding-left: 15px;
+  box-shadow: 5px 5px #ccb6c5;
 }
 
 .playbook-region-header{

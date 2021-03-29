@@ -67,6 +67,16 @@ class LandingPage extends Component {
             .get("http://localhost:8000/api/implementation_guidance/")
             .then(res => this.createImplementationBlocks(res.data))
             .catch(err => console.log(err));
+
+        axios
+            .get("http://localhost:8000/api/introduction_text/")
+            .then(res => this.introduction_text = String(res.data[0].text))
+            .catch(err => console.log(err));
+
+        axios
+            .get("http://localhost:8000/api/conclusion_text/")
+            .then(res => this.conclusion_text = res.data[0].text)
+            .catch(err => console.log(err));
     }
 
     countImplementations(data) {
@@ -117,6 +127,10 @@ class LandingPage extends Component {
             let implementBlock = <ImplementBlock link="https://www.childwelfareplaybook.com/" guidance={data[i]} />
             this.implementBlocks.push(implementBlock);
         }
+    }
+
+    handleBlockText(data) {
+
     }
 
     render() {
@@ -188,18 +202,19 @@ class LandingPage extends Component {
                 state => state.county_administered === false
             )
         }
-
+                    
         return (
             <div className="landing-page">
-
                 <div className="teal-section"></div>
 
-                <h1> LandingPage </h1>
+                <div className="general_text_area">
+                    <Subheader title="Introduction"/>
+                    <div id="block_text" dangerouslySetInnerHTML={{__html: this.introduction_text}}></div>
+                </div>
 
-
-                <div className="implementation-div">
-
-                    {this.implementBlocks}
+                <div className="implementation-div">{this.implementBlocks}</div>
+                <div className="general_text_area">
+                    <div id="block_text" dangerouslySetInnerHTML={{__html: this.conclusion_text}}></div>
                 </div>
 
                 <div className="filter-outside-container">
@@ -329,7 +344,6 @@ class LandingPage extends Component {
                     </div>
                 </div>
             </div>
-
         );
     }
 
