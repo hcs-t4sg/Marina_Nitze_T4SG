@@ -25,11 +25,6 @@ class DataUpdateForm extends Component{
                 population: 0,
                 implemented: 0
             }],
-            display_data: [{
-                id:0,
-                name: "",
-                display_bool: false,
-            }],
 
         };
     }
@@ -37,7 +32,6 @@ class DataUpdateForm extends Component{
 
     countImplementations(data) {
         let tempData = [];
-        let tempDisplayData = [];
         for (var i = 0; i < data.length; i++) {
             var count = 0;
             var item = data[i];
@@ -67,17 +61,9 @@ class DataUpdateForm extends Component{
                     population: item["population"],
                     implemented: count
                 })
-
-            tempDisplayData.push(
-                {
-                    id: i,
-                    name: item["name"],
-                    display_bool: item[this.state.promising_practice]
-                })
         }
 
         this.setState({ data: tempData });
-        this.setState({ display_data: tempDisplayData});
     }
 
     componentDidMount() {
@@ -112,9 +98,21 @@ class DataUpdateForm extends Component{
     */
 
     toggleDisplayCheckBox = (id) => {
-        let temp_data = this.state.display_data;
-        temp_data[id].display_bool = !temp_data[id].display_bool;
-        this.setState({display_data: temp_data});
+        let temp_data = this.state.data;
+        switch(this.state.promising_practice){
+            case "electronic_request":
+                temp_data[id].electronic_request = !temp_data[id].electronic_request;
+            case "no_contact":
+                temp_data[id].no_contact = !temp_data[id].no_contact;
+            case "no_fee":
+                temp_data[id].no_fee = !temp_data[id].no_fee;
+            case "no_notary_required":
+                temp_data[id].no_notary_required = !temp_data[id].no_notary_required;
+            case "no_witness_required":
+                temp_data[id].no_witness_required = !temp_data[id].no_witness_required;
+        }
+        
+        this.setState({data: temp_data});
     }
 
 
@@ -124,7 +122,11 @@ class DataUpdateForm extends Component{
 
 
     handleSaveData() {
-
+        for(var i=0; i<this.state.data.length; i++){
+            var state = this.state.data[i]
+            axios.put(`/api/states/${state.id}/`, state)
+        }
+        this.componentDidMount();
     }
 
 
@@ -155,12 +157,12 @@ class DataUpdateForm extends Component{
                         <h4>Update State-By-State Data</h4>
                         <div className = "state-update-area">
                         
-                        {this.state.display_data.map(state =>
+                        {this.state.data.map(state =>
                         <label className="state-update-check">
                         <input
                             className="state-update-check"
                             type="checkbox"
-                            checked= {state.display_bool}
+                            checked= {state.no_fee}
                             onChange={() => this.toggleDisplayCheckBox(state.id)}
                         />
                     {state.name}
