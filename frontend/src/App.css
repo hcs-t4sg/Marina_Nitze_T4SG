@@ -36,14 +36,32 @@
   }
 }
 
-.teal-section {
-  background-image: url("res/teal1.png");
-  margin: 0;
-  padding: 0;
+
+.teal-section-container {
+  background-size: cover;
+  position: relative;
   min-height: 50vh;
   width: 100%;
-  background-size: cover;
+}
+
+.teal-section {
+  background-image: url("res/teal1.png");
+  min-height: 50vh;
   filter: brightness(65%) saturate(55%);
+}
+
+
+.header-subtitle, .title {
+  position: absolute;
+  top: 30%;
+  left: 50%;
+  margin-right: -50%;
+  transform: translate(-50%, -60%);
+  color: white;
+}
+
+.title {
+  margin-top: 100px;
 }
 
 .filter-box {

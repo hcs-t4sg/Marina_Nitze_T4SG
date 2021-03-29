@@ -55,7 +55,11 @@ class LandingPage extends Component {
     render() {
         return (
             <div className="landing-page">
-                <div className="teal-section"></div>
+                <div className="teal-section-container">
+                    <div className="teal-section"></div>
+                    <h2 className="header-subtitle"> Child Welfare Playbook </h2>
+                    <h1 className="title">Scorecard</h1>
+                </div>
 
                 <div className="general_text_area">
                     <Subheader title="Introduction"/>
