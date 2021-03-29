@@ -7,6 +7,7 @@ import Map from "./Views/Map"
 import Scorecard from "./Views/Scorecard"
 import Practices from "./Views/Practices"
 import Resources from "./Views/Resources"
+import DataUpdateForm from './Views/DataUpdateForm'
 import FAQ from "./Views/FAQ"
 import { useState } from "react";
 import Header from "./Components/Header"
@@ -14,8 +15,12 @@ import Header from "./Components/Header"
 
 function App() {
     const [sidebar, setSidebar] = useState(false)
+    const [adminView, setAdminView] = useState(false)
     const showSideBar = () => {
         setSidebar(!sidebar)
+    }
+    const toggleAdminView = () => {
+        setAdminView(!adminView)
     }
 
     return (
@@ -31,6 +36,7 @@ function App() {
                         <Route path="/practices" component={Practices} />
                         <Route path="/resources" component={Resources} />
                         <Route path="/faq" component={FAQ} />
+                        <Route path={"/admin"} component={DataUpdateForm} />
                         <Route path={["", "/scorecard"]} component={Scorecard} />
 
                     </Switch>

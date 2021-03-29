@@ -68,6 +68,15 @@ export default function SideBar(props) {
                     FAQ
                 </Link>
             </div>
+
+            <div className="nav-block">
+                <Link className="nav-link"
+                    to={{ pathname: '/admin' }}
+                    onClick={props.click}>
+                    Admin View
+                </Link>
+
+            </div>
             
             
             
