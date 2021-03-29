@@ -209,7 +209,7 @@ class LandingPage extends Component {
                 <div className="teal-section"></div>
 
                 <div className="general_text_area">
-                    <h1> Introduction </h1>
+                    <h1 className="introduction-title"> Introduction </h1>
                     <div id="block_text" dangerouslySetInnerHTML={{__html: this.introduction_text}}></div>
                 </div>
 
