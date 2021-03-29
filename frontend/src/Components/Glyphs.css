@@ -1,5 +1,14 @@
 /*Glyphs*/
 
+.outer-box {
+  background-color: white;
+  border: solid #bdbdbd 1px;
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 32px;
+  margin-top: 32px;
+}
+
 .scorecard {
   position: relative;
   width: 75%;
@@ -10,13 +19,13 @@
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  padding-bottom: 2%;
-  padding-top: 5%;
-  margin-top: 5%;
+  padding-bottom: 10px;
+  padding-top: 50px;
+  margin-top: 10px;
   width: 100%;
 }
 
-.scorecard-container .glyph {
+.glyph {
   margin: 0px;
   padding: 2px;
   width: 100px;
