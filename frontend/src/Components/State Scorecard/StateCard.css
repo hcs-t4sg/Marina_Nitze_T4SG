@@ -67,6 +67,7 @@
 .title-area {
     width: 50%;
     align-content: left;
+
 }
 
 .expanded-info{
@@ -87,16 +88,17 @@
 .population-indicator{
     background: #C29FA1;
     color: white;
-    margin-left: 3%;
+    margin-left: 5%;
     align-content: center;
     align-items: baseline;
     padding: 0.5%;
+
 }
 
 .sc-indicator{
     background: #C29FA1;
     color: white;
-    margin-left: 3%;
+    margin-left: 5%;
     align-content: center;
     align-items: baseline;
     padding: 0.5%;
@@ -144,3 +146,4 @@
     margin: 3.5%;
     font-size: 18px;
 }
+

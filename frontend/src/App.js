@@ -30,7 +30,7 @@ function App() {
                         <Route path="/map" component={Map} />
                         <Route path="/practices" component={Practices} />
                         <Route path="/resources" component={Resources} />
-                        <Route path="/faq" component={About} />
+                        <Route path="/about" component={About} />
                         <Route path={["", "/scorecard"]} component={Scorecard} />
 
                     </Switch>

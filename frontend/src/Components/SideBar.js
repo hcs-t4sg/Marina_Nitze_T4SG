@@ -63,9 +63,9 @@ export default function SideBar(props) {
             <div className="nav-block">
                 <img className="side-image" src={faq} />
                 <Link className="nav-link"
-                    to={{ pathname: '/faq' }}
+                    to={{ pathname: '/about' }}
                     onClick={props.click}>
-                    FAQ
+                    About
                 </Link>
             </div>
             
