@@ -1,6 +1,7 @@
 // JavaScript source code
 import axios from "axios";
 import React, { Component } from "react";
+import Glyphs from '../Components/Glyphs'
 import "../App.css"
 import ImplementBlock from "../Components/ImplementBlock"
 import Subheader from "../Components/Subheader";
@@ -203,6 +204,10 @@ class LandingPage extends Component {
             )
         }
 
+        var glyphs = null;
+        if (newStates.length !== 0) {
+            glyphs = <Glyphs states={newStates}/>
+        }
 
         return (
             <div className="landing-page">
@@ -214,9 +219,6 @@ class LandingPage extends Component {
                 </div>
 
                 <div className="implementation-div">{this.implementBlocks}</div>
-                <div className="general_text_area">
-                    <div id="block_text" dangerouslySetInnerHTML={{__html: this.conclusion_text}}></div>
-                </div>
 
                 <div className="filter-outside-container">
                     <div className="filter-box">
@@ -344,10 +346,38 @@ class LandingPage extends Component {
                         </label> 
                     </div>
                 </div>
+
+                <div className="glyphs">{glyphs}</div>
+
+
+                <div className="general_text_area">
+                    <div id="block_text" dangerouslySetInnerHTML={{__html: this.conclusion_text}}></div>
+                </div>
+
             </div>
+
         );
     }
-
 }
 
 export default LandingPage
+
+
+// <div className="state-by-state-area">
+//                 <div className="playbook-region-header">
+//                 <Subheader title="State-by-State Scorecard"/>
+//                 <input
+//                     className = "searchbar"
+//                     type = "text"
+//                     value = {this.state.searchedState}
+//                     placeholder={"search"}
+//                     onChange={this.updateSearchedState}
+//                 />
+//                 </div>
+
+//                 {searchedStates.map(state =>
+//                     <StateCard state={state["name"]} state_data={state} key={state.id} total={this.state.total_practices} completed={state.implemented} />)}
+//                 </div>
+//             </div>
+//             </>
+
