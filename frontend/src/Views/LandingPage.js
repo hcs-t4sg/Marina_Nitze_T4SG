@@ -6,6 +6,7 @@ import "../App.css"
 import ImplementBlock from "../Components/ImplementBlock"
 import Subheader from "../Components/Subheader";
 import StateCard from "../Components/State Scorecard/StateCard"
+import Scorecard from "./Scorecard"
 
 class LandingPage extends Component {
 
@@ -66,8 +67,9 @@ class LandingPage extends Component {
 
                 <div className="implementation-div">{this.state.implementationBlocks}</div>
 
+                <Scorecard/>
+
                 <div id="block_text" dangerouslySetInnerHTML={{ __html: this.state.conclusion_text }}></div>
-                
             </div>
 
         );
@@ -75,26 +77,3 @@ class LandingPage extends Component {
 }
 
 export default LandingPage
-
-
-// <div className="state-by-state-area">
-//     <div className="playbook-region-header">
-//     <Subheader title="State-by-State Scorecard"/>
-//     <input
-//         className = "searchbar"
-//         type = "text"
-//         value = {this.state.searchedState}
-//         placeholder={"search"}
-//         onChange={this.updateSearchedState}
-//     />
-//     </div>
-
-//     {searchedStates.map(state =>
-//         <StateCard state={state["name"]} state_data={state} key={state.id} total={this.state.total_practices} completed={state.implemented} />)}
-//     </div>
-// </div>
-
-
-            
-
-
