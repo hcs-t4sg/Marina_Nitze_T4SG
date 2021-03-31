@@ -334,7 +334,7 @@ class Scorecard extends Component {
             <div>{glyphs}</div>
 
 
-            <div className="state-by-state-area">
+            <div id="state-by-state-area">
                 <div className="playbook-region-header">
                 <Subheader title="State-by-State Scorecard"/>
                 <input

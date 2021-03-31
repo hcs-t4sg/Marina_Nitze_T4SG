@@ -240,7 +240,7 @@ select {
   margin-left: 5%
 }
 
-.state-by-state-area {
+#state-by-state-area {
   width: 75%;
   justify-self: center;
 }

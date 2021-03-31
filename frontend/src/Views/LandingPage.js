@@ -63,7 +63,7 @@ class LandingPage extends Component {
                     <a href="#introduction-container">Introduction</a>
                     <a href="#implementation-div">Overview of Practices</a>
                     <a href="#nationwide-comparison">Nationwide Comparison</a>
-                    <a href=".state-by-state-area">State-By-State Scorecard</a>
+                    <a href="#state-by-state-area">State-By-State Scorecard</a>
                 </div>
 
                 <div className="content">
