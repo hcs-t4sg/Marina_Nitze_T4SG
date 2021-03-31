@@ -1,14 +1,14 @@
 ﻿.header{
-    height: 40px;
-    margin: 15px;
+    height: 4vh;
+    padding: 15px;
     background-color: #FFFFFF;
+    box-shadow: 0px 6px 5px #2b2b2b;
 }
 
 .menu-btn {
   display: block;
-  margin-top: 20px;
-  margin-left: 15px;
-  margin-right: 90%;
+  margin: auto;
+  margin-left: 1vw;
   width: 30px;
   height: 30px;
 }
