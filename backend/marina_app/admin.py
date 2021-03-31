@@ -1,8 +1,8 @@
 from django.contrib import admin
-from .models import IssueArea, State, ImplementationGuidance, IntroductionText, ConclusionText
+from .models import IssueArea, State, ImplementationGuidance
 
 class IssueAreaAdmin(admin.ModelAdmin):
-    list_display = ('title', 'get_states')
+    list_display = ('title', 'get_states', 'introduction_text', 'conclusion_text')
 
 class StateAdmin(admin.ModelAdmin):
     list_display = ('name', 'abbreviation', 'population',
@@ -11,18 +11,11 @@ class StateAdmin(admin.ModelAdmin):
 class ImplementationGuidanceAdmin(admin.ModelAdmin):
     list_display = ('name', 'question', 'why', 'quote', 'link')
 
-class IntroductionTextAdmin(admin.ModelAdmin):
-    list_display = ('title', 'text')
-
-class ConclusionTextAdmin(admin.ModelAdmin):
-    list_display = ('title', 'text')
 
 # Register your models here.
 admin.site.register(IssueArea, IssueAreaAdmin)
 admin.site.register(State, StateAdmin)
 admin.site.register(ImplementationGuidance, ImplementationGuidanceAdmin)
-admin.site.register(IntroductionText, IntroductionTextAdmin)
-admin.site.register(ConclusionText, ConclusionTextAdmin)
 
 
 

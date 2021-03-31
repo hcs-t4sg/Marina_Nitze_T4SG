@@ -29,6 +29,8 @@ class State(models.Model):
 class IssueArea(models.Model):
     title = models.CharField(max_length=200)
     states = models.ManyToManyField(State)
+    introduction_text = models.TextField(default = "")
+    conclusion_text = models.TextField(default = "")
 
     def get_states(self):
         return "\n".join([p.name for p in self.states.all()])
@@ -46,20 +48,6 @@ class ImplementationGuidance(models.Model):
 
     def __str__(self):
         return self.name
-
-class IntroductionText(models.Model):
-    title = models.TextField()
-    text = models.TextField()
-
-    def __str__(self):
-        return self.title
-
-class ConclusionText(models.Model):
-    title = models.TextField()
-    text = models.TextField()
-
-    def __str__(self):
-        return self.title
 
 
 

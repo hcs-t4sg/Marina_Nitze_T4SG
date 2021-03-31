@@ -23,8 +23,6 @@ router = routers.DefaultRouter()
 router.register(r'issue-areas', views.IssueAreaView, 'marina_app')
 router.register(r'states', views.StateView, 'marina_app')
 router.register(r'implementation_guidance', views.ImplementationGuidanceView, 'marina_app')
-router.register(r'introduction_text', views.IntroductionTextView, 'marina_app')
-router.register(r'conclusion_text', views.ConclusionTextView, 'marina_app')
 
 
 urlpatterns = [

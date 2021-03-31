@@ -1,10 +1,10 @@
 from rest_framework import serializers
-from .models import IssueArea, State, ImplementationGuidance, IntroductionText, ConclusionText
+from .models import IssueArea, State, ImplementationGuidance
 
 class IssueAreaSerializer(serializers.ModelSerializer):
     class Meta:
         model = IssueArea
-        fields = ('title', 'states')
+        fields = ('title', 'states', 'introduction_text', 'conclusion_text')
 
 class StateSerializer(serializers.ModelSerializer):
     class Meta:
@@ -16,13 +16,3 @@ class ImplementationGuidanceSerializer(serializers.ModelSerializer):
     class Meta:
         model = ImplementationGuidance
         fields = ('name', 'question', 'why', 'quote', 'link')
-
-class IntroductionTextSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = IntroductionText
-        fields = ('title', 'text')
-
-class ConclusionTextSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = ConclusionText
-        fields = ('title', 'text')
