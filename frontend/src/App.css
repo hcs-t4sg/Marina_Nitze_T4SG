@@ -136,13 +136,13 @@
 }
 
 
-.implementation-div {
+#implementation-div {
     display: grid;
     grid-template-columns: auto auto;
     grid-auto-rows: 1fr;
 }
 
-.general_text_area {
+#introduction-container {
   margin-right: 15%;
   margin-left: 15%;
   display: flex;
@@ -153,7 +153,11 @@
   min-height: 70vh;
 }
 
-#block_text {
+#introduction-text {
+  font-size: .7em;
+}
+
+#conclusion-text {
   font-size: .7em;
 }
 

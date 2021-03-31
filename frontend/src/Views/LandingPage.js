@@ -50,7 +50,6 @@ class LandingPage extends Component {
         this.setState({ implementationBlocks: tempImplementBlocks });
     }
 
-
     render() {
         return (
             <div className="landing-page">
@@ -61,26 +60,26 @@ class LandingPage extends Component {
                 </div>
 
                 <div className="sidenav">
-                    <a href="#introduction">Introduction</a>
-                    <a href=".test">Overview of Practices</a>
-                    <a href=".scorecard" onClick="document.getElementById('nationwide-comparison').scrollIntoView();">Nationwide Comparison</a>
+                    <a href="#introduction-container">Introduction</a>
+                    <a href="#implementation-div">Overview of Practices</a>
+                    <a href="#nationwide-comparison">Nationwide Comparison</a>
                     <a href=".state-by-state-area">State-By-State Scorecard</a>
                 </div>
 
                 <div className="content">
 
-                    <div className="general_text_area">
+                    <div id="introduction-container">
                         <Subheader title="Introduction"/>
-                        <div id="block_text" dangerouslySetInnerHTML={{__html: this.state.introduction_text}}></div>
+                        <div id="introduction-text" dangerouslySetInnerHTML={{__html: this.state.introduction_text}}></div>
                     </div>
 
-                    <div className="implementation-div">{this.state.implementationBlocks}</div>
+                    <div id="implementation-div">{this.state.implementationBlocks}</div>
 
                     <div id="nationwide-comparison">
                         <Scorecard/>
                     </div>
 
-                    <div id="block_text" dangerouslySetInnerHTML={{ __html: this.state.conclusion_text }}></div>
+                    <div id="conclusion-text" dangerouslySetInnerHTML={{ __html: this.state.conclusion_text }}></div>
                 </div>
             </div>
 
