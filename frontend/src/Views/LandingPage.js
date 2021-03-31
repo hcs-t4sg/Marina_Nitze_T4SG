@@ -62,9 +62,9 @@ class LandingPage extends Component {
 
                 <div className="sidenav">
                     <a href="#introduction">Introduction</a>
-                    <a href="#overview">Overview of Practices</a>
-                    <a href="#nationwide-comparison">Nationwide Comparison</a>
-                    <a href="#state-by-state">State-By-State Scorecard</a>
+                    <a href=".test">Overview of Practices</a>
+                    <a href=".scorecard" onClick="document.getElementById('nationwide-comparison').scrollIntoView();">Nationwide Comparison</a>
+                    <a href=".state-by-state-area">State-By-State Scorecard</a>
                 </div>
 
                 <div className="content">
@@ -76,7 +76,9 @@ class LandingPage extends Component {
 
                     <div className="implementation-div">{this.state.implementationBlocks}</div>
 
-                    <Scorecard/>
+                    <div id="nationwide-comparison">
+                        <Scorecard/>
+                    </div>
 
                     <div id="block_text" dangerouslySetInnerHTML={{ __html: this.state.conclusion_text }}></div>
                 </div>
