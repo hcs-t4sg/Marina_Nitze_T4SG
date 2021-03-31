@@ -29,9 +29,30 @@ class State(models.Model):
 class IssueArea(models.Model):
     title = models.CharField(max_length=200)
     states = models.ManyToManyField(State)
+    introduction_text = models.TextField(default = "")
+    conclusion_text = models.TextField(default = "")
 
     def get_states(self):
         return "\n".join([p.name for p in self.states.all()])
 
     def __str__(self):
         return self.title
+
+class ImplementationGuidance(models.Model):
+    name = models.CharField(max_length=200)
+    question = models.TextField()
+    why = models.TextField()
+    quote = models.TextField(blank=True)
+    link = models.URLField(max_length=200)
+
+
+    def __str__(self):
+        return self.name
+
+
+
+
+
+
+
+
