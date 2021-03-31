@@ -26,13 +26,11 @@ class LandingPage extends Component {
             .catch(err => console.log(err));
 
         axios
-            .get("http://localhost:8000/api/introduction_text/")
-            .then((res) => this.setState({ introduction_text: res.data[0].text }))
-            .catch(err => console.log(err));
-
-        axios
-            .get("http://localhost:8000/api/conclusion_text/")
-            .then((res) => this.setState({ conclusion_text: res.data[0].text }))
+            .get("http://localhost:8000/api/issue-areas/")
+            .then((res) => this.setState({ 
+                introduction_text: res.data[0].introduction_text,
+                conclusion_text: res.data[0].conclusion_text
+            }))
             .catch(err => console.log(err));
     }
 
