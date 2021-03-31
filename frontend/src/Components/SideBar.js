@@ -4,7 +4,6 @@ import "./SideBar.css";
 import home from "../res/house.png";
 import faq from "../res/faq.png";
 import bulb from "../res/lightbulb.png";
-import map from "../res/map.png";
 import ribbon from "../res/ribbon.png";
 import { Link } from 'react-router-dom';
 
