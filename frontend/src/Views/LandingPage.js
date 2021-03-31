@@ -60,7 +60,7 @@ class LandingPage extends Component {
                     <h1 className="title">Scorecard</h1>
                 </div>
 
-                <div className="general_text_area">
+                <div className="general-text-area">
                     <Subheader title="Introduction"/>
                     <div id="block_text" dangerouslySetInnerHTML={{__html: this.state.introduction_text}}></div>
                 </div>
