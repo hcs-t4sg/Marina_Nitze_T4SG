@@ -56,11 +56,12 @@
 }
 
 .sidenav {
+  padding-top: 30vh;
   height: 100%;
   width: 12vw;
   position: fixed;
   z-index: 1;
-  top: 400px;
+  top: calc(100% - 35vh);
   left: 0;
   overflow-x: hidden;
   padding-top: 20px;

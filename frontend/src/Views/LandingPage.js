@@ -61,10 +61,10 @@ class LandingPage extends Component {
                 </div>
 
                 <div className="sidenav">
-                    <a href="#about">Introduction</a>
-                    <a href="#services">Overview of Practices</a>
-                    <a href="#clients">Nationwide Comparison</a>
-                    <a href="#contact">State-By-State Scorecard</a>
+                    <a href="#introduction">Introduction</a>
+                    <a href="#overview">Overview of Practices</a>
+                    <a href="#nationwide-comparison">Nationwide Comparison</a>
+                    <a href="#state-by-state">State-By-State Scorecard</a>
                 </div>
 
                 <div className="content">
