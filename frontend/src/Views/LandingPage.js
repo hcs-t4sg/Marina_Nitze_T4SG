@@ -69,6 +69,7 @@ class LandingPage extends Component {
                 <div className="implementation-div">{this.state.implementationBlocks}</div>
 
                 <div id="block_text" dangerouslySetInnerHTML={{ __html: this.state.conclusion_text }}></div>
+                
             </div>
 
         );
