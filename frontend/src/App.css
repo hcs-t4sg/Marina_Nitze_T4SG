@@ -83,6 +83,10 @@
   display: block;
 }
 
+html {
+  scroll-behavior: smooth;
+}
+
 .sidenav a:hover {
   color: #3e9cb3;
 }
