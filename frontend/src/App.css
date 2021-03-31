@@ -50,6 +50,34 @@
   filter: brightness(65%) saturate(55%);
 }
 
+.content {
+  width: 88vw;
+  margin-left: 12vw;
+}
+
+.sidenav {
+  padding-top: 30vh;
+  height: 100%;
+  width: 12vw;
+  position: fixed;
+  z-index: 1;
+  top: calc(100% - 35vh);
+  left: 0;
+  overflow-x: hidden;
+  padding-top: 20px;
+}
+
+.sidenav a {
+  padding: 6px 8px 6px 16px;
+  text-decoration: none;
+  font-size: 15px;
+  color: #0E7088;
+  display: block;
+}
+
+.sidenav a:hover {
+  color: #3e9cb3;
+}
 
 .header-subtitle, .title {
   position: absolute;
@@ -108,13 +136,13 @@
 }
 
 
-.implementation-div {
+#implementation-div {
     display: grid;
     grid-template-columns: auto auto;
     grid-auto-rows: 1fr;
 }
 
-.general_text_area {
+#introduction-container {
   margin-right: 15%;
   margin-left: 15%;
   display: flex;
@@ -125,7 +153,11 @@
   min-height: 70vh;
 }
 
-#block_text {
+#introduction-text {
+  font-size: .7em;
+}
+
+#conclusion-text {
   font-size: .7em;
 }
 
