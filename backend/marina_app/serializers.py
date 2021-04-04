@@ -4,9 +4,14 @@ from .models import IssueArea, State, Implementation
 class IssueAreaSerializer(serializers.ModelSerializer):
     class Meta:
         model = IssueArea
-        fields = ('title', 'intro_text','conclusion_text','practice_1','practice_1_description','practice_2','practice_2_description',
-                'practice_3','practice_3_description','practice_4','practice_4_description','practice_5','practice_5_description',
-                'practice_6','practice_6_description','practice_7','practice_7_description')
+        fields =  ('title', 'num_practices','intro_text','conclusion_text',
+                'practice_1','practice_1_description','practice_1_link',
+                'practice_2','practice_2_description','practice_2_link',
+                'practice_3','practice_3_description','practice_3_link',
+                'practice_4','practice_4_description','practice_4_link',
+                'practice_5','practice_5_description','practice_5_link',
+                'practice_6','practice_6_description','practice_6_link',
+                'practice_7','practice_7_description','practice_7_link')
 
 class StateSerializer(serializers.ModelSerializer):
     class Meta:
