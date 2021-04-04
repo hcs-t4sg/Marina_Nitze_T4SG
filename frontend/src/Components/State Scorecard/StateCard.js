@@ -10,7 +10,7 @@ export default class StateCard extends Component{
     constructor(props){
         super(props);
         this.state = {
-            state: props.state_data["name"],
+            state: props.state,
             state_data: props.state_data,
             expanded: false,
             test: true,

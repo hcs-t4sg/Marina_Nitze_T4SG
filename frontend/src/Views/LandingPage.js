@@ -55,8 +55,30 @@ class LandingPage extends Component {
         this.setState({ witness: !w })
     }
 
-    setData = (data) => {
+    getStateInfo = (item, state, tempData) => {
+        axios
+            .get(`http://localhost:8000/api/states/${state}/`)
+            .then(res => {
+                var temp = {
+                    implementationData: item,
+                    stateData: res.data
+                }
+                return temp
+            })
+            .then(temp => {
+                tempData.push(temp);
+            }
+            )
+
+            .catch(err => console.log(err))
+
+    }
+
+    setStatesData = (data) => {
         let tempData = [];
+
+        let issueArea = data[0]['issue_area'];
+
         for (var i = 0; i < data.length; i++) {
 
             var count = 0;
@@ -64,24 +86,16 @@ class LandingPage extends Component {
             var item = data[i];
 
             let state = item['state'];
-            let issueArea = item['issue_area'];
 
-            axios
-                .get(`http://localhost:8000/api/states/${state}/`)
-                .then(res => {
-                    var temp = {
-                        implementationData: item,
-                        stateData: res.data
-                    }
-                    return temp
-                })
-                .then(temp => console.log(temp))
+            this.getStateInfo(item, state, tempData);
 
-                .catch(err => console.log(err))
-            }
-
-            
         }
+
+        console.log(tempData);
+        this.setState({ data: tempData });
+
+    }
+
 
     componentDidMount() {
         axios
@@ -90,7 +104,7 @@ class LandingPage extends Component {
             .catch(err => console.log(err));
         axios
             .get("http://localhost:8000/api/implementation/")
-            .then(res => this.setData(res.data))
+            .then(res => this.setStatesData(res.data))
             .catch(err => console.log(err));
 
     }

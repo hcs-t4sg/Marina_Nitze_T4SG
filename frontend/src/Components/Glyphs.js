@@ -159,7 +159,7 @@ class Glyphs extends Component {
 		    	.attr('class', 'glyph-titles')
 		    	.attr('x', width / 2)
 		    	.attr('text-anchor', 'middle')
-		    	.text(d['name']);
+		    	.text(d['stateData']['name']);
 		    vis.drawSingleGlyph(d, g);
 		});
 	}
