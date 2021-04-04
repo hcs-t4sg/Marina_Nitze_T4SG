@@ -43,7 +43,7 @@
   min-height: 50vh;
   width: 100%;
   background-size: cover;
-  filter: brightness(65%) saturate(55%);  
+  filter: brightness(65%) saturate(55%);
 }
 
 .filter-box {
@@ -123,73 +123,4 @@ h1 {
 .state-by-state-area {
   width: 75%;
   justify-self: center;
-}
-
-.data-update-page {
-  display: flex;
-  flex-direction: row;
-  width:100%;
-}
-
-.navigation-bar {
-  display: flex;
-  flex-direction: column;
-  width: 20%;
-  text-align: left;
-  padding-left: 2%;
-  margin-top: 5%;
-}
-
-.promising-practice{
-  padding: 2%;
-  margin-top: 2%;
-  margin-left: 10% 
-}
-
-.selected-promising-practice{
-  padding: 2%;
-  margin-top: 2%;
-  margin-left: 10%;
-  color: #0E7088;
-}
-
-.update-section{
-  display: flex;
-  flex-direction: column;
-  width: 60%;
-  padding-left: 5%;
-
-}
-
-.update-box{
-  display: flex;
-  flex-direction: column;
-  border: 2px solid black;
-  text-align: left;
-  padding: 3%;
-  padding-top: 1%;
-  margin-top: 5%;
-}
-
-.state-update-area{
-  display: flex;
-    flex-direction: column;
-    flex-wrap: wrap;
-    max-height: 600px;
-}
-.state-update-area>*{
-  flex: 1 1 5%;
-}
-
-.state-update-check{
-  font-size: x-large;
-}
-
-.save-button{
-  margin-top: 3%;
-  background: #C29FA1;
-  color: white;
-  border: white;
-  width: 150px;
-  height: 40px;
 }
