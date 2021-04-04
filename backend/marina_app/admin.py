@@ -2,9 +2,14 @@ from django.contrib import admin
 from .models import IssueArea, State, Implementation
 
 class IssueAreaAdmin(admin.ModelAdmin):
-    list_display = ('title', 'intro_text','conclusion_text','practice_1','practice_1_description','practice_2','practice_2_description',
-                'practice_3','practice_3_description','practice_4','practice_4_description','practice_5','practice_5_description',
-                'practice_6','practice_6_description','practice_7','practice_7_description')
+    list_display = ('title', 'num_practices','intro_text','conclusion_text',
+                'practice_1','practice_1_description','practice_1_link',
+                'practice_2','practice_2_description','practice_2_link',
+                'practice_3','practice_3_description','practice_3_link',
+                'practice_4','practice_4_description','practice_4_link',
+                'practice_5','practice_5_description','practice_5_link',
+                'practice_6','practice_6_description','practice_6_link',
+                'practice_7','practice_7_description','practice_7_link')
 
 class StateAdmin(admin.ModelAdmin):
     list_display = ('name', 'abbreviation', 'population','county_administered')
