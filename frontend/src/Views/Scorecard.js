@@ -232,7 +232,10 @@ class Scorecard extends Component {
 
         var glyphs = null;
         if (newStates.length !== 0) {
-            glyphs = <Glyphs states={newStates}/>
+            glyphs = <Glyphs
+                states={newStates}
+                totalCount={this.state.total_practices}
+            />
         }
 
     return (
