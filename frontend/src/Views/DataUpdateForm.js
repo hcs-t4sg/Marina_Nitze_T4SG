@@ -111,13 +111,6 @@ class DataUpdateForm extends Component{
     }
     */
 
-    toggleDisplayCheckBox = (id) => {
-        let temp_data = this.state.display_data;
-        temp_data[id].display_bool = !temp_data[id].display_bool;
-        this.setState({display_data: temp_data});
-    }
-
-
     handleSaveDescriptions() {
         
     }
@@ -155,13 +148,13 @@ class DataUpdateForm extends Component{
                         <h4>Update State-By-State Data</h4>
                         <div className = "state-update-area">
                         
-                        {this.state.display_data.map(state =>
+                        {this.state.data.map(state =>
                         <label className="state-update-check">
                         <input
                             className="state-update-check"
                             type="checkbox"
-                            checked= {state.display_bool}
-                            onChange={() => this.toggleDisplayCheckBox(state.id)}
+                            checked= {state.no_notary_required}
+                            onChange={() => state.no_notary_required=!state.no_notary_required}
                         />
                     {state.name}
                     </label>)}
