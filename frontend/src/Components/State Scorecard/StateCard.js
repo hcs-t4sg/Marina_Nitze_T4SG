@@ -12,6 +12,7 @@ export default class StateCard extends Component{
         this.state = {
             state: props.state,
             state_data: props.state_data,
+            implementation_data: props.implementation_data,
             expanded: false,
             test: true,
             total: props.total,
@@ -21,6 +22,8 @@ export default class StateCard extends Component{
 
     render() {
         var data = this.state.state_data;
+        var i_data = this.state.implementation_data;
+
         const implemented_string = this.state.completed + "/" + this.state.total;
         if (this.state.expanded) {
             return (
@@ -50,11 +53,11 @@ export default class StateCard extends Component{
                         </div>
                         <div className="column-center">
                             <h4><font color="#0E7088">Implemented?</font></h4>
-                            <div><ImplementedIndicator implemented={data.no_fee} /></div>
-                            <div><ImplementedIndicator implemented={data.no_notary_required} /></div>
-                            <div><ImplementedIndicator implemented={data.electronic_request} /></div>
-                            <div><ImplementedIndicator implemented={data.no_contact} /></div>
-                            <div><ImplementedIndicator implemented={data.no_witness_required} /></div>
+                            <div><ImplementedIndicator implemented={i_data.practice_1} /></div>
+                            <div><ImplementedIndicator implemented={i_data.practice_2} /></div>
+                            <div><ImplementedIndicator implemented={i_data.practice_3} /></div>
+                            <div><ImplementedIndicator implemented={i_data.practice_4} /></div>
+                            <div><ImplementedIndicator implemented={i_data.practice_5} /></div>
                         </div>
                         <div className="column-right">
                             <h4><font color="#0E7088">Resource Guide</font></h4>

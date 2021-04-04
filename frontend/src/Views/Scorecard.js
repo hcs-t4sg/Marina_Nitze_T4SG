@@ -18,7 +18,7 @@ class Scorecard extends Component {
             data: [{
                 id: 0,
                 stateData: {},
-                implementationsData: {},
+                implementationData: {},
                 implemented: 0
             }],
             issueAreaData: {},
@@ -72,7 +72,7 @@ class Scorecard extends Component {
                     id: i,
                     implementationData: item,
                     stateData: res.data,
-                    implemented_practices: count
+                    implemented: count
                 }
                 return temp
             })
@@ -165,31 +165,31 @@ class Scorecard extends Component {
 
         if (this.state.p1_filter) {
             newStates = newStates.filter(
-                state => state.stateData.p1 === true);
+                state => state.implementationData.practice_1 === true);
         }
         if (this.state.p2_filter) {
             newStates = newStates.filter(
-                state => state.stateData.p2 === true);
+                state => state.implementationData.practice_2 === true);
         }
         if (this.state.p3_filter) {
             newStates = newStates.filter(
-                state => state.stateData.p3 === true);
+                state => state.implementationData.practice_3 === true);
         }
         if (this.state.p4_filter) {
             newStates = newStates.filter(
-                state => state.stateData.p4 === true);
+                state => state.implementationData.practice_4 === true);
         }
         if (this.state.p5_filter) {
             newStates = newStates.filter(
-                state => state.stateData.p5 === true);
+                state => state.implementationData.practice_5 === true);
         }
         if (this.state.p6_filter) {
             newStates = newStates.filter(
-                state => state.stateData.p6 === true);
+                state => state.implementationData.practice_6 === true);
         }
         if (this.state.p7_filter) {
             newStates = newStates.filter(
-                state => state.stateData.p7 === true);
+                state => state.implementationData.practice_7 === true);
         }
 
         if (this.state.population_filter === 1) {
@@ -376,7 +376,13 @@ class Scorecard extends Component {
                 </div>
 
                 {searchedStates.map(state =>
-                    <StateCard state={state['stateData']["name"]} state_data={state['stateData']} key={state.id} total={this.state.total_practices} completed={state['implemented']} />)}
+                    <StateCard
+                        state={state['stateData']["name"]}
+                        implementation_data={state['implementationData']}
+                        state_data={state['stateData']}
+                        key={state.id}
+                        total={this.state.total_practices}
+                        completed={state['implemented']} />)}
                 </div>
             </div>
         );
