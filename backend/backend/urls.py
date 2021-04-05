@@ -22,7 +22,10 @@ from marina_app import views
 router = routers.DefaultRouter()
 router.register(r'issue-areas', views.IssueAreaView, 'marina_app')
 router.register(r'states', views.StateView, 'marina_app')
+
 router.register(r'implementation', views.ImplmentationView, 'marina_app')
+
+router.register(r'contact', views.ContactView, 'marina_app')
 
 
 

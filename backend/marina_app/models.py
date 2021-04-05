@@ -54,6 +54,7 @@ class IssueArea(models.Model):
     def __str__(self):
         return self.title
 
+
 class Implementation(models.Model):
     state = models.ForeignKey(State, on_delete=models.CASCADE)
     issue_area = models.ForeignKey(IssueArea, on_delete=models.CASCADE)
@@ -67,3 +68,15 @@ class Implementation(models.Model):
 
     def __str__(self):
         return self.issue_area.title + " " + self.state.name
+
+class Contact(models.Model):
+    issue_area = models.ForeignKey(IssueArea, on_delete=models.CASCADE)
+    first_name = models.CharField(max_length=200, default="")
+    last_name = models.CharField(max_length=200, default="")
+    position = models.CharField(max_length=200, default="")
+    email = models.CharField(max_length=200, default="")
+
+    
+    def __str__(self):
+        return self.first_name + " " + self.last_name
+
