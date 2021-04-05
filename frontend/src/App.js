@@ -27,7 +27,6 @@ function App() {
                     <Switch>
                         <Route path={"/home"} component={LandingPage} />
                         <Route path="/resources" component={Resources} />
-                        <Route path="/faq" component={FAQ} />
                         <Route path={"/adminView"} component={AdminView} />
                         <Route path="/about-us" component={AboutUs} />
                         <Route path={["", "/scorecard"]} component={Scorecard} />
