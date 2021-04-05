@@ -145,6 +145,10 @@ html {
     margin: 5px;
 }
 
+.sort-title {
+  margin-bottom: 5px;
+}
+
 
 #implementation-div {
     display: grid;
@@ -257,7 +261,7 @@ select {
 
 .filter-titles{
     text-align: left;
-    margin-bottom: 0px;
+    margin-bottom: 10px;
 }
 
 h4 {
