@@ -36,14 +36,32 @@
   }
 }
 
-.teal-section {
-  background-image: url("res/teal1.png");
-  margin: 0;
-  padding: 0;
+
+.teal-section-container {
+  background-size: cover;
+  position: relative;
   min-height: 50vh;
   width: 100%;
-  background-size: cover;
+}
+
+.teal-section {
+  background-image: url("res/teal1.png");
+  min-height: 50vh;
   filter: brightness(65%) saturate(55%);
+}
+
+
+.header-subtitle, .title {
+  position: absolute;
+  top: 30%;
+  left: 50%;
+  margin-right: -50%;
+  transform: translate(-50%, -60%);
+  color: white;
+}
+
+.title {
+  margin-top: 80px;
 }
 
 .filter-box {
@@ -54,7 +72,7 @@
   background-color: #dce3e6;
   border: solid #bdbdbd 1px;
   font-size: 16px;
-  padding: 60px;
+  padding: 20px 60px;
 }
 
 .landing-page {
@@ -72,20 +90,90 @@
   font-size: medium;
 }
 
-.filter-check{
-  width: 10%;
-}
-
 .filter-label {
-    /*flex: 1;*/
-  padding: 3px;
+    display: flex;
+    flex-direction: column;
+    margin: 0px 5px;
+    font-size: 14px;
+    align-content: center;
+    text-align: center;
+    
 }
 
-.sort-boxes .checkboxes {
-  width: 90%;
+.sort-label {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    margin: 5px;
+}
+
+
+.implementation-div {
+    display: grid;
+    grid-template-columns: auto auto;
+    grid-auto-rows: 1fr;
+}
+
+.general-text-area {
+  margin-right: 15%;
+  margin-left: 15%;
   display: flex;
   flex-direction: column;
-  flex-wrap: wrap;
+  justify-content: flex-start;
+  align-items: flex-start;
+  text-align: center;
+  min-height: 70vh;
+}
+
+#block_text {
+  font-size: .7em;
+}
+
+.vary-block {
+    background-color: #D9F2F5;
+    height: 80%;
+    width: 85%;
+    margin: auto;
+
+}
+
+.vary-header {
+    font-size: 36px;
+    font-weight: normal;
+    color: #363D3F;
+    width: 80%;
+    text-align: left;
+    margin: auto;
+    margin-top: 9%;
+    margin-bottom: 2%;
+}
+
+.vary-text {
+    width: 80%;
+    text-align: left;
+    margin: auto;
+}
+
+.sort-boxes {
+    margin: auto;
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    flex: 2;
+
+}
+
+.filter-check{
+    margin: auto;
+    margin-top: 10px;
+}
+
+.checkboxes {
+    margin: auto;
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    flex: 1;
 }
 
 select {
@@ -93,7 +181,7 @@ select {
   padding: 5px;
 }
 
-h1 {
+.introduction-title {
   border: solid #a1a1a1 1px;
   font-size: 1.5em;
   font-weight: normal;
@@ -108,7 +196,7 @@ h1 {
   display: flex;
   flex-direction: row;
   align-items: flex-start;
-  align-content: left;
+  align-content: flex-start;
   align-items: baseline;
   padding: 2%;
 }
@@ -123,4 +211,33 @@ h1 {
 .state-by-state-area {
   width: 75%;
   justify-self: center;
+}
+
+.filter-titles{
+    text-align: left;
+    margin-bottom: 0px;
+}
+
+h4 {
+    margin-top: 0;
+    margin-bottom: 10px;
+}
+
+h2 {
+    margin-top: 0;
+    margin-bottom: 0;
+}
+
+h5 {
+    font-weight: normal;
+    margin-top: 0px;
+    margin-bottom: 5px;
+    font-size: 18px;
+    text-align: left;
+}
+
+.right-header {
+    margin-top: 6%;
+    margin: auto;
+    padding-left: 10px;
 }

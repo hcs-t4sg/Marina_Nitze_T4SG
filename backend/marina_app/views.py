@@ -1,7 +1,7 @@
 from django.shortcuts import render
 from rest_framework import viewsets
-from .serializers import IssueAreaSerializer, StateSerializer
-from .models import IssueArea, State
+from .serializers import IssueAreaSerializer, StateSerializer, ImplementationGuidanceSerializer
+from .models import IssueArea, State, ImplementationGuidance
 
 class IssueAreaView(viewsets.ModelViewSet):
     serializer_class = IssueAreaSerializer
@@ -10,3 +10,7 @@ class IssueAreaView(viewsets.ModelViewSet):
 class StateView(viewsets.ModelViewSet):
     serializer_class = StateSerializer
     queryset = State.objects.all()
+
+class ImplementationGuidanceView(viewsets.ModelViewSet):
+    serializer_class = ImplementationGuidanceSerializer
+    queryset = ImplementationGuidance.objects.all()
