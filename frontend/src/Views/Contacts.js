@@ -12,7 +12,7 @@ export default function Contacts() {
 	            <h1 className="title">Contacts </h1>
 	        </div>
 
-	        <Subheader title="Contacts"/>
+	        <Subheader title="Write to Us"/>
 
 	        <div className="contact-grid">
                 <div className="text-row"></div>
