@@ -14,6 +14,7 @@ class IssueAreaAdmin(admin.ModelAdmin):
 class StateAdmin(admin.ModelAdmin):
     list_display = ('name', 'abbreviation', 'population','county_administered')
 
+
 class ImplementationAdmin(admin.ModelAdmin):
     list_display = ('state','issue_area','practice_1','practice_2','practice_3','practice_4',
                 'practice_5','practice_6','practice_7')
@@ -22,5 +23,6 @@ class ImplementationAdmin(admin.ModelAdmin):
 admin.site.register(IssueArea, IssueAreaAdmin)
 admin.site.register(State, StateAdmin)
 admin.site.register(Implementation, ImplementationAdmin)
+
 
 

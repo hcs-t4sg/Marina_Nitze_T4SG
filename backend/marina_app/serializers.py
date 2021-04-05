@@ -1,6 +1,7 @@
 from rest_framework import serializers
 from .models import IssueArea, State, Implementation
 
+
 class IssueAreaSerializer(serializers.ModelSerializer):
     class Meta:
         model = IssueArea
@@ -12,6 +13,7 @@ class IssueAreaSerializer(serializers.ModelSerializer):
                 'practice_5','practice_5_description','practice_5_link',
                 'practice_6','practice_6_description','practice_6_link',
                 'practice_7','practice_7_description','practice_7_link')
+
 
 class StateSerializer(serializers.ModelSerializer):
     class Meta:

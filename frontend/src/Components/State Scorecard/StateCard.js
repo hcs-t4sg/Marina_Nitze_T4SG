@@ -28,7 +28,7 @@ export default class StateCard extends Component{
                     <div className="top-info">
                         <div className="title-area">
                             <h1> {this.state.state_data["name"]} </h1>
-                            <h4 onClick={() => this.setState({ expanded: !this.state.expanded })}> <font color="#0E7088"> View Details </font> </h4>
+                            <h4 onClick={() => this.setState({ expanded: !this.state.expanded })}> <font color="#0E7088"> See Less </font> </h4>
                         </div>
                         <ProgressBar completed={this.state.completed} total={this.state.total} />
                         <p className="score-percentage"> {implemented_string} </p>
