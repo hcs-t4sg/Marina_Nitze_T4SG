@@ -25,6 +25,8 @@ router.register(r'states', views.StateView, 'marina_app')
 
 router.register(r'implementation', views.ImplmentationView, 'marina_app')
 
+router.register(r'contact', views.ContactView, 'marina_app')
+
 
 
 urlpatterns = [

@@ -69,16 +69,14 @@ class Implementation(models.Model):
     def __str__(self):
         return self.issue_area.title + " " + self.state.name
 
+class Contact(models.Model):
+    issue_area = models.ForeignKey(IssueArea, on_delete=models.CASCADE)
+    first_name = models.CharField(max_length=200, default="")
+    last_name = models.CharField(max_length=200, default="")
+    position = models.CharField(max_length=200, default="")
+    email = models.CharField(max_length=200, default="")
 
-class ImplementationGuidance(models.Model):
-    name = models.CharField(max_length=200)
-    question = models.TextField()
-    why = models.TextField()
-    quote = models.TextField(blank=True)
-    link = models.URLField(max_length=200)
-
-
+    
     def __str__(self):
-        return self.name
-
+        return self.first_name + " " + self.last_name
 
