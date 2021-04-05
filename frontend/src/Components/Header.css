@@ -1,16 +1,21 @@
 ﻿.header{
-    height: 40px;
-    margin: 15px;
+    height: 7vh;
     background-color: #FFFFFF;
+    box-shadow: 0px 5px 5px 0px #3b3b3b;
+    z-index: 10;
+    position: relative;
 }
 
 .menu-btn {
   display: block;
-  margin-top: 20px;
-  margin-left: 15px;
-  margin-right: 90%;
   width: 30px;
   height: 30px;
+  margin: 0;
+  margin-left: 1vw;
+  position: absolute;
+  top: 50%;
+  -ms-transform: translateY(-45%);
+  transform: translateY(-45%);
 }
 
 .menu-btn:hover{
