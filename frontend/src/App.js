@@ -10,6 +10,7 @@ import Resources from "./Views/Resources"
 import FAQ from "./Views/FAQ"
 import { useState } from "react";
 import Header from "./Components/Header"
+import AdminView from "./Views/AdminView"
 
 
 function App() {
@@ -31,6 +32,7 @@ function App() {
                         <Route path="/practices" component={Practices} />
                         <Route path="/resources" component={Resources} />
                         <Route path="/faq" component={FAQ} />
+                        <Route path={"/adminView"} component={AdminView} />
                         <Route path={["", "/scorecard"]} component={Scorecard} />
 
                     </Switch>

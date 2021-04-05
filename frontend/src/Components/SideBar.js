@@ -71,7 +71,6 @@ export default function SideBar(props) {
             
             
             
-            
         </div>
     );
 }
