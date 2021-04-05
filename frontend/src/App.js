@@ -4,7 +4,7 @@ import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import SideBar from './Components/SideBar'
 import LandingPage from "./Views/LandingPage"
 import Scorecard from "./Views/Scorecard"
-import Resources from "./Views/Resources"
+import Contacts from "./Views/Contacts"
 import AboutUs from "./Views/AboutUs"
 import { useState } from "react";
 import Header from "./Components/Header"
@@ -25,7 +25,7 @@ function App() {
                     <SideBar className="side-bar" click={showSideBar} show={sidebar}/>
                     <Switch>
                         <Route path={"/home"} component={LandingPage} />
-                        <Route path="/resources" component={Resources} />
+                        <Route path="/resources" component={Contacts} />
                         <Route path="/about-us" component={AboutUs} />
                     </Switch>
                 </Router>
