@@ -279,53 +279,52 @@ class Scorecard extends Component {
                     <div className="checkboxes">
                         <label className="filter-label">
                             
-                            Electronic Request
                             <input
                                 className="filter-check"
                                 type="checkbox"
                                 label="Electronic Request"
                                 onChange={() => this.changeReq(this.state.electronic_request)}
                             />
+                            <div className="filter-title"> Electronic Request </div>
                         </label>
                         <label className="filter-label">
                             
-                            No Notary
                             <input
                                 className="filter-check"
                                 type="checkbox"
                                 label=" No Notary"
                                 onChange={() => this.changeNotary(this.state.notary)}
                             />
+                            <div className="filter-title"> No Notary </div>
                         </label>
                         <label className="filter-label">
                             
-                            No Fee
                             <input
                                 className="filter-check"
                                 type="checkbox"
                                 label="No Fee"
                                 onChange={() => this.changeFee(this.state.fee)}
                             />
+                            <div className="filter-title"> No Fee </div>
                         </label>
                         <label className="filter-label">
                             
-                            Office Contact
                             <input
                                 className="filter-check"
                                 type="checkbox"
                                 label="Office Contact"
                                 onChange={() => this.changeOffice(this.state.office)}
                             />
+                            <div className="filter-title"> Office Contact </div>
                         </label>
                         <label className="filter-label">
-                            
-                            No Witness Needed
                             <input
                                 className="filter-check"
                                 type="checkbox"
                                 label="First"
                                 onChange={() => this.changeWitness(this.state.witness)}
                             />
+                            <div className="filter-title"> No Witness Needed </div>
                         </label>
                     </div>
                 </div>
