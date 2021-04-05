@@ -163,3 +163,14 @@ h1 {
 .admin-input-text{
   width: 50%;
 }
+
+.admin-submit-button{
+  width: 20%;
+  height: 60px;
+  background: grey;
+  color: white;
+}
+
+.admin-submit-button:active{
+  background: black;
+}
