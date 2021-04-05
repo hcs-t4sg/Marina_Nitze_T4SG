@@ -40,7 +40,7 @@ class Glyphs extends Component {
     drawSingleGlyph(state, g) {
         var vis = this;
 
-        console.log(state);
+        // console.log(state);
 
     	const practicesAvailble = Object.keys(state).filter(p => state[p] === true && p != "county_administered");
     	const allPractices = Object.keys(state).filter(p => (state[p] === true || state[p] === false) && p != "county_administered");

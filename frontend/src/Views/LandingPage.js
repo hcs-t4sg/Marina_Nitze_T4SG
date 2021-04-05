@@ -20,19 +20,44 @@ class LandingPage extends Component {
         }
     }
 
+    setData = (data) => {
+        let tempData = [];
+        for (var i = 0; i < data.length; i++) {
+
+            var count = 0;
+
+            var item = data[i];
+
+            let state = item['state'];
+            let issueArea = item['issue_area'];
+
+            axios
+                .get(`http://localhost:8000/api/states/${state}/`)
+                .then(res => {
+                    var temp = {
+                        implementationData: item,
+                        stateData: res.data
+                    }
+                    return temp
+                })
+                .then(temp => console.log(temp))
+
+                .catch(err => console.log(err))
+            }
+
+            
+        }
+
     componentDidMount() {
         axios
-            .get("http://localhost:8000/api/implementation_guidance/")
-            .then(res => this.createImplementationBlocks(res.data))
+            .get("http://localhost:8000/api/states/")
+            .then(res => this.setState({ data: res.data }))
+            .catch(err => console.log(err));
+        axios
+            .get("http://localhost:8000/api/implementation/")
+            .then(res => this.setData(res.data))
             .catch(err => console.log(err));
 
-        axios
-            .get("http://localhost:8000/api/issue-areas/")
-            .then((res) => this.setState({ 
-                introduction_text: res.data[0].introduction_text,
-                conclusion_text: res.data[0].conclusion_text
-            }))
-            .catch(err => console.log(err));
     }
 
     createImplementationBlocks(data) {
