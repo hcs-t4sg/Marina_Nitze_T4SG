@@ -87,6 +87,7 @@ class Scorecard extends Component {
 
     setStatesData = (data) => {
         let tempData = [];
+         // TODO: Data.reduce((practices) => {} , {})
 
         for (var i = 0; i < data.length; i++) {
 
@@ -124,7 +125,7 @@ class Scorecard extends Component {
             }
         }
 
-        // console.log(tempData);
+        console.log(tempData);
         this.setState({ data: tempData });
 
     }
@@ -150,16 +151,17 @@ class Scorecard extends Component {
     render() {
 
         var newStates = this.state.data;
+        console.log(newStates);
         var scoreCardStates = [];
         var searchedStates = [];
 
         if (this.state.data.length > 1) {
              scoreCardStates = this.state.data;
              searchedStates = scoreCardStates;
-             if(this.state.searchedState !== ""){
-                 searchedStates = searchedStates.filter(
-                     state => state.stateData.name.toLowerCase().includes(this.state.searchedState.toLowerCase()) === true)
-             }
+             //if(this.state.searchedState !== ""){
+             //    searchedStates = searchedStates.filter(
+             //        state => state.stateData.name.toLowerCase().includes(this.state.searchedState.toLowerCase()) === true)
+             //}
              
         }
 
@@ -231,6 +233,8 @@ class Scorecard extends Component {
         }
 
         var glyphs = null;
+        console.log(newStates);
+        console.log(searchedStates);
         if (newStates.length !== 0) {
             glyphs = <Glyphs
                 states={newStates}
@@ -378,7 +382,7 @@ class Scorecard extends Component {
                 />
                 </div>
 
-                {searchedStates.map(state =>
+                {this.state.data.map(state =>
                     <StateCard
                         state={state['stateData']["name"]}
                         implementation_data={state['implementationData']}
