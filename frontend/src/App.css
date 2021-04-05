@@ -49,19 +49,27 @@
   filter: brightness(65%) saturate(55%);
 }
 
+.content-sidenav-container {
+  display: flex;
+  flex-direction: row;
+}
+
 .content {
   width: 88vw;
-  margin-left: 12vw;
+  margin-left: 5vw;
+  align-items: center;
 }
 
 .sidenav {
   padding-top: 30vh;
   height: 100%;
   width: 12vw;
-  position: fixed;
+  position: sticky;
+  position: -webkit-sticky;
+  top: 30px;
   z-index: 1;
-  top: calc(100% - 35vh);
-  left: 0;
+  left: 1vw;
+  margin-left: 0px;
   overflow-x: hidden;
   padding-top: 20px;
 }
@@ -72,6 +80,10 @@
   font-size: 15px;
   color: #0E7088;
   display: block;
+}
+
+html {
+  scroll-behavior: smooth;
 }
 
 .sidenav a:hover {
@@ -106,7 +118,6 @@
   width: 100%;
   display: flex;
   flex-direction: column;
-  align-items: center;
 }
 
 .filter-box {
@@ -146,8 +157,8 @@
   margin-left: 15%;
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  align-items: center;
+  justify-content: flex-start;
+  align-items: flex-start;
   text-align: center;
   min-height: 70vh;
 }
@@ -239,7 +250,7 @@ select {
   margin-left: 5%
 }
 
-.state-by-state-area {
+#state-by-state-area {
   width: 75%;
   justify-self: center;
 }
