@@ -49,7 +49,7 @@ class AdminView extends Component {
         }
     }
 
-    countImplementations(data) {
+    getStatesData(data) {
         let tempData = [];
         for (var i = 0; i < data.length; i++) {
             var item = data[i];
@@ -74,14 +74,16 @@ class AdminView extends Component {
     componentDidMount() {
         axios
             .get("http://localhost:8000/api/states/")
-            .then(res => this.countImplementations(res.data))
+            .then(res => this.getStatesData(res.data))
             .catch(err => console.log(err));
     }
 
-    submit_new_practice = (item) => {
+    submitNewPractice = (item) => {
         axios
-            .post("/api/todos/", item)
-            .then((res) => this.refreshList());
+            .post('http://localhost:8000/api/states/',item)
+                .then(function (response) {
+                    console.log(response);
+                  });
     }
 
     handleChange = e => {
@@ -128,7 +130,6 @@ class AdminView extends Component {
         <div className="admin-space">
 
             <h2>Create a New Issue Area</h2>
-            <div>{this.state.issue_area.practice_1}</div>
 
             <div  className="admin-input-area">
                 <div>Issue Area:</div>
@@ -210,6 +211,12 @@ class AdminView extends Component {
             </div>
             </div>
             )}
+
+        <button 
+            className="admin-submit-button" 
+            onClick={() => this.submitNewPractice(this.state.issue_area.title, this.state.issue_area)}>
+            Create New Issue Area!
+          </button>
             
         </div>
 
