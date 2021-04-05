@@ -66,6 +66,11 @@ class LandingPage extends Component {
                     <a href=".state-by-state-area">State-By-State Scorecard</a>
                 </div>
 
+                <div className="general-text-area">
+                    <Subheader title="Introduction"/>
+                    <div id="block_text" dangerouslySetInnerHTML={{__html: this.state.introduction_text}}></div>
+                </div>
+
                 <div className="content">
 
                     <div id="introduction-container">

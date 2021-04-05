@@ -142,15 +142,24 @@
     grid-auto-rows: 1fr;
 }
 
-#introduction-container {
+.general-text-area {
   margin-right: 15%;
   margin-left: 15%;
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  align-items: center;
+  justify-content: flex-start;
+  align-items: flex-start;
   text-align: center;
   min-height: 70vh;
+}
+
+#introduction-container {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  align-items: flex-start;
+  text-align: center;
 }
 
 #introduction-text {
