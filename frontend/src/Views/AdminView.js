@@ -49,6 +49,13 @@ class AdminView extends Component {
         }
     }
 
+    componentDidMount(){
+        axios
+            .get("http://localhost:8000/api/states/")
+            .then(res => this.getStatesData(res.data))
+            .catch(err => console.log(err));
+    }
+
     getStatesData(data) {
         let tempData = [];
         for (var i = 0; i < data.length; i++) {
@@ -68,22 +75,28 @@ class AdminView extends Component {
                 })
         }
 
-        this.setState({ data: tempData });
-    }
-
-    componentDidMount() {
-        axios
-            .get("http://localhost:8000/api/states/")
-            .then(res => this.getStatesData(res.data))
-            .catch(err => console.log(err));
+        this.setState({ states_data: tempData });
     }
 
     submitNewPractice = (item) => {
         axios
-            .post('http://localhost:8000/api/states/',item)
-                .then(function (response) {
-                    console.log(response);
-                  });
+            .post('http://localhost:8000/api/issue-areas/',item)
+            .catch(err => console.log(err));
+
+        for (var i = 0; i < this.state.states_data.length; i++) {
+            axios.post('http://localhost:8000/api/implementations/',{
+                state: this.state.states_data[i].name,
+                issue_area: item.title,
+                practice_1: false,
+                practice_2: false,
+                practice_3: false,
+                practice_4: false,
+                practice_5: false,
+                practice_6: false,
+                practice_7: false
+            })
+            .catch(err => console.log(err));
+        }
     }
 
     handleChange = e => {
@@ -92,21 +105,21 @@ class AdminView extends Component {
         this.setState({ issue_area });
       };
 
-      increment = e => {
-          if(this.state.issue_area.num_practices < 7){
-            const issue_area = { ...this.state.issue_area, 
-                                    num_practices: this.state.issue_area.num_practices+1 };
-            this.setState({ issue_area });
-          }
-      }
+    increment = e => {
+        if(this.state.issue_area.num_practices < 7){
+        const issue_area = { ...this.state.issue_area, 
+                                num_practices: this.state.issue_area.num_practices+1 };
+        this.setState({ issue_area });
+        }
+    }
       
-      decrement = e =>{
-        if(this.state.issue_area.num_practices > 0){
-            const issue_area = { ...this.state.issue_area, 
-                                    num_practices: this.state.issue_area.num_practices-1 };
-            this.setState({ issue_area });
-          }
-      }
+    decrement = e =>{
+    if(this.state.issue_area.num_practices > 0){
+        const issue_area = { ...this.state.issue_area, 
+                                num_practices: this.state.issue_area.num_practices-1 };
+        this.setState({ issue_area });
+        }
+    }
 
     render() {
 
@@ -132,7 +145,7 @@ class AdminView extends Component {
             <h2>Create a New Issue Area</h2>
 
             <div  className="admin-input-area">
-                <div>Issue Area:</div>
+                <div>Issue Area:<font color="#FF0000">*</font></div>
                 <input 
                 type="text" 
                 className="admin-input-line"
@@ -151,7 +164,7 @@ class AdminView extends Component {
             </div>
 
             <div  className="admin-input-area">
-                <div>Intro Text: </div>
+                <div>Intro Text:<font color="#FF0000">*</font> </div>
                 <textarea 
                 type="text" 
                 className="admin-input-text"
@@ -163,7 +176,7 @@ class AdminView extends Component {
             </div>
 
             <div  className="admin-input-area">
-                <div>Conclusion Text: </div>
+                <div>Conclusion Text:<font color="#FF0000">*</font> </div>
                 <textarea 
                 type="text" 
                 className="admin-input-text"
@@ -214,7 +227,7 @@ class AdminView extends Component {
 
         <button 
             className="admin-submit-button" 
-            onClick={() => this.submitNewPractice(this.state.issue_area.title, this.state.issue_area)}>
+            onClick={() => this.submitNewPractice(this.state.issue_area)}>
             Create New Issue Area!
           </button>
             
