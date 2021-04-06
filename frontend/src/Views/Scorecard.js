@@ -4,6 +4,7 @@ import Glyphs from '../Components/Glyphs'
 import "../App.css"
 import StateCard from "../Components/State Scorecard/StateCard"
 import Subheader from "../Components/Subheader"
+import Legend from '../Components/Legend'
 
 
 const high_pop = 7500000;
@@ -328,6 +329,7 @@ class Scorecard extends Component {
                         </label>
                     </div>
                 </div>
+                <Legend/>
             </div>
 
             <div>{glyphs}</div>

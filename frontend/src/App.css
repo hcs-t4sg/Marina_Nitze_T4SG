@@ -134,13 +134,52 @@ html {
     margin: 0px 5px;
     font-size: 14px;
     align-content: flex-start;
-    text-align: center;
+    text-align: left;
     
 }
 
 .filter-title {
   margin-left: 5px;
   margin-top: 7px;
+}
+
+.circle-label {
+  fill: white;
+  text-anchor: middle;
+  dy: 0.35em;
+
+}
+
+.legend-title {
+  margin: 3px;
+}
+
+.legend-container {
+  margin-left: 40px;
+  display: flex;
+  flex-direction: column;
+  align-content: flex-start;
+  text-align: left;
+}
+
+.legend-labels {
+  margin-left: 20px;
+  display: flex;
+  flex-flow: column wrap;
+}
+
+.legend-implemented {
+  fill: #0E7088;
+}
+
+.legend-nonimplemented {
+  fill: #C29FA1;
+}
+
+.circle-label {
+  fill: white;
+  text-anchor: middle;
+  z-index: 3;
 }
 
 .sort-label {
@@ -227,6 +266,7 @@ html {
     align-items: flex-start;
     align-content: flex-start;
     flex: 1;
+    padding: 5px;
 }
 
 select {
@@ -278,12 +318,12 @@ h4 {
 
 h2 {
     margin-top: 0;
-    margin-bottom: 0;
+    margin-bottom: 5px;
 }
 
 h5 {
     font-weight: normal;
-    margin-top: 0px;
+    margin-top: 15px;
     margin-bottom: 5px;
     font-size: 18px;
     text-align: left;
