@@ -103,17 +103,6 @@ html {
   margin-top: 80px;
 }
 
-.filter-box {
-  margin-top: 100px;
-  display: flex;
-  flex-direction: row;
-  width: 100%;
-  background-color: #dce3e6;
-  border: solid #bdbdbd 1px;
-  font-size: 16px;
-  padding: 20px 60px;
-}
-
 .landing-page {
   width: 100%;
   display: flex;
@@ -121,6 +110,10 @@ html {
 }
 
 .filter-box {
+  background-color: #dce3e6;
+  border: solid #bdbdbd 1px;
+  font-size: 16px;
+  padding: 20px 60px;
   margin-top: 5%;
   display: flex;
   flex-direction: row;
@@ -129,13 +122,12 @@ html {
 }
 
 .filter-label {
-    display: flex;
-    flex-direction: row;
-    margin: 0px 5px;
-    font-size: 14px;
-    align-content: flex-start;
-    text-align: left;
-    
+  display: flex;
+  flex-direction: row;
+  margin: 0px 5px;
+  font-size: 14px;
+  align-content: flex-start;
+  text-align: left;
 }
 
 .filter-title {
@@ -323,7 +315,7 @@ h2 {
 
 h5 {
     font-weight: normal;
-    margin-top: 15px;
+    margin-top: 35px;
     margin-bottom: 5px;
     font-size: 18px;
     text-align: left;
