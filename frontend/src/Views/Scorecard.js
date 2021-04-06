@@ -78,6 +78,7 @@ class Scorecard extends Component {
             })
             .then(temp => {
                 tempData.push(temp);
+                console.log(tempData.length);
             }
             )
 
@@ -125,7 +126,6 @@ class Scorecard extends Component {
             }
         }
 
-        // console.log(tempData);
         this.setState({ data: tempData });
 
     }
@@ -149,7 +149,9 @@ class Scorecard extends Component {
     }
 
     render() {
-
+        console.log("RENDER");
+        console.log(this.state.data);
+        console.log(this.state.data.length);
         var newStates = this.state.data;
         // console.log(newStates);
         var scoreCardStates = [];
@@ -158,10 +160,10 @@ class Scorecard extends Component {
         if (this.state.data.length > 1) {
              scoreCardStates = this.state.data;
              searchedStates = scoreCardStates;
-             //if(this.state.searchedState !== ""){
-             //    searchedStates = searchedStates.filter(
-             //        state => state.stateData.name.toLowerCase().includes(this.state.searchedState.toLowerCase()) === true)
-             //}
+             if(this.state.searchedState !== ""){
+                 searchedStates = searchedStates.filter(
+                     state => state.stateData.name.toLowerCase().includes(this.state.searchedState.toLowerCase()) === true)
+             }
              
         }
 
@@ -234,6 +236,7 @@ class Scorecard extends Component {
 
         var glyphs = null;
         console.log(newStates);
+        console.log(scoreCardStates);
         console.log(searchedStates);
         if (newStates.length !== 0) {
             glyphs = <Glyphs
@@ -403,7 +406,7 @@ class Scorecard extends Component {
                 />
                 </div>
 
-                {this.state.data.map(state =>
+                {searchedStates.map(state =>
                     <StateCard
                         state={state['stateData']["name"]}
                         implementation_data={state['implementationData']}
