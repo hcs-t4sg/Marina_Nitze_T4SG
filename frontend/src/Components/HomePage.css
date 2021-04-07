@@ -1,0 +1,49 @@
+
+.homepage {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.content-container {
+  background-size: cover;
+  position: relative;
+  min-height: 100vh;
+  width: 100%;
+}
+
+.home-background {
+  background-image: url("../res/teal1.png");
+  filter: brightness(65%) saturate(55%);
+  min-height: 100vh;
+}
+
+.description {
+  position: absolute;
+  top: 55%;
+  left: 50%;
+  margin-right: -50%;
+  transform: translate(-50%, -60%);
+  color: white;
+  width: 50vw;
+  filter: brightness(85%)
+}
+
+.go-button {
+  position: absolute;
+  top: 70%;
+  left: 50%;
+  margin-right: -50%;
+  transform: translate(-50%, -60%);
+  -webkit-border-radius: 11;
+  -moz-border-radius: 11;
+  border-radius: 11px;
+  -webkit-box-shadow: 1px 2px 3px #666666;
+  -moz-box-shadow: 1px 2px 3px #666666;
+  box-shadow: 1px 2px 3px #666666;
+  color: #ffffff;
+  font-size: 20px;
+  background: #C29FA1;
+  padding: 10px 40px 10px 40px;
+  text-decoration: none;
+}
