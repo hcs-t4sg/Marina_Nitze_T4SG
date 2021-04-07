@@ -25,7 +25,7 @@ function App() {
                     <SideBar className="side-bar" click={showSideBar} show={sidebar}/>
                     <Switch>
                         <Route path={"/home"} component={LandingPage} />
-                        <Route path="/resources" component={Resources} />
+                        <Route path="/resources" component={Resources}/>
                         <Route path="/about-us" component={AboutUs} />
                     </Switch>
                 </Router>
