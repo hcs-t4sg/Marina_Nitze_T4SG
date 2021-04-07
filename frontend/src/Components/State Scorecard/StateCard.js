@@ -16,7 +16,8 @@ export default class StateCard extends Component{
             expanded: false,
             test: true,
             total: props.total,
-            completed: props.completed
+            completed: props.completed,
+            issue: props.issueArea
         };
     }
 
@@ -25,6 +26,20 @@ export default class StateCard extends Component{
         var i_data = this.state.implementation_data;
 
         const implemented_string = this.state.completed + "/" + this.state.total;
+
+        var resourceLinks = []
+        console.log(this.state.total);
+        for (var i = 1; i <= this.state.total; i++) {
+            console.log();
+            resourceLinks.push(
+                <div>
+                    <a href={this.state.issue[`practice_${i}_link`]} target="blank">
+                        Link
+                    </a>
+                </div>
+            )
+        }
+
         if (this.state.expanded) {
             return (
                 <div className="state-scorecard">
@@ -61,11 +76,7 @@ export default class StateCard extends Component{
                         </div>
                         <div className="column-right">
                             <h4><font color="#0E7088">Resource Guide</font></h4>
-                            <div>Link</div>
-                            <div>Link</div>
-                            <div>Link</div>
-                            <div>Link</div>
-                            <div>Link</div>
+                            {resourceLinks}
                         </div>
                     </div>
                 </div>

@@ -40,19 +40,28 @@ class Scorecard extends Component {
     }
 
     changeP1 = (p) => {
-        this.setState({ p1_filter: !p})
+        this.setState({ p1_filter: !p });
+        console.log("1");
     }
     changeP2 = (p) => {
-        this.setState({ p2_filter: !p })
+        this.setState({ p2_filter: !p });
+
+        console.log("2");
     }
     changeP3 = (p) => {
         this.setState({ p3_filter: !p })
+
+        console.log("3s");
     }
     changeP4 = (p) => {
         this.setState({ p4_filter: !p })
+
+        console.log("4");
     }
     changeP5 = (p) => {
         this.setState({ p5_filter: !p })
+
+        console.log("5");
     }
     changeP6 = (p) => {
         this.setState({ p6_filter: !p })
@@ -64,6 +73,7 @@ class Scorecard extends Component {
     updateSearchedState = (s) => {
         this.setState({ searchedState: s.target.value })
     }
+
 
     //getStateInfo = (i, item, state, count, tempData) => {
     //    axios
@@ -301,6 +311,123 @@ class Scorecard extends Component {
             />
         }
 
+        var filter_checkboxes = [];
+        for (var i = 1; i <= this.state.total_practices; i++) {
+            if (i === 1) {
+                filter_checkboxes.push(
+                    <label className="filter-label">
+                        {this.state.currentIssue[`practice_${i}`]}
+                        <input
+                            className="filter-check"
+                            type="checkbox"
+                            label={this.state.currentIssue[`practice_${i}`]}
+                            onChange={() => {
+                                this.changeP1(this.state.p1_filter);
+                            }
+                            }
+                        />
+                    </label>
+                )
+            }
+            else if (i === 2) {
+                filter_checkboxes.push(
+                    <label className="filter-label">
+                        {this.state.currentIssue[`practice_${i}`]}
+                        <input
+                            className="filter-check"
+                            type="checkbox"
+                            label={this.state.currentIssue[`practice_${i}`]}
+                            onChange={() => {
+                                this.changeP2(this.state.p2_filter);
+                            }
+                            }
+                        />
+                    </label>
+                )
+            }
+            else if (i === 3) {
+                filter_checkboxes.push(
+                    <label className="filter-label">
+                        {this.state.currentIssue[`practice_${i}`]}
+                        <input
+                            className="filter-check"
+                            type="checkbox"
+                            label={this.state.currentIssue[`practice_${i}`]}
+                            onChange={() => {
+                                this.changeP3(this.state.p3_filter);
+                            }
+                            }
+                        />
+                    </label>
+                )
+            }
+            else if (i === 4) {
+                filter_checkboxes.push(
+                    <label className="filter-label">
+                        {this.state.currentIssue[`practice_${i}`]}
+                        <input
+                            className="filter-check"
+                            type="checkbox"
+                            label={this.state.currentIssue[`practice_${i}`]}
+                            onChange={() => {
+                                this.changeP4(this.state.p4_filter);
+                            }
+                            }
+                        />
+                    </label>
+                )
+            }
+            else if (i === 5) {
+                filter_checkboxes.push(
+                    <label className="filter-label">
+                        {this.state.currentIssue[`practice_${i}`]}
+                        <input
+                            className="filter-check"
+                            type="checkbox"
+                            label={this.state.currentIssue[`practice_${i}`]}
+                            onChange={() => {
+                                this.changeP5(this.state.p5_filter);
+                            }
+                            }
+                        />
+                    </label>
+                )
+            }
+            else if (i === 6) {
+                filter_checkboxes.push(
+                    <label className="filter-label">
+                        {this.state.currentIssue[`practice_${i}`]}
+                        <input
+                            className="filter-check"
+                            type="checkbox"
+                            label={this.state.currentIssue[`practice_${i}`]}
+                            onChange={() => {
+                                this.changeP6(this.state.p6_filter);
+                            }
+                            }
+                        />
+                    </label>
+                )
+            }
+            else if (i === 7) {
+                filter_checkboxes.push(
+                    <label className="filter-label">
+                        {this.state.currentIssue[`practice_${i}`]}
+                        <input
+                            className="filter-check"
+                            type="checkbox"
+                            label={this.state.currentIssue[`practice_${i}`]}
+                            onChange={() => {
+                                this.changeP7(this.state.p7_filter);
+                            }
+                            }
+                        />
+                    </label>
+                )
+            }
+
+        }
+
     return (
 
         <div className="landing-page">
@@ -393,56 +520,7 @@ class Scorecard extends Component {
                 <div className="right-header"> 
                     <h5> Filter By... </h5>
                     <div className="checkboxes">
-                        <label className="filter-label">
-                            
-                            Electronic Request
-                        <input
-                            className="filter-check"
-                            type="checkbox"
-                            label="Electronic Request"
-                            onChange={() => this.changeP1(this.state.p1_filter)}
-                        />
-                        </label>
-                        <label className="filter-label">
-                            
-                            No Notary
-                            <input
-                                className="filter-check"
-                                type="checkbox"
-                                label=" No Notary"
-                                onChange={() => this.changeP2(this.state.p2_filter)}
-                            />
-                        </label>
-                        <label className="filter-label">
-                            
-                            No Fee
-                            <input
-                                className="filter-check"
-                                type="checkbox"
-                                label="No Fee"
-                                onChange={() => this.changeP3(this.state.p3_filter)}
-                            />
-                        </label>
-                        <label className="filter-label">
-                            
-                            Office Contact
-                            <input
-                                className="filter-check"
-                                type="checkbox"
-                                label="Office Contact"
-                                onChange={() => this.changeP4(this.state.p4_filter)}
-                            />
-                        </label>
-                        <label className="filter-label">
-                            
-                            No Witness Needed
-                            <input
-                                className="filter-check"
-                                type="checkbox"
-                                label="First"
-                                onChange={() => this.changeP5(this.state.p5_filter)}
-                            />
-                        </label>
+                        {filter_checkboxes}
                     </div>
                 </div>
             </div>
@@ -469,7 +547,9 @@ class Scorecard extends Component {
                         state_data={state['stateData']}
                         key={state.id}
                         total={this.state.total_practices}
-                        completed={state['implemented']} />)}
+                        completed={state['implemented']}
+                        issueArea={this.state.currentIssue}
+                    />)}
                 </div>
             </div>
         );
