@@ -1,8 +1,17 @@
 // JavaScript source code
+import { useHistory } from 'react-router-dom';
 import "../App.css"
 import "../Components/HomePage.css";
 
-export default function HomePage() {
+function HomePage() {
+
+	const history = useHistory();
+
+	  const routeChange = () =>{ 
+	    let path = `home`; 
+	    history.push(path);
+	  }
+
     return (
         <div className="homepage">
         	<div className="content-container">
@@ -12,9 +21,11 @@ export default function HomePage() {
 	            <h4 className="description"> Description of the site and a high-level overview of its features. 
 	            					Mention types of data provided, issue areas covered, and that there is 
 	            					access to best practices. </h4>
-	            <button type="button" className="go-button">Go!</button>
+	            <button type="button" className="go-button" onClick={routeChange} >Go!</button>
             </div>
         </div>
 
     );
 }
+
+export default HomePage
