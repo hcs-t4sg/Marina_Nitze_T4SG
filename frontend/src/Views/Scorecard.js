@@ -22,7 +22,8 @@ class Scorecard extends Component {
                 implemented: 0
             }],
             issueAreaData: {},
-            currentIssue: "Adam Walsh",
+            currentIssue: {},
+            currentIssueTitle: "Adam Walsh",
             p1_filter: false,
             p2_filter: false,
             p3_filter: false,
@@ -64,39 +65,80 @@ class Scorecard extends Component {
         this.setState({ searchedState: s.target.value })
     }
 
-    getStateInfo = (i, item, state, count, tempData) => {
-        axios
-            .get(`http://localhost:8000/api/states/${state}/`)
-            .then(res => {
-                var temp = {
-                    id: i,
-                    implementationData: item,
-                    stateData: res.data,
-                    implemented: count
-                }
-                return temp
-            })
-            .then(temp => {
-                tempData.push(temp);
-                console.log(tempData.length);
-            }
-            )
+    //getStateInfo = (i, item, state, count, tempData) => {
+    //    axios
+    //        .get(`http://localhost:8000/api/states/${state}/`)
+    //        .then(res => {
+    //            var temp = {
+    //                id: i,
+    //                implementationData: item,
+    //                stateData: res.data,
+    //                implemented: count
+    //            }
+    //            return temp
+    //        })
+    //        .then(temp => {
+    //            tempData.push(temp);
+    //            console.log(tempData.length);
+    //        }
+    //        )
 
-            .catch(err => console.log(err))
+    //        .catch(err => console.log(err))
 
-    }
+    //}
 
-    setStatesData = (data) => {
-        let tempData = [];
-         // TODO: Data.reduce((practices) => {} , {})
+    //setStatesData = (data) => {
+    //    let tempData = [];
+    //     // TODO: Data.reduce((practices) => {} , {})
 
-        for (var i = 0; i < data.length; i++) {
+    //    for (var i = 0; i < data.length; i++) {
 
-            var item = data[i];
+    //        var item = data[i];
 
-            if (item['issue_area'] === this.state.currentIssue) {
+    //        if (item['issue_area'] === this.state.currentIssue) {
+    //            var count = 0;
+
+
+    //            if (item['practice_1']) {
+    //                count++;
+    //            }
+    //            if (item['practice_2']) {
+    //                count++;
+    //            }
+    //            if (item['practice_3']) {
+    //                count++;
+    //            }
+    //            if (item['practice_4']) {
+    //                count++;
+    //            }
+    //            if (item['practice_5']) {
+    //                count++;
+    //            }
+    //            if (item['practice_6']) {
+    //                count++;
+    //            }
+    //            if (item['practice_7']) {
+    //                count++;
+    //            }
+
+    //            let state = item['state'];
+
+    //            this.getStateInfo(i, item, state, count, tempData);
+    //        }
+    //    }
+
+    //    this.setState({ data: tempData });
+
+    //}
+
+    matchData = (stateData, impData) => {
+        let tempData = []
+        //console.log(stateData);
+        //console.log(impData);
+        for (var i = 0; i < impData.length; i++) {
+            var item = impData[i];
+            if (item["issue_area"] === this.state.currentIssueTitle) {
                 var count = 0;
-
 
                 if (item['practice_1']) {
                     count++;
@@ -120,21 +162,34 @@ class Scorecard extends Component {
                     count++;
                 }
 
-                let state = item['state'];
+                for (var j = 0; j < stateData.length; j++) {
+                    if (item['state'] === stateData[j]['name']) {
 
-                this.getStateInfo(i, item, state, count, tempData);
+                        var temp = {
+                            id: j,
+                            implementationData: item,
+                            stateData: stateData[j],
+                            implemented: count
+                        }
+                        tempData.push(temp);
+                    }
+                }
             }
         }
 
         this.setState({ data: tempData });
-
     }
 
     // TODO: Add total practices so that it is variable
     componentDidMount() {
         axios
-            .get("http://localhost:8000/api/implementation/")
-            .then(res => this.setStatesData(res.data))
+            .get("http://localhost:8000/api/states/")
+            .then(stateRes => {
+                axios
+                    .get("http://localhost:8000/api/implementation/")
+                    .then(impRes => this.matchData(stateRes.data, impRes.data))
+                    .catch(err => console.log(err))
+            })
             .catch(err => console.log(err));
         axios
             .get("http://localhost:8000/api/issue-areas/")
@@ -142,16 +197,17 @@ class Scorecard extends Component {
                 {
                     issueAreaData: res.data,
                     currentIssue: res.data[0],
-                    total_practices: 5
+                    currentIssueTitle: res.data[0]['title'],
+                    total_practices: res.data[0]['num_practices']
                 }
             ))
             .catch(err => console.log(err));
     }
 
     render() {
-        console.log("RENDER");
-        console.log(this.state.data);
-        console.log(this.state.data.length);
+       // console.log("RENDER");
+        //console.log(this.state.data);
+        // console.log(this.state.data.length);
         var newStates = this.state.data;
         // console.log(newStates);
         var scoreCardStates = [];
@@ -235,9 +291,9 @@ class Scorecard extends Component {
         }
 
         var glyphs = null;
-        console.log(newStates);
-        console.log(scoreCardStates);
-        console.log(searchedStates);
+        //console.log(newStates);
+        //console.log(scoreCardStates);
+        //console.log(searchedStates);
         if (newStates.length !== 0) {
             glyphs = <Glyphs
                 states={newStates}
