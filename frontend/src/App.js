@@ -9,6 +9,7 @@ import AboutUs from "./Views/AboutUs"
 import HomePage from "./Views/HomePage"
 import { useState } from "react";
 import Header from "./Components/Header"
+import AdminView from "./Views/AdminView"
 
 
 function App() {
@@ -28,7 +29,9 @@ function App() {
                         <Route exact path="/" component={HomePage} />
                         <Route path={"/home"} component={LandingPage} />
                         <Route path="/resources" component={Resources} />
+                        <Route path={"/adminView"} component={AdminView} />
                         <Route path="/about-us" component={AboutUs} />
+                        <Route path={["", "/scorecard"]} component={Scorecard} />
                     </Switch>
                 </Router>
             </header>
