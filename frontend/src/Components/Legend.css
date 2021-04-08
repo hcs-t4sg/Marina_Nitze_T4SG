@@ -1,0 +1,27 @@
+
+.legend-implemented {
+  fill: #0E7088;
+}
+
+.legend-nonimplemented {
+  fill: #C29FA1;
+}
+
+
+.legend-title {
+  margin: 3px;
+}
+
+.legend-container {
+  margin-left: 40px;
+  display: flex;
+  flex-direction: column;
+  align-content: flex-start;
+  text-align: left;
+}
+
+.legend-labels {
+  margin-left: 20px;
+  display: flex;
+  flex-flow: column wrap;
+}
