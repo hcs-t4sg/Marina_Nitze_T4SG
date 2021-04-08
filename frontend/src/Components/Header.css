@@ -1,5 +1,5 @@
 ﻿.header{
-    height: 7vh;
+    height: 10vh;
     background-color: #FFFFFF;
     box-shadow: 0px 5px 5px 0px #3b3b3b;
     z-index: 10;
@@ -20,6 +20,16 @@
 
 .menu-btn:hover{
   cursor: pointer;
+}
+
+.t4sg-logo {
+  background-image: url("../res/t4sg_logo.png");
+  width: 140px;
+  height: 55px;
+  margin-left: 12vw;
+  background-size: cover;
+  display: block;
+  margin-top: 10px;
 }
 
 #toggle span:after,

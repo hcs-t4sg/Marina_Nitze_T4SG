@@ -25,10 +25,8 @@ class Glyphs extends Component {
     initVis() {
         var vis = this;
 
-        vis.margin = { top: 20, right: 60, bottom: 200, left: 60 };
         vis.svg = d3.select(".scorecard").append("div")
-            .attr("class", "scorecard-container")
-            .attr("transform", "translate(" + vis.margin.left + "," + vis.margin.top + ")");
+            .attr("class", "scorecard-container");
 
         vis.tooltip = d3.select(".scorecard").append("div")   
             .attr("class", "tooltip");              

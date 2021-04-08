@@ -144,8 +144,8 @@ class Scorecard extends Component {
 
     matchData = (stateData, impData) => {
         let tempData = []
-        //console.log(stateData);
-        //console.log(impData);
+        console.log(stateData);
+        console.log(impData);
         for (var i = 0; i < impData.length; i++) {
             var item = impData[i];
             if (item["issue_area"] === this.state.currentIssueTitle) {
@@ -197,7 +197,7 @@ class Scorecard extends Component {
             .get("http://localhost:8000/api/states/")
             .then(stateRes => {
                 axios
-                    .get("http://localhost:8000/api/implementation/")
+                    .get("http://localhost:8000/api/implementations/")
                     .then(impRes => this.matchData(stateRes.data, impRes.data))
                     .catch(err => console.log(err))
             })
