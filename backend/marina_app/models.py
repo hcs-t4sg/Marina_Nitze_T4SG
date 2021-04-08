@@ -20,36 +20,51 @@ class State(models.Model):
 class IssueArea(models.Model):
     title = models.CharField(max_length=200, primary_key=True)
     num_practices = models.IntegerField(default=7)
-    intro_text = models.TextField(default="")
-    conclusion_text = models.TextField(default="")
+    intro_text = models.TextField(default="", null=True, blank=True)
+    conclusion_text = models.TextField(default="", null=True, blank=True)
 
-    practice_1 = models.CharField(max_length=200, default="",blank=True,null=True)
-    practice_1_description = models.TextField(default="",blank=True,null=True)
-    practice_1_link = models.CharField(max_length=1000, default="",blank=True,null=True)
+    practice_1 = models.CharField(max_length=200, default="", null=True, blank=True)
+    practice_1_question = models.TextField(default="", null=True, blank=True)
+    practice_1_description = models.TextField(default="", null=True, blank=True)
+    practice_1_quote = models.TextField(default="", null=True, blank=True)
+    practice_1_link = models.CharField(max_length=1000, default="", null=True, blank=True)
 
-    practice_2 = models.CharField(max_length=200, default="",blank=True,null=True)
-    practice_2_description = models.TextField(default="",blank=True,null=True)
-    practice_2_link = models.CharField(max_length=1000, default="",blank=True,null=True)
+    practice_2 = models.CharField(max_length=200, default="", null=True, blank=True)
+    practice_2_question = models.TextField(default="", null=True, blank=True)
+    practice_2_description = models.TextField(default="", null=True, blank=True)
+    practice_2_quote = models.TextField(default="", null=True, blank=True)
+    practice_2_link = models.CharField(max_length=1000, default="", null=True, blank=True)
 
-    practice_3 = models.CharField(max_length=200, default="",blank=True,null=True)
-    practice_3_description = models.TextField(default="",blank=True,null=True)
-    practice_3_link = models.CharField(max_length=1000, default="",blank=True,null=True)
+    practice_3 = models.CharField(max_length=200, default="", null=True, blank=True)
+    practice_3_question = models.TextField(default="", null=True, blank=True)
+    practice_3_description = models.TextField(default="", null=True, blank=True)
+    practice_3_quote = models.TextField(default="", null=True, blank=True)
+    practice_3_link = models.CharField(max_length=1000, default="", null=True, blank=True)
 
-    practice_4 = models.CharField(max_length=200, default="",blank=True,null=True)
-    practice_4_description = models.TextField(default="",blank=True,null=True)
-    practice_4_link = models.CharField(max_length=1000, default="",blank=True,null=True)
+    practice_4 = models.CharField(max_length=200, default="", null=True, blank=True)
+    practice_4_question = models.TextField(default="", null=True, blank=True)
+    practice_4_description = models.TextField(default="", null=True, blank=True)
+    practice_4_quote = models.TextField(default="", null=True, blank=True)
+    practice_4_link = models.CharField(max_length=1000, default="", null=True, blank=True)
 
-    practice_5 = models.CharField(max_length=200, default="",blank=True,null=True)
-    practice_5_description = models.TextField(default="",blank=True,null=True)
-    practice_5_link = models.CharField(max_length=1000, default="",blank=True,null=True)
+    practice_5 = models.CharField(max_length=200, default="", null=True, blank=True)
+    practice_5_question = models.TextField(default="", null=True, blank=True)
+    practice_5_description = models.TextField(default="", null=True, blank=True)
+    practice_5_quote = models.TextField(default="", null=True, blank=True)
+    practice_5_link = models.CharField(max_length=1000, default="", null=True, blank=True)
 
-    practice_6 = models.CharField(max_length=200, default="",blank=True,null=True)
-    practice_6_description = models.TextField(default="",blank=True,null=True)
-    practice_6_link = models.CharField(max_length=1000, default="",blank=True,null=True)
+    practice_6 = models.CharField(max_length=200, default="", null=True, blank=True)
+    practice_6_question = models.TextField(default="", null=True, blank=True)
+    practice_6_description = models.TextField(default="", null=True, blank=True)
+    practice_6_quote = models.TextField(default="", null=True, blank=True)
+    practice_6_link = models.CharField(max_length=1000, default="", null=True, blank=True)
 
-    practice_7 = models.CharField(max_length=200, default="",blank=True,null=True)
-    practice_7_description = models.TextField(default="",blank=True,null=True)
-    practice_7_link = models.CharField(max_length=1000, default="",blank=True,null=True)
+    practice_7 = models.CharField(max_length=200, default="", null=True, blank=True)
+    practice_7_question = models.TextField(default="", null=True, blank=True)
+    practice_7_description = models.TextField(default="", null=True, blank=True)
+    practice_7_quote = models.TextField(default="", null=True, blank=True)
+    practice_7_link = models.CharField(max_length=1000, default="", null=True, blank=True)
+
 
     def __str__(self):
         return self.title
@@ -71,10 +86,10 @@ class Implementation(models.Model):
 
 class Contact(models.Model):
     issue_area = models.ForeignKey(IssueArea, on_delete=models.CASCADE)
-    first_name = models.CharField(max_length=200, default="")
-    last_name = models.CharField(max_length=200, default="")
-    position = models.CharField(max_length=200, default="")
-    email = models.CharField(max_length=200, default="")
+    first_name = models.CharField(max_length=200, default="", null=True, blank=True)
+    last_name = models.CharField(max_length=200, default="", null=True, blank=True)
+    position = models.CharField(max_length=200, default="", null=True, blank=True)
+    email = models.CharField(max_length=200, default="", null=True, blank=True)
 
     
     def __str__(self):

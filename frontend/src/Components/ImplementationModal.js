@@ -9,8 +9,8 @@ export default class ImplementationModal extends Component {
             p_count: 21,
             opposite: "Charges a Fee for Background Checks",
             o_count: 33,
-            description: "description goes here",
-            example: "example goes here",
+            description: this.props.description,
+            quote: this.props.quote,
             playbook_link: this.props.link,
             contact: "contact_info"
         };
@@ -58,8 +58,8 @@ export default class ImplementationModal extends Component {
                         </div>
 
                         <div className="description-div">
-                            <h3> Examples of Implementation </h3>
-                            <p> {this.state.example} </p>
+                            <h3> Quote </h3>
+                            <p> {this.state.quote} </p>
                         </div>
 
                     </div>

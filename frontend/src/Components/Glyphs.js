@@ -40,16 +40,16 @@ class Glyphs extends Component {
 
         // console.log(state);
 
-    	const practicesAvailble = Object.keys(state).filter(p => state[p] === true && p != "county_administered");
-    	const allPractices = Object.keys(state).filter(p => (state[p] === true || state[p] === false) && p != "county_administered");
+		const practicesAvailble = Object.keys(state).filter(p => state[p] === true && p != "county_administered");
+    	const allPractices = Object.keys(state).filter(p => (state[p] === true || state[p] === false) && p != "county_administered").slice(0, this.props.totalCount);
 
     	const width = 80;
     	const height = 80;
 		const center = { x: width / 2, y: height / 2 };
 		const glyphRadius = Math.round(height / 3);
 		const circleRadius = Math.round(glyphRadius / 4);
-		function pentagonVertex(i) {
-		    const angle = i / 5 * Math.PI * 2 + 1.1 * Math.PI;
+		function pentagonVertex(i, numV) {
+		    const angle = i / numV * Math.PI * 2 + 1.1 * Math.PI;
 		    return {
 		    	x: Math.cos(angle) * glyphRadius + center.x,
 		    	y: Math.sin(angle) * glyphRadius + center.y
@@ -64,7 +64,7 @@ class Glyphs extends Component {
 		integration.append('path')
 		    .attr('d', d => {
 				const points = allPractices.map((p, i) => {
-		        	return state[p] === true ? pentagonVertex(i) : null;
+		        	return (state[p] === true) ? pentagonVertex(i, this.props.totalCount) : null;
 		        }).filter(p => p);
 		    	if (points.length === 2) {
 		        	return 'M' + points.map(p => [p.x, p.y].join(',')).join('L');
@@ -87,7 +87,7 @@ class Glyphs extends Component {
 		    .enter().append('g')
 		    .attr('class', 'practice')
 		    .attr('transform', (d, i) => {
-		    	const v = pentagonVertex(i);
+		    	const v = pentagonVertex(i, this.props.totalCount);
 		    	return `translate(${v.x},${v.y})`;
 		    })
 		    .attr('practice-status', d => {
@@ -157,8 +157,8 @@ class Glyphs extends Component {
 		    	.attr('class', 'glyph-titles')
 		    	.attr('x', width / 2)
 		    	.attr('text-anchor', 'middle')
-		    	.text(d['name']);
-		    vis.drawSingleGlyph(d, g);
+		    	.text(d['stateData']['name']);
+		    vis.drawSingleGlyph(d['implementationData'], g);
 		});
 	}
 
