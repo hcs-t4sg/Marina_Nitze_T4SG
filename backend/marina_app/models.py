@@ -23,33 +23,33 @@ class IssueArea(models.Model):
     intro_text = models.TextField(default="")
     conclusion_text = models.TextField(default="")
 
-    practice_1 = models.CharField(max_length=200, default="")
-    practice_1_description = models.TextField(default="")
-    practice_1_link = models.CharField(max_length=1000, default="")
+    practice_1 = models.CharField(max_length=200, default="",blank=True,null=True)
+    practice_1_description = models.TextField(default="",blank=True,null=True)
+    practice_1_link = models.CharField(max_length=1000, default="",blank=True,null=True)
 
-    practice_2 = models.CharField(max_length=200, default="")
-    practice_2_description = models.TextField(default="")
-    practice_2_link = models.CharField(max_length=1000, default="")
+    practice_2 = models.CharField(max_length=200, default="",blank=True,null=True)
+    practice_2_description = models.TextField(default="",blank=True,null=True)
+    practice_2_link = models.CharField(max_length=1000, default="",blank=True,null=True)
 
-    practice_3 = models.CharField(max_length=200, default="")
-    practice_3_description = models.TextField(default="")
-    practice_3_link = models.CharField(max_length=1000, default="")
+    practice_3 = models.CharField(max_length=200, default="",blank=True,null=True)
+    practice_3_description = models.TextField(default="",blank=True,null=True)
+    practice_3_link = models.CharField(max_length=1000, default="",blank=True,null=True)
 
-    practice_4 = models.CharField(max_length=200, default="")
-    practice_4_description = models.TextField(default="")
-    practice_4_link = models.CharField(max_length=1000, default="")
+    practice_4 = models.CharField(max_length=200, default="",blank=True,null=True)
+    practice_4_description = models.TextField(default="",blank=True,null=True)
+    practice_4_link = models.CharField(max_length=1000, default="",blank=True,null=True)
 
-    practice_5 = models.CharField(max_length=200, default="")
-    practice_5_description = models.TextField(default="")
-    practice_5_link = models.CharField(max_length=1000, default="")
+    practice_5 = models.CharField(max_length=200, default="",blank=True,null=True)
+    practice_5_description = models.TextField(default="",blank=True,null=True)
+    practice_5_link = models.CharField(max_length=1000, default="",blank=True,null=True)
 
-    practice_6 = models.CharField(max_length=200, default="")
-    practice_6_description = models.TextField(default="")
-    practice_6_link = models.CharField(max_length=1000, default="")
+    practice_6 = models.CharField(max_length=200, default="",blank=True,null=True)
+    practice_6_description = models.TextField(default="",blank=True,null=True)
+    practice_6_link = models.CharField(max_length=1000, default="",blank=True,null=True)
 
-    practice_7 = models.CharField(max_length=200, default="")
-    practice_7_description = models.TextField(default="")
-    practice_7_link = models.CharField(max_length=1000, default="")
+    practice_7 = models.CharField(max_length=200, default="",blank=True,null=True)
+    practice_7_description = models.TextField(default="",blank=True,null=True)
+    practice_7_link = models.CharField(max_length=1000, default="",blank=True,null=True)
 
     def __str__(self):
         return self.title
