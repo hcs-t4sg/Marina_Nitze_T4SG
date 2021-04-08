@@ -1,15 +1,5 @@
-:root {
-  --light-blue: #61dafb;
-  --cyan-medium: #3595AC;
-  --cyan-light: #75BDCF;
-  --cyan-lightest: #D9F2F5;
-  --teal: #0e7088;
-  --dusty-pink: #C29FA1;
-  --dark-grey: #363D3F;
-  --medium-grey: #a1a1a1;
-  --light-grey: #bdbdbd;
-  --lightest-grey: #dce3e6;
-}
+
+@import url("/src/res/Values.css");
 
 
 .App {
@@ -124,7 +114,7 @@ html {
 }
 
 .filter-box {
-  background-color: var(--lightest-grey);
+  background-color: var(--off-white);
   border: solid var(--light-grey) 1px;
   font-size: 16px;
   padding: 20px 60px;

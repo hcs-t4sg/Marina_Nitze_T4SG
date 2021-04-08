@@ -1,10 +1,12 @@
 
+@import url("/src/res/Values.css");
+
 .legend-implemented {
-  fill: #0E7088;
+  fill: var(--teal);
 }
 
 .legend-nonimplemented {
-  fill: #C29FA1;
+  fill: var(--dusty-pink);
 }
 
 
