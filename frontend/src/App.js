@@ -4,7 +4,6 @@ import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import SideBar from './Components/SideBar'
 import LandingPage from "./Views/LandingPage"
 import Scorecard from "./Views/Scorecard"
-import Resources from "./Views/Resources"
 import AboutUs from "./Views/AboutUs"
 import HomePage from "./Views/HomePage"
 import { useState } from "react";
@@ -28,7 +27,6 @@ function App() {
                     <Switch>
                         <Route exact path="/" component={HomePage} />
                         <Route path={"/home"} component={LandingPage} />
-                        <Route path="/resources" component={Resources} />
                         <Route path={"/adminView"} component={AdminView} />
                         <Route path="/about-us" component={AboutUs} />
                         <Route path={["", "/scorecard"]} component={Scorecard} />
