@@ -219,18 +219,17 @@ class Scorecard extends Component {
        // console.log("RENDER");
         //console.log(this.state.data);
         // console.log(this.state.data.length);
-        var newStates = this.state.data;
+        var newStates = [...this.state.data];
         // console.log(newStates);
-        var scoreCardStates = [];
         var searchedStates = [];
 
         if (this.state.data.length > 1) {
-             scoreCardStates = this.state.data;
-             searchedStates = scoreCardStates;
+            searchedStates = this.state.data;
+            console.log(this.state.data);
              if(this.state.searchedState !== ""){
                  searchedStates = searchedStates.filter(
                      state => state.stateData.name.toLowerCase().includes(this.state.searchedState.toLowerCase()) === true)
-             }
+            }
              
         }
 
