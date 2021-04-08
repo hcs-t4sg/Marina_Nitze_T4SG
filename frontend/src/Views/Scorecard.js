@@ -4,6 +4,7 @@ import Glyphs from '../Components/Glyphs'
 import "../App.css"
 import StateCard from "../Components/State Scorecard/StateCard"
 import Subheader from "../Components/Subheader"
+import Legend from '../Components/Legend'
 
 
 const high_pop = 7500000;
@@ -205,7 +206,7 @@ class Scorecard extends Component {
                     <div className="sort-boxes">
                         <label className="sort-label">
                             
-                            Population Size
+                            <div className="sort-title"> Population Size </div>
 
                             <select onChange={(e) => {
                                 if (e.target.value === "no-filter") {
@@ -230,7 +231,7 @@ class Scorecard extends Component {
                         </label>
 
                         <label className="sort-label">
-                            Practices Implemented
+                            <div className="sort-title">  Practices Implemented </div>
 
                             <select onChange={(e) => {
                                 if (e.target.value === "most") {
@@ -252,7 +253,7 @@ class Scorecard extends Component {
 
                         <label className="sort-label">
                             
-                            State vs County
+                            <div className="sort-title"> State vs County </div>
                             <select onChange={(e) => {
                                 if (e.target.value === "no-filter") {
                                     this.setState({ county_filter: 0 })
@@ -279,56 +280,56 @@ class Scorecard extends Component {
                     <div className="checkboxes">
                         <label className="filter-label">
                             
-                            Electronic Request
                             <input
                                 className="filter-check"
                                 type="checkbox"
                                 label="Electronic Request"
                                 onChange={() => this.changeReq(this.state.electronic_request)}
                             />
+                            <div className="filter-title"> Electronic Request </div>
                         </label>
                         <label className="filter-label">
                             
-                            No Notary
                             <input
                                 className="filter-check"
                                 type="checkbox"
                                 label=" No Notary"
                                 onChange={() => this.changeNotary(this.state.notary)}
                             />
+                            <div className="filter-title"> No Notary </div>
                         </label>
                         <label className="filter-label">
                             
-                            No Fee
                             <input
                                 className="filter-check"
                                 type="checkbox"
                                 label="No Fee"
                                 onChange={() => this.changeFee(this.state.fee)}
                             />
+                            <div className="filter-title"> No Fee </div>
                         </label>
                         <label className="filter-label">
                             
-                            Office Contact
                             <input
                                 className="filter-check"
                                 type="checkbox"
                                 label="Office Contact"
                                 onChange={() => this.changeOffice(this.state.office)}
                             />
+                            <div className="filter-title"> Office Contact </div>
                         </label>
                         <label className="filter-label">
-                            
-                            No Witness Needed
                             <input
                                 className="filter-check"
                                 type="checkbox"
                                 label="First"
                                 onChange={() => this.changeWitness(this.state.witness)}
                             />
+                            <div className="filter-title"> No Witness Needed </div>
                         </label>
                     </div>
                 </div>
+                <Legend/>
             </div>
 
             <div>{glyphs}</div>
