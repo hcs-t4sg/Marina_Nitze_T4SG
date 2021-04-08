@@ -4,6 +4,7 @@ import Glyphs from '../Components/Glyphs'
 import "../App.css"
 import StateCard from "../Components/State Scorecard/StateCard"
 import Subheader from "../Components/Subheader"
+import Legend from '../Components/Legend'
 
 
 const high_pop = 7500000;
@@ -448,7 +449,7 @@ class Scorecard extends Component {
                     <div className="sort-boxes">
                         <label className="sort-label">
                             
-                            Population Size
+                            <div className="sort-title"> Population Size </div>
 
                             <select onChange={(e) => {
                                 if (e.target.value === "no-filter") {
@@ -473,7 +474,7 @@ class Scorecard extends Component {
                         </label>
 
                         <label className="sort-label">
-                            Practices Implemented
+                            <div className="sort-title">  Practices Implemented </div>
 
                             <select onChange={(e) => {
                                 if (e.target.value === "most") {
@@ -495,7 +496,7 @@ class Scorecard extends Component {
 
                         <label className="sort-label">
                             
-                            State vs County
+                            <div className="sort-title"> State vs County </div>
                             <select onChange={(e) => {
                                 if (e.target.value === "no-filter") {
                                     this.setState({ county_filter: 0 })
@@ -521,8 +522,10 @@ class Scorecard extends Component {
                     <h5> Filter By... </h5>
                     <div className="checkboxes">
                         {filter_checkboxes}
+
                     </div>
                 </div>
+                <Legend/>
             </div>
 
             <div>{glyphs}</div>
