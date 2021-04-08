@@ -6,6 +6,7 @@ import LandingPage from "./Views/LandingPage"
 import Scorecard from "./Views/Scorecard"
 import Resources from "./Views/Resources"
 import AboutUs from "./Views/AboutUs"
+import HomePage from "./Views/HomePage"
 import { useState } from "react";
 import Header from "./Components/Header"
 import AdminView from "./Views/AdminView"
@@ -25,6 +26,7 @@ function App() {
                 <Router>
                     <SideBar className="side-bar" click={showSideBar} show={sidebar}/>
                     <Switch>
+                        <Route exact path="/" component={HomePage} />
                         <Route path={"/home"} component={LandingPage} />
                         <Route path="/resources" component={Resources} />
                         <Route path={"/adminView"} component={AdminView} />
