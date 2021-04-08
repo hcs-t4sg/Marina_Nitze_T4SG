@@ -188,19 +188,29 @@ html {
 
 #implementation-div {
     display: grid;
-    grid-template-columns: auto auto;
+    grid-template-columns: 50% 50%;
     grid-auto-rows: 1fr;
+    grid-row-gap: 20px;
+    width: 90%;
 }
 
 #introduction-container {
   margin-right: 15%;
-  margin-left: 15%;
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
   align-items: flex-start;
-  text-align: center;
-  min-height: 70vh;
+  text-align: left;
+  min-height: 30vh;
+}
+
+.subtitle-container {
+    margin-right: 15%;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    text-align: center;
 }
 
 #introduction-text {
@@ -216,7 +226,6 @@ html {
     height: 80%;
     width: 85%;
     margin: auto;
-
 }
 
 .vary-header {
