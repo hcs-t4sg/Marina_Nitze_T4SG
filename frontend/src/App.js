@@ -6,8 +6,10 @@ import LandingPage from "./Views/LandingPage"
 import Scorecard from "./Views/Scorecard"
 import Contacts from "./Views/Contacts"
 import AboutUs from "./Views/AboutUs"
+import HomePage from "./Views/HomePage"
 import { useState } from "react";
 import Header from "./Components/Header"
+import AdminView from "./Views/AdminView"
 
 
 function App() {
@@ -24,9 +26,12 @@ function App() {
                 <Router>
                     <SideBar className="side-bar" click={showSideBar} show={sidebar}/>
                     <Switch>
+                        <Route exact path="/" component={HomePage} />
                         <Route path={"/home"} component={LandingPage} />
-                        <Route path="/resources" component={Contacts} />
+                        <Route path="/contacts" component={Contacts} />
+                        <Route path={"/adminView"} component={AdminView} />
                         <Route path="/about-us" component={AboutUs} />
+                        <Route path={["", "/scorecard"]} component={Scorecard} />
                     </Switch>
                 </Router>
             </header>

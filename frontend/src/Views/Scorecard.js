@@ -4,155 +4,275 @@ import Glyphs from '../Components/Glyphs'
 import "../App.css"
 import StateCard from "../Components/State Scorecard/StateCard"
 import Subheader from "../Components/Subheader"
+import Legend from '../Components/Legend'
 
 
 const high_pop = 7500000;
 const low_pop = 2500000;
 
 class Scorecard extends Component {
-    
+
+    // TODO: initial condition maybe shouldn't include Adam Walsh    
     constructor(props) {
         super(props);
         this.state = {
             data: [{
                 id: 0,
-                abbreviation: "",
-                electronic_request: false,
-                name: "",
-                no_fee: false,
-                no_contact: false,
-                no_notary_required: false,
-                no_witness_required: false,
-                county_administered: false,
-                population: 0,
+                stateData: {},
+                implementationData: {},
                 implemented: 0
             }],
-            electronic_request: false,
-            notary: false,
-            fee: false,
-            office: false,
-            witness: false,
+            issueAreaData: {},
+            currentIssue: {},
+            currentIssueTitle: "Adam Walsh",
+            p1_filter: false,
+            p2_filter: false,
+            p3_filter: false,
+            p4_filter: false,
+            p5_filter: false,
+            p6_filter: false,
+            p7_filter: false,
             population_filter: 0,
             implemented_sort: 0,
             county_filter: 0,
             searchedState: "",
-            total_practices: 5,
+            total_practices: 0
         };
     }
 
-    changeReq = (req) => {
-        this.setState({ electronic_request: !req})
+    changeP1 = (p) => {
+        this.setState({ p1_filter: !p });
+        console.log("1");
     }
-    changeNotary = (n) => {
-        this.setState({ notary: !n })
+    changeP2 = (p) => {
+        this.setState({ p2_filter: !p });
+
+        console.log("2");
     }
-    changeFee = (f) => {
-        this.setState({ fee: !f })
+    changeP3 = (p) => {
+        this.setState({ p3_filter: !p })
+
+        console.log("3s");
     }
-    changeOffice = (o) => {
-        this.setState({ office: !o })
+    changeP4 = (p) => {
+        this.setState({ p4_filter: !p })
+
+        console.log("4");
     }
-    changeWitness = (w) => {
-        this.setState({ witness: !w })
+    changeP5 = (p) => {
+        this.setState({ p5_filter: !p })
+
+        console.log("5");
+    }
+    changeP6 = (p) => {
+        this.setState({ p6_filter: !p })
+    }
+    changeP7 = (p) => {
+        this.setState({ p7_filter: !p })
     }
 
     updateSearchedState = (s) => {
         this.setState({ searchedState: s.target.value })
     }
 
-    countImplementations(data) {
-        let tempData = [];
-        for (var i = 0; i < data.length; i++) {
-            var count = 0;
-            var item = data[i];
 
-            if (item["electronic_request"])
-                count += 1;
-            if (item["no_contact"])
-                count += 1;
-            if (item["no_fee"])
-                count += 1;
-            if (item["no_notary_required"])
-                count += 1;
-            if (item["no_witness_required"])
-                count += 1;
+    //getStateInfo = (i, item, state, count, tempData) => {
+    //    axios
+    //        .get(`http://localhost:8000/api/states/${state}/`)
+    //        .then(res => {
+    //            var temp = {
+    //                id: i,
+    //                implementationData: item,
+    //                stateData: res.data,
+    //                implemented: count
+    //            }
+    //            return temp
+    //        })
+    //        .then(temp => {
+    //            tempData.push(temp);
+    //            console.log(tempData.length);
+    //        }
+    //        )
 
-            tempData.push(
-                {
-                    id: i,
-                    abbreviation: item["abbreviation"],
-                    county_administered: item["county_administered"],
-                    electronic_request: item["electronic_request"],
-                    name: item["name"],
-                    no_contact: item["no_contact"],
-                    no_fee: item["no_fee"],
-                    no_notary_required: item["no_notary_required"],
-                    no_witness_required: item["no_witness_required"],
-                    population: item["population"],
-                    implemented: count
-                })
+    //        .catch(err => console.log(err))
+
+    //}
+
+    //setStatesData = (data) => {
+    //    let tempData = [];
+    //     // TODO: Data.reduce((practices) => {} , {})
+
+    //    for (var i = 0; i < data.length; i++) {
+
+    //        var item = data[i];
+
+    //        if (item['issue_area'] === this.state.currentIssue) {
+    //            var count = 0;
 
 
+    //            if (item['practice_1']) {
+    //                count++;
+    //            }
+    //            if (item['practice_2']) {
+    //                count++;
+    //            }
+    //            if (item['practice_3']) {
+    //                count++;
+    //            }
+    //            if (item['practice_4']) {
+    //                count++;
+    //            }
+    //            if (item['practice_5']) {
+    //                count++;
+    //            }
+    //            if (item['practice_6']) {
+    //                count++;
+    //            }
+    //            if (item['practice_7']) {
+    //                count++;
+    //            }
+
+    //            let state = item['state'];
+
+    //            this.getStateInfo(i, item, state, count, tempData);
+    //        }
+    //    }
+
+    //    this.setState({ data: tempData });
+
+    //}
+
+    matchData = (stateData, impData) => {
+        let tempData = []
+        console.log(stateData);
+        console.log(impData);
+        for (var i = 0; i < impData.length; i++) {
+            var item = impData[i];
+            if (item["issue_area"] === this.state.currentIssueTitle) {
+                var count = 0;
+
+                if (item['practice_1']) {
+                    count++;
+                }
+                if (item['practice_2']) {
+                    count++;
+                }
+                if (item['practice_3']) {
+                    count++;
+                }
+                if (item['practice_4']) {
+                    count++;
+                }
+                if (item['practice_5']) {
+                    count++;
+                }
+                if (item['practice_6']) {
+                    count++;
+                }
+                if (item['practice_7']) {
+                    count++;
+                }
+
+                for (var j = 0; j < stateData.length; j++) {
+                    if (item['state'] === stateData[j]['name']) {
+
+                        var temp = {
+                            id: j,
+                            implementationData: item,
+                            stateData: stateData[j],
+                            implemented: count
+                        }
+                        tempData.push(temp);
+                    }
+                }
+            }
         }
 
         this.setState({ data: tempData });
     }
 
+    // TODO: Add total practices so that it is variable
     componentDidMount() {
         axios
             .get("http://localhost:8000/api/states/")
-            .then(res => this.countImplementations(res.data))
+            .then(stateRes => {
+                axios
+                    .get("http://localhost:8000/api/implementations/")
+                    .then(impRes => this.matchData(stateRes.data, impRes.data))
+                    .catch(err => console.log(err))
+            })
+            .catch(err => console.log(err));
+        axios
+            .get("http://localhost:8000/api/issue-areas/")
+            .then(res => this.setState(
+                {
+                    issueAreaData: res.data,
+                    currentIssue: res.data[0],
+                    currentIssueTitle: res.data[0]['title'],
+                    total_practices: res.data[0]['num_practices']
+                }
+            ))
             .catch(err => console.log(err));
     }
 
     render() {
-
-        var newStates = this.state.data;
-        var scoreCardStates = [];
+       // console.log("RENDER");
+        //console.log(this.state.data);
+        // console.log(this.state.data.length);
+        var newStates = [...this.state.data];
+        // console.log(newStates);
         var searchedStates = [];
 
-        if (this.state.data[0]["name"]) {
-             scoreCardStates = this.state.data;
-             searchedStates = scoreCardStates;
+        if (this.state.data.length > 1) {
+            searchedStates = this.state.data;
+            console.log(this.state.data);
              if(this.state.searchedState !== ""){
-                searchedStates = searchedStates.filter(
-                    state => state.name.toLowerCase().includes( this.state.searchedState.toLowerCase() )===true)
-             }
+                 searchedStates = searchedStates.filter(
+                     state => state.stateData.name.toLowerCase().includes(this.state.searchedState.toLowerCase()) === true)
+            }
              
         }
 
-        if (this.state.electronic_request) {
+        if (this.state.p1_filter) {
             newStates = newStates.filter(
-                state => state.electronic_request === true);
+                state => state.implementationData.practice_1 === true);
         }
-        if (this.state.notary) {
+        if (this.state.p2_filter) {
             newStates = newStates.filter(
-                state => state.no_notary_required === true);
+                state => state.implementationData.practice_2 === true);
         }
-        if (this.state.fee) {
+        if (this.state.p3_filter) {
             newStates = newStates.filter(
-                state => state.no_fee === true);
+                state => state.implementationData.practice_3 === true);
         }
-        if (this.state.office) {
+        if (this.state.p4_filter) {
             newStates = newStates.filter(
-                state => state.no_contact === true);
+                state => state.implementationData.practice_4 === true);
         }
-        if (this.state.witness) {
+        if (this.state.p5_filter) {
             newStates = newStates.filter(
-                state => state.no_witness_required === true);
+                state => state.implementationData.practice_5 === true);
+        }
+        if (this.state.p6_filter) {
+            newStates = newStates.filter(
+                state => state.implementationData.practice_6 === true);
+        }
+        if (this.state.p7_filter) {
+            newStates = newStates.filter(
+                state => state.implementationData.practice_7 === true);
         }
 
         if (this.state.population_filter === 1) {
             newStates = newStates.filter(
-                state => state.population < low_pop);
+                state => state.stateData.population < low_pop);
         }
         else if (this.state.population_filter === 2) {
             newStates = newStates.filter(
-                state => state.population >= low_pop && state.population < high_pop);
+                state => state.stateData.population >= low_pop && state.stateData.population < high_pop);
         }
         else if (this.state.population_filter === 3) {
             newStates = newStates.filter(
-                state => state.population >= high_pop);
+                state => state.stateData.population >= high_pop);
         }
         if (this.state.implemented_sort === 1) {
 
@@ -163,7 +283,7 @@ class Scorecard extends Component {
             newStates.sort((a, b) => (a.implemented > b.implemented) ? 1 : -1)
         }
         else if (this.state.implemented_sort === 0) {
-            newStates.sort((a, b) => (a.name > b.name) ? 1 : -1)
+            newStates.sort((a, b) => (a.stateData.name > b.stateData.name) ? 1 : -1)
         }
 
         if (this.state.county_filter === 0) {
@@ -171,18 +291,141 @@ class Scorecard extends Component {
         }
         else if (this.state.county_filter === 1) {
             newStates = newStates.filter(
-                state => state.county_administered === true
+                state => state.stateData.county_administered === true
             )
         }
         else if (this.state.county_filter === 2) {
             newStates = newStates.filter(
-                state => state.county_administered === false
+                state => state.stateData.county_administered === false
             )
         }
 
         var glyphs = null;
+        //console.log(newStates);
+        //console.log(scoreCardStates);
+        //console.log(searchedStates);
         if (newStates.length !== 0) {
-            glyphs = <Glyphs states={newStates}/>
+            glyphs = <Glyphs
+                states={newStates}
+                totalCount={this.state.total_practices}
+            />
+        }
+
+        var filter_checkboxes = [];
+        for (var i = 1; i <= this.state.total_practices; i++) {
+            if (i === 1) {
+                filter_checkboxes.push(
+                    <label className="filter-label">
+                        {this.state.currentIssue[`practice_${i}`]}
+                        <input
+                            className="filter-check"
+                            type="checkbox"
+                            label={this.state.currentIssue[`practice_${i}`]}
+                            onChange={() => {
+                                this.changeP1(this.state.p1_filter);
+                            }
+                            }
+                        />
+                    </label>
+                )
+            }
+            else if (i === 2) {
+                filter_checkboxes.push(
+                    <label className="filter-label">
+                        {this.state.currentIssue[`practice_${i}`]}
+                        <input
+                            className="filter-check"
+                            type="checkbox"
+                            label={this.state.currentIssue[`practice_${i}`]}
+                            onChange={() => {
+                                this.changeP2(this.state.p2_filter);
+                            }
+                            }
+                        />
+                    </label>
+                )
+            }
+            else if (i === 3) {
+                filter_checkboxes.push(
+                    <label className="filter-label">
+                        {this.state.currentIssue[`practice_${i}`]}
+                        <input
+                            className="filter-check"
+                            type="checkbox"
+                            label={this.state.currentIssue[`practice_${i}`]}
+                            onChange={() => {
+                                this.changeP3(this.state.p3_filter);
+                            }
+                            }
+                        />
+                    </label>
+                )
+            }
+            else if (i === 4) {
+                filter_checkboxes.push(
+                    <label className="filter-label">
+                        {this.state.currentIssue[`practice_${i}`]}
+                        <input
+                            className="filter-check"
+                            type="checkbox"
+                            label={this.state.currentIssue[`practice_${i}`]}
+                            onChange={() => {
+                                this.changeP4(this.state.p4_filter);
+                            }
+                            }
+                        />
+                    </label>
+                )
+            }
+            else if (i === 5) {
+                filter_checkboxes.push(
+                    <label className="filter-label">
+                        {this.state.currentIssue[`practice_${i}`]}
+                        <input
+                            className="filter-check"
+                            type="checkbox"
+                            label={this.state.currentIssue[`practice_${i}`]}
+                            onChange={() => {
+                                this.changeP5(this.state.p5_filter);
+                            }
+                            }
+                        />
+                    </label>
+                )
+            }
+            else if (i === 6) {
+                filter_checkboxes.push(
+                    <label className="filter-label">
+                        {this.state.currentIssue[`practice_${i}`]}
+                        <input
+                            className="filter-check"
+                            type="checkbox"
+                            label={this.state.currentIssue[`practice_${i}`]}
+                            onChange={() => {
+                                this.changeP6(this.state.p6_filter);
+                            }
+                            }
+                        />
+                    </label>
+                )
+            }
+            else if (i === 7) {
+                filter_checkboxes.push(
+                    <label className="filter-label">
+                        {this.state.currentIssue[`practice_${i}`]}
+                        <input
+                            className="filter-check"
+                            type="checkbox"
+                            label={this.state.currentIssue[`practice_${i}`]}
+                            onChange={() => {
+                                this.changeP7(this.state.p7_filter);
+                            }
+                            }
+                        />
+                    </label>
+                )
+            }
+
         }
 
     return (
@@ -205,7 +448,7 @@ class Scorecard extends Component {
                     <div className="sort-boxes">
                         <label className="sort-label">
                             
-                            Population Size
+                            <div className="sort-title"> Population Size </div>
 
                             <select onChange={(e) => {
                                 if (e.target.value === "no-filter") {
@@ -230,7 +473,7 @@ class Scorecard extends Component {
                         </label>
 
                         <label className="sort-label">
-                            Practices Implemented
+                            <div className="sort-title">  Practices Implemented </div>
 
                             <select onChange={(e) => {
                                 if (e.target.value === "most") {
@@ -252,7 +495,7 @@ class Scorecard extends Component {
 
                         <label className="sort-label">
                             
-                            State vs County
+                            <div className="sort-title"> State vs County </div>
                             <select onChange={(e) => {
                                 if (e.target.value === "no-filter") {
                                     this.setState({ county_filter: 0 })
@@ -277,58 +520,11 @@ class Scorecard extends Component {
                 <div className="right-header"> 
                     <h5> Filter By... </h5>
                     <div className="checkboxes">
-                        <label className="filter-label">
-                            
-                            Electronic Request
-                            <input
-                                className="filter-check"
-                                type="checkbox"
-                                label="Electronic Request"
-                                onChange={() => this.changeReq(this.state.electronic_request)}
-                            />
-                        </label>
-                        <label className="filter-label">
-                            
-                            No Notary
-                            <input
-                                className="filter-check"
-                                type="checkbox"
-                                label=" No Notary"
-                                onChange={() => this.changeNotary(this.state.notary)}
-                            />
-                        </label>
-                        <label className="filter-label">
-                            
-                            No Fee
-                            <input
-                                className="filter-check"
-                                type="checkbox"
-                                label="No Fee"
-                                onChange={() => this.changeFee(this.state.fee)}
-                            />
-                        </label>
-                        <label className="filter-label">
-                            
-                            Office Contact
-                            <input
-                                className="filter-check"
-                                type="checkbox"
-                                label="Office Contact"
-                                onChange={() => this.changeOffice(this.state.office)}
-                            />
-                        </label>
-                        <label className="filter-label">
-                            
-                            No Witness Needed
-                            <input
-                                className="filter-check"
-                                type="checkbox"
-                                label="First"
-                                onChange={() => this.changeWitness(this.state.witness)}
-                            />
-                        </label>
+                        {filter_checkboxes}
+
                     </div>
                 </div>
+                <Legend/>
             </div>
 
             <div>{glyphs}</div>
@@ -347,7 +543,15 @@ class Scorecard extends Component {
                 </div>
 
                 {searchedStates.map(state =>
-                    <StateCard state={state["name"]} state_data={state} key={state.id} total={this.state.total_practices} completed={state.implemented} />)}
+                    <StateCard
+                        state={state['stateData']["name"]}
+                        implementation_data={state['implementationData']}
+                        state_data={state['stateData']}
+                        key={state.id}
+                        total={this.state.total_practices}
+                        completed={state['implemented']}
+                        issueArea={this.state.currentIssue}
+                    />)}
                 </div>
             </div>
         );

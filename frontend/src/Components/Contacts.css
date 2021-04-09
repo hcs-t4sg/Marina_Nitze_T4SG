@@ -1,7 +1,25 @@
+
+
 .contacts-page {
   width: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
+}
+
+
+.contact-grid {
+	display: flex;
+	flex-direction: column;
+	align-items: flex-start;
+	margin: 20px 0px;
+}
+
+
+.contact-grid-row {
+	display: flex;
+	flex-direction: row;
+	align-items: flex-start;
+	margin: 0px 0px;
 }

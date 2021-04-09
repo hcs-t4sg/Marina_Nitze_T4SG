@@ -1,6 +1,8 @@
 {
   "ExpandedNodes": [
     "",
+    "\\backend",
+    "\\backend\\marina_app",
     "\\frontend",
     "\\frontend\\src",
     "\\frontend\\src\\Components",

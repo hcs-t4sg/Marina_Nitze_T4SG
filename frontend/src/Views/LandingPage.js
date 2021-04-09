@@ -14,25 +14,11 @@ class LandingPage extends Component {
         super(props);
         this.state = {
             implementationBlocks: [],
-            introduction_text: "",
-            conclusion_text: ""
-
+            currentIssue: {},
+            total_practices: {},
+            issueAreaData: [],
+            currentIssueTitle: "Adam Walsh"
         }
-    }
-
-    componentDidMount() {
-        axios
-            .get("http://localhost:8000/api/implementation_guidance/")
-            .then(res => this.createImplementationBlocks(res.data))
-            .catch(err => console.log(err));
-
-        axios
-            .get("http://localhost:8000/api/issue-areas/")
-            .then((res) => this.setState({ 
-                introduction_text: res.data[0].introduction_text,
-                conclusion_text: res.data[0].conclusion_text
-            }))
-            .catch(err => console.log(err));
     }
 
     createImplementationBlocks(data) {
@@ -42,13 +28,37 @@ class LandingPage extends Component {
                 <p className="vary-text"> The following are descriptions of each practice, with implementation guides linked. </p>
             </div>
         ];
-        for (var i = 0; i < data.length; i++) {
-            let implementBlock = <ImplementBlock link="https://www.childwelfareplaybook.com/" guidance={data[i]} />
+        for (var i = 1; i <= this.state.total_practices; i++) {
+            let implementBlock = <ImplementBlock
+                                    link={this.state.currentIssue[`practice_${i}_link`]}
+                                    title={this.state.currentIssue[`practice_${i}`]}
+                                    description={this.state.currentIssue[`practice_${i}_description`]}
+                                    question={this.state.currentIssue[`practice_${i}_question`]}
+                                    quote={this.state.currentIssue[`practice_${i}_quote`]}
+            />
             tempImplementBlocks.push(implementBlock);
         }
-
+        console.log(tempImplementBlocks);
         this.setState({ implementationBlocks: tempImplementBlocks });
     }
+
+
+    componentDidMount() {
+        axios
+            .get("http://localhost:8000/api/issue-areas/")
+            .then(res => {
+                this.setState(
+                    {
+                        issueAreaData: res.data,
+                        currentIssue: res.data[0],
+                        currentIssueTitle: res.data[0]['title'],
+                        total_practices: res.data[0]['num_practices']
+                    })
+                this.createImplementationBlocks(res.data[0])
+            })
+            .catch(err => console.log(err));
+    }
+
 
     render() {
         return (
@@ -70,7 +80,14 @@ class LandingPage extends Component {
 
                         <div id="introduction-container">
                             <Subheader title="Introduction"/>
-                            <div id="introduction-text" dangerouslySetInnerHTML={{__html: this.state.introduction_text}}></div>
+                            <div id="introduction-text">
+                                <p>
+                                    {this.state.currentIssue['intro_text']}
+                                </p>
+                            </div>
+                        </div>
+                        <div className="subtitle-container">
+                            <Subheader title="Overview of Practices" />
                         </div>
 
                         <div id="implementation-div">{this.state.implementationBlocks}</div>
