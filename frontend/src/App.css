@@ -198,6 +198,13 @@ html {
   font-size: .75em;
 }
 
+.conclusion-text {
+  text-align: left;
+  width: 60%;
+  background: var(--light-off-white);
+  padding: 50px 70px;
+}
+
 .column {
   float: left;
   width: 40%;

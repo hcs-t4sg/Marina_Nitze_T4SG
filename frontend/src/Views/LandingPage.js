@@ -90,11 +90,11 @@ class LandingPage extends Component {
 
                         <div id="implementation-div">{this.state.implementationBlocks}</div>
 
+                        <div className="conclusion-text" dangerouslySetInnerHTML={{ __html: this.state.currentIssue['conclusion_text'] }}></div>
+
                         <div id="nationwide-comparison">
                             <Scorecard/>
                         </div>
-
-                        <div className="conclusion-text" dangerouslySetInnerHTML={{ __html: this.state.currentIssue['conclusion_text'] }}></div>
                     </div>
                 </div>
             </div>
