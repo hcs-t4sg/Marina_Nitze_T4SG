@@ -66,12 +66,12 @@ class LandingPage extends Component {
                 <div className="teal-section-container">
                     <div className="teal-section"></div>
                     <h2 className="header-subtitle"> Child Welfare Playbook </h2>
-                    <h1 className="title">Scorecard</h1>
+                    <h1 className="title">Progress Dashboard</h1>
                 </div>
                 <div className="content-sidenav-container">
                     <div className="sidenav">
                         <a href="#introduction-container">Introduction</a>
-                        <a href="#implementation-div">Overview of Practices</a>
+                        <a href="#implementation-div">Overview of Promising Practices</a>
                         <a href="#nationwide-comparison">Nationwide Comparison</a>
                         <a href="#state-by-state-area">State-By-State Scorecard</a>
                     </div>
