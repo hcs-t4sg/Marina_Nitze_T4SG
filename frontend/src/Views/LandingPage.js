@@ -80,7 +80,7 @@ class LandingPage extends Component {
 
                         <div id="introduction-container">
                             <Subheader title="Introduction"/>
-                            <div id="introduction-text">
+                            <div className="introduction-text">
                                 <div dangerouslySetInnerHTML={{__html: this.state.currentIssue['intro_text']}}></div>
                             </div>
                         </div>
@@ -94,7 +94,7 @@ class LandingPage extends Component {
                             <Scorecard/>
                         </div>
 
-                        <div id="conclusion-text" dangerouslySetInnerHTML={{ __html: this.state.conclusion_text }}></div>
+                        <div className="conclusion-text" dangerouslySetInnerHTML={{ __html: this.state.currentIssue['conclusion_text'] }}></div>
                     </div>
                 </div>
             </div>

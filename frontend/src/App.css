@@ -191,16 +191,16 @@ html {
     text-align: center;
 }
 
-#introduction-text {
+.introduction-text,  .conclusion-text {
   margin-top: 30px;
   margin-right: 7vw;
   margin-left: 7vw;
   font-size: .75em;
 }
 
-#conclusion-text {
+/*#conclusion-text {
   font-size: .7em;
-}
+}*/
 
 .vary-block {
   background-color: var(--cyan-lightest);
