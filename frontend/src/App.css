@@ -198,6 +198,18 @@ html {
   font-size: .75em;
 }
 
+.column {
+  float: left;
+  width: 40%;
+  margin: 0px 30px;
+}
+
+.row:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
 .vary-block {
   background-color: var(--cyan-lightest);
   height: 80%;
