@@ -10,18 +10,36 @@ export default class StateCard extends Component{
     constructor(props){
         super(props);
         this.state = {
-            state: props.state_data["name"],
+            state: props.state,
             state_data: props.state_data,
+            implementation_data: props.implementation_data,
             expanded: false,
             test: true,
             total: props.total,
-            completed: props.completed
+            completed: props.completed,
+            issue: props.issueArea
         };
     }
 
     render() {
         var data = this.state.state_data;
+        var i_data = this.state.implementation_data;
+
         const implemented_string = this.state.completed + "/" + this.state.total;
+
+        var resourceLinks = []
+        console.log(this.state.total);
+        for (var i = 1; i <= this.state.total; i++) {
+            console.log();
+            resourceLinks.push(
+                <div>
+                    <a href={this.state.issue[`practice_${i}_link`]} target="blank">
+                        Link
+                    </a>
+                </div>
+            )
+        }
+
         if (this.state.expanded) {
             return (
                 <div className="state-scorecard">
@@ -50,19 +68,15 @@ export default class StateCard extends Component{
                         </div>
                         <div className="column-center">
                             <h4><font color="#0E7088">Implemented?</font></h4>
-                            <div><ImplementedIndicator implemented={data.no_fee} /></div>
-                            <div><ImplementedIndicator implemented={data.no_notary_required} /></div>
-                            <div><ImplementedIndicator implemented={data.electronic_request} /></div>
-                            <div><ImplementedIndicator implemented={data.no_contact} /></div>
-                            <div><ImplementedIndicator implemented={data.no_witness_required} /></div>
+                            <div><ImplementedIndicator implemented={i_data.practice_1} /></div>
+                            <div><ImplementedIndicator implemented={i_data.practice_2} /></div>
+                            <div><ImplementedIndicator implemented={i_data.practice_3} /></div>
+                            <div><ImplementedIndicator implemented={i_data.practice_4} /></div>
+                            <div><ImplementedIndicator implemented={i_data.practice_5} /></div>
                         </div>
                         <div className="column-right">
                             <h4><font color="#0E7088">Resource Guide</font></h4>
-                            <div>Link</div>
-                            <div>Link</div>
-                            <div>Link</div>
-                            <div>Link</div>
-                            <div>Link</div>
+                            {resourceLinks}
                         </div>
                     </div>
                 </div>

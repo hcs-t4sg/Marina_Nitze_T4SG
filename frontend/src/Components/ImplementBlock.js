@@ -5,12 +5,13 @@ import ImplementationModal from "./ImplementationModal"
 class ImplementBlock extends Component {
     constructor(props) {
         super(props);
-        console.log(props);
         this.state = {
             expanded: false,
-            title: props.guidance.name,
-            body: props.guidance.why,
-            link: props.guidance.link
+            title: props.title,
+            question: props.question,
+            description: props.description,
+            quote: props.quote,
+            link: props.link
             
         }
     }
@@ -25,7 +26,7 @@ class ImplementBlock extends Component {
             return (
                 <div className="implement-block">
                     <h2 className="implement-title"> {this.state.title} </h2>
-                    <p className="implement-body"> {this.state.body} </p>
+                    <p className="implement-question"> {this.state.question} </p>
                     <button className="expand-btn" onClick={this.updateExpand}> See More </button>
                 </div>
             )
@@ -41,6 +42,8 @@ class ImplementBlock extends Component {
                 <ImplementationModal
                     handleClose={this.updateExpand}
                     link={this.props.link}
+                    description={this.props.description}
+                    quote={this.state.quote}
                 />
             </div>
         )

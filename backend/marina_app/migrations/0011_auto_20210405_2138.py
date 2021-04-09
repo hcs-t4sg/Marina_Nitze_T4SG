@@ -11,26 +11,5 @@ class Migration(migrations.Migration):
     ]
 
     operations = [
-        migrations.CreateModel(
-            name='Contact',
-            fields=[
-                ('id', models.AutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('first_name', models.CharField(default='', max_length=200)),
-                ('last_name', models.CharField(default='', max_length=200)),
-                ('position', models.CharField(default='', max_length=200)),
-                ('email', models.CharField(default='', max_length=200)),
-            ],
-        ),
-        migrations.DeleteModel(
-            name='ImplementationGuidance',
-        ),
-        migrations.RemoveField(
-            model_name='issuearea',
-            name='introduction_text',
-        ),
-        migrations.AddField(
-            model_name='contact',
-            name='issue_area',
-            field=models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='marina_app.issuearea'),
-        ),
+
     ]
