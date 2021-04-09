@@ -81,9 +81,7 @@ class LandingPage extends Component {
                         <div id="introduction-container">
                             <Subheader title="Introduction"/>
                             <div id="introduction-text">
-                                <p>
-                                    {this.state.currentIssue['intro_text']}
-                                </p>
+                                <div dangerouslySetInnerHTML={{__html: this.state.currentIssue['intro_text']}}></div>
                             </div>
                         </div>
                         <div className="subtitle-container">

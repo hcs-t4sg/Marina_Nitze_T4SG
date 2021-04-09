@@ -192,7 +192,10 @@ html {
 }
 
 #introduction-text {
-  font-size: .7em;
+  margin-top: 30px;
+  margin-right: 7vw;
+  margin-left: 7vw;
+  font-size: .75em;
 }
 
 #conclusion-text {
