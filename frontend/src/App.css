@@ -134,11 +134,6 @@ html {
   text-align: left;
 }
 
-.filter-title {
-  margin-left: 5px;
-  margin-top: 7px;
-}
-
 .circle-label {
   fill: white;
   text-anchor: middle;
@@ -252,7 +247,7 @@ html {
 
 .filter-check{
   margin: auto;
-  margin-top: 10px;
+  margin: 4px 6px;
 }
 
 .checkboxes {
@@ -376,6 +371,7 @@ h5 {
 }
 
 .right-header {
+  min-width: 10vw;
   margin-top: 6%;
   margin: 10px;
 }

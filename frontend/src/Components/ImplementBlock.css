@@ -61,7 +61,7 @@ p{
 .implement-block {
     width: 90%;
     border: 1px solid black;
-    padding: 10px;
+    padding: 60px 0px;
     margin: 15px;
     box-shadow: var(--off-white) 5px 5px;
 }
