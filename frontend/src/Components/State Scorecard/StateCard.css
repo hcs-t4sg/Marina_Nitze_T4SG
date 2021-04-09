@@ -113,7 +113,7 @@
     width: 30%;
     color:black;
     align-items: flex-start;
-    padding-left: 2%
+    padding-left: 2%;
 }
 
 .column-center{
@@ -129,7 +129,10 @@
     flex-direction: column;
     width: 25%;
     color: var(--cyan-medium);
-    text-decoration: underline;
+}
+
+.column-left, .column-center, .column-right {
+    grid-row-gap: 7px;
 }
 
 a {
@@ -138,14 +141,16 @@ a {
 
 .implemented-yes{
     background-color: var(--cyan-lighter);
-    width: 50px;
-    height: 90%;
 }
 
 .implemented-no{
     background-color: var(--bright-pink);
+}
+
+.implemented-yes, .implemented-no {
+    padding: 2px;
     width: 50px;
-    height: 90%;
+    height: 80%;
 }
 
 .score-percentage{
