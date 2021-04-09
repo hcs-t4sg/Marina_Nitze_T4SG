@@ -14,8 +14,9 @@
 
 .scorecard {
   position: relative;
-  width: 75%;
+  width: 90%;
   margin: 0 auto;
+  text-align: justify;
 }
 
 .scorecard-container {
@@ -30,7 +31,7 @@
 
 .glyph {
   margin: 0px;
-  padding: 2px;
+  padding: 3px;
   width: 100px;
   height: 100px;
 }
