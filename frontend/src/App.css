@@ -200,18 +200,10 @@ html {
 }
 
 .vary-block {
-<<<<<<< HEAD
   background-color: var(--cyan-lightest);
   height: 80%;
   width: 85%;
   margin: auto;
-
-=======
-    background-color: #D9F2F5;
-    height: 80%;
-    width: 85%;
-    margin: auto;
->>>>>>> master
 }
 
 .vary-header {
@@ -366,13 +358,6 @@ h5 {
 }
 
 .right-header {
-<<<<<<< HEAD
   margin-top: 6%;
   margin: 10px;
 }
-
-=======
-    margin-top: 6%;
-    margin: 10px;
-}
->>>>>>> master
