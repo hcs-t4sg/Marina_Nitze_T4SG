@@ -85,7 +85,7 @@ class LandingPage extends Component {
                             </div>
                         </div>
                         <div className="subtitle-container">
-                            <Subheader title="Overview of Practices" />
+                            <Subheader title="Overview of Promising Practices" />
                         </div>
 
                         <div id="implementation-div">{this.state.implementationBlocks}</div>
