@@ -294,8 +294,8 @@ select {
 }
 
 #state-by-state-area {
-  width: 75%;
-  justify-self: center;
+  padding: 0px 60px;
+  width: 80%;
 }
 
 .admin-space {
