@@ -11,11 +11,7 @@ class Contacts extends Component {
 	constructor(props) {
         super(props);
         this.state = {
-            first_name: "",
-            last_name: "",
-            position: "",
-            email: "",
-            currentIssueTitle: "Adam Walsh"
+            implementationBlocks: []
         }
     }
 
@@ -23,14 +19,32 @@ class Contacts extends Component {
         axios
             .get("http://localhost:8000/api/contacts/")
             .then(res => {
-            	console.log(res.data);
-                this.createContactRows(res.data[0])
+                this.createContactRows(res.data);
             })
             .catch(err => console.log(err));
     }
 
     createContactRows(data) {
-    	
+    	var contactRows = [
+            <div className="contacts-header">
+                <h3 className="contacts-title"> Name </h3>
+                <h3 className="contacts-title"> Position </h3>
+                <h3 className="contacts-title"> Email </h3>
+            </div>
+        ];
+    	for (var i = 0; i < data.length; i++) {
+    		// console.log(data[i]['email']);
+    		let newRow = (
+    				<div className="contacts-row">
+	    				<div className="contact-grid-element">{data[i]['first_name']}</div>
+	    				<div className="contact-grid-element">{data[i]['last_name']}</div>
+	    				<div className="contact-grid-element">{data[i]['email']}</div>
+	    			</div>
+            	);
+            contactRows.push(newRow);
+
+    	}
+    	this.setState({ contactRows: contactRows });
     }
 
     render() {
