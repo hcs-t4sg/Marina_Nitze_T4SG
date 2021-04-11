@@ -11,7 +11,7 @@ class Contacts extends Component {
 	constructor(props) {
         super(props);
         this.state = {
-            implementationBlocks: []
+            contactRows: []
         }
     }
 
@@ -59,7 +59,7 @@ class Contacts extends Component {
 		        <Subheader title="Family Findings: Contacts"/>
 
 		        <div className="contact-grid">
-	                <div className="contact-grid-row"></div>
+		        	<div className="contact-grid">{this.state.contactRows}</div>
 	            </div>
 
 	        </div>
