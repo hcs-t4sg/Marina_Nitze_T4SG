@@ -28,6 +28,7 @@ class Contacts extends Component {
     	var contactRows = [
     		<div>
 	            <div className="contact-grid-header">
+	            	<h3 className="contacts-title"> Practice </h3>
 	                <h3 className="contacts-title"> Name </h3>
 	                <h3 className="contacts-title"> Position </h3>
 	                <h3 className="contacts-title"> Email </h3>
@@ -36,9 +37,11 @@ class Contacts extends Component {
 	        </div>
         ];
     	for (var i = 0; i < data.length; i++) {
+    		console.log(data[0]['issue_area']);
     		let newRow = (
     				<div>
 	    				<div className="contact-grid-row">
+	    					<div className="contact-grid-element">{data[i]['issue_area']}</div>
 		    				<div className="contact-grid-element">{data[i]['first_name']}</div>
 		    				<div className="contact-grid-element">{data[i]['last_name']}</div>
 		    				<div className="contact-grid-element" className="contact-email">{data[i]['email']}</div>
