@@ -8,18 +8,53 @@
   justify-content: center;
 }
 
+.contact-grid-container {
+	margin: 20px 0px 200px 0px;
+}
 
 .contact-grid {
 	display: flex;
 	flex-direction: column;
 	align-items: flex-start;
-	margin: 20px 0px;
+	max-width: 70vw;
 }
 
+.line {
+	width: 55vw;
+	height: 1px;
+	border-bottom: 1px solid gray;
+}
+
+.contact-grid-row, .contact-grid-header {
+	display: flex;
+	flex-direction: row;
+	align-items: baseline;
+	justify-content: flex-start;
+	flex: 1;
+	margin: 15px 20px;
+}
+
+.contacts-title {
+	font-size: 1.2em;
+}
 
 .contact-grid-row {
 	display: flex;
 	flex-direction: row;
 	align-items: flex-start;
-	margin: 0px 0px;
 }
+
+.contact-grid-element, .contacts-title {
+	margin: 0px 140px 0px 0px;
+}
+
+.contact-grid-element {
+	font-size: 0.9em;
+}
+
+.contact-email {
+	background-color: #C8EAEF;
+	padding: 3px 6px;
+}
+
+
