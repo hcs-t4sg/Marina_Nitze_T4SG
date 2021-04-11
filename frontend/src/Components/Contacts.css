@@ -13,14 +13,13 @@
     border: 1px solid black;
     box-shadow: #C8D2D5 6px 6px;
     margin-top: 5%;
-    padding: 30px 50px;
+    padding: 50px 60px;
 }
 
 .contact-grid {
-	display: flex;
-  	flex-wrap: wrap;
-  	flex-direction: column;
 	max-width: 70vw;
+	-webkit-border-horizontal-spacing: 40px;
+    -webkit-border-vertical-spacing: 20px;
 }
 
 .line {
@@ -30,20 +29,18 @@
 }
 
 .contact-grid-row, .contact-grid-header {
-	display: flex;
-	flex-direction: row;
-	flex-wrap: wrap;
-	width: 100%;
-	margin: 15px 20px;
+
 }
 
 .contact-grid-element, .contacts-title {
-	margin: 0px 120px 0px 0px;
+  	overflow: hidden;
+  	text-overflow: ellipsis;
+  	white-space: pre-wrap;
 }
 
 .contacts-title {
 	font-size: 1.2em;
-	margin-right: 130px;
+	color: #0E7088;
 }
 
 .contact-grid-element {

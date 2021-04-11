@@ -27,12 +27,12 @@ class Contacts extends Component {
     createContactRows(data) {
     	var contactRows = [
     		<div>
-	            <div className="contact-grid-header">
-	            	<h3 className="contacts-title"> Practice </h3>
-	                <h3 className="contacts-title"> Name </h3>
-	                <h3 className="contacts-title"> Position </h3>
-	                <h3 className="contacts-title"> Email </h3>
-	            </div>
+	            <tr className="contact-grid-header">
+	            	<td className="contacts-title"> Practice </td>
+	                <td className="contacts-title"> Name </td>
+	                <td className="contacts-title"> Position </td>
+	                <td className="contacts-title"> Email </td>
+	            </tr>
 	            <div className="line"></div>
 	        </div>
         ];
@@ -40,12 +40,12 @@ class Contacts extends Component {
     		console.log(data[0]['issue_area']);
     		let newRow = (
     				<div>
-	    				<div className="contact-grid-row">
-	    					<div className="contact-grid-element">{data[i]['issue_area']}</div>
-		    				<div className="contact-grid-element">{data[i]['first_name']}</div>
-		    				<div className="contact-grid-element">{data[i]['last_name']}</div>
-		    				<div className="contact-grid-element" className="contact-email">{data[i]['email']}</div>
-		    			</div>
+	    				<tr className="contact-grid-row">
+	    					<td className="contact-grid-element">{data[i]['issue_area']}</td>
+		    				<td className="contact-grid-element">{data[i]['first_name']}</td>
+		    				<td className="contact-grid-element">{data[i]['last_name']}</td>
+		    				<td className="contact-grid-element" className="contact-email">{data[i]['email']}</td>
+		    			</tr>
 		    			<div className="line"></div>
 	    			</div>
             	);
