@@ -9,18 +9,22 @@
 }
 
 .contact-grid-container {
-	margin: 20px 0px 200px 0px;
+	margin: 20px 10px 200px 10px;
+    border: 1px solid black;
+    box-shadow: #C8D2D5 6px 6px;
+    margin-top: 5%;
+    padding: 30px 50px;
 }
 
 .contact-grid {
 	display: flex;
-	flex-direction: column;
-	align-items: flex-start;
+  	flex-wrap: wrap;
+  	flex-direction: column;
 	max-width: 70vw;
 }
 
 .line {
-	width: 55vw;
+	width: 100%;
 	height: 1px;
 	border-bottom: 1px solid gray;
 }
@@ -28,24 +32,18 @@
 .contact-grid-row, .contact-grid-header {
 	display: flex;
 	flex-direction: row;
-	align-items: baseline;
-	justify-content: flex-start;
-	flex: 1;
+	flex-wrap: wrap;
+	width: 100%;
 	margin: 15px 20px;
+}
+
+.contact-grid-element, .contacts-title {
+	margin: 0px 120px 0px 0px;
 }
 
 .contacts-title {
 	font-size: 1.2em;
-}
-
-.contact-grid-row {
-	display: flex;
-	flex-direction: row;
-	align-items: flex-start;
-}
-
-.contact-grid-element, .contacts-title {
-	margin: 0px 140px 0px 0px;
+	margin-right: 130px;
 }
 
 .contact-grid-element {
