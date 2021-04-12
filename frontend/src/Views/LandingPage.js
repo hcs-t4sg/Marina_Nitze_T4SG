@@ -30,11 +30,11 @@ class LandingPage extends Component {
         ];
         for (var i = 1; i <= this.state.total_practices; i++) {
             let implementBlock = <ImplementBlock
-                                    link={this.state.currentIssue[`practice_${i}_link`]}
-                                    title={this.state.currentIssue[`practice_${i}`]}
-                                    description={this.state.currentIssue[`practice_${i}_description`]}
-                                    question={this.state.currentIssue[`practice_${i}_question`]}
-                                    quote={this.state.currentIssue[`practice_${i}_quote`]}
+                link={this.state.currentIssue[`practice_${i}_link`]}
+                title={this.state.currentIssue[`practice_${i}`]}
+                description={this.state.currentIssue[`practice_${i}_description`]}
+                question={this.state.currentIssue[`practice_${i}_question`]}
+                quote={this.state.currentIssue[`practice_${i}_quote`]}
             />
             tempImplementBlocks.push(implementBlock);
         }
@@ -45,7 +45,7 @@ class LandingPage extends Component {
 
     componentDidMount() {
         axios
-            .get("http://localhost:8000/api/issue-areas/")
+            .get("https://marina-t4sg.herokuapp.com/api/issue-areas/")
             .then(res => {
                 this.setState(
                     {
@@ -66,12 +66,12 @@ class LandingPage extends Component {
                 <div className="teal-section-container">
                     <div className="teal-section"></div>
                     <h2 className="header-subtitle"> Child Welfare Playbook </h2>
-                    <h1 className="title">Scorecard</h1>
+                    <h1 className="title">Progress Dashboard</h1>
                 </div>
                 <div className="content-sidenav-container">
                     <div className="sidenav">
                         <a href="#introduction-container">Introduction</a>
-                        <a href="#implementation-div">Overview of Practices</a>
+                        <a href="#implementation-div">Overview of Promising Practices</a>
                         <a href="#nationwide-comparison">Nationwide Comparison</a>
                         <a href="#state-by-state-area">State-By-State Scorecard</a>
                     </div>
@@ -79,24 +79,22 @@ class LandingPage extends Component {
                     <div className="content">
 
                         <div id="introduction-container">
-                            <Subheader title="Introduction"/>
-                            <div id="introduction-text">
-                                <p>
-                                    {this.state.currentIssue['intro_text']}
-                                </p>
+                            <Subheader title="Introduction" />
+                            <div className="introduction-text">
+                                <div dangerouslySetInnerHTML={{__html: this.state.currentIssue['intro_text']}}></div>
                             </div>
                         </div>
                         <div className="subtitle-container">
-                            <Subheader title="Overview of Practices" />
+                            <Subheader title="Overview of Promising Practices" />
                         </div>
 
                         <div id="implementation-div">{this.state.implementationBlocks}</div>
 
-                        <div id="nationwide-comparison">
-                            <Scorecard/>
-                        </div>
+                        <div className="conclusion-text" dangerouslySetInnerHTML={{ __html: this.state.currentIssue['conclusion_text'] }}></div>
 
-                        <div id="conclusion-text" dangerouslySetInnerHTML={{ __html: this.state.conclusion_text }}></div>
+                        <div id="nationwide-comparison">
+                            <Scorecard />
+                        </div>
                     </div>
                 </div>
             </div>

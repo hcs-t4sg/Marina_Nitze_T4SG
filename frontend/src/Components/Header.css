@@ -1,7 +1,10 @@
-﻿.header{
+
+@import url("/src/res/Values.css");
+
+.header{
     height: 10vh;
-    background-color: #FFFFFF;
-    box-shadow: 0px 5px 5px 0px #3b3b3b;
+    background-color: white;
+    box-shadow: 0px 5px 5px 0px var(--dark-grey);
     z-index: 10;
     position: relative;
 }
@@ -79,7 +82,7 @@
     position: relative;
     display: block;
     top: 0px;
-    color: #FFFFFF;
+    color: white;
 }
 
     #toggle-on span:before {

@@ -18,9 +18,9 @@ function HomePage() {
 	        	<div className="home-background"></div>
 	        	<h2 className="header-subtitle"> Relevant data. Actionable solutions. </h2>
 	            <h1 className="title"> The Child Welfare Playbook. </h1>
-	            <h4 className="description"> Description of the site and a high-level overview of its features. 
-	            					Mention types of data provided, issue areas covered, and that there is 
-	            					access to best practices. </h4>
+	            <h4 className="description"> Welcome to the Child Welfare Playbook, a collection of actionable 
+	            				promising practices in child welfare. Use our Progress Dashboard to view national 
+	            				comparisons, state reports, and other resources. </h4>
 	            <button type="button" className="go-button" onClick={routeChange} >Go!</button>
             </div>
         </div>

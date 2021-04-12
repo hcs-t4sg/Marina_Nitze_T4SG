@@ -1,0 +1,29 @@
+
+@import url("/src/res/Values.css");
+
+.legend-implemented {
+  fill: var(--teal);
+}
+
+.legend-nonimplemented {
+  fill: var(--dusty-pink);
+}
+
+
+.legend-title {
+  margin: 3px;
+}
+
+.legend-container {
+  margin-left: 40px;
+  display: flex;
+  flex-direction: column;
+  align-content: flex-start;
+  text-align: left;
+}
+
+.legend-labels {
+  margin-left: 20px;
+  display: flex;
+  flex-flow: column wrap;
+}
