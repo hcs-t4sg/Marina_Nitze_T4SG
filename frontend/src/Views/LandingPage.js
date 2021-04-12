@@ -30,11 +30,11 @@ class LandingPage extends Component {
         ];
         for (var i = 1; i <= this.state.total_practices; i++) {
             let implementBlock = <ImplementBlock
-                                    link={this.state.currentIssue[`practice_${i}_link`]}
-                                    title={this.state.currentIssue[`practice_${i}`]}
-                                    description={this.state.currentIssue[`practice_${i}_description`]}
-                                    question={this.state.currentIssue[`practice_${i}_question`]}
-                                    quote={this.state.currentIssue[`practice_${i}_quote`]}
+                link={this.state.currentIssue[`practice_${i}_link`]}
+                title={this.state.currentIssue[`practice_${i}`]}
+                description={this.state.currentIssue[`practice_${i}_description`]}
+                question={this.state.currentIssue[`practice_${i}_question`]}
+                quote={this.state.currentIssue[`practice_${i}_quote`]}
             />
             tempImplementBlocks.push(implementBlock);
         }
@@ -45,7 +45,7 @@ class LandingPage extends Component {
 
     componentDidMount() {
         axios
-            .get("http://localhost:8000/api/issue-areas/")
+            .get("https://marina-t4sg.herokuapp.com/api/issue-areas/")
             .then(res => {
                 this.setState(
                     {
@@ -79,7 +79,7 @@ class LandingPage extends Component {
                     <div className="content">
 
                         <div id="introduction-container">
-                            <Subheader title="Introduction"/>
+                            <Subheader title="Introduction" />
                             <div className="introduction-text">
                                 <div dangerouslySetInnerHTML={{__html: this.state.currentIssue['intro_text']}}></div>
                             </div>
@@ -93,7 +93,7 @@ class LandingPage extends Component {
                         <div className="conclusion-text" dangerouslySetInnerHTML={{ __html: this.state.currentIssue['conclusion_text'] }}></div>
 
                         <div id="nationwide-comparison">
-                            <Scorecard/>
+                            <Scorecard />
                         </div>
                     </div>
                 </div>

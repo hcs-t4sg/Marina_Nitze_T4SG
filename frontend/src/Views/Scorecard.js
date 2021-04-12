@@ -78,7 +78,7 @@ class Scorecard extends Component {
 
     //getStateInfo = (i, item, state, count, tempData) => {
     //    axios
-    //        .get(`http://localhost:8000/api/states/${state}/`)
+    //        .get(`https://marina-t4sg.herokuapp.com/api/states/${state}/`)
     //        .then(res => {
     //            var temp = {
     //                id: i,
@@ -194,16 +194,16 @@ class Scorecard extends Component {
     // TODO: Add total practices so that it is variable
     componentDidMount() {
         axios
-            .get("http://localhost:8000/api/states/")
+            .get("https://marina-t4sg.herokuapp.com/api/states/")
             .then(stateRes => {
                 axios
-                    .get("http://localhost:8000/api/implementations/")
+                    .get("https://marina-t4sg.herokuapp.com/api/implementations/")
                     .then(impRes => this.matchData(stateRes.data, impRes.data))
                     .catch(err => console.log(err))
             })
             .catch(err => console.log(err));
         axios
-            .get("http://localhost:8000/api/issue-areas/")
+            .get("https://marina-t4sg.herokuapp.com/api/issue-areas/")
             .then(res => this.setState(
                 {
                     issueAreaData: res.data,
@@ -216,7 +216,7 @@ class Scorecard extends Component {
     }
 
     render() {
-       // console.log("RENDER");
+        // console.log("RENDER");
         //console.log(this.state.data);
         // console.log(this.state.data.length);
         var newStates = [...this.state.data];
@@ -226,11 +226,11 @@ class Scorecard extends Component {
         if (this.state.data.length > 1) {
             searchedStates = this.state.data;
             console.log(this.state.data);
-             if(this.state.searchedState !== ""){
-                 searchedStates = searchedStates.filter(
-                     state => state.stateData.name.toLowerCase().includes(this.state.searchedState.toLowerCase()) === true)
+            if (this.state.searchedState !== "") {
+                searchedStates = searchedStates.filter(
+                    state => state.stateData.name.toLowerCase().includes(this.state.searchedState.toLowerCase()) === true)
             }
-             
+
         }
 
         if (this.state.p1_filter) {
@@ -428,130 +428,130 @@ class Scorecard extends Component {
 
         }
 
-    return (
+        return (
 
-        <div className="landing-page">
+            <div className="landing-page">
 
                 <div className="playbook-region-header">
-                    <Subheader title = "National Comparison"/>
+                    <Subheader title="National Comparison" />
                 </div>
-                
-            <div className="filter-box">
-                <div> 
-                    <div className="filter-titles">
 
-                        <h2> Promising Practices: </h2>
-                        <h4> How Do the 50 States Compare? </h4>
+                <div className="filter-box">
+                    <div>
+                        <div className="filter-titles">
+
+                            <h2> Promising Practices: </h2>
+                            <h4> How Do the 50 States Compare? </h4>
+                        </div>
+
+                        <h5> Sort By... </h5>
+                        <div className="sort-boxes">
+                            <label className="sort-label">
+
+                                <div className="sort-title"> Population Size </div>
+
+                                <select onChange={(e) => {
+                                    if (e.target.value === "no-filter") {
+                                        this.setState({ population_filter: 0 })
+                                    }
+
+                                    else if (e.target.value === "small") {
+                                        this.setState({ population_filter: 1 })
+                                    }
+                                    else if (e.target.value === "medium") {
+                                        this.setState({ population_filter: 2 })
+                                    }
+                                    else if (e.target.value === "large") {
+                                        this.setState({ population_filter: 3 })
+                                    }
+                                }}>
+                                    <option value="no-filter">Select a Population</option>
+                                    <option value="small">Less than 2.5 M</option>
+                                    <option value="medium">2.5M to 7.5 M</option>
+                                    <option value="large">7.5M +</option>
+                                </select>
+                            </label>
+
+                            <label className="sort-label">
+                                <div className="sort-title">  Practices Implemented </div>
+
+                                <select onChange={(e) => {
+                                    if (e.target.value === "most") {
+                                        this.setState({ implemented_sort: 1 })
+                                    }
+
+                                    else if (e.target.value === "least") {
+                                        this.setState({ implemented_sort: -1 })
+                                    }
+                                    else if (e.target.value === "no-sort") {
+                                        this.setState({ implemented_sort: 0 })
+                                    }
+                                }}>
+                                    <option value="no-sort">No Sort</option>
+                                    <option value="most">Most Practices Implemented</option>
+                                    <option value="least">Least Practices Implemented</option>
+                                </select>
+                            </label>
+
+                            <label className="sort-label">
+
+                                <div className="sort-title"> State vs County </div>
+                                <select onChange={(e) => {
+                                    if (e.target.value === "no-filter") {
+                                        this.setState({ county_filter: 0 })
+                                    }
+
+                                    else if (e.target.value === "county") {
+                                        this.setState({ county_filter: 1 })
+                                    }
+                                    else if (e.target.value === "state") {
+                                        this.setState({ county_filter: 2 })
+                                    }
+                                }}>
+                                    <option value="no-filter">County or State</option>
+                                    <option value="county">County Administered</option>
+                                    <option value="state">State Administered</option>
+                                </select>
+                            </label>
+                        </div>
                     </div>
 
-                    <h5> Sort By... </h5>
-                    <div className="sort-boxes">
-                        <label className="sort-label">
-                            
-                            <div className="sort-title"> Population Size </div>
 
-                            <select onChange={(e) => {
-                                if (e.target.value === "no-filter") {
-                                    this.setState({ population_filter: 0 })
-                                }
+                    <div className="right-header">
+                        <h5> Filter By... </h5>
+                        <div className="checkboxes">
+                            {filter_checkboxes}
 
-                                else if (e.target.value === "small") {
-                                    this.setState({ population_filter: 1 })
-                                }
-                                else if (e.target.value === "medium") {
-                                    this.setState({ population_filter: 2 })
-                                }
-                                else if (e.target.value === "large") {
-                                    this.setState({ population_filter: 3 })
-                                }
-                            }}>
-                                <option value="no-filter">Select a Population</option>
-                                <option value="small">Less than 2.5 M</option>
-                                <option value="medium">2.5M to 7.5 M</option>
-                                <option value="large">7.5M +</option>
-                            </select>
-                        </label>
-
-                        <label className="sort-label">
-                            <div className="sort-title">  Practices Implemented </div>
-
-                            <select onChange={(e) => {
-                                if (e.target.value === "most") {
-                                    this.setState({ implemented_sort: 1 })
-                                }
-
-                                else if (e.target.value === "least") {
-                                    this.setState({ implemented_sort: -1 })
-                                }
-                                else if (e.target.value === "no-sort") {
-                                    this.setState({ implemented_sort: 0 })
-                                }
-                            }}>
-                                <option value="no-sort">No Sort</option>
-                                <option value="most">Most Practices Implemented</option>
-                                <option value="least">Least Practices Implemented</option>
-                            </select>
-                        </label>
-
-                        <label className="sort-label">
-                            
-                            <div className="sort-title"> State vs County </div>
-                            <select onChange={(e) => {
-                                if (e.target.value === "no-filter") {
-                                    this.setState({ county_filter: 0 })
-                                }
-
-                                else if (e.target.value === "county") {
-                                    this.setState({ county_filter: 1 })
-                                }
-                                else if (e.target.value === "state") {
-                                    this.setState({ county_filter: 2 })
-                                }
-                            }}>
-                                <option value="no-filter">County or State</option>
-                                <option value="county">County Administered</option>
-                                <option value="state">State Administered</option>
-                            </select>
-                        </label>
+                        </div>
                     </div>
+                    <Legend />
                 </div>
 
+                <div>{glyphs}</div>
 
-                <div className="right-header"> 
-                    <h5> Filter By... </h5>
-                    <div className="checkboxes">
-                        {filter_checkboxes}
 
+                <div id="state-by-state-area">
+                    <div className="playbook-region-header">
+                        <Subheader title="State-by-State Scorecard" />
+                        <input
+                            className="searchbar"
+                            type="text"
+                            value={this.state.searchedState}
+                            placeholder={"search"}
+                            onChange={this.updateSearchedState}
+                        />
                     </div>
-                </div>
-                <Legend/>
-            </div>
 
-            <div>{glyphs}</div>
-
-
-            <div id="state-by-state-area">
-                <div className="playbook-region-header">
-                <Subheader title="State-by-State Scorecard"/>
-                <input
-                    className = "searchbar"
-                    type = "text"
-                    value = {this.state.searchedState}
-                    placeholder={"search"}
-                    onChange={this.updateSearchedState}
-                />
-                </div>
-
-                {searchedStates.map(state =>
-                    <StateCard
-                        state={state['stateData']["name"]}
-                        implementation_data={state['implementationData']}
-                        state_data={state['stateData']}
-                        key={state.id}
-                        total={this.state.total_practices}
-                        completed={state['implemented']}
-                        issueArea={this.state.currentIssue}
-                    />)}
+                    {searchedStates.map(state =>
+                        <StateCard
+                            state={state['stateData']["name"]}
+                            implementation_data={state['implementationData']}
+                            state_data={state['stateData']}
+                            key={state.id}
+                            total={this.state.total_practices}
+                            completed={state['implemented']}
+                            issueArea={this.state.currentIssue}
+                        />)}
                 </div>
             </div>
         );
