@@ -2,6 +2,7 @@
 import axios from "axios";
 import React, { Component } from "react";
 import * as d3 from "d3";
+import "./Legend.css"
 import "../App.css"
 
 class Legend extends Component {

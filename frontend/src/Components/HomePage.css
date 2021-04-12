@@ -1,3 +1,4 @@
+@import url("/src/res/Values.css");
 
 .homepage {
   width: 100%;
@@ -38,12 +39,12 @@
   -webkit-border-radius: 11;
   -moz-border-radius: 11;
   border-radius: 11px;
-  -webkit-box-shadow: 1px 2px 3px #666666;
-  -moz-box-shadow: 1px 2px 3px #666666;
-  box-shadow: 1px 2px 3px #666666;
-  color: #ffffff;
+  -webkit-box-shadow: 1px 2px 3px var(--dark-grey);
+  -moz-box-shadow: 1px 2px 3px var(--dark-grey);
+  box-shadow: 1px 2px 3px var(--dark-grey);
+  color: white;
   font-size: 20px;
-  background: #C29FA1;
+  background: var(--dusty-pink);
   padding: 10px 40px 10px 40px;
   text-decoration: none;
 }

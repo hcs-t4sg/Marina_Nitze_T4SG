@@ -316,7 +316,6 @@ class Scorecard extends Component {
             if (i === 1) {
                 filter_checkboxes.push(
                     <label className="filter-label">
-                        {this.state.currentIssue[`practice_${i}`]}
                         <input
                             className="filter-check"
                             type="checkbox"
@@ -326,13 +325,13 @@ class Scorecard extends Component {
                             }
                             }
                         />
+                        {this.state.currentIssue[`practice_${i}`]}
                     </label>
                 )
             }
             else if (i === 2) {
                 filter_checkboxes.push(
                     <label className="filter-label">
-                        {this.state.currentIssue[`practice_${i}`]}
                         <input
                             className="filter-check"
                             type="checkbox"
@@ -342,13 +341,13 @@ class Scorecard extends Component {
                             }
                             }
                         />
+                        {this.state.currentIssue[`practice_${i}`]}
                     </label>
                 )
             }
             else if (i === 3) {
                 filter_checkboxes.push(
                     <label className="filter-label">
-                        {this.state.currentIssue[`practice_${i}`]}
                         <input
                             className="filter-check"
                             type="checkbox"
@@ -358,13 +357,13 @@ class Scorecard extends Component {
                             }
                             }
                         />
+                        {this.state.currentIssue[`practice_${i}`]}
                     </label>
                 )
             }
             else if (i === 4) {
                 filter_checkboxes.push(
                     <label className="filter-label">
-                        {this.state.currentIssue[`practice_${i}`]}
                         <input
                             className="filter-check"
                             type="checkbox"
@@ -374,13 +373,13 @@ class Scorecard extends Component {
                             }
                             }
                         />
+                        {this.state.currentIssue[`practice_${i}`]}
                     </label>
                 )
             }
             else if (i === 5) {
                 filter_checkboxes.push(
                     <label className="filter-label">
-                        {this.state.currentIssue[`practice_${i}`]}
                         <input
                             className="filter-check"
                             type="checkbox"
@@ -390,13 +389,13 @@ class Scorecard extends Component {
                             }
                             }
                         />
+                        {this.state.currentIssue[`practice_${i}`]}
                     </label>
                 )
             }
             else if (i === 6) {
                 filter_checkboxes.push(
                     <label className="filter-label">
-                        {this.state.currentIssue[`practice_${i}`]}
                         <input
                             className="filter-check"
                             type="checkbox"
@@ -406,13 +405,13 @@ class Scorecard extends Component {
                             }
                             }
                         />
+                        {this.state.currentIssue[`practice_${i}`]}
                     </label>
                 )
             }
             else if (i === 7) {
                 filter_checkboxes.push(
                     <label className="filter-label">
-                        {this.state.currentIssue[`practice_${i}`]}
                         <input
                             className="filter-check"
                             type="checkbox"
@@ -422,6 +421,7 @@ class Scorecard extends Component {
                             }
                             }
                         />
+                        {this.state.currentIssue[`practice_${i}`]}
                     </label>
                 )
             }

@@ -66,12 +66,12 @@ class LandingPage extends Component {
                 <div className="teal-section-container">
                     <div className="teal-section"></div>
                     <h2 className="header-subtitle"> Child Welfare Playbook </h2>
-                    <h1 className="title">Scorecard</h1>
+                    <h1 className="title">Progress Dashboard</h1>
                 </div>
                 <div className="content-sidenav-container">
                     <div className="sidenav">
                         <a href="#introduction-container">Introduction</a>
-                        <a href="#implementation-div">Overview of Practices</a>
+                        <a href="#implementation-div">Overview of Promising Practices</a>
                         <a href="#nationwide-comparison">Nationwide Comparison</a>
                         <a href="#state-by-state-area">State-By-State Scorecard</a>
                     </div>
@@ -80,23 +80,21 @@ class LandingPage extends Component {
 
                         <div id="introduction-container">
                             <Subheader title="Introduction" />
-                            <div id="introduction-text">
-                                <p>
-                                    {this.state.currentIssue['intro_text']}
-                                </p>
+                            <div className="introduction-text">
+                                <div dangerouslySetInnerHTML={{__html: this.state.currentIssue['intro_text']}}></div>
                             </div>
                         </div>
                         <div className="subtitle-container">
-                            <Subheader title="Overview of Practices" />
+                            <Subheader title="Overview of Promising Practices" />
                         </div>
 
                         <div id="implementation-div">{this.state.implementationBlocks}</div>
 
+                        <div className="conclusion-text" dangerouslySetInnerHTML={{ __html: this.state.currentIssue['conclusion_text'] }}></div>
+
                         <div id="nationwide-comparison">
                             <Scorecard />
                         </div>
-
-                        <div id="conclusion-text" dangerouslySetInnerHTML={{ __html: this.state.conclusion_text }}></div>
                     </div>
                 </div>
             </div>
