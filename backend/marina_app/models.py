@@ -73,13 +73,18 @@ class IssueArea(models.Model):
 class Implementation(models.Model):
     state = models.ForeignKey(State, on_delete=models.CASCADE)
     issue_area = models.ForeignKey(IssueArea, on_delete=models.CASCADE)
-    practice_1 = models.BooleanField(default = None)
-    practice_2 = models.BooleanField(default = None)
-    practice_3 = models.BooleanField(default = None)
-    practice_4 = models.BooleanField(default = None)
-    practice_5 = models.BooleanField(default = None)
-    practice_6 = models.BooleanField(default = None)
-    practice_7 = models.BooleanField(default = None)
+
+    ImplementationStatuses = [('1','Implemented'),
+                              ('0','Not Implemented'),
+                              ('2', 'In Progress'),
+                              ('-1', 'No Data')]
+    practice_1 = models.CharField(max_length=20,  choices = ImplementationStatuses)
+    practice_2 = models.CharField(max_length=20, choices = ImplementationStatuses)
+    practice_3 = models.CharField(max_length=20, choices = ImplementationStatuses)
+    practice_4 = models.CharField(max_length=20, choices = ImplementationStatuses)
+    practice_5 = models.CharField(max_length=20, choices = ImplementationStatuses)
+    practice_6 = models.CharField(max_length=20, choices = ImplementationStatuses)
+    practice_7 = models.CharField(max_length=20, choices = ImplementationStatuses)
 
     def __str__(self):
         return self.issue_area.title + " " + self.state.name
