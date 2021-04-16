@@ -155,7 +155,7 @@ class Glyphs extends Component {
 		    g.attr('transform', `translate(0, ${topMargin})`);
 		    g.append('text')
 		    	.attr('class', 'glyph-titles')
-		    	.attr('x', width / 2)
+		    	.attr('x', width / 2.5)
 		    	.attr('text-anchor', 'middle')
 		    	.text(d['stateData']['name']);
 		    vis.drawSingleGlyph(d['implementationData'], g);

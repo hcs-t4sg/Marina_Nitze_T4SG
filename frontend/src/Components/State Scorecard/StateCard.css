@@ -1,4 +1,6 @@
-﻿.top-info{
+﻿@import url("/src/res/Values.css");
+
+.top-info{
     display: flex;
     flex-direction: row;
 }
@@ -12,7 +14,7 @@
     width: 0;
     height: 0;
     border: 15px solid transparent;
-    border-bottom: 25px solid #3595AC;
+    border-bottom: 25px solid var(--cyan-medium);
     position: relative;
     top: -15px;
     margin-left: 2px;
@@ -29,7 +31,7 @@
         width: 0;
         height: 0;
         border: 15px solid transparent;
-        border-top: 25px solid #3595AC;
+        border-top: 25px solid var(--cyan-medium);
         justify-content: center;
         color: white;
     }
@@ -38,7 +40,7 @@
     width: 0;
     height: 0;
     border: 15px solid transparent;
-    border-bottom: 25px solid #C8EAEF;
+    border-bottom: 25px solid var(--cyan-lighter);
     position: relative;
     top: -15px;
     margin-left: 2px;
@@ -54,12 +56,12 @@
         width: 0;
         height: 0;
         border: 15px solid transparent;
-        border-top: 25px solid #C8EAEF;
+        border-top: 25px solid var(--cyan-lighter);
         color: white;
     }
 
 .state-scorecard {
-    border: 2px solid black;
+    border: 1px solid var(--light-grey);
     margin-bottom: 1%;
     font-size: medium;
 }
@@ -86,7 +88,7 @@
 }
 
 .population-indicator{
-    background: #C29FA1;
+    background: var(--dusty-pink);
     color: white;
     margin-left: 5%;
     align-content: center;
@@ -96,7 +98,7 @@
 }
 
 .sc-indicator{
-    background: #C29FA1;
+    background: var(--dusty-pink);
     color: white;
     margin-left: 5%;
     align-content: center;
@@ -111,7 +113,7 @@
     width: 30%;
     color:black;
     align-items: flex-start;
-    padding-left: 2%
+    padding-left: 2%;
 }
 
 .column-center{
@@ -126,20 +128,29 @@
     display: flex;
     flex-direction: column;
     width: 25%;
-    color:#4B9CAF;
-    text-decoration: underline;
+    color: var(--cyan-medium);
+}
+
+.column-left, .column-center, .column-right {
+    grid-row-gap: 7px;
+}
+
+a {
+    color: var(--teal);
 }
 
 .implemented-yes{
-    background-color: #C8EAEF;
-    width: 50px;
-    height: 90%;
+    background-color: var(--cyan-lighter);
 }
 
 .implemented-no{
-    background-color: #FFDCDC;
+    background-color: var(--bright-pink);
+}
+
+.implemented-yes, .implemented-no {
+    padding: 2px;
     width: 50px;
-    height: 90%;
+    height: 80%;
 }
 
 .score-percentage{
