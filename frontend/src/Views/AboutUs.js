@@ -2,6 +2,12 @@
 import "../App.css"
 import "../Components/AboutUs.css"
 import Subheader from "../Components/Subheader";
+import monica from '../res/about-us-headshots/monica.jpg';
+import nikita from '../res/about-us-headshots/nikita.jpg';
+import catherine from '../res/about-us-headshots/catherine.jpg';
+import justin from '../res/about-us-headshots/justin.jpg';
+import anne from '../res/about-us-headshots/anne.jpeg';
+import kath from '../res/about-us-headshots/kath.png';
 
 export default function AboutUs() {
     return (
@@ -51,7 +57,7 @@ export default function AboutUs() {
                     <Subheader className="gallery-title" title="Team"/>
                     <div className="image-gallery">
                         <div className="headshot-wrap">
-                            <img className="headshot" src="http://placehold.it/300x300.jpg" />
+                            <img className="headshot" src={monica} width="300" height="300"/>
                             <div className="headshot-background">
                                 <p className="headshot-text">Monica Chang</p>
                                 <p><a href="mailto:mychang07@gmail.com" target="_blank" className="headshot-text">Email</a></p>
@@ -59,14 +65,14 @@ export default function AboutUs() {
                             </div> 
                         </div>
                         <div className="headshot-wrap">
-                            <img className="headshot" src="http://placehold.it/300x300.jpg" />
+                            <img className="headshot" src={nikita} width="300" height="300" />
                             <div className="headshot-background">
                                 <p className="headshot-text">Nikita Jindal</p>
                                 <p><a href="mailto:nikita.jindal@gmail.com" target="_blank" className="headshot-text">Email</a></p>
                             </div>  
                         </div>
                         <div className="headshot-wrap">
-                            <img className="headshot" src="http://placehold.it/300x300.jpg" />
+                            <img className="headshot" src={catherine} width="300" height="300" />
                             <div className="headshot-background">
                                 <p className="headshot-text">Catherine Huang</p>
                                 <p><a href="mailto:czhuangusa@gmail.com" target="_blank" className="headshot-text">Email</a></p>
@@ -74,14 +80,14 @@ export default function AboutUs() {
                             </div>  
                         </div>
                         <div className="headshot-wrap">
-                            <img className="headshot" src="http://placehold.it/300x300.jpg" />
+                            <img className="headshot" src={justin} width="300" height="300" />
                             <div className="headshot-background">
                                 <p className="headshot-text">Justin Ye</p>
                                 <p><a href="mailto:justinhye@gmail.com" target="_blank" className="headshot-text">Email</a></p>
                             </div> 
                         </div>
                         <div className="headshot-wrap">
-                            <img className="headshot" src="http://placehold.it/300x300.jpg" />
+                            <img className="headshot" src={anne} width="300" height="300" />
                             <div className="headshot-background">
                                 <p className="headshot-text">Anne Foley</p>
                                 <p><a href="mailto:annefoley1029@yahoo.com" target="_blank" className="headshot-text">Email</a></p>
@@ -89,7 +95,7 @@ export default function AboutUs() {
                             </div> 
                         </div>
                         <div className="headshot-wrap">
-                            <img className="headshot" src="http://placehold.it/300x300.jpg" />
+                            <img className="headshot" src={kath} width="300" height="300" />
                             <div className="headshot-background">
                                 <p className="headshot-text">Katherine Lazar</p>
                                 <p><a href="mailto:katherineelazar@gmail.com" target="_blank" className="headshot-text">Email</a></p>
