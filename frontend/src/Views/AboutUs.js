@@ -51,28 +51,50 @@ export default function AboutUs() {
                     <Subheader className="gallery-title" title="Team"/>
                     <div className="image-gallery">
                         <div className="headshot-wrap">
-                            <img className="headshot" src="http://placehold.it/200x200.jpg" />
-                            <p className="headshot-description">This image looks super neat.</p>
+                            <img className="headshot" src="http://placehold.it/300x300.jpg" />
+                            <div className="headshot-background">
+                                <p className="headshot-text">Monica Chang</p>
+                                <p className="headshot-text"> <a href="mailto:mychang07@gmail.com" target="_blank">Email</a></p>
+                                <p className="headshot-text"><a href="https://www.linkedin.com/in/monica-yang-chang/" target="_blank">Linkedin</a></p>
+                            </div> 
                         </div>
                         <div className="headshot-wrap">
-                            <img className="headshot" src="http://placehold.it/200x200.jpg" />
-                            <p className="headshot-description">This image looks super neat.</p>
+                            <img className="headshot" src="http://placehold.it/300x300.jpg" />
+                            <div className="headshot-background">
+                                <p className="headshot-text">Nikita Jindal</p>
+                                <p className="headshot-text"> <a href="mailto:nikita.jindal@gmail.com" target="_blank">Email</a></p>
+                            </div>  
                         </div>
                         <div className="headshot-wrap">
-                            <img className="headshot" src="http://placehold.it/200x200.jpg" />
-                            <p className="headshot-description">This image looks super neat.</p>
+                            <img className="headshot" src="http://placehold.it/300x300.jpg" />
+                            <div className="headshot-background">
+                                <p className="headshot-text">Catherine Huang</p>
+                                <p className="headshot-text"> <a href="mailto:czhuangusa@gmail.com" target="_blank">Email</a></p>
+                                <p className="headshot-text"><a href="https://www.linkedin.com/in/catherinehuang82/" target="_blank">Linkedin</a></p>
+                            </div>  
                         </div>
                         <div className="headshot-wrap">
-                            <img className="headshot" src="http://placehold.it/200x200.jpg" />
-                            <p className="headshot-description">This image looks super neat.</p>
+                            <img className="headshot" src="http://placehold.it/300x300.jpg" />
+                            <div className="headshot-background">
+                                <p className="headshot-text">Justin Ye</p>
+                                <p className="headshot-text"> <a href="mailto:justinhye@gmail.com" target="_blank">Email</a></p>
+                            </div> 
                         </div>
                         <div className="headshot-wrap">
-                            <img className="headshot" src="http://placehold.it/200x200.jpg" />
-                            <p className="headshot-description">This image looks super neat.</p>
+                            <img className="headshot" src="http://placehold.it/300x300.jpg" />
+                            <div className="headshot-background">
+                                <p className="headshot-text">Anne Foley</p>
+                                <p className="headshot-text"> <a href="mailto:annefoley1029@yahoo.com" target="_blank">Email</a></p>
+                                <p className="headshot-text"><a href="https://www.linkedin.com/in/anne-foley-4900901b7/" target="_blank">Linkedin</a></p>
+                            </div> 
                         </div>
                         <div className="headshot-wrap">
-                            <img className="headshot" src="http://placehold.it/200x200.jpg" />
-                            <p className="headshot-description">This image looks super neat.</p>
+                            <img className="headshot" src="http://placehold.it/300x300.jpg" />
+                            <div className="headshot-background">
+                                <p className="headshot-text">Katherine Lazar</p>
+                                <p className="headshot-text"> <a href="mailto:katherineelazar@gmail.com" target="_blank">Email</a></p>
+                                <p className="headshot-text"><a href="https://www.linkedin.com/in/katherineelenalazar/" target="_blank">Linkedin</a></p>
+                            </div> 
                         </div>
                     </div>
                 </div>
