@@ -7,7 +7,10 @@
 }
 
 .grid-display {
+  display: flex;
   flex-direction: column;
+  align-items: center;
+  margin-bottom: 200px;
 }
 
 
@@ -30,6 +33,53 @@
 .paragraph {
 	width: 30vw;
 	font-size: .9em;
+  text-align: left;
+  line-height: 1.6;
+  margin: 0px 20px;
 }
 
+.headshot-section {
+  width: 70%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.image-gallery {
+  margin-top: 5vh;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+.headshot-wrap {
+  position: relative;
+  height: 200px;
+  width: 200px;
+  margin: 20px;
+}
+
+.headshot-description {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: rgba(29, 106, 154, 0.72);
+  color: #fff;
+  visibility: hidden;
+  opacity: 0;
+
+  /* transition effect. not necessary */
+  transition: opacity .2s, visibility .2s;
+}
+
+.headshot-wrap:hover .headshot-description {
+  visibility: visible;
+  opacity: 1;
+}
 
