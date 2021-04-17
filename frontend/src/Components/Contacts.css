@@ -5,7 +5,6 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
 }
 
 .contact-grid-container {
@@ -30,6 +29,10 @@
 
 .contact-grid-row, .contact-grid-header {
 
+}
+
+.subheader {
+  justify-content: flex-start;
 }
 
 .contact-grid-element, .contacts-title {
