@@ -45,6 +45,8 @@ class ImplementBlock extends Component {
                     link={this.props.link}
                     description={this.props.description}
                     quote={this.state.quote}
+                    subpractices={this.props.subpractices}
+                    num_subpractices={this.props.num_subpractices}
                 />
             </div>
         )

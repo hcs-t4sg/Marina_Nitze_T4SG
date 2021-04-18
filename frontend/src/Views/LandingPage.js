@@ -129,6 +129,9 @@ class LandingPage extends Component {
                 description={this.state.currentIssue[`practice_${i}_description`]}
                 question={this.state.currentIssue[`practice_${i}_question`]}
                 quote={this.state.currentIssue[`practice_${i}_quote`]}
+                num_subpractices={this.state.currentIssue[`num_subpractices_${i}`]}
+                subpractices={this.state.currentIssue[`subpractices_${i}_names`]}
+
             />
             implement_blocks.push(implementBlock);
         }
