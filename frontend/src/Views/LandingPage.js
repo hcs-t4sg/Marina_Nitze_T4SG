@@ -8,6 +8,8 @@ import Subheader from "../Components/Subheader";
 import StateCard from "../Components/State Scorecard/StateCard"
 import Scorecard from "./Scorecard"
 
+const jurisdictions = 54;
+
 class LandingPage extends Component {
 
     constructor(props) {
@@ -17,7 +19,8 @@ class LandingPage extends Component {
             currentIssue: {},
             total_practices: {},
             issueAreaData: [],
-            currentIssueTitle: "Adam Walsh"
+            currentIssueTitle: "Adam Walsh",
+            implementationData: []
         }
     }
 
@@ -60,6 +63,15 @@ class LandingPage extends Component {
                     })
             })
             .catch(err => console.log(err));
+        axios
+            .get("http://localhost:8000/api/implementations/")
+            .then(res => {
+                this.setState(
+                    {
+                        implementationData: res.data
+                    })
+            })
+            .catch(err => console.log(err));
     }
 
     //componentDidMount() {
@@ -96,7 +108,51 @@ class LandingPage extends Component {
 
     }
 
+    countStateImplementations = () => {
+        var counts = [];
+
+        for (var i = 0; i < this.state.total_practices; i++) {
+            if (this.state.currentIssue[`num_subpractices_${i}`] <= 1) {
+                counts.push(0);
+            }
+            else {
+                var submetrics = [];
+                for (var j = 0; j < this.state.currentIssue[`num_subpractices_${i}`]; j++) {
+                    submetrics.push(0);
+                }
+                counts.push(submetrics);
+            }
+
+        }
+
+        for (var i = 0; i < this.state.implementationData.length; i++) {
+
+            var data = this.state.implementationData[i];
+
+            if (data['issue_area'] === this.state.currentIssueTitle) {
+                for (var j = 1; j <= this.state.total_practices; j++) {
+                    if (this.state.currentIssue[`num_subpractices_${i}`] <= 1) {
+                        if (data[`practice_${j}`]) {
+                            counts[j - 1]++;
+                        }
+                    }
+                    else {
+                        for (var k = 0; k < this.state.currentIssue[`num_subpractices_${i}`]; k++) {
+                            if (data[`practice_${j}`][k]) {
+                                counts[j - 1][k]++;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+
+        return counts
+    }
+
     render() {
+        var imp_counts = this.countStateImplementations()
+        console.log(imp_counts)
 
         var select_issues = [];
         var implement_blocks = [
@@ -121,7 +177,7 @@ class LandingPage extends Component {
 
         for (var i = 1; i <= this.state.total_practices; i++) {
             // console.log(implement_blocks.length);
-            console.log(this.state.currentIssueTitle);
+            //console.log(this.state.currentIssueTitle);
             let implementBlock = <ImplementBlock
                 key={this.state.currentIssue[`practice_${i}`]}
                 link={this.state.currentIssue[`practice_${i}_link`]}
@@ -131,10 +187,13 @@ class LandingPage extends Component {
                 quote={this.state.currentIssue[`practice_${i}_quote`]}
                 num_subpractices={this.state.currentIssue[`num_subpractices_${i}`]}
                 subpractices={this.state.currentIssue[`subpractices_${i}_names`]}
+                p_count={imp_counts[i - 1]}
+                o_count={jurisdictions - imp_counts[i-1]}
 
             />
             implement_blocks.push(implementBlock);
         }
+
 
         return (
             <div className="landing-page">

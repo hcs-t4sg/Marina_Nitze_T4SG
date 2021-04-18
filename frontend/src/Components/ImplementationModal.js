@@ -6,11 +6,11 @@ export default class ImplementationModal extends Component {
         this.state = {
             title: "Fee for Background Checks",
             promising: "Does Not Charge a Fee",
-            p_count: 21,
+            p_count: this.props.p_count,
             opposite: "Charges a Fee for Background Checks",
-            o_count: 33,
+            o_count: this.props.o_count,
             description: this.props.description,
-            quote: this.props.quote,
+            quote: this.props.quote ? this.props.quote: "Sorry, no example or quote has been provided. Please see Marina's page for more information",
             playbook_link: this.props.link,
             contact: "contact_info"
         };
