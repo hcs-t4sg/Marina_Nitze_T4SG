@@ -4,10 +4,10 @@ export default class ImplementationModal extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            title: "Fee for Background Checks",
-            promising: "Does Not Charge a Fee",
+            title: this.props.title,
+            promising: "Implements Practice",
             p_count: this.props.p_count,
-            opposite: "Charges a Fee for Background Checks",
+            opposite: "Does Not Implement Practice",
             o_count: this.props.o_count,
             description: this.props.description,
             quote: this.props.quote ? this.props.quote: "Sorry, no example or quote has been provided. Please see Marina's page for more information",

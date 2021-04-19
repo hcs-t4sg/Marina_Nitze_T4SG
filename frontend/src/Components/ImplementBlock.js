@@ -49,6 +49,7 @@ class ImplementBlock extends Component {
                     num_subpractices={this.props.num_subpractices}
                     p_count={this.props.p_count}
                     o_count={this.props.o_count}
+                    title={this.props.title}
                 />
             </div>
         )

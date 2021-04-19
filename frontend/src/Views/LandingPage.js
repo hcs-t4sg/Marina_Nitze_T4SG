@@ -112,7 +112,7 @@ class LandingPage extends Component {
         var counts = [];
 
         for (var i = 0; i < this.state.total_practices; i++) {
-            if (this.state.currentIssue[`num_subpractices_${i}`] <= 1) {
+            if (this.state.currentIssue[`num_subpractices_${i}`] <= 1 || !this.state.currentIssue[`num_subpractices_${i}`]) {
                 counts.push(0);
             }
             else {
@@ -130,8 +130,9 @@ class LandingPage extends Component {
             var data = this.state.implementationData[i];
 
             if (data['issue_area'] === this.state.currentIssueTitle) {
+
                 for (var j = 1; j <= this.state.total_practices; j++) {
-                    if (this.state.currentIssue[`num_subpractices_${i}`] <= 1) {
+                    if (!this.state.currentIssue[`num_subpractices_${i}`] || this.state.currentIssue[`num_subpractices_${i}`] <= 1) {
                         if (data[`practice_${j}`]) {
                             counts[j - 1]++;
                         }
@@ -146,6 +147,7 @@ class LandingPage extends Component {
                 }
             }
         }
+        console.log(counts)
 
         return counts
     }
