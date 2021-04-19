@@ -7,7 +7,10 @@
 }
 
 .grid-display {
+  display: flex;
   flex-direction: column;
+  align-items: center;
+  margin-bottom: 200px;
 }
 
 
@@ -30,6 +33,57 @@
 .paragraph {
 	width: 30vw;
 	font-size: .9em;
+  text-align: left;
+  line-height: 1.6;
+  margin: 0px 20px;
 }
 
+.headshot-section {
+  width: 80%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.image-gallery {
+  margin-top: 5vh;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+.headshot-wrap {
+  position: relative;
+  height: 300px;
+  width: 300px;
+  padding: 7px;
+}
+
+.headshot-text {
+  font-size: 1em;
+  text-decoration: none;
+}
+
+.headshot-background {
+  padding-top: 30%;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: rgba(255, 255, 255, 0.85);
+  color: black;
+  visibility: hidden;
+  opacity: 0;
+  transition: opacity .2s, visibility .2s;
+}
+
+.headshot-wrap:hover .headshot-background {
+  visibility: visible;
+  opacity: 1;
+}
 

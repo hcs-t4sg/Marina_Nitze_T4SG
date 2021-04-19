@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import IssueArea, State, Implementation, Contact
+from .models import IssueArea, State, Implementation, Contact, AboutUs
 
 class IssueAreaAdmin(admin.ModelAdmin):
     list_display = ('title', 'num_practices','intro_text','conclusion_text',
@@ -22,11 +22,16 @@ class ImplementationAdmin(admin.ModelAdmin):
 class ContactAdmin(admin.ModelAdmin):
     list_display = ('issue_area', 'first_name', 'last_name','position', 'email')
 
+class AboutUsAdmin(admin.ModelAdmin):
+    list_display = ('title', 'body')
+
 # Register your models here.
 admin.site.register(IssueArea, IssueAreaAdmin)
 admin.site.register(State, StateAdmin)
 admin.site.register(Implementation, ImplementationAdmin)
 admin.site.register(Contact, ContactAdmin)
+admin.site.register(AboutUs, AboutUsAdmin)
+
 
 
 
