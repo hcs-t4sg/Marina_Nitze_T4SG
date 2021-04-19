@@ -48,7 +48,7 @@ class LandingPage extends Component {
     componentDidMount() {
         this._isMounted = true;
         axios
-            .get("http://localhost:8000/api/issue-areas/")
+            .get("https://marina-t4sg.herokuapp.com/api/issue-areas/")
             .then(res => {
                 console.log(res.data);
                 this.setState(
@@ -61,6 +61,23 @@ class LandingPage extends Component {
             })
             .catch(err => console.log(err));
     }
+
+    //componentDidMount() {
+    //    this._isMounted = true;
+    //    axios
+    //        .get("http://localhost:8000/api/issue-areas/")
+    //        .then(res => {
+    //            console.log(res.data);
+    //            this.setState(
+    //                {
+    //                    issueAreaData: res.data,
+    //                    currentIssue: res.data[0],
+    //                    currentIssueTitle: res.data[0]['title'],
+    //                    total_practices: res.data[0]['num_practices']
+    //                })
+    //        })
+    //        .catch(err => console.log(err));
+    //}
 
     componentWillUnmount() {
         this._isMounted = false;
