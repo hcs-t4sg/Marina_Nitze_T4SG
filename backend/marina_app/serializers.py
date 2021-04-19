@@ -28,7 +28,7 @@ class ImplementationSerializer(serializers.ModelSerializer):
 
 class ContactSerializer(serializers.ModelSerializer):
     class Meta:
-        model = Implementation
+        model = Contact
         fields = ('issue_area', 'first_name', 'last_name','position', 'email')
 
 class AboutUsSerializer(serializers.ModelSerializer):
