@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from .models import IssueArea, State, Implementation, Contact
+from .models import IssueArea, State, Implementation, Contact, AboutUs
 
 
 class IssueAreaSerializer(serializers.ModelSerializer):
@@ -30,3 +30,8 @@ class ContactSerializer(serializers.ModelSerializer):
     class Meta:
         model = Contact
         fields = ('issue_area', 'first_name', 'last_name','position', 'email')
+
+class AboutUsSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Implementation
+        fields = ('title', 'body')
