@@ -1,8 +1,10 @@
 /*Glyphs*/
 
+@import url("/src/res/Values.css");
+
 .outer-box {
   background-color: white;
-  border: solid #bdbdbd 1px;
+  border: solid var(--light-grey) 1px;
   display: flex;
   flex-direction: column;
   margin-bottom: 5%;
@@ -12,8 +14,9 @@
 
 .scorecard {
   position: relative;
-  width: 75%;
+  width: 90%;
   margin: 0 auto;
+  text-align: justify;
 }
 
 .scorecard-container {
@@ -28,7 +31,7 @@
 
 .glyph {
   margin: 0px;
-  padding: 2px;
+  padding: 3px;
   width: 100px;
   height: 100px;
 }
@@ -49,7 +52,7 @@
     padding: 5px; 
     color: white;      
     font: 14px Arial;    
-    background: #276582; 
+    background: var(--teal); 
     border: 0px;    
     border-radius: 4px;  
     visibility: hidden;
