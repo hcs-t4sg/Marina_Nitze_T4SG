@@ -17,13 +17,13 @@ class StateAdmin(admin.ModelAdmin):
 
 class ImplementationAdmin(admin.ModelAdmin):
     list_display = ('state','issue_area',
-                    'practice_1',#'subpractices_1',
-                    'practice_2',#'subpractices_2',
-                    'practice_3',#'subpractices_3',
-                    'practice_4',#'subpractices_4',
-                    'practice_5',#'subpractices_5',
-                    'practice_6',#'subpractices_6',
-                    'practice_7')#,'subpractices_7')
+                    'practice_1','subpractice_1_1','subpractice_1_2','subpractice_1_3',
+                    'practice_2','subpractice_2_1','subpractice_2_2','subpractice_2_3',
+                    'practice_3','subpractice_3_1','subpractice_3_2','subpractice_3_3',
+                    'practice_4','subpractice_4_1','subpractice_4_2','subpractice_4_3',
+                    'practice_5','subpractice_5_1','subpractice_5_2','subpractice_5_3',
+                    'practice_6','subpractice_6_1','subpractice_6_2','subpractice_6_3',
+                    'practice_7','subpractice_7_1','subpractice_7_2','subpractice_7_3')
 
 
 class ContactAdmin(admin.ModelAdmin):
