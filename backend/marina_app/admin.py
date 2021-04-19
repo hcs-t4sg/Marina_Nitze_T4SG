@@ -2,7 +2,7 @@ from django.contrib import admin
 from .models import IssueArea, State, Implementation, Contact, AboutUs
 
 class IssueAreaAdmin(admin.ModelAdmin):
-    list_display = ('title', 'num_practices','intro_text','conclusion_text',
+    list_display =  ('title', 'num_practices','intro_text','conclusion_text',
                 'practice_1','practice_1_question','practice_1_description','practice_1_quote','practice_1_link','num_subpractices_1','subpractices_1_names',
                 'practice_2','practice_2_question','practice_2_description','practice_2_quote','practice_2_link','num_subpractices_2','subpractices_2_names',
                 'practice_3','practice_3_question','practice_3_description','practice_3_quote','practice_3_link','num_subpractices_4','subpractices_3_names',
@@ -24,6 +24,7 @@ class ImplementationAdmin(admin.ModelAdmin):
                     'practice_5','subpractices_5',
                     'practice_6','subpractices_6',
                     'practice_7','subpractices_7')
+
 
 class ContactAdmin(admin.ModelAdmin):
     list_display = ('issue_area', 'first_name', 'last_name','position', 'email')
