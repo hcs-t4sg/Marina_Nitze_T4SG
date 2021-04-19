@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     'corsheaders',
     'rest_framework',
     'marina_app',
+    'django_mysql',
 ]
 
 MIDDLEWARE = [
