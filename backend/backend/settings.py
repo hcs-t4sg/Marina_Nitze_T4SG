@@ -126,4 +126,5 @@ STATIC_URL = '/static/'
 
 CORS_ORIGIN_WHITELIST = [
      'http://localhost:3000'
+     'https://silly-davinci-6692de.netlify.app',
 ]

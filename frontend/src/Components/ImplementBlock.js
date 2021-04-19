@@ -21,6 +21,7 @@ class ImplementBlock extends Component {
     }
 
     render() {
+        // console.log(this.state.title);
         if (!this.state.expanded) {
 
             return (

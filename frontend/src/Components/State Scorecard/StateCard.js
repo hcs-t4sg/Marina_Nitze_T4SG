@@ -22,18 +22,17 @@ export default class StateCard extends Component{
     }
 
     render() {
-        var data = this.state.state_data;
-        var i_data = this.state.implementation_data;
+        var s_data = this.props.state_data;
+        var i_data = this.props.implementation_data;
 
-        const implemented_string = this.state.completed + "/" + this.state.total;
+        const implemented_string = this.props.completed + "/" + this.props.total;
 
         var resourceLinks = []
-        console.log(this.state.total);
-        for (var i = 1; i <= this.state.total; i++) {
+        for (var i = 1; i <= this.props.total; i++) {
             console.log();
             resourceLinks.push(
                 <div>
-                    <a href={this.state.issue[`practice_${i}_link`]} target="blank">
+                    <a href={this.props.issueArea[`practice_${i}_link`]} target="blank">
                         Link
                     </a>
                 </div>
@@ -45,26 +44,25 @@ export default class StateCard extends Component{
                 <div className="state-scorecard">
                     <div className="top-info">
                         <div className="title-area">
-                            <h1> {this.state.state_data["name"]} </h1>
+                            <h1> {s_data["name"]} </h1>
                             <h4 onClick={() => this.setState({ expanded: !this.state.expanded })}> <font color="#0E7088"> See Less </font> </h4>
                         </div>
-                        <ProgressBar completed={this.state.completed} total={this.state.total} />
+                        <ProgressBar completed={this.props.completed} total={this.props.total} />
                         <p className="score-percentage"> {implemented_string} </p>
                     </div>
 
                     <div className="demographics-div">
                         <h4> <font color="#0E7088">Demographics </font></h4>
-                        <PopulationIndicator population={this.state.state_data["population"]} />
-                        <SCIndicator county={this.state.state_data["county_administered"]} />
+                        <PopulationIndicator population={s_data["population"]} />
+                        <SCIndicator county={s_data
+                        ["county_administered"]} />
                     </div>
                     <div className="expanded-info">
                         <div className="column-left">
                             <h4><font color="#0E7088">Promising Practice</font></h4>
-                            <div>Does not charge a fee</div>
-                            <div>Does not require a notary</div>
-                            <div>Accepts electronic requests</div>
-                            <div>Does not list an individual contact</div>
-                            <div>Does not require a witness</div>
+                            {this.props.practices.map(
+                                practice => <div>{practice}</div>)
+                            }
                         </div>
                         <div className="column-center">
                             <h4><font color="#0E7088">Implemented?</font></h4>
@@ -86,10 +84,10 @@ export default class StateCard extends Component{
             <div className="state-scorecard">
                 <div className="top-info">
                     <div className="title-area">
-                        <h1> {this.state.state_data["name"]} </h1>
+                        <h1> {s_data["name"]} </h1>
                         <h4 onClick={() => this.setState({ expanded: !this.state.expanded })}> <font color="#0E7088"> View Details </font> </h4>
                     </div>
-                    <ProgressBar completed={this.state.completed} total={this.state.total} />
+                    <ProgressBar completed={this.props.completed} total={this.props.total} />
                     <p className="score-percentage"> {implemented_string} </p>
                 </div>
             </div>
