@@ -13,6 +13,14 @@ class Migration(migrations.Migration):
 
     operations = [
         migrations.CreateModel(
+            name='AboutUs',
+            fields=[
+                ('id', models.AutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
+                ('title', models.CharField(blank=True, default='', max_length=200, null=True)),
+                ('body', models.CharField(blank=True, default='', max_length=200, null=True)),
+            ],
+        ),
+        migrations.CreateModel(
             name='IssueArea',
             fields=[
                 ('title', models.CharField(max_length=100, primary_key=True, serialize=False)),
