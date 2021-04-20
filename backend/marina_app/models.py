@@ -90,23 +90,42 @@ class Implementation(models.Model):
     state = models.ForeignKey(State, on_delete=models.CASCADE)
     issue_area = models.ForeignKey(IssueArea, on_delete=models.CASCADE)
 
-    Status_Choices = [('Yes','Yes'),
-                      ('No','No'),
-                      ('Null', 'Null')]
-    practice_1 = models.CharField(max_length=5,  choices = Status_Choices)
-    subpractices_1 = ListCharField(base_field = models.CharField(max_length=5,  choices = Status_Choices), size=3, max_length = 6*3, null = True, blank = True)
-    practice_2 = models.CharField(max_length=5, choices = Status_Choices)
-    subpractices_2 = ListCharField(base_field = models.CharField(max_length=5,  choices = Status_Choices), size=3, max_length = 6*3, null = True, blank = True)    
-    practice_3 = models.CharField(max_length=5, choices = Status_Choices)
-    subpractices_3 = ListCharField(base_field = models.CharField(max_length=5,  choices = Status_Choices), size=3, max_length = 6*3, null = True, blank = True)
-    practice_4 = models.CharField(max_length=5, choices = Status_Choices)
-    subpractices_4 = ListCharField(base_field = models.CharField(max_length=5,  choices = Status_Choices), size=3, max_length = 6*3, null = True, blank = True)
-    practice_5 = models.CharField(max_length=5, choices = Status_Choices)
-    subpractices_5 = ListCharField(base_field = models.CharField(max_length=5,  choices = Status_Choices), size=3, max_length = 6*3, null = True, blank = True)
-    practice_6 = models.CharField(max_length=5, choices = Status_Choices)
-    subpractices_6 = ListCharField(base_field = models.CharField(max_length=5,  choices = Status_Choices), size=3, max_length = 6*3, null = True, blank = True)
-    practice_7 = models.CharField(max_length=5, choices = Status_Choices)
-    subpractices_7 = ListCharField(base_field = models.CharField(max_length=5,  choices = Status_Choices), size=3, max_length = 6*3, null = True, blank = True)
+
+    practice_1 = models.BooleanField(null=True)
+    subpractice_1_1 = models.BooleanField(null=True)
+    subpractice_1_2 = models.BooleanField(null=True)
+    subpractice_1_3= models.BooleanField(null=True)
+
+
+    practice_2 = models.BooleanField(null=True)
+    subpractice_2_1 = models.BooleanField(null=True)
+    subpractice_2_2 = models.BooleanField(null=True)
+    subpractice_2_3 = models.BooleanField(null=True)
+
+    practice_3 = models.BooleanField(null=True)
+    subpractice_3_1 = models.BooleanField(null=True)
+    subpractice_3_2 = models.BooleanField(null=True)
+    subpractice_3_3 = models.BooleanField(null=True)
+
+    practice_4 = models.BooleanField(null=True)
+    subpractice_4_1 = models.BooleanField(null=True)
+    subpractice_4_2 = models.BooleanField(null=True)
+    subpractice_4_3 = models.BooleanField(null=True)
+
+    practice_5 = models.BooleanField(null=True)
+    subpractice_5_1 = models.BooleanField(null=True)
+    subpractice_5_2 = models.BooleanField(null=True)
+    subpractice_5_3 = models.BooleanField(null=True)
+
+    practice_6 = models.BooleanField(null=True)
+    subpractice_6_1 = models.BooleanField(null=True)
+    subpractice_6_2 = models.BooleanField(null=True)
+    subpractice_6_3 = models.BooleanField(null=True)
+
+    practice_7 = models.BooleanField(null=True)
+    subpractice_7_1 = models.BooleanField(null=True)
+    subpractice_7_2 = models.BooleanField(null=True)
+    subpractice_7_3 = models.BooleanField(null=True)
 
 
     def __str__(self):
