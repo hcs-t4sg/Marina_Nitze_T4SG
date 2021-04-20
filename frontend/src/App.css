@@ -375,3 +375,55 @@ h5 {
   margin-top: 6%;
   margin: 10px;
 }
+
+#page-toggle {
+    height: 8vh;
+    background-color: white;
+    box-shadow: 0px 3px 3px 0px var(--light-grey);
+    z-index: 10;
+    padding: 0vh 12vw;
+}
+
+.selected-issue {
+    color: #0E7088;
+    margin: auto;
+    font-size: 16pt;
+    border: 0;
+    background: white;
+    padding: 0px 15px;
+    height: 100%;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    
+}
+
+.selected-issue:focus{
+    border: 0;
+    outline: 0;
+}
+    .selected-issue:hover {
+        text-decoration: underline;
+    }
+
+
+.deselected-issue {
+    color: black;
+    margin: auto;
+    font-size: 16pt;
+    border: 0;
+    background: white;
+    padding: 0px 15px;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+    .deselected-issue:focus {
+        border: 0;
+        outline: 0;
+    }
+
+.deselected-issue:hover {
+    text-decoration: underline;
+}

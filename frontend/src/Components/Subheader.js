@@ -2,6 +2,7 @@
 import "./Subheader.css"
 
 export default function Subheader(props) {
+    
     return (
         < span
             className="subheader"
