@@ -77,7 +77,7 @@ class LandingPage extends Component {
     //componentDidMount() {
     //    this._isMounted = true;
     //    axios
-    //        .get("http://localhost:8000/api/issue-areas/")
+    //        .get("https://marina-t4sg.herokuapp.com/api/issue-areas/")
     //        .then(res => {
     //            console.log(res.data);
     //            this.setState(
@@ -90,6 +90,23 @@ class LandingPage extends Component {
     //        })
     //        .catch(err => console.log(err));
     //}
+
+    componentDidMount() {
+        this._isMounted = true;
+        axios
+            .get("http://localhost:8000/api/issue-areas/")
+            .then(res => {
+                console.log(res.data);
+                this.setState(
+                    {
+                        issueAreaData: res.data,
+                        currentIssue: res.data[0],
+                        currentIssueTitle: res.data[0]['title'],
+                        total_practices: res.data[0]['num_practices']
+                    })
+            })
+            .catch(err => console.log(err));
+    }
 
     componentWillUnmount() {
         this._isMounted = false;
@@ -180,6 +197,14 @@ class LandingPage extends Component {
         for (var i = 1; i <= this.state.total_practices; i++) {
             // console.log(implement_blocks.length);
             //console.log(this.state.currentIssueTitle);
+            console.log(this.state.currentIssueTitle);
+            var submetrics = []
+            if (this.state.currentIssue[`subpractices_${i}_names`]) {
+                submetrics = (this.state.currentIssue[`subpractices_${i}_names`].slice(1, this.state.currentIssue[`subpractices_${i}_names`].length - 1).split(","))
+
+            }
+
+
             let implementBlock = <ImplementBlock
                 key={this.state.currentIssue[`practice_${i}`]}
                 link={this.state.currentIssue[`practice_${i}_link`]}
@@ -188,10 +213,9 @@ class LandingPage extends Component {
                 question={this.state.currentIssue[`practice_${i}_question`]}
                 quote={this.state.currentIssue[`practice_${i}_quote`]}
                 num_subpractices={this.state.currentIssue[`num_subpractices_${i}`]}
-                subpractices={this.state.currentIssue[`subpractices_${i}_names`]}
                 p_count={imp_counts[i - 1]}
                 o_count={jurisdictions - imp_counts[i-1]}
-
+                subpractices={submetrics}
             />
             implement_blocks.push(implementBlock);
         }

@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     'corsheaders',
     'rest_framework',
     'marina_app',
+    'django_mysql',
 ]
 
 MIDDLEWARE = [
@@ -124,5 +125,6 @@ USE_TZ = True
 STATIC_URL = '/static/'
 
 CORS_ORIGIN_WHITELIST = [
-     'http://localhost:3000'
+     'http://localhost:3000',
+     'https://silly-davinci-6692de.netlify.app',
 ]
