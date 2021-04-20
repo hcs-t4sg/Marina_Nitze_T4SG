@@ -8,9 +8,9 @@ export default class ImplementationModal extends Component {
             promising: "Implements Practice",
             p_count: this.props.p_count,
             opposite: "Does Not Implement Practice",
-            o_count: this.props.o_count,
+            jurisdictions: this.props.jurisdictions,
             description: this.props.description,
-            quote: this.props.quote ? this.props.quote: "Sorry, no example or quote has been provided. Please see Marina's page for more information",
+            example: this.props.example ? this.props.example: "Sorry, no example has been provided. Please see Marina's page for more information",
             playbook_link: this.props.link,
             contact: "contact_info"
         };
@@ -26,8 +26,12 @@ export default class ImplementationModal extends Component {
 
             for (var i = 0; i < this.props.num_subpractices; i++) {
                 submetric_tags.push(
-                    <div className="submetric-tag">
+                    <div
+                        className="promising-div"
+                        key={this.props.title + "submetric" + i}
+                    >
                         <p> {this.props.subpractices[i]} </p>
+                        <div className="state-tag"> <p> {this.state.p_count[i]} States </p> </div>
 
                     </div>
                 )
@@ -45,9 +49,9 @@ export default class ImplementationModal extends Component {
                         <h4 className="text-area"> Promising Practice: </h4>
                         <h1 className="text-area"> {this.state.title} </h1>
 
+                        <h3> Submetrics </h3> 
                         <div className="submetric-div">
                             {submetric_tags}
-                            <div className="state-tag"> <p> {this.state.o_count} States </p> </div>
                         </div>
 
                         <div className="body-div">
@@ -57,8 +61,8 @@ export default class ImplementationModal extends Component {
                             </div>
 
                             <div className="description-div">
-                                <h3> Quote </h3>
-                                <p> {this.state.quote} </p>
+                                <h3> Example of Implementation </h3>
+                                <p> {this.state.example} </p>
                             </div>
 
                         </div>
@@ -72,11 +76,7 @@ export default class ImplementationModal extends Component {
                                 </button>
                                 </a>
                             </div>
-                            <div>
-                                <button className="info-btn">
-                                    Contact an Official who Implemented this Practice
-                            </button>
-                            </div>
+
                         </div>
 
 
@@ -122,8 +122,8 @@ export default class ImplementationModal extends Component {
                         </div>
 
                         <div className="description-div">
-                            <h3> Quote </h3>
-                            <p> {this.state.quote} </p>
+                            <h3> Example of Implementation </h3>
+                            <p> {this.state.example} </p>
                         </div>
 
                     </div>
@@ -136,11 +136,6 @@ export default class ImplementationModal extends Component {
                                     View Marina's Resource Guide
                                 </button>
                             </a>
-                        </div>
-                        <div>
-                            <button className="info-btn">
-                                Contact an Official who Implemented this Practice
-                            </button>
                         </div>
                     </div>
 

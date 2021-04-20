@@ -48,31 +48,31 @@ class LandingPage extends Component {
     }
 
 
-    componentDidMount() {
-        this._isMounted = true;
-        axios
-            .get("https://marina-t4sg.herokuapp.com/api/issue-areas/")
-            .then(res => {
-                console.log(res.data);
-                this.setState(
-                    {
-                        issueAreaData: res.data,
-                        currentIssue: res.data[0],
-                        currentIssueTitle: res.data[0]['title'],
-                        total_practices: res.data[0]['num_practices']
-                    })
-            })
-            .catch(err => console.log(err));
-        axios
-            .get("http://localhost:8000/api/implementations/")
-            .then(res => {
-                this.setState(
-                    {
-                        implementationData: res.data
-                    })
-            })
-            .catch(err => console.log(err));
-    }
+    //componentDidMount() {
+    //    this._isMounted = true;
+    //    axios
+    //        .get("https://marina-t4sg.herokuapp.com/api/issue-areas/")
+    //        .then(res => {
+    //            console.log(res.data);
+    //            this.setState(
+    //                {
+    //                    issueAreaData: res.data,
+    //                    currentIssue: res.data[0],
+    //                    currentIssueTitle: res.data[0]['title'],
+    //                    total_practices: res.data[0]['num_practices']
+    //                })
+    //        })
+    //        .catch(err => console.log(err));
+    //    axios
+    //        .get("http://localhost:8000/api/implementations/")
+    //        .then(res => {
+    //            this.setState(
+    //                {
+    //                    implementationData: res.data
+    //                })
+    //        })
+    //        .catch(err => console.log(err));
+    //}
 
     //componentDidMount() {
     //    this._isMounted = true;
@@ -106,6 +106,16 @@ class LandingPage extends Component {
                     })
             })
             .catch(err => console.log(err));
+
+            axios
+                .get("http://localhost:8000/api/implementations/")
+                .then(res => {
+                this.setState(
+                {
+                    implementationData: res.data
+                })
+                })
+                .catch (err => console.log(err));
     }
 
     componentWillUnmount() {
@@ -128,7 +138,9 @@ class LandingPage extends Component {
     countStateImplementations = () => {
         var counts = [];
 
-        for (var i = 0; i < this.state.total_practices; i++) {
+        for (var i = 1; i <= this.state.total_practices; i++) {
+            //console.log("HELLO")
+            //console.log(this.state.currentIssue[`num_subpractices_${i}`])
             if (this.state.currentIssue[`num_subpractices_${i}`] <= 1 || !this.state.currentIssue[`num_subpractices_${i}`]) {
                 counts.push(0);
             }
@@ -142,6 +154,8 @@ class LandingPage extends Component {
 
         }
 
+        console.log(counts);
+
         for (var i = 0; i < this.state.implementationData.length; i++) {
 
             var data = this.state.implementationData[i];
@@ -149,14 +163,15 @@ class LandingPage extends Component {
             if (data['issue_area'] === this.state.currentIssueTitle) {
 
                 for (var j = 1; j <= this.state.total_practices; j++) {
-                    if (!this.state.currentIssue[`num_subpractices_${i}`] || this.state.currentIssue[`num_subpractices_${i}`] <= 1) {
+                    if (!this.state.currentIssue[`num_subpractices_${j}`] || this.state.currentIssue[`num_subpractices_${j}`] <= 1) {
                         if (data[`practice_${j}`]) {
                             counts[j - 1]++;
                         }
                     }
                     else {
-                        for (var k = 0; k < this.state.currentIssue[`num_subpractices_${i}`]; k++) {
-                            if (data[`practice_${j}`][k]) {
+                        for (var k = 0; k < this.state.currentIssue[`num_subpractices_${j}`]; k++) {
+                            
+                            if (data[`subpractice_${j}_${k+1}`]) {
                                 counts[j - 1][k]++;
                             }
                         }
@@ -197,13 +212,17 @@ class LandingPage extends Component {
         for (var i = 1; i <= this.state.total_practices; i++) {
             // console.log(implement_blocks.length);
             //console.log(this.state.currentIssueTitle);
-            console.log(this.state.currentIssueTitle);
+            //console.log(this.state.currentIssueTitle);
             var submetrics = []
             if (this.state.currentIssue[`subpractices_${i}_names`]) {
                 submetrics = (this.state.currentIssue[`subpractices_${i}_names`].slice(1, this.state.currentIssue[`subpractices_${i}_names`].length - 1).split(","))
 
             }
 
+            for (var j = 0; j < submetrics.length; j++) {
+                submetrics[j] = submetrics[j].trim()
+                submetrics[j] = submetrics[j].slice(1, submetrics[j].length - 1)
+            }
 
             let implementBlock = <ImplementBlock
                 key={this.state.currentIssue[`practice_${i}`]}
@@ -214,9 +233,10 @@ class LandingPage extends Component {
                 quote={this.state.currentIssue[`practice_${i}_quote`]}
                 num_subpractices={this.state.currentIssue[`num_subpractices_${i}`]}
                 p_count={imp_counts[i - 1]}
-                o_count={jurisdictions - imp_counts[i-1]}
+                jurisdictions={jurisdictions}
                 subpractices={submetrics}
             />
+
             implement_blocks.push(implementBlock);
         }
 
