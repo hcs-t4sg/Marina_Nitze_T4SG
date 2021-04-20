@@ -33,7 +33,6 @@ class LandingPage extends Component {
             </div>
         ];
         for (var i = 1; i <= this.state.total_practices; i++) {
-            // console.log(this.state.currentIssue[`practice_${i}`]);
             let implementBlock = <ImplementBlock
                 key={this.state.currentIssue[`practice_${i}`]}
                 link={this.state.currentIssue[`practice_${i}_link`]}
