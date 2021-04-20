@@ -110,7 +110,7 @@ export default class ImplementationModal extends Component {
                         <div className="opposite-div">
 
                             <p> {this.state.opposite} </p>
-                            <div className="state-tag"> <p> {this.state.o_count} States </p> </div>
+                            <div className="state-tag"> <p> {this.state.jurisdictions - this.state.p_count} States </p> </div>
 
                         </div>
                     </div>
