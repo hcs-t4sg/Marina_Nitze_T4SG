@@ -40,7 +40,7 @@ class LandingPage extends Component {
                 title={this.state.currentIssue[`practice_${i}`]}
                 description={this.state.currentIssue[`practice_${i}_description`]}
                 question={this.state.currentIssue[`practice_${i}_question`]}
-                quote={this.state.currentIssue[`practice_${i}_quote`]}
+                example={this.state.currentIssue[`practice_${i}_example`]}
             />
             tempImplementBlocks.push(implementBlock);
         }
@@ -230,7 +230,7 @@ class LandingPage extends Component {
                 title={this.state.currentIssue[`practice_${i}`]}
                 description={this.state.currentIssue[`practice_${i}_description`]}
                 question={this.state.currentIssue[`practice_${i}_question`]}
-                quote={this.state.currentIssue[`practice_${i}_quote`]}
+                example={this.state.currentIssue[`practice_${i}_example`]}
                 num_subpractices={this.state.currentIssue[`num_subpractices_${i}`]}
                 p_count={imp_counts[i - 1]}
                 jurisdictions={jurisdictions}

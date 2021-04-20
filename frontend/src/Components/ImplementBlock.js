@@ -10,7 +10,7 @@ class ImplementBlock extends Component {
             title: props.title,
             question: props.question,
             description: props.description,
-            quote: props.quote,
+            example: props.example,
             link: props.link
             
         }
@@ -44,7 +44,7 @@ class ImplementBlock extends Component {
                     handleClose={this.updateExpand}
                     link={this.props.link}
                     description={this.props.description}
-                    quote={this.state.quote}
+                    example={this.state.example}
                     subpractices={this.props.subpractices}
                     num_subpractices={this.props.num_subpractices}
                     p_count={this.props.p_count}
