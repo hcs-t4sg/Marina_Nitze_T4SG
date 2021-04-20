@@ -24,9 +24,9 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'a%f4x$^9kym43ai!4af3d6sk9sn@_p78f00*0zr0@5h1#7_)e9'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-#DEBUG = True
+DEBUG = True
 
-ALLOWED_HOSTS = ['https://silly-davinci-6692de.netlify.app', 'localhost']
+ALLOWED_HOSTS = ['0.0.0.0', 'marina-t4sg.herokuapp.com', 'localhost', 'https://silly-davinci-6692de.netlify.app']
 
 
 # Application definition
@@ -137,4 +137,3 @@ CORS_ORIGIN_WHITELIST = [
     'http://localhost:3000', 
     'https://silly-davinci-6692de.netlify.app',
 ]
-
