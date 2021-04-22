@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/3.1/ref/settings/
 """
 
 from pathlib import Path
+import os
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -25,7 +26,7 @@ SECRET_KEY = 'a%f4x$^9kym43ai!4af3d6sk9sn@_p78f00*0zr0@5h1#7_)e9'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['0.0.0.0', 'marina-t4sg.herokuapp.com', 'localhost', 'https://silly-davinci-6692de.netlify.app']
 
 
 # Application definition
@@ -40,7 +41,6 @@ INSTALLED_APPS = [
     'corsheaders',
     'rest_framework',
     'marina_app',
-    'django_mysql',
 ]
 
 MIDDLEWARE = [
@@ -52,6 +52,7 @@ MIDDLEWARE = [
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     'corsheaders.middleware.CorsMiddleware',
+    'whitenoise.middleware.WhiteNoiseMiddleware',
 ]
 
 ROOT_URLCONF = 'backend.urls'
@@ -80,10 +81,17 @@ WSGI_APPLICATION = 'backend.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'd2fijv6lh4ld8',
+        'HOST': 'ec2-54-164-22-242.compute-1.amazonaws.com', 
+        'PORT': 5432,
+        'USER': 'kmuehgpbwqbtvh',
+        'PASSWORD': 'a7f47a03df5a39f12ee8e57c6b6c51f34707d132b6cd412ef9b8a1987ae2586b'
+
     }
 }
+
+# postgres://kmuehgpbwqbtvh:a7f47a03df5a39f12ee8e57c6b6c51f34707d132b6cd412ef9b8a1987ae2586b@ec2-54-164-22-242.compute-1.amazonaws.com:5432/d2fijv6lh4ld8
 
 
 # Password validation
@@ -123,8 +131,9 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/3.1/howto/static-files/
 
 STATIC_URL = '/static/'
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 
 CORS_ORIGIN_WHITELIST = [
-     'http://localhost:3000',
-     'https://silly-davinci-6692de.netlify.app',
+    'http://localhost:3000', 
+    'https://silly-davinci-6692de.netlify.app',
 ]
