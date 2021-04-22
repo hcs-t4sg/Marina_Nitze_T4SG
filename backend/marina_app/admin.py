@@ -5,7 +5,7 @@ class IssueAreaAdmin(admin.ModelAdmin):
     list_display =  ('title', 'num_practices','intro_text','conclusion_text',
                 'practice_1','practice_1_question','practice_1_description','practice_1_example','practice_1_link','num_subpractices_1','subpractices_1_names',
                 'practice_2','practice_2_question','practice_2_description','practice_2_example','practice_2_link','num_subpractices_2','subpractices_2_names',
-                'practice_3','practice_3_question','practice_3_description','practice_3_example','practice_3_link','num_subpractices_4','subpractices_3_names',
+                'practice_3','practice_3_question','practice_3_description','practice_3_example','practice_3_link','num_subpractices_3','subpractices_3_names',
                 'practice_4','practice_4_question','practice_4_description','practice_4_example','practice_4_link','num_subpractices_4','subpractices_4_names',
                 'practice_5','practice_5_question','practice_5_description','practice_5_example','practice_5_link','num_subpractices_5','subpractices_5_names',
                 'practice_6','practice_6_question','practice_6_description','practice_6_example','practice_6_link','num_subpractices_6','subpractices_6_names',
