@@ -60,11 +60,9 @@ export default class StateCard extends Component{
                     <div className="expanded-info">
                         <div className="column-left">
                             <h4><font color="#0E7088">Promising Practice</font></h4>
-                            <div>Does not charge a fee</div>
-                            <div>Does not require a notary</div>
-                            <div>Accepts electronic requests</div>
-                            <div>Does not list an individual contact</div>
-                            <div>Does not require a witness</div>
+                            {this.props.practices.map(
+                                practice => <div>{practice}</div>)
+                            }
                         </div>
                         <div className="column-center">
                             <h4><font color="#0E7088">Implemented?</font></h4>

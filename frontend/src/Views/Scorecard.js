@@ -118,55 +118,48 @@ class Scorecard extends Component {
         return tempData;
     }
 
-    //// TODO: Add total practices so that it is variable
-    //componentDidMount() {
-    //    axios
-    //        .get("https://marina-t4sg.herokuapp.com/api/states/")
-    //        .then(stateRes => {
-    //            axios
-    //                .get("https://marina-t4sg.herokuapp.com/api/implementations/")
-    //                .then(impRes => this.matchData(stateRes.data, impRes.data))
-    //                .catch(err => console.log(err))
-    //        })
-    //        .catch(err => console.log(err));
-    //    axios
-    //        .get("https://marina-t4sg.herokuapp.com/api/issue-areas/")
-    //        .then(res => this.setState(
-    //            {
-    //                issueAreaData: res.data,
-    //                currentIssue: res.data[0],
-    //                currentIssueTitle: res.data[0]['title'],
-    //                total_practices: res.data[0]['num_practices']
-    //            }
-    //        ))
-    //        .catch(err => console.log(err));
-    //}
-
     // TODO: Add total practices so that it is variable
     componentDidMount() {
-        console.log("HELLO")
         axios
-            .get("http://localhost:8000/api/states/")
+            .get("https://marina-t4sg.herokuapp.com/api/states/")
             .then(stateRes => {
-                    axios
-                        .get("http://localhost:8000/api/implementations/")
-                        .then(impRes => {
-                            this.setState({
-                                statesData: stateRes.data,
-                                implementationsData: impRes.data
-                            }
-                            )
-                        })
-                        .catch(err => console.log(err))
+                axios
+                    .get("https://marina-t4sg.herokuapp.com/api/implementations/")
+                    .then(impRes => {                        
+                        this.setState({
+                            statesData: stateRes.data,
+                            implementationsData: impRes.data
+                        }
+                        )
+                    })
+                    .catch(err => console.log(err))
             })
             .catch(err => console.log(err));
     }
+
+    // TODO: Add total practices so that it is variable
+    //componentDidMount() {
+    //    axios
+    //        .get("http://localhost:8000/api/states/")
+    //        .then(stateRes => {
+    //                axios
+    //                    .get("http://localhost:8000/api/implementations/")
+    //                    .then(impRes => {
+    //                        this.setState({
+    //                            statesData: stateRes.data,
+    //                            implementationsData: impRes.data
+    //                        }
+    //                        )
+    //                    })
+    //                    .catch(err => console.log(err))
+    //        })
+    //        .catch(err => console.log(err));
+    //}
 
     render() {
         // console.log("RENDER");
 
         var data = this.matchData(this.state.statesData, this.state.implementationsData, this.props.currentIssueTitle)
-        console.log(data);
         // console.log(this.state.data.length);
         var newStates = [...data];
         // console.log(newStates);
@@ -180,6 +173,14 @@ class Scorecard extends Component {
                     state => state.stateData.name.toLowerCase().includes(this.state.searchedState.toLowerCase()) === true)
             }
 
+        }
+
+        searchedStates.sort((a, b) => (a.stateData.name > b.stateData.name) ? 1 : -1)
+
+
+        var practices_list = [];
+        for (var i = 1; i <= this.props.totalPractices; i++) {
+            practices_list.push(this.props.currentIssue[`practice_${i}`]);
         }
 
         if (this.state.p1_filter) {
@@ -501,6 +502,7 @@ class Scorecard extends Component {
                             total={this.props.totalPractices}
                             completed={state['implemented']}
                             issueArea={this.props.currentIssue}
+                            practices={practices_list}
                         />)}
                 </div>
             </div>
