@@ -77,6 +77,34 @@
     flex-direction: row;
     padding-bottom: 2%;
     justify-content: center;
+
+}
+
+.submetric-scores{
+    width: 100%;
+}
+
+.submetric-title {
+    margin: auto;
+    display: flex;
+    flex-direction: row;
+    width: 85%;
+}
+
+.submetric-info {
+    margin: auto;
+    display: flex;
+    flex-direction: row;
+    width: 85%;
+}
+
+.submetric-div {
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    padding-left: 20px;
+    margin-top: 4px;
 }
 
 .demographics-div{
@@ -110,7 +138,7 @@
 .column-left{
     display: flex;
     flex-direction: column;
-    width: 30%;
+    width: 33%;
     color:black;
     align-items: flex-start;
     padding-left: 2%;
@@ -119,7 +147,7 @@
 .column-center{
     display: flex;
     flex-direction: column;
-    width: 25%;
+    width: 34%;
     color:black;
     align-items: center;
 }
@@ -127,8 +155,10 @@
 .column-right{
     display: flex;
     flex-direction: column;
-    width: 25%;
+    align-items: flex-end;
+    width: 33%;
     color: var(--cyan-medium);
+    padding-right: 2%;
 }
 
 .column-left, .column-center, .column-right {
