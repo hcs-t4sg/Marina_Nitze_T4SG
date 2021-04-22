@@ -115,10 +115,11 @@ p{
     margin: 0px;
 }
 
-.promising-div{
+.promising-div {
     display: flex;
     flex-direction: row;
     padding: 0px;
+    margin-top: 2px;
 }
 
 .tag-div{
@@ -173,4 +174,6 @@ p{
     text-align: center;
 }
 
-
+.subpractice-block{
+    width: 80%;
+}
