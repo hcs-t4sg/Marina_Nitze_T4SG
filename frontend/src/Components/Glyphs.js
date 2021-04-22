@@ -113,7 +113,7 @@ class Glyphs extends Component {
                 vis.tooltip
                     .style('top', event.pageY - 310 + 'px')
                     .style('left', event.pageX - 210 + 'px');
-                console.log(event.pageX);
+                // console.log(event.pageX);
             })
             .on('mouseout', function (event) {
                 vis.tooltip.html("").style('visibility', 'hidden');

@@ -2,6 +2,7 @@ import axios from "axios";
 import React, { Component , getDerivedStateFromProps } from "react";
 import Glyphs from '../Components/Glyphs'
 import "../App.css"
+import "../Components/Glyphs.css";
 import StateCard from "../Components/State Scorecard/StateCard"
 import Subheader from "../Components/Subheader"
 import Legend from '../Components/Legend'
@@ -31,8 +32,15 @@ class Scorecard extends Component {
             implemented_sort: 0,
             county_filter: 0,
             searchedState: "",
-            total_practices: this.props.totalPractices
+            total_practices: this.props.totalPractices,
+            expanded: false,
+            defaultFilterValue: 'Filter by...',
+            selectedFilterOptions: []
         };
+    }
+
+    handleFilterByChange = (selectedFilterOptions) => {
+        this.setState({ selectedFilterOptions });
     }
 
 
@@ -177,7 +185,6 @@ class Scorecard extends Component {
 
         searchedStates.sort((a, b) => (a.stateData.name > b.stateData.name) ? 1 : -1)
 
-
         var practices_list = [];
         for (var i = 1; i <= this.props.totalPractices; i++) {
             practices_list.push(this.props.currentIssue[`practice_${i}`]);
@@ -260,6 +267,18 @@ class Scorecard extends Component {
                 totalCount={this.props.totalPractices}
             />
         }
+
+        var filterbox = document.getElementById('checkboxes');
+        var items = document.getElementById('items');
+        const showCheckboxOptions = () => {
+            if (!this.state.expanded) {
+                this.setState({ expanded: true });
+                items.style.display = "none";
+            } else {
+                this.setState({ expanded: false });
+                items.style.display = "block";
+            }
+        };
 
         var filter_checkboxes = [];
         for (var i = 1; i <= this.props.totalPractices; i++) {
@@ -469,11 +488,15 @@ class Scorecard extends Component {
 
 
                     <div className="right-header">
-                        <h5> Filter By... </h5>
-                        <div className="checkboxes">
-                            {filter_checkboxes}
-
+                        
+                        <div id="checkboxes" class="dropdown-check-list" tabindex="100" onClick={showCheckboxOptions}>
+                            <span class="anchor">Filter by...</span>
+                            <ul id="items" class="items">
+                                {filter_checkboxes}
+                            </ul>
                         </div>
+                      
+                    
                     </div>
                     <Legend />
                 </div>

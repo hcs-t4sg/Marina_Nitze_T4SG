@@ -50,7 +50,7 @@ class LandingPage extends Component {
         axios
             .get("https://marina-t4sg.herokuapp.com/api/issue-areas/")
             .then(res => {
-                console.log(res.data);
+                //  console.log(res.data);
                 this.setState(
                     {
                         issueAreaData: res.data,
@@ -121,7 +121,7 @@ class LandingPage extends Component {
 
         for (var i = 1; i <= this.state.total_practices; i++) {
             // console.log(implement_blocks.length);
-            console.log(this.state.currentIssueTitle);
+            // console.log(this.state.currentIssueTitle);
             let implementBlock = <ImplementBlock
                 key={this.state.currentIssue[`practice_${i}`]}
                 link={this.state.currentIssue[`practice_${i}_link`]}
