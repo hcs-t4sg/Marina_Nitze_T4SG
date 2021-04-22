@@ -8,6 +8,8 @@ import Subheader from "../Components/Subheader";
 import StateCard from "../Components/State Scorecard/StateCard"
 import Scorecard from "./Scorecard"
 
+const jurisdictions = 54;
+
 class LandingPage extends Component {
 
     constructor(props) {
@@ -17,7 +19,8 @@ class LandingPage extends Component {
             currentIssue: {},
             total_practices: {},
             issueAreaData: [],
-            currentIssueTitle: "Adam Walsh"
+            currentIssueTitle: "Adam Walsh",
+            implementationData: []
         }
     }
 
@@ -30,14 +33,13 @@ class LandingPage extends Component {
             </div>
         ];
         for (var i = 1; i <= this.state.total_practices; i++) {
-            // console.log(this.state.currentIssue[`practice_${i}`]);
             let implementBlock = <ImplementBlock
                 key={this.state.currentIssue[`practice_${i}`]}
                 link={this.state.currentIssue[`practice_${i}_link`]}
                 title={this.state.currentIssue[`practice_${i}`]}
                 description={this.state.currentIssue[`practice_${i}_description`]}
                 question={this.state.currentIssue[`practice_${i}_question`]}
-                quote={this.state.currentIssue[`practice_${i}_quote`]}
+                example={this.state.currentIssue[`practice_${i}_example`]}
             />
             tempImplementBlocks.push(implementBlock);
         }
@@ -48,7 +50,7 @@ class LandingPage extends Component {
     componentDidMount() {
         this._isMounted = true;
         axios
-            .get("https://marina-t4sg.herokuapp.com/api/issue-areas/")
+            .get("http://localhost:8000/api/issue-areas/")
             .then(res => {
                 //  console.log(res.data);
                 this.setState(
@@ -60,7 +62,33 @@ class LandingPage extends Component {
                     })
             })
             .catch(err => console.log(err));
+        axios
+            .get("https://marina-t4sg.herokuapp.com/api/implementations/")
+            .then(res => {
+                this.setState(
+                    {
+                        implementationData: res.data
+                    })
+            })
+            .catch(err => console.log(err));
     }
+
+    //componentDidMount() {
+    //    this._isMounted = true;
+    //    axios
+    //        .get("https://marina-t4sg.herokuapp.com/api/issue-areas/")
+    //        .then(res => {
+    //            console.log(res.data);
+    //            this.setState(
+    //                {
+    //                    issueAreaData: res.data,
+    //                    currentIssue: res.data[0],
+    //                    currentIssueTitle: res.data[0]['title'],
+    //                    total_practices: res.data[0]['num_practices']
+    //                })
+    //        })
+    //        .catch(err => console.log(err));
+    //}
 
     //componentDidMount() {
     //    this._isMounted = true;
@@ -77,6 +105,16 @@ class LandingPage extends Component {
     //                })
     //        })
     //        .catch(err => console.log(err));
+
+    //        axios
+    //            .get("http://localhost:8000/api/implementations/")
+    //            .then(res => {
+    //            this.setState(
+    //            {
+    //                implementationData: res.data
+    //            })
+    //            })
+    //            .catch (err => console.log(err));
     //}
 
     componentWillUnmount() {
@@ -96,7 +134,58 @@ class LandingPage extends Component {
 
     }
 
+    countStateImplementations = () => {
+        var counts = [];
+
+        for (var i = 1; i <= this.state.total_practices; i++) {
+            //console.log("HELLO")
+            //console.log(this.state.currentIssue[`num_subpractices_${i}`])
+            if (this.state.currentIssue[`num_subpractices_${i}`] <= 1 || !this.state.currentIssue[`num_subpractices_${i}`]) {
+                counts.push(0);
+            }
+            else {
+                var submetrics = [];
+                for (var j = 0; j < this.state.currentIssue[`num_subpractices_${i}`]; j++) {
+                    submetrics.push(0);
+                }
+                counts.push(submetrics);
+            }
+
+        }
+
+        console.log(counts);
+
+        for (var i = 0; i < this.state.implementationData.length; i++) {
+
+            var data = this.state.implementationData[i];
+
+            if (data['issue_area'] === this.state.currentIssueTitle) {
+
+                for (var j = 1; j <= this.state.total_practices; j++) {
+                    if (!this.state.currentIssue[`num_subpractices_${j}`] || this.state.currentIssue[`num_subpractices_${j}`] <= 1) {
+                        if (data[`practice_${j}`]) {
+                            counts[j - 1]++;
+                        }
+                    }
+                    else {
+                        for (var k = 0; k < this.state.currentIssue[`num_subpractices_${j}`]; k++) {
+                            
+                            if (data[`subpractice_${j}_${k+1}`]) {
+                                counts[j - 1][k]++;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        console.log(counts)
+
+        return counts
+    }
+
     render() {
+        var imp_counts = this.countStateImplementations()
+        console.log(imp_counts)
 
         var select_issues = [];
         var implement_blocks = [
@@ -121,17 +210,35 @@ class LandingPage extends Component {
 
         for (var i = 1; i <= this.state.total_practices; i++) {
             // console.log(implement_blocks.length);
-            // console.log(this.state.currentIssueTitle);
+            //console.log(this.state.currentIssueTitle);
+            //console.log(this.state.currentIssueTitle);
+            var submetrics = []
+            if (this.state.currentIssue[`subpractices_${i}_names`]) {
+                submetrics = (this.state.currentIssue[`subpractices_${i}_names`].slice(1, this.state.currentIssue[`subpractices_${i}_names`].length - 1).split(","))
+
+            }
+
+            for (var j = 0; j < submetrics.length; j++) {
+                submetrics[j] = submetrics[j].trim()
+                submetrics[j] = submetrics[j].slice(1, submetrics[j].length - 1)
+            }
+
             let implementBlock = <ImplementBlock
                 key={this.state.currentIssue[`practice_${i}`]}
                 link={this.state.currentIssue[`practice_${i}_link`]}
                 title={this.state.currentIssue[`practice_${i}`]}
                 description={this.state.currentIssue[`practice_${i}_description`]}
                 question={this.state.currentIssue[`practice_${i}_question`]}
-                quote={this.state.currentIssue[`practice_${i}_quote`]}
+                example={this.state.currentIssue[`practice_${i}_example`]}
+                num_subpractices={this.state.currentIssue[`num_subpractices_${i}`]}
+                p_count={imp_counts[i - 1]}
+                jurisdictions={jurisdictions}
+                subpractices={submetrics}
             />
+
             implement_blocks.push(implementBlock);
         }
+
 
         return (
             <div className="landing-page">

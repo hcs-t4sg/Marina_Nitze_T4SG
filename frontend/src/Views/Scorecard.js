@@ -119,7 +119,7 @@ class Scorecard extends Component {
         return tempData;
     }
 
-    // TODO: Add total practices so that it is variable
+    //// TODO: Add total practices so that it is variable
     componentDidMount() {
         axios
             .get("https://marina-t4sg.herokuapp.com/api/states/")
