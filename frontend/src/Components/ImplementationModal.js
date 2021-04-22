@@ -30,7 +30,7 @@ export default class ImplementationModal extends Component {
                         className="promising-div"
                         key={this.props.title + "submetric" + i}
                     >
-                        <p> {this.props.subpractices[i]} </p>
+                        <p className="subpractice-block"> {this.props.subpractices[i]} </p>
                         <div className="state-tag"> <p> {this.state.p_count[i]} States </p> </div>
 
                     </div>
