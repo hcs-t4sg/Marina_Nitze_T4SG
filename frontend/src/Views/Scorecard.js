@@ -33,16 +33,9 @@ class Scorecard extends Component {
             county_filter: 0,
             searchedState: "",
             total_practices: this.props.totalPractices,
-            expanded: false,
-            defaultFilterValue: 'Filter by...',
-            selectedFilterOptions: []
+            expanded: true
         };
     }
-
-    handleFilterByChange = (selectedFilterOptions) => {
-        this.setState({ selectedFilterOptions });
-    }
-
 
     changeP1 = (p) => {
         this.setState({ p1_filter: !p });

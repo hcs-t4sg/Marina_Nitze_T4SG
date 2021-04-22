@@ -59,10 +59,15 @@
   z-index: 10;  
 }
 
+.anchor {
+  z-index: 10;
+}
+
 .dropdown-check-list {
   display: inline-block;
   background: white;
 }
+
 .dropdown-check-list .anchor {
   position: relative;
   cursor: pointer;
@@ -70,6 +75,7 @@
   padding: 5px 50px 5px 10px;
   border: 1px solid #ccc;
 }
+
 .dropdown-check-list .anchor:after {
   position: absolute;
   content: "";
@@ -84,10 +90,12 @@
   -webkit-transform: rotate(-135deg);
   transform: rotate(-135deg);
 }
+
 .dropdown-check-list .anchor:active:after {
   right: 8px;
   top: 21%;
 }
+
 .dropdown-check-list ul.items {
   padding: 2px;
   display: none;
@@ -95,7 +103,8 @@
   border: 1px solid #ccc;
   border-top: none;
 }
-.dropdown-check-list ul.items li {
+
+.dropdown-check-list ul.items .filter-check {
   list-style: none;
 }
 
