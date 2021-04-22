@@ -119,42 +119,42 @@ class Scorecard extends Component {
     }
 
     //// TODO: Add total practices so that it is variable
-    //componentDidMount() {
-    //    axios
-    //        .get("https://marina-t4sg.herokuapp.com/api/states/")
-    //        .then(stateRes => {
-    //            axios
-    //                .get("https://marina-t4sg.herokuapp.com/api/implementations/")
-    //                .then(impRes => {                        
-    //                    this.setState({
-    //                        statesData: stateRes.data,
-    //                        implementationsData: impRes.data
-    //                    }
-    //                    )
-    //                })
-    //                .catch(err => console.log(err))
-    //        })
-    //        .catch(err => console.log(err));
-    //}
-
-    // TODO: Add total practices so that it is variable
     componentDidMount() {
         axios
-            .get("http://localhost:8000/api/states/")
+            .get("https://marina-t4sg.herokuapp.com/api/states/")
             .then(stateRes => {
-                    axios
-                        .get("http://localhost:8000/api/implementations/")
-                        .then(impRes => {
-                            this.setState({
-                                statesData: stateRes.data,
-                                implementationsData: impRes.data
-                            }
-                            )
-                        })
-                        .catch(err => console.log(err))
+                axios
+                    .get("https://marina-t4sg.herokuapp.com/api/implementations/")
+                    .then(impRes => {                        
+                        this.setState({
+                            statesData: stateRes.data,
+                            implementationsData: impRes.data
+                        }
+                        )
+                    })
+                    .catch(err => console.log(err))
             })
             .catch(err => console.log(err));
     }
+
+    // TODO: Add total practices so that it is variable
+    //componentDidMount() {
+    //    axios
+    //        .get("http://localhost:8000/api/states/")
+    //        .then(stateRes => {
+    //                axios
+    //                    .get("http://localhost:8000/api/implementations/")
+    //                    .then(impRes => {
+    //                        this.setState({
+    //                            statesData: stateRes.data,
+    //                            implementationsData: impRes.data
+    //                        }
+    //                        )
+    //                    })
+    //                    .catch(err => console.log(err))
+    //        })
+    //        .catch(err => console.log(err));
+    //}
 
     render() {
         // console.log("RENDER");
