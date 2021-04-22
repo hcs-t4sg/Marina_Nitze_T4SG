@@ -179,8 +179,10 @@ class Scorecard extends Component {
         searchedStates.sort((a, b) => (a.stateData.name > b.stateData.name) ? 1 : -1)
 
         var practices_list = [];
+        this.displayList = [];
         for (var i = 1; i <= this.props.totalPractices; i++) {
             practices_list.push(this.props.currentIssue[`practice_${i}`]);
+            this.displayList.push(<li className="legend-title">{this.props.currentIssue[`practice_${i}`]} </li>);
         }
 
         if (this.state.p1_filter) {
@@ -476,20 +478,20 @@ class Scorecard extends Component {
                                     <option value="state">State Administered</option>
                                 </select>
                             </label>
+                            <div id="checkboxes" class="dropdown-check-list" tabindex="100" onClick={showCheckboxOptions}>
+                                <span class="anchor">Filter by...</span>
+                                <ul id="items" class="items">
+                                    {filter_checkboxes}
+                                </ul>
+                            </div>
                         </div>
                     </div>
 
 
                     <div className="right-header">
-                        
-                        <div id="checkboxes" class="dropdown-check-list" tabindex="100" onClick={showCheckboxOptions}>
-                            <span class="anchor">Filter by...</span>
-                            <ul id="items" class="items">
-                                {filter_checkboxes}
-                            </ul>
-                        </div>
-                      
-                    
+                      <ol className="legend-labels">
+                        {this.displayList}
+                    </ol>
                     </div>
                     <Legend />
                 </div>

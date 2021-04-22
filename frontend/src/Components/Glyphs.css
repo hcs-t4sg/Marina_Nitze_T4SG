@@ -60,7 +60,7 @@
 }
 
 .dropdown-check-list {
-  margin: 0px 10px 0px 0px;
+  margin: 0px 14px 0px 0px;
   display: inline-block;
   background: white;
 }
@@ -69,8 +69,7 @@
   position: relative;
   cursor: pointer;
   display: inline-block;
-  padding: 5px 50px 5px 10px;
-  border: 1px solid #ccc;
+  padding: 5px 50px 5px 30px;
 }
 
 .dropdown-check-list .anchor:after {

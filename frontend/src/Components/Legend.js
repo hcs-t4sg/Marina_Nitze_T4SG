@@ -22,13 +22,6 @@ class Legend extends Component {
 				        <text x="40" y="55"> Not Implemented </text>
 				    </g>	
 				</svg>
-				<div className="legend-labels">
-					<text className="legend-title"> 1. No fee </text>
-					<text className="legend-title"> 2. No notary required </text>
-					<text className="legend-title"> 3. No witness required </text>
-					<text className="legend-title"> 4. Electronic request </text>
-					<text className="legend-title"> 5. No contact </text>
-				</div>
 	        </div>
 
     	);

@@ -23,7 +23,6 @@
 }
 
 .legend-labels {
+  text-align: left;
   margin-left: 20px;
-  display: flex;
-  flex-flow: column wrap;
 }
