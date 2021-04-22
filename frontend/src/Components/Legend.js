@@ -20,6 +20,11 @@ class Legend extends Component {
 				        <circle className="legend-nonimplemented" text="yo" cx="20" cy="50" r="10"></circle>
 				        <text fill="#ffffff" text-anchor="middle" x="20" y="55"> X </text>
 				        <text x="40" y="55"> Not Implemented </text>
+				    </g>
+				    <g>
+				        <circle className="legend-unknown" text="yo" cx="20" cy="80" r="10"></circle>
+				        <text fill="#ffffff" text-anchor="middle" x="20" y="85"> X </text>
+				        <text x="40" y="85"> Data Unavailable </text>
 				    </g>	
 				</svg>
 	        </div>

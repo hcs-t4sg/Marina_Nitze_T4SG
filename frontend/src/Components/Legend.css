@@ -9,6 +9,9 @@
   fill: var(--dusty-pink);
 }
 
+.legend-unknown {
+  fill: var(--light-grey);
+}
 
 .legend-title {
   margin: 3px;
