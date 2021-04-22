@@ -487,13 +487,13 @@ class Scorecard extends Component {
                         </div>
                     </div>
 
-
-                    <div className="right-header">
-                      <ol className="legend-labels">
-                        {this.displayList}
-                    </ol>
-                    </div>
                     <Legend />
+                    <div className="right-header">
+                        Promising Practices:
+                        <ol className="legend-labels" >
+                            {this.displayList}
+                        </ol>
+                    </div>
                 </div>
 
                 <div>{glyphs}</div>

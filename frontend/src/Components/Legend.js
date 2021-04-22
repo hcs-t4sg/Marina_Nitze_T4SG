@@ -10,7 +10,7 @@ class Legend extends Component {
 	render() {
 		return (
 	        <div className="legend-container">
-	        	<svg height="100">
+	        	<svg height="100" width="180">
 	            	<g>
 				        <circle className="legend-implemented" cx="20" cy="20" r="10" text="A"></circle>
 				        <text fill="#ffffff" text-anchor="middle" x="20" y="25"> X </text>

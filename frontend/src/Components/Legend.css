@@ -15,10 +15,12 @@
 
 .legend-title {
   margin: 3px;
+  white-space: nowrap;
 }
 
 .legend-container {
-  margin-left: 40px;
+  transform: translateY(20%);
+  padding-left: 30px;
   display: flex;
   flex-direction: column;
   align-content: flex-start;
@@ -26,6 +28,8 @@
 }
 
 .legend-labels {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
   text-align: left;
-  margin-left: 20px;
 }

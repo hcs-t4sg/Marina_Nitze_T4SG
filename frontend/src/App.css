@@ -114,6 +114,7 @@ html {
 }
 
 .filter-box {
+  font-size: 1.1em;
   background-color: var(--off-white);
   border: solid var(--light-grey) 1px;
   font-size: 16px;
@@ -372,9 +373,9 @@ h5 {
 }
 
 .right-header {
-  min-width: 10vw;
-  margin-top: 6%;
-  margin: 10px;
+  min-width: 12vw;
+  margin-top: 3%;
+  margin: 10px 50px 0px 0px;
 }
 
 #page-toggle {
