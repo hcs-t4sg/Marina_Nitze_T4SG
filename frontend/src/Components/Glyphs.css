@@ -46,15 +46,15 @@
 }
 
 .fully_implemented {
-  fill: var(--teal);
+  fill: var(--dark-blue);
 }
 
 .partially_implemented {
-  fill: var(--blue-3);
+  fill: var(--blue-2);
 }
 
 .status_unknown {
-  fill: var(--light-grey);
+  fill: var(--dark-off-white);
 }
 
 .glyph-titles {

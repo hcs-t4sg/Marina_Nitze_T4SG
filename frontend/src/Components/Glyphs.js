@@ -43,7 +43,7 @@ class Glyphs extends Component {
 
     	const allPractices = Object.keys(state).filter(p => p.startsWith('practice_')).slice(0, this.props.totalCount);
     	const allPracticesStatuses = vis.determinePracticeStatuses(allPractices, state);
-    	const practicesAvailble = Object.keys(allPracticesStatuses).filter(p => allPracticesStatuses[p] === 'fully_implemented');
+    	const practicesAvailble = Object.keys(allPracticesStatuses).filter(p => allPracticesStatuses[p] === 'fully_implemented' || 'partially_implemented');
 
     	const width = 80;
     	const height = 80;
@@ -66,7 +66,8 @@ class Glyphs extends Component {
 		integration.append('path')
 		    .attr('d', d => {
 				const points = allPractices.map((p, i) => {
-		        	return (state[p] === true) ? pentagonVertex(i, this.props.totalCount) : null;
+					console.log(state);
+		        	return (allPracticesStatuses[p] === ('fully_implemented' || 'partially_implemented')) ? pentagonVertex(i, this.props.totalCount) : null;
 		        }).filter(p => p);
 		    	if (points.length === 2) {
 		        	return 'M' + points.map(p => [p.x, p.y].join(',')).join('L');
@@ -78,7 +79,8 @@ class Glyphs extends Component {
 		    .attr('stroke', practicesAvailble.length > 2 ? 'none' : availableColorLighter)
 		    .attr('stroke-width', circleRadius * 2)
 		    .attr('practice-status', d => {
-		    	return state[d] === true;
+		    	// console.log(allPracticesStatuses[d] == ('fully_implemented' || 'partially_implemented'));
+		    	return allPracticesStatuses[d] === 'fully_implemented' || 'partially_implemented';
 		    })
 		    .attr('practice-name', d => {
 		    	return d;

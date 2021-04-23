@@ -1,4 +1,7 @@
 :root {
+  --dark-blue: #3A62B0;
+  --blue-1: #9EBDFB;
+  --blue-2: #6991E0;
   --blue-3: #4B73DB;
   --light-blue: #61dafb;
   --cyan-medium: #3595AC; 
@@ -12,6 +15,7 @@
   --medium-grey: #a1a1a1;
   --light-grey: #bdbdbd;
   --lightest-grey: #dce3e6;
+  --dark-off-white: #8892A4;
   --off-white: #C8D2D5;
   --light-off-white: #EBF1F2;
 }

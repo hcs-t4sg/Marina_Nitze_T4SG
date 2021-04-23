@@ -2,7 +2,11 @@
 @import url("/src/res/Values.css");
 
 .legend-implemented {
-  fill: var(--teal);
+  fill: var(--dark-blue);
+}
+
+.legend-partially-implemented {
+  fill: var(--blue-2);
 }
 
 .legend-nonimplemented {
@@ -10,7 +14,7 @@
 }
 
 .legend-unknown {
-  fill: var(--light-grey);
+  fill: var(--dark-off-white);
 }
 
 .legend-title {
