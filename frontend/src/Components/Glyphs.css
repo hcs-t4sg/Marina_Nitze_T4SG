@@ -40,16 +40,21 @@
   overflow: visible;
 }
 
-.no {
-  
+.not_implemented {
+  fill: var(--dusty-pink);
+  stroke: var(--dusty-pink);
 }
 
-.yes {
-
+.fully_implemented {
+  fill: var(--teal);
 }
 
-.unknown {
-  
+.partially_implemented {
+  fill: var(--blue-3);
+}
+
+.status_unknown {
+  fill: var(--light-grey);
 }
 
 .glyph-titles {

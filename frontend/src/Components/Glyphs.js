@@ -41,9 +41,9 @@ class Glyphs extends Component {
     drawSingleGlyph(state, g) {
         var vis = this;
 
-		const practicesAvailble = Object.keys(state).filter(p => state[p] === true);
     	const allPractices = Object.keys(state).filter(p => p.startsWith('practice_')).slice(0, this.props.totalCount);
     	const allPracticesStatuses = vis.determinePracticeStatuses(allPractices, state);
+    	const practicesAvailble = Object.keys(allPracticesStatuses).filter(p => allPracticesStatuses[p] === 'fully_implemented');
 
     	const width = 80;
     	const height = 80;
@@ -93,7 +93,6 @@ class Glyphs extends Component {
 		    	return `translate(${v.x},${v.y})`;
 		    })
 		    .attr('practice-status', d => {
-		    	console.log(allPracticesStatuses[d]);
 		    	return state[d] === true;
 		    })
 		    .attr('practice-name', d => {
@@ -103,15 +102,13 @@ class Glyphs extends Component {
     	practice.append('circle')
 		    .attr('r', circleRadius)
 		    .attr('class', d => allPracticesStatuses[d])
-		    .style('fill', d => state[d] === true ? availableColor : unavailableColor)
-    		.style('stroke', d => state[d] === true ? 'none' : unavailableColor)
             .on('mouseover', function (event,d, i) {
                 vis.tooltip
                     .html(
                       `<div>Practice: ${d}</div><div>Status: ${state[d]}</div>`
                     )
                     .style('visibility', 'visible');
-                  d3.select(this).transition().attr('fill', availableColor);
+                  // d3.select(this).transition().attr('fill', availableColor);
             })
             .on('mousemove', function (event) {
                 vis.tooltip
@@ -120,7 +117,7 @@ class Glyphs extends Component {
             })
             .on('mouseout', function (event) {
                 vis.tooltip.html("").style('visibility', 'hidden');
-                d3.select(this).transition().attr('fill', '#fff');
+                // d3.select(this).transition().attr('fill', '#fff');
             });
 
         practice.append('text')
@@ -183,17 +180,16 @@ class Glyphs extends Component {
 					else if (state['subpractice_' + i + '_' + j] == false) no_count++;
 					else unknown_count++;
             	}
-            	if (yes_count == num_subpractices) 	practice_status_dict['practice_' + i] = 'yes';
-            	else if (no_count == num_subpractices || (no_count > 0 && yes_count == 0)) 	practice_status_dict['practice_' + i] = 'no';
-            	else if ((no_count > 0 && yes_count > 0) || (yes_count > 0 && no_count == 0)) practice_status_dict['practice_' + i] = 'partially';
-            	else practice_status_dict['practice_' + i] = 'unknown';
+            	if (yes_count == num_subpractices) 	practice_status_dict['practice_' + i] = 'fully_implemented';
+            	else if (no_count == num_subpractices || (no_count > 0 && yes_count == 0)) 	practice_status_dict['practice_' + i] = 'not_implemented';
+            	else if ((no_count > 0 && yes_count > 0) || (yes_count > 0 && no_count == 0)) practice_status_dict['practice_' + i] = 'partially_implemented';
+            	else practice_status_dict['practice_' + i] = 'status_unknown';
     		} 
-    		else if (main_status == true) practice_status_dict['practice_' + i] = 'yes';
-			else if (main_status == false) practice_status_dict['practice_' + i] = 'no';
-			else practice_status_dict['practice_' + i] = 'unknown';
+    		else if (main_status == true) practice_status_dict['practice_' + i] = 'fully_implemented';
+			else if (main_status == false) practice_status_dict['practice_' + i] = 'not_implemented';
+			else practice_status_dict['practice_' + i] = 'status_unknown';
             
         }
-        // console.log(practice_status_dict);
 		return practice_status_dict;
 	}
 
