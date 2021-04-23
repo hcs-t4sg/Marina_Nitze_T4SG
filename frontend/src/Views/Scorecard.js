@@ -407,81 +407,89 @@ class Scorecard extends Component {
                             <h4> How Do the 50 States Compare? </h4>
                         </div>
 
-                        <div className="sort-boxes">
-                            <label className="sort-label">
+                        <div className="filter-row">
 
-                                <div className="sort-title"> Population Size </div>
+                            <div className="filter-boxes">
+                                <label className="sort-label">
 
-                                <select onChange={(e) => {
-                                    if (e.target.value === "no-filter") {
-                                        this.setState({ population_filter: 0 })
-                                    }
+                                    <div className="sort-title"> Population Size </div>
 
-                                    else if (e.target.value === "small") {
-                                        this.setState({ population_filter: 1 })
-                                    }
-                                    else if (e.target.value === "medium") {
-                                        this.setState({ population_filter: 2 })
-                                    }
-                                    else if (e.target.value === "large") {
-                                        this.setState({ population_filter: 3 })
-                                    }
-                                }}>
-                                    <option value="no-filter">Select a Population</option>
-                                    <option value="small">Less than 2.5 M</option>
-                                    <option value="medium">2.5M to 7.5 M</option>
-                                    <option value="large">7.5M +</option>
-                                </select>
-                            </label>
+                                    <select onChange={(e) => {
+                                        if (e.target.value === "no-filter") {
+                                            this.setState({ population_filter: 0 })
+                                        }
 
-                            <label className="sort-label">
-                                <div className="sort-title">  Number of Practices Implemented </div>
+                                        else if (e.target.value === "small") {
+                                            this.setState({ population_filter: 1 })
+                                        }
+                                        else if (e.target.value === "medium") {
+                                            this.setState({ population_filter: 2 })
+                                        }
+                                        else if (e.target.value === "large") {
+                                            this.setState({ population_filter: 3 })
+                                        }
+                                    }}>
+                                        <option value="no-filter">Select a Population</option>
+                                        <option value="small">Less than 2.5 M</option>
+                                        <option value="medium">2.5M to 7.5 M</option>
+                                        <option value="large">7.5M +</option>
+                                    </select>
+                                </label>
 
-                                <select onChange={(e) => {
-                                    if (e.target.value === "most") {
-                                        this.setState({ implemented_sort: 1 })
-                                    }
+                                <label className="sort-label">
 
-                                    else if (e.target.value === "least") {
-                                        this.setState({ implemented_sort: -1 })
-                                    }
-                                    else if (e.target.value === "no-sort") {
-                                        this.setState({ implemented_sort: 0 })
-                                    }
-                                }}>
-                                    <option value="no-sort">No Sort</option>
-                                    <option value="most">Most Practices Implemented</option>
-                                    <option value="least">Least Practices Implemented</option>
-                                </select>
-                            </label>
+                                    <div className="sort-title"> State vs County </div>
+                                    <select onChange={(e) => {
+                                        if (e.target.value === "no-filter") {
+                                            this.setState({ county_filter: 0 })
+                                        }
 
-                            <label className="sort-label">
+                                        else if (e.target.value === "county") {
+                                            this.setState({ county_filter: 1 })
+                                        }
+                                        else if (e.target.value === "state") {
+                                            this.setState({ county_filter: 2 })
+                                        }
+                                    }}>
+                                        <option value="no-filter">County or State</option>
+                                        <option value="county">County Administered</option>
+                                        <option value="state">State Administered</option>
+                                    </select>
+                                </label>
+                                <div className="sort-title"> Specific Practices </div>
+                                <div id="checkboxes" class="dropdown-check-list" tabindex="100">
+                                    <span class="anchor" onClick={showCheckboxOptions}>Filter Practices</span>
+                                    <ul id="items" class="items">
+                                        {filter_checkboxes}
+                                    </ul>
+                                </div>
+                            </div>
 
-                                <div className="sort-title"> State vs County </div>
-                                <select onChange={(e) => {
-                                    if (e.target.value === "no-filter") {
-                                        this.setState({ county_filter: 0 })
-                                    }
+                            <div className="sort-boxes">
 
-                                    else if (e.target.value === "county") {
-                                        this.setState({ county_filter: 1 })
-                                    }
-                                    else if (e.target.value === "state") {
-                                        this.setState({ county_filter: 2 })
-                                    }
-                                }}>
-                                    <option value="no-filter">County or State</option>
-                                    <option value="county">County Administered</option>
-                                    <option value="state">State Administered</option>
-                                </select>
-                            </label>
-                            <div id="checkboxes" class="dropdown-check-list" tabindex="100">
-                                <span class="anchor" onClick={showCheckboxOptions}>Filter Practices</span>
-                                <ul id="items" class="items">
-                                    {filter_checkboxes}
-                                </ul>
+                                <label className="sort-label">
+                                    <div className="sort-title">  Number of Practices Implemented </div>
+
+                                    <select onChange={(e) => {
+                                        if (e.target.value === "most") {
+                                            this.setState({ implemented_sort: 1 })
+                                        }
+
+                                        else if (e.target.value === "least") {
+                                            this.setState({ implemented_sort: -1 })
+                                        }
+                                        else if (e.target.value === "no-sort") {
+                                            this.setState({ implemented_sort: 0 })
+                                        }
+                                    }}>
+                                        <option value="no-sort">No Sort</option>
+                                        <option value="most">Most Practices Implemented</option>
+                                        <option value="least">Least Practices Implemented</option>
+                                    </select>
+                                </label>
                             </div>
                         </div>
+
                     </div>
 
                     <Legend />
