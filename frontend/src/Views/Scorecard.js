@@ -412,7 +412,7 @@ class Scorecard extends Component {
                             <div className="filter-boxes">
                                 <label className="sort-label">
 
-                                    <div className="sort-title"> Population Size </div>
+                                    <div className="sort-title"> Filter by... </div>
 
                                     <select onChange={(e) => {
                                         if (e.target.value === "no-filter") {
@@ -429,7 +429,7 @@ class Scorecard extends Component {
                                             this.setState({ population_filter: 3 })
                                         }
                                     }}>
-                                        <option value="no-filter">Select a Population</option>
+                                        <option value="no-filter">Population Size</option>
                                         <option value="small">Less than 2.5 M</option>
                                         <option value="medium">2.5M to 7.5 M</option>
                                         <option value="large">7.5M +</option>
@@ -438,7 +438,6 @@ class Scorecard extends Component {
 
                                 <label className="sort-label">
 
-                                    <div className="sort-title"> State vs County </div>
                                     <select onChange={(e) => {
                                         if (e.target.value === "no-filter") {
                                             this.setState({ county_filter: 0 })
@@ -451,14 +450,13 @@ class Scorecard extends Component {
                                             this.setState({ county_filter: 2 })
                                         }
                                     }}>
-                                        <option value="no-filter">County or State</option>
+                                        <option value="no-filter">Administration Type</option>
                                         <option value="county">County Administered</option>
                                         <option value="state">State Administered</option>
                                     </select>
                                 </label>
-                                <div className="sort-title"> Specific Practices </div>
                                 <div id="checkboxes" class="dropdown-check-list" tabindex="100">
-                                    <span class="anchor" onClick={showCheckboxOptions}>Filter Practices</span>
+                                    <span class="anchor" onClick={showCheckboxOptions}>Promising Practice</span>
                                     <ul id="items" class="items">
                                         {filter_checkboxes}
                                     </ul>
@@ -468,7 +466,7 @@ class Scorecard extends Component {
                             <div className="sort-boxes">
 
                                 <label className="sort-label">
-                                    <div className="sort-title">  Number of Practices Implemented </div>
+                                    <div className="sort-title">  Sort by... </div>
 
                                     <select onChange={(e) => {
                                         if (e.target.value === "most") {

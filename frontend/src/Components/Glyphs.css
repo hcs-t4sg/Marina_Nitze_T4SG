@@ -77,14 +77,13 @@
 }
 
 #checkboxes {
-  width: 200px;
+  width: 160px;
   z-index: 400;
-  margin-left: 5px;
+  margin: 0px 5px;
 }
 
 .dropdown-check-list {
-  font-size: .9em;
-  margin: 0px 14px 0px 0px;
+  font-size: .8em;
   max-height: 30px;
   display: inline-block;
   background: white;
@@ -94,7 +93,7 @@
   position: relative;
   cursor: pointer;
   display: inline-block;
-  padding: 5px 80px 5px 0px;
+  padding: 5px 30px 5px 0px;
 }
 
 .dropdown-check-list .anchor:after {
@@ -103,7 +102,7 @@
   border-left: 2px solid black;
   border-top: 2px solid black;
   padding: 5px;
-  right: 2px;
+  right: 1px;
   top: 20%;
   -moz-transform: rotate(-135deg);
   -ms-transform: rotate(-135deg);
@@ -132,8 +131,11 @@
 }
 
 ul.items {
-  max-width: 200px;
+  max-width: 156px;
   white-space: wrap;
   background: white;
+  opacity: 1;
+  position:absolute;
+  z-index: 10;
 }
 
