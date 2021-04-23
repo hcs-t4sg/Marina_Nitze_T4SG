@@ -407,7 +407,6 @@ class Scorecard extends Component {
                             <h4> How Do the 50 States Compare? </h4>
                         </div>
 
-                        <h5> Sort By... </h5>
                         <div className="sort-boxes">
                             <label className="sort-label">
 
@@ -436,7 +435,7 @@ class Scorecard extends Component {
                             </label>
 
                             <label className="sort-label">
-                                <div className="sort-title">  Practices Implemented </div>
+                                <div className="sort-title">  Number of Practices Implemented </div>
 
                                 <select onChange={(e) => {
                                     if (e.target.value === "most") {

@@ -3,11 +3,7 @@ import * as d3 from "d3";
 import "./Glyphs.css";
 import "../res/Values.css";
 
-const availableColor = '#276a82';
-const availableColorLighter = '#c8e0e3';
-const unavailableColor = '#ccb6c5';
-const unknownColor = "#bdbdbd";
-const partiallyImplementedColor = "#4B73DB";
+const connectingColor = '#DCE8FF';
 
 class Glyphs extends Component {
 	constructor(props) {
@@ -77,8 +73,8 @@ class Glyphs extends Component {
 		        	return 'M' + points.map(p => [p.x, p.y].join(',')).join('L') + 'Z';
 		    	}
 		    })
-		    .attr('fill', practicesAvailble.length > 2 ? availableColorLighter : 'none')
-		    .attr('stroke', practicesAvailble.length > 2 ? 'none' : availableColorLighter)
+		    .attr('fill', practicesAvailble.length > 2 ? connectingColor : 'none')
+		    .attr('stroke', practicesAvailble.length > 2 ? 'none' : connectingColor)
 		    .attr('stroke-width', circleRadius * 2)
 		    .attr('practice-status', d => {
 		    	return allPracticesStatuses[d] === 'partially_implemented' || allPracticesStatuses[d] === 'fully_implemented';
@@ -95,9 +91,6 @@ class Glyphs extends Component {
 		    	const v = pentagonVertex(i, this.props.totalCount);
 		    	return `translate(${v.x},${v.y})`;
 		    })
-		    .attr('practice-status', d => {
-		    	return state[d] === true;
-		    })
 		    .attr('practice-name', d => {
 		    	return d;
 		    });
@@ -111,7 +104,7 @@ class Glyphs extends Component {
                       `<div>Practice: ${d}</div><div>Status: ${state[d]}</div>`
                     )
                     .style('visibility', 'visible');
-                  // d3.select(this).transition().attr('fill', availableColor);
+                  // d3.select(this).transition().attr('fill', connectingColor);
             })
             .on('mousemove', function (event) {
                 vis.tooltip
