@@ -43,7 +43,8 @@ class Glyphs extends Component {
 
     	const allPractices = Object.keys(state).filter(p => p.startsWith('practice_')).slice(0, this.props.totalCount);
     	const allPracticesStatuses = vis.determinePracticeStatuses(allPractices, state);
-    	const practicesAvailble = Object.keys(allPracticesStatuses).filter(p => allPracticesStatuses[p] === 'fully_implemented' || 'partially_implemented');
+    	const practicesAvailble = Object.keys(allPracticesStatuses).filter(p => allPracticesStatuses[p] === 'partially_implemented' 
+    			|| allPracticesStatuses[p] === 'fully_implemented');
 
     	const width = 80;
     	const height = 80;
@@ -65,10 +66,11 @@ class Glyphs extends Component {
 
 		integration.append('path')
 		    .attr('d', d => {
-				const points = allPractices.map((p, i) => {
-					console.log(state);
-		        	return (allPracticesStatuses[p] === ('fully_implemented' || 'partially_implemented')) ? pentagonVertex(i, this.props.totalCount) : null;
-		        }).filter(p => p);
+		  		const points = allPractices.map((p, i) => {
+		  			console.log(allPracticesStatuses[p]);
+		        	return (allPracticesStatuses[p] === 'partially_implemented' || allPracticesStatuses[p] === 'fully_implemented') 
+		        			? pentagonVertex(i, this.props.totalCount) : null;
+		        }).filter(d => d);
 		    	if (points.length === 2) {
 		        	return 'M' + points.map(p => [p.x, p.y].join(',')).join('L');
 		    	} else {
@@ -79,8 +81,7 @@ class Glyphs extends Component {
 		    .attr('stroke', practicesAvailble.length > 2 ? 'none' : availableColorLighter)
 		    .attr('stroke-width', circleRadius * 2)
 		    .attr('practice-status', d => {
-		    	// console.log(allPracticesStatuses[d] == ('fully_implemented' || 'partially_implemented'));
-		    	return allPracticesStatuses[d] === 'fully_implemented' || 'partially_implemented';
+		    	return allPracticesStatuses[d] === 'partially_implemented' || allPracticesStatuses[d] === 'fully_implemented';
 		    })
 		    .attr('practice-name', d => {
 		    	return d;
