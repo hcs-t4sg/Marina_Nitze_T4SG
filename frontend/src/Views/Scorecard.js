@@ -479,7 +479,7 @@ class Scorecard extends Component {
                                 </select>
                             </label>
                             <div id="checkboxes" class="dropdown-check-list" tabindex="100">
-                                <span class="anchor" onClick={showCheckboxOptions}>Filter by...</span>
+                                <span class="anchor" onClick={showCheckboxOptions}>Filter Practices</span>
                                 <ul id="items" class="items">
                                     {filter_checkboxes}
                                 </ul>

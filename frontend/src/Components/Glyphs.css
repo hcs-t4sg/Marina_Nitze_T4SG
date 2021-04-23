@@ -77,7 +77,7 @@
   position: relative;
   cursor: pointer;
   display: inline-block;
-  padding: 5px 115px 5px 0px;
+  padding: 5px 80px 5px 0px;
 }
 
 .dropdown-check-list .anchor:after {
