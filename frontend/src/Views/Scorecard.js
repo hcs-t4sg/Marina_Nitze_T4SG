@@ -113,9 +113,6 @@ class Scorecard extends Component {
                 }
             }
         }
-
-        //console.log(tempData);
-        // this.setState({ data: tempData });
         return tempData;
     }
 
@@ -260,6 +257,7 @@ class Scorecard extends Component {
             glyphs = <Glyphs
                 states={newStates}
                 totalCount={this.props.totalPractices}
+                currentIssue={this.props.currentIssue}
             />
         }
 

@@ -153,7 +153,7 @@ class LandingPage extends Component {
 
         }
 
-        console.log(counts);
+        // console.log(counts);
 
         for (var i = 0; i < this.state.implementationData.length; i++) {
 
@@ -178,14 +178,14 @@ class LandingPage extends Component {
                 }
             }
         }
-        console.log(counts)
+        // console.log(counts)
 
         return counts
     }
 
     render() {
         var imp_counts = this.countStateImplementations()
-        console.log(imp_counts)
+        // console.log(imp_counts)
 
         var select_issues = [];
         var implement_blocks = [
@@ -235,7 +235,7 @@ class LandingPage extends Component {
                 jurisdictions={jurisdictions}
                 subpractices={submetrics}
             />
-
+            
             implement_blocks.push(implementBlock);
         }
 

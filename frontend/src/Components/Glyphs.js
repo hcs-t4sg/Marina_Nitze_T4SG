@@ -1,10 +1,13 @@
 import React, { Component } from "react";
 import * as d3 from "d3";
 import "./Glyphs.css";
+import "../res/Values.css";
 
 const availableColor = '#276a82';
 const availableColorLighter = '#c8e0e3';
 const unavailableColor = '#ccb6c5';
+const unknownColor = "#bdbdbd";
+const partiallyImplementedColor = "#4B73DB";
 
 class Glyphs extends Component {
 	constructor(props) {
@@ -40,8 +43,9 @@ class Glyphs extends Component {
 
         // console.log(state);
 
-		const practicesAvailble = Object.keys(state).filter(p => state[p] === true && p != "county_administered");
-    	const allPractices = Object.keys(state).filter(p => (state[p] === true || state[p] === false) && p != "county_administered").slice(0, this.props.totalCount);
+		const practicesAvailble = Object.keys(state).filter(p => state[p] === true);
+    	const allPractices = Object.keys(state).filter(p => p.startsWith('practice_')).slice(0, this.props.totalCount);
+    	const allPracticesStatuses = vis.determinePracticeStatuses(allPractices, state);
 
     	const width = 80;
     	const height = 80;
@@ -113,7 +117,6 @@ class Glyphs extends Component {
                 vis.tooltip
                     .style('top', event.pageY - 310 + 'px')
                     .style('left', event.pageX - 210 + 'px');
-                // console.log(event.pageX);
             })
             .on('mouseout', function (event) {
                 vis.tooltip.html("").style('visibility', 'hidden');
@@ -160,6 +163,44 @@ class Glyphs extends Component {
 		    	.text(d['stateData']['name']);
 		    vis.drawSingleGlyph(d['implementationData'], g);
 		});
+	}
+
+
+	determinePracticeStatuses(practices, state) {
+
+		// console.log(state);
+
+		const practice_status_dict = [];
+		for (var i = 1; i <= practices.length; i++) {
+		
+			const num_subpractices = this.props.currentIssue["num_subpractices_" + i];
+			const main_status = state['practice_' + i];
+			var no_count = 0;
+			var yes_count = 0;
+			var unknown_count = 0;
+			
+			if (num_subpractices > 0) {
+				for (var j = 1; j <= num_subpractices; j++) {
+					if (state['subpractice_' + i + '_' + j] == true) yes_count++;
+					else if (state['subpractice_' + i + '_' + j] == false) no_count++;
+					else unknown_count++;
+            	}
+            	if (yes_count == num_subpractices) practice_status_dict.push({ key: 'practice_' + i, value: 'yes'});
+            	else if (no_count == num_subpractices || (no_count > 0 && yes_count == 0)) practice_status_dict.push({ key: 'practice_' + i, value: 'no'});
+            	else if ((no_count > 0 && yes_count > 0) || (yes_count > 0 && no_count == 0)) practice_status_dict.push({ key: 'practice_' + i, value: 'partially'});
+            	else practice_status_dict.push({ key: 'practice_' + i, value: 'unknown'});
+    		} 
+    		else if (main_status == true) {
+				practice_status_dict.push({ key: 'practice_' + i, value: 'yes'});
+			} else if (main_status == false) {
+				practice_status_dict.push({ key: 'practice_' + i, value: 'no'});
+			} else {
+				practice_status_dict.push({ key: 'practice_' + i, value: 'unknown'});
+			}  
+            
+        }
+        console.log(practice_status_dict);
+		return practice_status_dict;
 	}
 
     render() {
