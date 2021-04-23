@@ -478,8 +478,8 @@ class Scorecard extends Component {
                                     <option value="state">State Administered</option>
                                 </select>
                             </label>
-                            <div id="checkboxes" class="dropdown-check-list" tabindex="100" onClick={showCheckboxOptions}>
-                                <span class="anchor">Filter by...</span>
+                            <div id="checkboxes" class="dropdown-check-list" tabindex="100">
+                                <span class="anchor" onClick={showCheckboxOptions}>Filter by...</span>
                                 <ul id="items" class="items">
                                     {filter_checkboxes}
                                 </ul>
