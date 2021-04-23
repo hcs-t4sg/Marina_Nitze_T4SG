@@ -15,7 +15,8 @@
 
 .legend-title {
   margin: 3px;
-  white-space: nowrap;
+  min-width: 30ch;
+  white-space: wrap;
 }
 
 .legend-container {
