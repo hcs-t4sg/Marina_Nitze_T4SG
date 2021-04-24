@@ -113,10 +113,6 @@
   font-size: 1.2em;
 }
 
-.dropdown-check-list .anchor:active:after {
-  top: 21%;
-}
-
 .dropdown-check-list ul.items {
   padding: 2px;
   display: none;
