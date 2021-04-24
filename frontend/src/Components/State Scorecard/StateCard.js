@@ -60,10 +60,8 @@ export default class StateCard extends Component{
                     for (var j = 1; j <= this.props.issueArea[`num_subpractices_${i}`]; j++) {
                         submetrics.push(
                             <div className="submetric-info">
-                                <div className="column-left">
+                                <div className="column-left-middle">
                                     <p>{submetric_names[i - 1][j - 1]}</p>
-                                </div>
-                                <div className="column-center">
                                 </div>
                                 <div className="column-right">
                                     <ImplementedIndicator
@@ -96,11 +94,8 @@ export default class StateCard extends Component{
                 else {
                     submetric_scores.push(
                         <div className="submetric-div">
-                            <div className="column-left">
+                            <div className="column-left-middle">
                                 <h4><font color="#0E7088">{this.props.practices[i - 1]}</font></h4>
-                            </div>
-
-                            <div className="column-middle">
                             </div>
 
                             <div className="column-right">

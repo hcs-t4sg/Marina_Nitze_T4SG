@@ -161,6 +161,15 @@
     padding-right: 2%;
 }
 
+.column-left-middle {
+    display: flex;
+    flex-direction: column;
+    width: 67%;
+    color: black;
+    align-items: flex-start;
+    padding-left: 2%;
+}
+
 .column-left, .column-center, .column-right {
     grid-row-gap: 7px;
 }
