@@ -76,10 +76,8 @@ export default class StateCard extends Component{
                     submetric_scores.push(
                         <div className="submetric-div">
                             <div className="submetric-title">
-                                <div className="column-left">
+                                <div className="column-left-middle">
                                     <h4><font color="#0E7088">{this.props.practices[i - 1]}</font></h4>
-                                </div>
-                                <div className="column-center">
                                 </div>
                                 <div className="column-right">
                                     <a href={this.props.issueArea[`practice_${i}_link`]}> Resource Link </a>

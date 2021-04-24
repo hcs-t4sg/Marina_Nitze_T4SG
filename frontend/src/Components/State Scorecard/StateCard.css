@@ -104,7 +104,7 @@
     flex-direction: column;
     width: 100%;
     padding-left: 20px;
-    margin-top: 4px;
+    margin-top: 8px;
 }
 
 .demographics-div{
@@ -125,7 +125,7 @@
 
 }
 
-.sc-indicator{
+.sc-indicator {
     background: var(--dusty-pink);
     color: white;
     margin-left: 5%;
@@ -152,7 +152,7 @@
     align-items: center;
 }
 
-.column-right{
+.column-right {
     display: flex;
     flex-direction: column;
     align-items: flex-end;
@@ -167,7 +167,8 @@
     width: 67%;
     color: black;
     align-items: flex-start;
-    padding-left: 2%;
+    padding-left: 1%;
+    text-align: left;
 }
 
 .column-left, .column-center, .column-right {
@@ -180,6 +181,7 @@ a {
 
 .implemented-yes{
     background-color: var(--cyan-lighter);
+
 }
 
 .implemented-no{
@@ -189,7 +191,10 @@ a {
 .implemented-yes, .implemented-no {
     padding: 2px;
     width: 50px;
-    height: 80%;
+    height: 25px;
+    text-align: center;
+    margin-top: auto;
+    margin-bottom: auto;
 }
 
 .score-percentage{
@@ -197,5 +202,3 @@ a {
     font-size: 18px;
 }
 
-.implement-block{
-}
