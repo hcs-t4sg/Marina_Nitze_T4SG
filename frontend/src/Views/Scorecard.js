@@ -76,27 +76,27 @@ class Scorecard extends Component {
             if (item["issue_area"] === issueName) {
                 var count = 0;
 
-                if (item['practice_1']) {
-                    count++;
+                for (var j = 1; j <= 7; j++) {
+                    if (!this.props.currentIssue[`num_subpractices_${j}`]) {
+                        if (item[`practice_${j}`]) {
+                            count++;
+                        }
+                    }
+
+                    else {
+                        var allMet = true;
+                        for (var k = 1; k <= this.props.currentIssue[`num_subpractices_${j}`]; k++) {
+                            if (!item[`subpractice_${j}_${k}`]) {
+                                allMet = false;
+                            }
+                        }
+
+                        if (allMet) {
+                            count++;
+                        }
+                    }
                 }
-                if (item['practice_2']) {
-                    count++;
-                }
-                if (item['practice_3']) {
-                    count++;
-                }
-                if (item['practice_4']) {
-                    count++;
-                }
-                if (item['practice_5']) {
-                    count++;
-                }
-                if (item['practice_6']) {
-                    count++;
-                }
-                if (item['practice_7']) {
-                    count++;
-                }
+
 
                 for (var j = 0; j < stateData.length; j++) {
                     if (item['state'] === stateData[j]['name']) {
