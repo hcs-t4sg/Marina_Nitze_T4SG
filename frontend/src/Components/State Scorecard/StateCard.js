@@ -30,11 +30,9 @@ export default class StateCard extends Component{
         var resourceLinks = []
         for (var i = 1; i <= this.props.total; i++) {
             resourceLinks.push(
-                <div>
-                    <a href={this.props.issueArea[`practice_${i}_link`]} target="blank">
-                        Link
-                    </a>
-                </div>
+                <a href={this.props.issueArea[`practice_${i}_link`]} target="blank" className="resource-link">
+                    Link
+                </a>
             )
         }
 
@@ -145,6 +143,24 @@ export default class StateCard extends Component{
                          />)
             }
 
+            var practice_scores = [];
+            for (var i = 1; i <= this.props.total; i++) {
+                practice_scores.push(
+                    <div className="one-metric-div">
+                        <div className="column-left-2">
+                            {this.props.practices[i]}
+                        </div>
+                        <div className="column-center-2">
+                            {implementedIndicators[i]}
+                        </div>
+                        <div className="column-right-2">
+                            {resourceLinks[i]}
+                        </div>
+                    </div>
+                )
+            }
+
+
             return (
                 <div className="state-scorecard">
                     <div className="top-info">
@@ -162,22 +178,23 @@ export default class StateCard extends Component{
                         <SCIndicator county={s_data
                         ["county_administered"]} />
                     </div>
-                    <div className="expanded-info">
+
+                    <div className="expanded-info-header">
                         <div className="column-left">
                             <h4><font color="#0E7088">Promising Practice</font></h4>
-                            {this.props.practices.map(
-                                practice => <div>{practice}</div>)
-                            }
                         </div>
                         <div className="column-center">
                             <h4><font color="#0E7088">Implemented?</font></h4>
-                            {implementedIndicators}
                         </div>
                         <div className="column-right">
                             <h4><font color="#0E7088">Resource Guide</font></h4>
-                            {resourceLinks}
                         </div>
                     </div>
+
+                    <div>
+                        {practice_scores}
+                    </div>
+
                 </div>
             )
         }

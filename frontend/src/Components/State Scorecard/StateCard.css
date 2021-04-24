@@ -77,7 +77,16 @@
     flex-direction: row;
     padding-bottom: 2%;
     justify-content: center;
+    margin-top: 10px;
+}
 
+.expanded-info-header {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    padding-left: 5%;
+    padding-right: 5%;
+    margin-top: 10px;
 }
 
 .submetric-scores{
@@ -104,6 +113,14 @@
     flex-direction: column;
     width: 100%;
     padding-left: 20px;
+    margin-top: 8px;
+}
+
+.one-metric-div {
+    margin: auto;
+    display: flex;
+    flex-direction: row;
+    width: 100%;
     margin-top: 8px;
 }
 
@@ -144,12 +161,32 @@
     padding-left: 2%;
 }
 
+.column-left-2 {
+    display: flex;
+    flex-direction: column;
+    width: 33%;
+    color: black;
+    align-items: flex-start;
+    margin-left: 7%;
+    text-align: left;
+}
+
 .column-center{
     display: flex;
     flex-direction: column;
     width: 34%;
     color:black;
     align-items: center;
+}
+
+.column-center-2 {
+    display: flex;
+    flex-direction: column;
+    width: 15%;
+    color: black;
+    align-items: center;
+    margin-right: 5%;
+    margin-left: 5%;
 }
 
 .column-right {
@@ -159,6 +196,18 @@
     width: 33%;
     color: var(--cyan-medium);
     padding-right: 2%;
+}
+.column-right-2 {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 33%;
+    color: var(--cyan-medium);
+    margin-right: 7%;
+    
+}
+.resource-link {
+    padding-left: 50%;
 }
 
 .column-left-middle {
@@ -170,6 +219,8 @@
     padding-left: 1%;
     text-align: left;
 }
+
+
 
 .column-left, .column-center, .column-right {
     grid-row-gap: 7px;
@@ -195,6 +246,12 @@ a {
     text-align: center;
     margin-top: auto;
     margin-bottom: auto;
+}
+
+.implemented-text {
+    margin: auto;
+    margin-top: 2px;
+    
 }
 
 .score-percentage{
