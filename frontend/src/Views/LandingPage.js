@@ -25,7 +25,7 @@ class LandingPage extends Component {
     }
 
     createImplementationBlocks(data) {
-        
+
         var tempImplementBlocks = [
             <div className="vary-block">
                 <h1 className="vary-header"> Practices vary greatly state by state </h1>
@@ -50,9 +50,10 @@ class LandingPage extends Component {
     componentDidMount() {
         this._isMounted = true;
         axios
-            .get("http://localhost:8000/api/issue-areas/")
+            .get("https://marina-t4sg.herokuapp.com/api/issue-areas/")
+            //.get("http://localhost:8000/api/issue-areas/")
             .then(res => {
-                console.log(res.data);
+                //  console.log(res.data);
                 this.setState(
                     {
                         issueAreaData: res.data,
@@ -119,7 +120,7 @@ class LandingPage extends Component {
 
     componentWillUnmount() {
         this._isMounted = false;
-}
+    }
 
     handleClick = (issue) => {
         if (this._isMounted) {
@@ -153,7 +154,7 @@ class LandingPage extends Component {
 
         }
 
-        console.log(counts);
+        // console.log(counts);
 
         for (var i = 0; i < this.state.implementationData.length; i++) {
 
@@ -169,8 +170,8 @@ class LandingPage extends Component {
                     }
                     else {
                         for (var k = 0; k < this.state.currentIssue[`num_subpractices_${j}`]; k++) {
-                            
-                            if (data[`subpractice_${j}_${k+1}`]) {
+
+                            if (data[`subpractice_${j}_${k + 1}`]) {
                                 counts[j - 1][k]++;
                             }
                         }
@@ -178,14 +179,14 @@ class LandingPage extends Component {
                 }
             }
         }
-        console.log(counts)
+        // console.log(counts)
 
         return counts
     }
 
     render() {
         var imp_counts = this.countStateImplementations()
-        console.log(imp_counts)
+        // console.log(imp_counts)
 
         var select_issues = [];
         var implement_blocks = [
@@ -263,7 +264,7 @@ class LandingPage extends Component {
                         <div id="introduction-container">
                             <Subheader title="Introduction" />
                             <div className="introduction-text">
-                                <div dangerouslySetInnerHTML={{__html: this.state.currentIssue['intro_text']}}></div>
+                                <div dangerouslySetInnerHTML={{ __html: this.state.currentIssue['intro_text'] }}></div>
                             </div>
                         </div>
                         <div className="subtitle-container">

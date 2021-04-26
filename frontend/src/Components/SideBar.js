@@ -33,7 +33,7 @@ export default function SideBar(props) {
             <div className="nav-block">
                 <img className="side-image" src={bulb} />
                 <Link className="nav-link"
-                    to={{ pathname: 'https://www.newamerica.org/our-people/marina-stone-martin/' }}
+                    to={{ pathname: 'https://www.childwelfareplaybook.com/' }}
                     onClick={props.click}
                     target="_blank">
                     Resources

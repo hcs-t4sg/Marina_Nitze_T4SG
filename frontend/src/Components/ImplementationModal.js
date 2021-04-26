@@ -62,7 +62,7 @@ export default class ImplementationModal extends Component {
 
                             <div className="description-div">
                                 <h3> Example of Implementation </h3>
-                                <p> {this.state.example} </p>
+                                <p dangerouslySetInnerHTML={{__html: this.state.example}}></p>
                             </div>
 
                         </div>
