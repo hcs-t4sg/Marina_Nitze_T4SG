@@ -39,6 +39,15 @@ export default function SideBar(props) {
                     Resources
                 </Link>
             </div>
+
+            <div className="nav-block">
+                <img className="side-image" src={bulb} />
+                <Link className="nav-link"
+                    to={{ pathname: '/contacts' }}
+                    onClick={props.click}>
+                    Contacts
+                </Link>
+            </div>
             
         </div>
     );
