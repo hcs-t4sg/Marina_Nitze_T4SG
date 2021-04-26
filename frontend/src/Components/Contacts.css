@@ -55,4 +55,12 @@
 	padding: 3px 6px;
 }
 
+.contacts-text {
+  font-size: 1em;
+  width: 50%;
+  margin-top: 30px;
+  text-align: left;
+  text-indent: 20px;
+}
+
 
