@@ -77,27 +77,27 @@ class Scorecard extends Component {
             if (item["issue_area"] === issueName) {
                 var count = 0;
 
-                if (item['practice_1']) {
-                    count++;
+                for (var j = 1; j <= 7; j++) {
+                    if (!this.props.currentIssue[`num_subpractices_${j}`]) {
+                        if (item[`practice_${j}`]) {
+                            count++;
+                        }
+                    }
+
+                    else {
+                        var allMet = true;
+                        for (var k = 1; k <= this.props.currentIssue[`num_subpractices_${j}`]; k++) {
+                            if (!item[`subpractice_${j}_${k}`]) {
+                                allMet = false;
+                            }
+                        }
+
+                        if (allMet) {
+                            count++;
+                        }
+                    }
                 }
-                if (item['practice_2']) {
-                    count++;
-                }
-                if (item['practice_3']) {
-                    count++;
-                }
-                if (item['practice_4']) {
-                    count++;
-                }
-                if (item['practice_5']) {
-                    count++;
-                }
-                if (item['practice_6']) {
-                    count++;
-                }
-                if (item['practice_7']) {
-                    count++;
-                }
+
 
                 for (var j = 0; j < stateData.length; j++) {
                     if (item['state'] === stateData[j]['name']) {
@@ -113,6 +113,7 @@ class Scorecard extends Component {
                 }
             }
         }
+
         return tempData;
     }
 
@@ -163,7 +164,7 @@ class Scorecard extends Component {
         // console.log(newStates);
         var searchedStates = [];
 
-        if (data.length > 1) {
+        if (data.length > 0) {
             searchedStates = data;
             // console.log(this.state.data);
             if (this.state.searchedState !== "") {
@@ -391,6 +392,13 @@ class Scorecard extends Component {
 
         }
 
+        var hasSubmetrics = false;
+        for (var i = 1; i <= this.props.currentIssue['num_practices']; i++) {
+            if (this.props.currentIssue[`num_subpractices_${i}`]) {
+                hasSubmetrics = true;
+            }
+        }
+
         return (
 
             <div className="landing-page">
@@ -519,11 +527,12 @@ class Scorecard extends Component {
                             state={state['stateData']["name"]}
                             implementation_data={state['implementationData']}
                             state_data={state['stateData']}
-                            key={state.id}
+                            key={state.id + "_" + this.props.currentIssueTitle}
                             total={this.props.totalPractices}
                             completed={state['implemented']}
                             issueArea={this.props.currentIssue}
                             practices={practices_list}
+                            hasSubmetrics={hasSubmetrics}
                         />)}
                 </div>
             </div>
