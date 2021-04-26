@@ -114,8 +114,6 @@ class Scorecard extends Component {
             }
         }
 
-        console.log(tempData);
-
         return tempData;
     }
 
