@@ -40,21 +40,96 @@
   overflow: visible;
 }
 
+.not_implemented {
+  fill: var(--dusty-pink);
+  stroke: var(--dusty-pink);
+}
+
+.fully_implemented {
+  fill: var(--dark-blue);
+}
+
+.partially_implemented {
+  fill: var(--blue-2);
+}
+
+.status_unknown {
+  fill: var(--dark-off-white);
+}
+
 .glyph-titles {
   font-size: .7em;
 }
 
 .tooltip { 
-    position: absolute;     
-    text-align: center;     
-    width: 130px;       
-    height: 50px;         
-    padding: 5px; 
-    color: white;      
-    font: 14px Arial;    
-    background: var(--teal); 
-    border: 0px;    
-    border-radius: 4px;  
-    visibility: hidden;
-    z-index: 10;  
+  position: absolute;     
+  text-align: center;     
+  width: 130px;       
+  height: 50px;         
+  padding: 5px; 
+  color: white;      
+  font: 14px Arial;    
+  background: var(--teal); 
+  border: 0px;    
+  border-radius: 4px;  
+  visibility: hidden;
+  z-index: 10;  
 }
+
+#checkboxes {
+  width: 160px;
+  z-index: 400;
+  margin: 0px 5px;
+}
+
+.dropdown-check-list {
+  font-size: .8em;
+  max-height: 30px;
+  display: inline-block;
+  background: white;
+}
+
+.dropdown-check-list .anchor {
+  position: relative;
+  cursor: pointer;
+  display: inline-block;
+  padding: 5px 30px 5px 0px;
+}
+
+.dropdown-check-list .anchor:after {
+  position: absolute;
+  content: "";
+  padding: 5px;
+  right: -15px;
+  top: 30%;
+  background-image: url('data:image/svg+xml;charset=US-ASCII,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22292.4%22%20height%3D%22292.4%22%3E%3Cpath%20fill%3D%22%23007CB2%22%20d%3D%22M287%2069.4a17.6%2017.6%200%200%200-13-5.4H18.4c-5%200-9.3%201.8-12.9%205.4A17.6%2017.6%200%200%200%200%2082.2c0%205%201.8%209.3%205.4%2012.9l128%20127.9c3.6%203.6%207.8%205.4%2012.8%205.4s9.2-1.8%2012.8-5.4L287%2095c3.5-3.5%205.4-7.8%205.4-12.8%200-5-1.9-9.2-5.5-12.8z%22%2F%3E%3C%2Fsvg%3E');
+    background-repeat: no-repeat, repeat;
+    background-position: right .7em top 60%, 0 0;
+    background-size: .65em auto, 100%;
+}
+
+.anchor:after {
+  width: 4em;
+  font-size: 1.2em;
+}
+
+.dropdown-check-list ul.items {
+  padding: 2px;
+  display: none;
+  margin: 0;
+  border-top: none;
+}
+
+.dropdown-check-list ul.items .filter-check {
+  list-style: none;
+}
+
+ul.items {
+  max-width: 156px;
+  white-space: wrap;
+  background: white;
+  opacity: 1;
+  position:absolute;
+  z-index: 10;
+}
+

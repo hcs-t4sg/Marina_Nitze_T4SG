@@ -52,7 +52,7 @@ class LandingPage extends Component {
         axios
             .get("http://localhost:8000/api/issue-areas/")
             .then(res => {
-                console.log(res.data);
+                //  console.log(res.data);
                 this.setState(
                     {
                         issueAreaData: res.data,
@@ -153,7 +153,7 @@ class LandingPage extends Component {
 
         }
 
-        console.log(counts);
+        // console.log(counts);
 
         for (var i = 0; i < this.state.implementationData.length; i++) {
 
@@ -178,14 +178,14 @@ class LandingPage extends Component {
                 }
             }
         }
-        console.log(counts)
+        // console.log(counts)
 
         return counts
     }
 
     render() {
         var imp_counts = this.countStateImplementations()
-        console.log(imp_counts)
+        // console.log(imp_counts)
 
         var select_issues = [];
         var implement_blocks = [
@@ -235,7 +235,7 @@ class LandingPage extends Component {
                 jurisdictions={jurisdictions}
                 subpractices={submetrics}
             />
-
+            
             implement_blocks.push(implementBlock);
         }
 
