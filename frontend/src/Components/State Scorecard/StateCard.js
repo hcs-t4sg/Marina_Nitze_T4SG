@@ -166,14 +166,14 @@ export default class StateCard extends Component{
                     <div className="top-info">
                         <div className="title-area">
                             <h1> {s_data["name"]} </h1>
-                            <h4 onClick={() => this.setState({ expanded: !this.state.expanded })}> <font color="#0E7088"> See Less </font> </h4>
+                            <h4 onClick={() => this.setState({ expanded: !this.state.expanded })}> <font color="#4B73DB"> See Less </font> </h4>
                         </div>
                         <ProgressBar completed={this.props.completed} total={this.props.total} />
                         <p className="score-percentage"> {implemented_string} </p>
                     </div>
                     
                     <div className="demographics-div">
-                        <h4> <font color="#0E7088">Demographics </font></h4>
+                        <h4> <font color="#4B73DB">Demographics </font></h4>
                         <PopulationIndicator population={s_data["population"]} />
                         <SCIndicator county={s_data
                         ["county_administered"]} />
