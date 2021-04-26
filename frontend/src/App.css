@@ -220,7 +220,7 @@ html {
 }
 
 .vary-block {
-  background-color: var(--lighest-blue);
+  background-color: var(--lightest-blue);
   height: 80%;
   width: 85%;
   margin: auto;
