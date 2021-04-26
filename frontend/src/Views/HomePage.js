@@ -8,7 +8,7 @@ function HomePage() {
 	const history = useHistory();
 
 	  const routeChange = () =>{ 
-	    let path = `home`; 
+	    let path = `dashboard`; 
 	    history.push(path);
 	  }
 
