@@ -8,7 +8,7 @@ export default function ProgressBar(props) {
     const containerStyles = {
         height: 20,
         width: '50%',
-        backgroundColor: "var(--lighest-blue)",
+        backgroundColor: "var(--lightest-blue)",
         marginTop: "4%",
     }
 
