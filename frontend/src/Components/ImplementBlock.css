@@ -99,6 +99,8 @@ p{
     padding: 15px;
     padding-left: 40px;
     padding-right: 40px;
+    max-height: 90%;
+    overflow: scroll;
 }
 
 .display-block {
@@ -171,7 +173,9 @@ p{
 
 .description-div{
     width: 50%;
-    text-align: center;
+    margin: 15px 5px;
+    text-indent: 20px;
+    font-size: 0.9em;
 }
 
 .subpractice-block{

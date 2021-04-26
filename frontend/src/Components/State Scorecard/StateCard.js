@@ -144,7 +144,7 @@ export default class StateCard extends Component{
             }
 
             var practice_scores = [];
-            for (var i = 1; i <= this.props.total; i++) {
+            for (var i = 0; i < this.props.total; i++) {
                 practice_scores.push(
                     <div className="one-metric-div">
                         <div className="column-left-2">

@@ -1,10 +1,9 @@
 import React, { Component } from "react";
 import * as d3 from "d3";
 import "./Glyphs.css";
+import "../res/Values.css";
 
-const availableColor = '#276a82';
-const availableColorLighter = '#c8e0e3';
-const unavailableColor = '#ccb6c5';
+const connectingColor = '#DCE8FF';
 
 class Glyphs extends Component {
 	constructor(props) {
@@ -38,10 +37,10 @@ class Glyphs extends Component {
     drawSingleGlyph(state, g) {
         var vis = this;
 
-        // console.log(state);
-
-		const practicesAvailble = Object.keys(state).filter(p => state[p] === true && p != "county_administered");
-    	const allPractices = Object.keys(state).filter(p => (state[p] === true || state[p] === false) && p != "county_administered").slice(0, this.props.totalCount);
+    	const allPractices = Object.keys(state).filter(p => p.startsWith('practice_')).slice(0, this.props.totalCount);
+    	const allPracticesStatuses = vis.determinePracticeStatuses(allPractices, state);
+    	const practicesAvailble = Object.keys(allPracticesStatuses).filter(p => allPracticesStatuses[p] === 'partially_implemented' 
+    			|| allPracticesStatuses[p] === 'fully_implemented');
 
     	const width = 80;
     	const height = 80;
@@ -63,20 +62,22 @@ class Glyphs extends Component {
 
 		integration.append('path')
 		    .attr('d', d => {
-				const points = allPractices.map((p, i) => {
-		        	return (state[p] === true) ? pentagonVertex(i, this.props.totalCount) : null;
-		        }).filter(p => p);
+		  		const points = allPractices.map((p, i) => {
+		  			console.log(allPracticesStatuses[p]);
+		        	return (allPracticesStatuses[p] === 'partially_implemented' || allPracticesStatuses[p] === 'fully_implemented') 
+		        			? pentagonVertex(i, this.props.totalCount) : null;
+		        }).filter(d => d);
 		    	if (points.length === 2) {
 		        	return 'M' + points.map(p => [p.x, p.y].join(',')).join('L');
 		    	} else {
 		        	return 'M' + points.map(p => [p.x, p.y].join(',')).join('L') + 'Z';
 		    	}
 		    })
-		    .attr('fill', practicesAvailble.length > 2 ? availableColorLighter : 'none')
-		    .attr('stroke', practicesAvailble.length > 2 ? 'none' : availableColorLighter)
+		    .attr('fill', practicesAvailble.length > 2 ? connectingColor : 'none')
+		    .attr('stroke', practicesAvailble.length > 2 ? 'none' : connectingColor)
 		    .attr('stroke-width', circleRadius * 2)
 		    .attr('practice-status', d => {
-		    	return state[d] === true;
+		    	return allPracticesStatuses[d] === 'partially_implemented' || allPracticesStatuses[d] === 'fully_implemented';
 		    })
 		    .attr('practice-name', d => {
 		    	return d;
@@ -90,34 +91,29 @@ class Glyphs extends Component {
 		    	const v = pentagonVertex(i, this.props.totalCount);
 		    	return `translate(${v.x},${v.y})`;
 		    })
-		    .attr('practice-status', d => {
-		    	return state[d] === true;
-		    })
 		    .attr('practice-name', d => {
 		    	return d;
 		    });
 
     	practice.append('circle')
 		    .attr('r', circleRadius)
-		    .style('fill', d => state[d] === true ? availableColor : unavailableColor)
-    		.style('stroke', d => state[d] === true ? 'none' : unavailableColor)
+		    .attr('class', d => allPracticesStatuses[d])
             .on('mouseover', function (event,d, i) {
                 vis.tooltip
                     .html(
                       `<div>Practice: ${d}</div><div>Status: ${state[d]}</div>`
                     )
                     .style('visibility', 'visible');
-                  d3.select(this).transition().attr('fill', availableColor);
+                  // d3.select(this).transition().attr('fill', connectingColor);
             })
             .on('mousemove', function (event) {
                 vis.tooltip
                     .style('top', event.pageY - 310 + 'px')
                     .style('left', event.pageX - 210 + 'px');
-                console.log(event.pageX);
             })
             .on('mouseout', function (event) {
                 vis.tooltip.html("").style('visibility', 'hidden');
-                d3.select(this).transition().attr('fill', '#fff');
+                // d3.select(this).transition().attr('fill', '#fff');
             });
 
         practice.append('text')
@@ -160,6 +156,37 @@ class Glyphs extends Component {
 		    	.text(d['stateData']['name']);
 		    vis.drawSingleGlyph(d['implementationData'], g);
 		});
+	}
+
+
+	determinePracticeStatuses(practices, state) {
+
+		const practice_status_dict = {};
+		for (var i = 1; i <= practices.length; i++) {
+		
+			const num_subpractices = this.props.currentIssue["num_subpractices_" + i];
+			const main_status = state['practice_' + i];
+			var no_count = 0;
+			var yes_count = 0;
+			var unknown_count = 0;
+			
+			if (num_subpractices > 0) {
+				for (var j = 1; j <= num_subpractices; j++) {
+					if (state['subpractice_' + i + '_' + j] == true) yes_count++;
+					else if (state['subpractice_' + i + '_' + j] == false) no_count++;
+					else unknown_count++;
+            	}
+            	if (yes_count == num_subpractices) 	practice_status_dict['practice_' + i] = 'fully_implemented';
+            	else if (no_count == num_subpractices || (no_count > 0 && yes_count == 0)) 	practice_status_dict['practice_' + i] = 'not_implemented';
+            	else if ((no_count > 0 && yes_count > 0) || (yes_count > 0 && no_count == 0)) practice_status_dict['practice_' + i] = 'partially_implemented';
+            	else practice_status_dict['practice_' + i] = 'status_unknown';
+    		} 
+    		else if (main_status == true) practice_status_dict['practice_' + i] = 'fully_implemented';
+			else if (main_status == false) practice_status_dict['practice_' + i] = 'not_implemented';
+			else practice_status_dict['practice_' + i] = 'status_unknown';
+            
+        }
+		return practice_status_dict;
 	}
 
     render() {

@@ -2,20 +2,30 @@
 @import url("/src/res/Values.css");
 
 .legend-implemented {
-  fill: var(--teal);
+  fill: var(--dark-blue);
+}
+
+.legend-partially-implemented {
+  fill: var(--blue-2);
 }
 
 .legend-nonimplemented {
   fill: var(--dusty-pink);
 }
 
+.legend-unknown {
+  fill: var(--dark-off-white);
+}
 
 .legend-title {
   margin: 3px;
+  min-width: 30ch;
+  white-space: wrap;
 }
 
 .legend-container {
-  margin-left: 40px;
+  transform: translateY(20%);
+  padding-left: 30px;
   display: flex;
   flex-direction: column;
   align-content: flex-start;
@@ -23,7 +33,8 @@
 }
 
 .legend-labels {
-  margin-left: 20px;
   display: flex;
-  flex-flow: column wrap;
+  flex-direction: column;
+  flex-wrap: wrap;
+  text-align: left;
 }
