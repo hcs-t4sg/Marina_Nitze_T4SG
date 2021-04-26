@@ -1,8 +1,10 @@
-﻿.nav-background {
+﻿@import url("/src/res/Values.css");
+
+.nav-background {
     display: flex;
     flex-direction: column;
     width: 15%;
-    border: 1px solid black;
+    border: 1px solid var(--medium-grey);
     justify-content: start;
     left: 0%;
     top: 70px;
@@ -10,6 +12,7 @@
     position: absolute;
     background: white;
     height: 100%;
+    padding-top: 20px;
     z-index: 3;
 }
 

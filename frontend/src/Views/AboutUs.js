@@ -22,20 +22,19 @@ export default function AboutUs() {
                 <div className="about-section">
                     <Subheader title="Purpose"/>
                     <div className="text-row">
-                    	<p className="paragraph"> We want to provide state officials with useful information about what 
-                                                    promising practices other states are currently using in the chlid welfare 
-                                                    space.</p>
-                    	<p className="paragraph"> Our hope is that states will be able to collaborate, learn from each other, 
-                                                    and take action to improve child welfare system in their state.</p>
+                    	<p className="paragraph"> The Child Welfare Playbook aims to provide state foster care officials with useful 
+                                                information about what other states are doing in the child welfare space.</p>
+                    	<p className="paragraph"> Our hope is that states will be able to collaborate, learn from each other, and 
+                                                    take action to improve the child welfare system in their state.</p>
                     </div>
                 </div>
 
                 <div className="about-section">
                     <Subheader title="About Marina Nitze"/>
                     <div className="text-row">
-                    	<p className="paragraph"> The information for this website comes from Marina Nitze’s work. Marina is 
-                                                currently working with multiple states to help identify and implement promising 
-                                                practices in foster care, in order to keep at-risk </p>
+                    	<p className="paragraph"> The information for this website was compiled by Marina Nitze. Marina currently 
+                                                works with a 16-state working group to identify and implement promising practices 
+                                                in foster care - all in order to keep at-risk </p>
                     	<p className="paragraph"> kids safe and safely reduce time spend in foster care. You can learn more about 
                                                 Marina <a href="https://www.marinanitze.com/" target="_blank">here</a> and 
                                                 email her directly at <a href="mailto:marina@marinanitze.com" target="_blank">
@@ -49,7 +48,8 @@ export default function AboutUs() {
                     	<p className="paragraph"> HCS Tech for Social Good (T4SG) is a student-run organization at Harvard that 
                                                 leverages Harvard talent to partner with nonprofits, government agencies, and</p>
                     	<p className="paragraph"> social impact organizations to amplify their impact through technology. This 
-                                        website was created by a project team at T4SG. You can learn more about T4SG here.</p>
+                                        website was created by a project team at T4SG. You can learn more about T4SG  
+                                        <a href="https://socialgood.hcs.harvard.edu/" target="_blank"> here.</a></p>
                     </div>
                 </div>
 

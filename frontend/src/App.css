@@ -191,6 +191,7 @@ html {
   margin-right: 7vw;
   margin-left: 7vw;
   font-size: .75em;
+  line-height: 1.5;
 }
 
 .conclusion-text {
@@ -380,7 +381,7 @@ h5 {
     height: 8vh;
     background-color: white;
     box-shadow: 0px 3px 3px 0px var(--light-grey);
-    z-index: 10;
+    /*z-index: 10;*/
     padding: 0vh 12vw;
 }
 
