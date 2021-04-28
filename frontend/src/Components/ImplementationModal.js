@@ -103,16 +103,12 @@ export default class ImplementationModal extends Component {
                     <div className="tag-div">
                         <div className="promising-div">
 
-                            <p> {this.state.promising} </p>
-                            <div className="promising-tag">  <p> Promising </p> </div>
-
                             <div className="state-tag"> <p> {this.state.p_count} States Implement This Practice</p> </div>
 
                         </div>
 
                         <div className="opposite-div">
 
-                            <p> {this.state.opposite} </p>
                             <div className="state-tag"> <p> {this.state.jurisdictions - this.state.p_count} States Do Not Implement This Practice</p> </div>
 
                         </div>
