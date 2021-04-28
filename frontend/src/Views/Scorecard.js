@@ -528,6 +528,7 @@ class Scorecard extends Component {
                             implementation_data={state['implementationData']}
                             state_data={state['stateData']}
                             key={state.id + "_" + this.props.currentIssueTitle}
+                            id={state.id + "_" + this.props.currentIssueTitle}
                             total={this.props.totalPractices}
                             completed={state['implemented']}
                             issueArea={this.props.currentIssue}

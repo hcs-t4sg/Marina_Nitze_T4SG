@@ -75,7 +75,7 @@ export default class StateCard extends Component{
                         <div className="submetric-div">
                             <div className="submetric-title">
                                 <div className="column-left-middle">
-                                    <h4><font color="#0E7088">{this.props.practices[i - 1]}</font></h4>
+                                    <h4>{this.props.practices[i - 1]}</h4>
                                 </div>
                                 <div className="column-right">
                                     <a href={this.props.issueArea[`practice_${i}_link`]}> Resource Link </a>
@@ -90,19 +90,28 @@ export default class StateCard extends Component{
                 else {
                     submetric_scores.push(
                         <div className="submetric-div">
-                            <div className="column-left-middle">
-                                <h4><font color="#0E7088">{this.props.practices[i - 1]}</font></h4>
+
+                            <div className="submetric-info">
+                                <div className="column-left">
+                                    <h4>{this.props.practices[i - 1]}</h4>
+                                </div>
+
+                                <div className="column-center">
+                                    <ImplementedIndicator
+                                        implemented={i_data[`practice_${i}`]}
+                                        key={s_data['name'] + "_" + i_data['issue_area'] + "_" + i}
+                                    />
+                                </div>
+
+                                <div className="column-right">
+                                    <a href={this.props.issueArea[`practice_${i}_link`]}> Resource Link </a>
+                                </div>
                             </div>
 
-                            <div className="column-right">
-                                <ImplementedIndicator
-                                    implemented={i_data[`practice_${i}`]}
-                                    key={s_data['name'] + "_" + i_data['issue_area'] + "_" + i}
-                                />
-                            </div>
-                            )
                         </div>
                     )
+
+
                 }
             }
 
