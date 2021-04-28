@@ -278,6 +278,7 @@ select {
     background-size: .65em auto, 100%;
   border: none;
   padding: 5px;
+  font-family: Nunito;
 }
 
 .introduction-title {

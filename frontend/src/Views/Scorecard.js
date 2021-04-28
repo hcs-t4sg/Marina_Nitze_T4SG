@@ -488,7 +488,7 @@ class Scorecard extends Component {
                                             this.setState({ implemented_sort: 0 })
                                         }
                                     }}>
-                                        <option value="no-sort">No Sort</option>
+                                        <option value="no-sort"># of practices implemented</option>
                                         <option value="most">Most Practices Implemented</option>
                                         <option value="least">Least Practices Implemented</option>
                                     </select>
