@@ -409,6 +409,7 @@ h5 {
     justify-content: center;
     align-items: center;
     text-align: center;
+    font-family: "Nunito";
     
 }
 
@@ -420,7 +421,6 @@ h5 {
         text-decoration: underline;
     }
 
-
 .deselected-issue {
     color: black;
     margin: auto;
@@ -431,6 +431,7 @@ h5 {
     justify-content: center;
     align-items: center;
     text-align: center;
+    font-family: "Nunito";
 }
 
     .deselected-issue:focus {
