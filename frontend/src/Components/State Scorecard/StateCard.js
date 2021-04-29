@@ -75,7 +75,7 @@ export default class StateCard extends Component{
                         <div className="submetric-div">
                             <div className="submetric-title">
                                 <div className="column-left-middle">
-                                    <h4><font color="#0E7088">{this.props.practices[i - 1]}</font></h4>
+                                    <h4>{this.props.practices[i - 1]}</h4>
                                 </div>
                                 <div className="column-right">
                                     <a href={this.props.issueArea[`practice_${i}_link`]}> Resource Link </a>
@@ -90,19 +90,31 @@ export default class StateCard extends Component{
                 else {
                     submetric_scores.push(
                         <div className="submetric-div">
-                            <div className="column-left-middle">
-                                <h4><font color="#0E7088">{this.props.practices[i - 1]}</font></h4>
-                            </div>
 
-                            <div className="column-right">
-                                <ImplementedIndicator
-                                    implemented={i_data[`practice_${i}`]}
-                                    key={s_data['name'] + "_" + i_data['issue_area'] + "_" + i}
-                                />
+                            <div className="submetric-info">
+                                <div className="column-left-middle">
+                                    <h4>{this.props.practices[i - 1]}</h4>
+                                </div>
+
+                                <div className="column-right">
+                                    <a href={this.props.issueArea[`practice_${i}_link`]}> Resource Link </a>
+                                </div>
+
                             </div>
-                            )
+                            <div className="submetric-info">
+                                <div className="column-left-middle">
+                                </div>
+                                <div className="column-right">
+                                    <ImplementedIndicator
+                                        implemented={i_data[`practice_${i}`]}
+                                        key={s_data['name'] + "_" + i_data['issue_area'] + "_" + i}
+                                    />
+                                </div>
+                            </div>
                         </div>
                     )
+
+
                 }
             }
 
@@ -182,21 +194,12 @@ export default class StateCard extends Component{
                     <div className="expanded-info-header">
                         <div className="column-left">
                             <h4><font color="#4B73DB">Promising Practice</font></h4>
-                            {this.props.practices.map(
-                                practice => <div>{practice}</div>)
-                            }
                         </div>
                         <div className="column-center">
                             <h4><font color="#4B73DB">Implemented?</font></h4>
-                            <div><ImplementedIndicator implemented={i_data.practice_1} /></div>
-                            <div><ImplementedIndicator implemented={i_data.practice_2} /></div>
-                            <div><ImplementedIndicator implemented={i_data.practice_3} /></div>
-                            <div><ImplementedIndicator implemented={i_data.practice_4} /></div>
-                            <div><ImplementedIndicator implemented={i_data.practice_5} /></div>
                         </div>
                         <div className="column-right">
                             <h4><font color="#4B73DB">Resource Guide</font></h4>
-                            {resourceLinks}
                         </div>
                     </div>
 

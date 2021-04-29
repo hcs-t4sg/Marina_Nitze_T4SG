@@ -205,7 +205,7 @@ class LandingPage extends Component {
                         onClick={() => {
                             this.handleClick(issue)
                         }}
-                    > {issue['title']} </button>
+                    >  {issue['title']} </button>
             )
         }
 

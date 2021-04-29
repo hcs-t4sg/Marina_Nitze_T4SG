@@ -213,10 +213,10 @@
 .column-left-middle {
     display: flex;
     flex-direction: column;
-    width: 67%;
+    width: 66%;
     color: black;
     align-items: flex-start;
-    padding-left: 1%;
+    padding-left: 2%;
     text-align: left;
 }
 
