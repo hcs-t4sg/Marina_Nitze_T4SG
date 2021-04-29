@@ -194,21 +194,12 @@ export default class StateCard extends Component{
                     <div className="expanded-info-header">
                         <div className="column-left">
                             <h4><font color="#4B73DB">Promising Practice</font></h4>
-                            {this.props.practices.map(
-                                practice => <div>{practice}</div>)
-                            }
                         </div>
                         <div className="column-center">
                             <h4><font color="#4B73DB">Implemented?</font></h4>
-                            <div><ImplementedIndicator implemented={i_data.practice_1} /></div>
-                            <div><ImplementedIndicator implemented={i_data.practice_2} /></div>
-                            <div><ImplementedIndicator implemented={i_data.practice_3} /></div>
-                            <div><ImplementedIndicator implemented={i_data.practice_4} /></div>
-                            <div><ImplementedIndicator implemented={i_data.practice_5} /></div>
                         </div>
                         <div className="column-right">
                             <h4><font color="#4B73DB">Resource Guide</font></h4>
-                            {resourceLinks}
                         </div>
                     </div>
 
