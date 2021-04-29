@@ -48,9 +48,9 @@
 }
 
 .teal-section {
-  background-image: url("res/teal1.png");
+  background-image: url("res/blue.png");
   min-height: 50vh;
-  filter: brightness(65%) saturate(55%);
+  filter: brightness(85%) saturate(90%);
 }
 
 .content-sidenav-container {
@@ -82,7 +82,7 @@
   padding: 6px 8px 6px 16px;
   text-decoration: none;
   font-size: 15px;
-  color: var(--teal);
+  color: var(--dark-blue);
   display: block;
 }
 
@@ -91,7 +91,7 @@ html {
 }
 
 .sidenav a:hover {
-  color: var(--cyan-medium);
+  color: var(--blue-2);
 }
 
 .header-subtitle, .title {
@@ -220,7 +220,7 @@ html {
 }
 
 .vary-block {
-  background-color: var(--cyan-lightest);
+  background-color: var(--lightest-blue);
   height: 80%;
   width: 85%;
   margin: auto;
@@ -278,6 +278,7 @@ select {
     background-size: .65em auto, 100%;
   border: none;
   padding: 5px;
+  font-family: Nunito;
 }
 
 .introduction-title {
@@ -394,12 +395,11 @@ h5 {
     height: 8vh;
     background-color: white;
     box-shadow: 0px 3px 3px 0px var(--light-grey);
-    /*z-index: 10;*/
     padding: 0vh 12vw;
 }
 
 .selected-issue {
-    color: #0E7088;
+    color: var(--dark-blue);
     margin: auto;
     font-size: 16pt;
     border: 0;
@@ -417,7 +417,10 @@ h5 {
     outline: 0;
 }
     .selected-issue:hover {
+        color: var(--blue-3);
         text-decoration: underline;
+        text-decoration-thickness: 1px;
+        text-underline-offset: 5px;
     }
 
 
@@ -440,4 +443,6 @@ h5 {
 
 .deselected-issue:hover {
     text-decoration: underline;
+    text-decoration-thickness: 1px;
+    text-underline-offset: 5px;
 }

@@ -3,8 +3,9 @@
   --blue-1: #9EBDFB;
   --blue-2: #6991E0;
   --blue-3: #4B73DB;
-  --light-blue: #61dafb;
-  --lighest-blue: #DCE8FF;
+  --dark-blue: #3A62B0;
+  --light-blue: #C7DAFF;
+  --lightest-blue: #DCE8FF;
   --cyan-medium: #3595AC; 
   --cyan-light: #75BDCF;
   --cyan-lighter: #C8EAEF;
@@ -16,7 +17,7 @@
   --medium-grey: #a1a1a1;
   --light-grey: #bdbdbd;
   --lightest-grey: #dce3e6;
-  --dark-off-white: #8892A4;
-  --off-white: #C8D2D5;
-  --light-off-white: #EBF1F2;
+  --dark-off-white: #8892A4; 
+  --off-white: #D0D4DF;
+  --light-off-white: #EBEDF2;
 }
