@@ -59,12 +59,15 @@ class Contacts extends Component {
 	render() {
 		return (
 			<div className="contacts-page">
+
 				<div className="teal-section-container">
 					<div className="teal-section"></div>
 					<h2 className="header-subtitle"> Child Welfare Playbook </h2>
 					<h1 className="title">Family Findings State Contacts </h1>
 				</div>
 				<Subheader title="Family Findings: Contacts" />
+				<div className="contacts-text"> If you're looking for more information about how to implement this practice, 
+				the following people have agreed to be contacted:</div>
 				<div className="contact-grid-container">
 					<div className="contact-grid">{this.state.contactRows}</div>
 				</div>

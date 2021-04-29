@@ -14,9 +14,9 @@
 }
 
 .home-background {
-  background-image: url("../res/teal1.png");
-  filter: brightness(65%) saturate(55%);
+  background-image: url("../res/blue.png");
   min-height: 100vh;
+  filter: brightness(85%) saturate(90%);
 }
 
 .description {

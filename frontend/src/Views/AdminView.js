@@ -74,6 +74,8 @@ class AdminView extends Component {
                 county_administered: false,
                 population: 0,
             }],
+            submitted: false,
+            bad_input: false,
         }
     }
 
@@ -102,6 +104,18 @@ class AdminView extends Component {
     }
 
     submitNewPractice = (item) => {
+        if(this.state.issue_area.title==="" || this.state.issue_area.intro_text==="" ||
+            this.state.issue_area.conclusion_text===""){
+                const tempState = this.state;
+                tempState.bad_input = true;
+                this.setState({ tempState });
+                return;
+            }
+        else{
+                const tempState = this.state;
+                tempState.bad_input = false;
+                this.setState({ tempState });
+        }
         axios
             .post('https://marina-t4sg.herokuapp.com/api/issue-areas/', item)
             .catch(err => console.log(err));
@@ -148,6 +162,9 @@ class AdminView extends Component {
             })
                 .catch(err => console.log(err));
         }
+        const tempState = this.state;
+        tempState.submitted = true;
+        this.setState({ tempState });
     }
 
     handleChange = e => {
@@ -244,152 +261,164 @@ class AdminView extends Component {
             })
         }
 
+        if(!this.state.submitted){
+            return (
+                <div className="admin-space">
+                    
+                    <h2>Create a New Issue Area</h2>
 
-        return (
-            <div className="admin-space">
-
-                <h2>Create a New Issue Area</h2>
-
-                <div className="admin-input-area">
-                    <div>Issue Area:<font color="#FF0000">*</font></div>
-                    <input
-                        type="text"
-                        className="admin-input-line"
-                        name="title"
-                        onChange={this.handleChange}
-                    ></input>
-                </div>
-
-                <div className="admin-input-area">
-                    <div>Number of Practices:</div>
-                    <div className='admin-counter'>
-                        <div >{this.state.issue_area.num_practices}</div>
-                        <button name="num_practices" value = {this.state.issue_area.num_practices}
-                            onClick={this.increment}> + </button>
-                        <button name="num_practices" value = {this.state.issue_area.num_practices}
-                            onClick={this.decrement}> - </button>
+                    <div className="admin-input-area">
+                        <div>Issue Area:<font color="#FF0000">*</font></div>
+                        <input
+                            type="text"
+                            className="admin-input-line"
+                            name="title"
+                            onChange={this.handleChange}
+                        ></input>
                     </div>
-                </div>
 
-                <div className="admin-input-area">
-                    <div>Intro Text:<font color="#FF0000">*</font> </div>
-                    <textarea
-                        type="text"
-                        className="admin-input-text"
-                        rows="5"
-                        cols="50"
-                        name="intro_text"
-                        onChange={this.handleChange}
-                    ></textarea>
-                </div>
-
-                <div className="admin-input-area">
-                    <div>Conclusion Text:<font color="#FF0000">*</font> </div>
-                    <textarea
-                        type="text"
-                        className="admin-input-text"
-                        rows="5"
-                        cols="50"
-                        name="conclusion_text"
-                        onChange={this.handleChange}
-                    ></textarea>
-                </div>
-
-                {practice_fields.map(practice =>
-
-                    <div className="admin-practice-area">
-                        <h4>{practice.title}</h4>
-                        <div className="admin-input-area">
-                            <div>Name:</div>
-                            <input
-                                type="text"
-                                className="admin-input-line"
-                                name={practice.name}
-                                onChange={this.handleChange}
-                            ></input>
+                    <div className="admin-input-area">
+                        <div>Number of Practices:</div>
+                        <div className='admin-counter'>
+                            <div >{this.state.issue_area.num_practices}</div>
+                            <button name="num_practices" value = {this.state.issue_area.num_practices}
+                                onClick={this.increment}> + </button>
+                            <button name="num_practices" value = {this.state.issue_area.num_practices}
+                                onClick={this.decrement}> - </button>
                         </div>
+                    </div>
 
-                        <div className="admin-input-area">
-                            <div>Question:</div>
-                            <input
-                                type="text"
-                                className="admin-input-line"
-                                name={practice.question}
-                                onChange={this.handleChange}
-                            ></input>
-                        </div>
+                    <div className="admin-input-area">
+                        <div>Intro Text:<font color="#FF0000">*</font> </div>
+                        <textarea
+                            type="text"
+                            className="admin-input-text"
+                            rows="5"
+                            cols="50"
+                            name="intro_text"
+                            onChange={this.handleChange}
+                        ></textarea>
+                    </div>
 
-                        <div className="admin-input-area">
-                            <div>Description: </div>
-                            <textarea
-                                type="text"
-                                className="admin-input-text"
-                                rows="5"
-                                cols="50"
-                                name={practice.description}
-                                onChange={this.handleChange}
-                            ></textarea>
-                        </div>
+                    <div className="admin-input-area">
+                        <div>Conclusion Text:<font color="#FF0000">*</font> </div>
+                        <textarea
+                            type="text"
+                            className="admin-input-text"
+                            rows="5"
+                            cols="50"
+                            name="conclusion_text"
+                            onChange={this.handleChange}
+                        ></textarea>
+                    </div>
 
-                        <div className="admin-input-area">
-                            <div>Example: </div>
-                            <textarea
-                                type="text"
-                                className="admin-input-text"
-                                rows="5"
-                                cols="50"
-                                name={practice.example}
-                                onChange={this.handleChange}
-                            ></textarea>
-                        </div>
+                    {practice_fields.map(practice =>
 
-                        <div className="admin-input-area">
-                            <div>Link:</div>
-                            <input
-                                type="text"
-                                className="admin-input-line"
-                                name={practice.link}
-                                onChange={this.handleChange}
-                            ></input>
-                        </div>
-
-                        <div className="admin-input-area">
-                            <div>Number of Subpractices:</div>
-                            <div className='admin-counter'>
-                                <div >{this.state.issue_area[practice.num_subpractices]}</div>
-                                <button name={practice.num_subpractices} value = {this.state.issue_area[practice.num_subpractices]}
-                                    onClick={this.increment}> + </button>
-                                <button name={practice.num_subpractices} value = {this.state.issue_area[practice.num_subpractices]}
-                                    onClick={this.decrement}> - </button>
+                        <div className="admin-practice-area">
+                            <h4>{practice.title}</h4>
+                            <div className="admin-input-area">
+                                <div>Name:</div>
+                                <input
+                                    type="text"
+                                    className="admin-input-line"
+                                    name={practice.name}
+                                    onChange={this.handleChange}
+                                ></input>
                             </div>
-                        </div>
-
-                        {practice.subpractice_names.map(subpractice =>
 
                             <div className="admin-input-area">
-                            <div>Subpractice Name:</div>
-                            <input
-                                type="text"
-                                className="admin-input-line"
-                                name={subpractice.id_pair}
-                                onChange={this.updateSubpractice}
-                            ></input>
+                                <div>Question:</div>
+                                <input
+                                    type="text"
+                                    className="admin-input-line"
+                                    name={practice.question}
+                                    onChange={this.handleChange}
+                                ></input>
                             </div>
 
-                        )}
+                            <div className="admin-input-area">
+                                <div>Description: </div>
+                                <textarea
+                                    type="text"
+                                    className="admin-input-text"
+                                    rows="5"
+                                    cols="50"
+                                    name={practice.description}
+                                    onChange={this.handleChange}
+                                ></textarea>
+                            </div>
 
-                    </div>
-                )}
+                            <div className="admin-input-area">
+                                <div>Example: </div>
+                                <textarea
+                                    type="text"
+                                    className="admin-input-text"
+                                    rows="5"
+                                    cols="50"
+                                    name={practice.example}
+                                    onChange={this.handleChange}
+                                ></textarea>
+                            </div>
 
-                <button
-                    className="admin-submit-button"
-                    onClick={() => this.submitNewPractice(this.state.issue_area)}>
-                    Create New Issue Area!
-                </button>
+                            <div className="admin-input-area">
+                                <div>Link:</div>
+                                <input
+                                    type="text"
+                                    className="admin-input-line"
+                                    name={practice.link}
+                                    onChange={this.handleChange}
+                                ></input>
+                            </div>
 
-            </div>
+                            <div className="admin-input-area">
+                                <div>Number of Subpractices:</div>
+                                <div className='admin-counter'>
+                                    <div >{this.state.issue_area[practice.num_subpractices]}</div>
+                                    <button name={practice.num_subpractices} value = {this.state.issue_area[practice.num_subpractices]}
+                                        onClick={this.increment}> + </button>
+                                    <button name={practice.num_subpractices} value = {this.state.issue_area[practice.num_subpractices]}
+                                        onClick={this.decrement}> - </button>
+                                </div>
+                            </div>
 
-        );
+                            {practice.subpractice_names.map(subpractice =>
+
+                                <div className="admin-input-area">
+                                <div>Subpractice Name:</div>
+                                <input
+                                    type="text"
+                                    className="admin-input-line"
+                                    name={subpractice.id_pair}
+                                    onChange={this.updateSubpractice}
+                                ></input>
+                                </div>
+
+                            )}
+
+                        </div>
+                    )}
+
+                    <button
+                        className="admin-submit-button"
+                        onClick={() => this.submitNewPractice(this.state.issue_area)}>
+                        Create New Issue Area!
+                    </button>
+                    <h4>
+                        <b><font color="#FF0000">{this.state.bad_input ? '* Fill in Required Fields' : ''}</font></b>
+                    </h4>
+
+                </div>
+
+            );
+        }
+        else{
+            return (
+                <div className="admin-space">
+                    <h2>Form Submitted</h2>
+                    <h4>Refresh to submit a new form</h4>
+                </div>
+            )
+        }
     }
 }
 export default AdminView

@@ -8,14 +8,14 @@ export default function ProgressBar(props) {
     const containerStyles = {
         height: 20,
         width: '50%',
-        backgroundColor: "#C8EAEF",
+        backgroundColor: "var(--lightest-blue)",
         marginTop: "4%",
     }
 
     const fillerStyles = {
         height: '100%',
         width: `${percentage}%`,
-        backgroundColor: "#3595AC",
+        backgroundColor: "var(--blue-3)",
         borderRadius: 'inherit',
         textAlign: 'right'
     }
