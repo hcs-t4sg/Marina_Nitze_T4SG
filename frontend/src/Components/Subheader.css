@@ -1,7 +1,7 @@
 ﻿.subheader {
     border: 2px solid black;
     margin: 10px;
-    box-shadow: #0E7088 6px 6px;
+    box-shadow: var(--dark-blue) 6px 6px;
     margin-top: 5%;
 }
 

@@ -58,7 +58,8 @@
 }
 
 .glyph-titles {
-  font-size: .7em;
+  font-size: .6em;
+   margin: 5px;
 }
 
 .tooltip { 
@@ -69,7 +70,7 @@
   padding: 5px; 
   color: white;      
   font: 14px Arial;    
-  background: var(--teal); 
+  background: var(--dark-blue); 
   border: 0px;    
   border-radius: 4px;  
   visibility: hidden;
