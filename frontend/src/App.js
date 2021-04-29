@@ -10,6 +10,7 @@ import HomePage from "./Views/HomePage"
 import { useState } from "react";
 import Header from "./Components/Header"
 import AdminView from "./Views/AdminView"
+import { useEffect } from 'react';
 
 
 function App() {
@@ -17,6 +18,10 @@ function App() {
     const showSideBar = () => {
         setSidebar(!sidebar)
     }
+
+    useEffect(() => {
+        document.title = "Child Welfare Playbook"
+    }, [])
 
     return (
         <div className="App">
