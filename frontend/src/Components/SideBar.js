@@ -1,9 +1,10 @@
 // JavaScript source code
 import React, { useState } from "react";
 import "./SideBar.css";
-import home from "../res/house.png";
-import faq from "../res/faq.png";
-import bulb from "../res/lightbulb.png";
+import home from "../res/home.png";
+import faq from "../res/light-bulb.png";
+import people from "../res/about-us.png";
+import compass from "../res/compass.png";
 import { Link } from 'react-router-dom';
 
 export default function SideBar(props) {
@@ -15,9 +16,9 @@ export default function SideBar(props) {
             <div className="nav-block">
                 <img className="side-image" src={home} />
                 <Link className="nav-link"
-                    to={{ pathname: '/home' }}
+                    to={{ pathname: '/dashboard' }}
                     onClick={props.click}>
-                    Home
+                    Dashboard
             </Link>
             </div>
 
@@ -31,7 +32,16 @@ export default function SideBar(props) {
             </div>
 
             <div className="nav-block">
-                <img className="side-image" src={bulb} />
+                <img className="side-image" src={people} />
+                <Link className="nav-link"
+                    to={{ pathname: '/contacts' }}
+                    onClick={props.click}>
+                    Contacts
+                </Link>
+            </div>
+
+            <div className="nav-block">
+                <img className="side-image" src={compass}/>
                 <Link className="nav-link"
                     to={{ pathname: 'https://www.childwelfareplaybook.com/' }}
                     onClick={props.click}

@@ -10,7 +10,7 @@
 .contact-grid-container {
 	margin: 20px 10px 200px 10px;
     border: 1px solid black;
-    box-shadow: #C8D2D5 6px 6px;
+    box-shadow: var(--lightest-grey) 6px 6px;
     margin-top: 5%;
     padding: 50px 60px;
 }
@@ -43,7 +43,7 @@
 
 .contacts-title {
 	font-size: 1.2em;
-	color: #0E7088;
+	color: var(--dark-blue);
 }
 
 .contact-grid-element {
@@ -51,8 +51,16 @@
 }
 
 .contact-email {
-	background-color: #C8EAEF;
+	background-color: var(--lightest-blue);
 	padding: 3px 6px;
+}
+
+.contacts-text {
+  font-size: 1em;
+  width: 50%;
+  margin-top: 30px;
+  text-align: left;
+  text-indent: 20px;
 }
 
 
