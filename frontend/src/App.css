@@ -27,7 +27,7 @@
 }
 
 .App-link {
-  color: var(--light-blue));
+  color: var(--light-blue);
 }
 
 @keyframes App-logo-spin {
@@ -320,6 +320,7 @@ select {
   text-align: left;
   padding-left: 5%;
   padding-bottom: 5%;
+  margin-top: 2%;
 }
 
 .admin-input-area{
