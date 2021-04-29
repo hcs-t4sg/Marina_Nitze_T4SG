@@ -18,7 +18,7 @@ body
     font-style: normal;
     font-weight: bold;
     margin: 50px;
-    color: #0E7088;
+    color: var(--blue-3);
 }
 
 .implement-body{
@@ -50,7 +50,7 @@ p{
 }
 
 .promising-tag {
-    background-color: var(--cyan-lighter); 
+    background-color: var(--lightest-blue); 
     padding-left: 10px;
     padding-right: 10px;
     padding-top: 0px;
