@@ -359,6 +359,19 @@ select {
   color: white;
 }
 
+.admin-checkbox-area{
+  background: lightblue;
+  padding-left: 1%;
+  font-size: medium;
+  border: 3px solid black;
+  margin-top: 2%;
+  width: 30%
+}
+
+.admin-subpractice-checkbox{
+  margin-left: 5%;
+}
+
 .admin-submit-button:active{
   background: black;
 }

@@ -75,6 +75,7 @@ class AdminView extends Component {
                 population: 0,
             }],
             submitted: false,
+            initialized: false,
             bad_input: false,
         }
     }
@@ -105,21 +106,27 @@ class AdminView extends Component {
 
     submitNewPractice = (item) => {
         if(this.state.issue_area.title==="" || this.state.issue_area.intro_text==="" ||
-            this.state.issue_area.conclusion_text===""){
-                const tempState = this.state;
-                tempState.bad_input = true;
-                this.setState({ tempState });
-                return;
-            }
+        this.state.issue_area.conclusion_text===""){
+            const tempState = this.state;
+            tempState.bad_input = true;
+            this.setState({ tempState });
+            return;
+        }
         else{
-                const tempState = this.state;
-                tempState.bad_input = false;
-                this.setState({ tempState });
+            const tempState = this.state;
+            tempState.bad_input = false;
+            this.setState({ tempState });
         }
         axios
             .post('https://marina-t4sg.herokuapp.com/api/issue-areas/', item)
             .catch(err => console.log(err));
+        const tempState = this.state;
+        tempState.submitted = true;
+        this.setState({ tempState });
+    }
 
+    initializeImplementations = (item) => {
+        
         for (var i = 0; i < this.state.states_data.length; i++) {
             axios.post('https://marina-t4sg.herokuapp.com/api/implementations/', {
                 state: this.state.states_data[i].name,
@@ -163,7 +170,7 @@ class AdminView extends Component {
                 .catch(err => console.log(err));
         }
         const tempState = this.state;
-        tempState.submitted = true;
+        tempState.initialized = true;
         this.setState({ tempState });
     }
 
@@ -172,6 +179,21 @@ class AdminView extends Component {
         const issue_area = { ...this.state.issue_area, [name]: value };
         this.setState({ issue_area });
     };
+
+    getSubpractice = (p_num, subp_num) =>{
+        const field_str_1 = "subpractices_";
+        const field_str_2 = "_names";
+        var field_name = field_str_1.concat(String(p_num).concat(field_str_2));
+        var subpractice = this.state.issue_area[field_name];
+
+        const searchterm = ",";
+        var comma_1_indx = subpractice.indexOf(searchterm);
+        var comma_2_indx = subpractice.indexOf(searchterm,comma_1_indx+1);
+        if(subp_num==1){return subpractice.substring(0,comma_1_indx); }
+        else if(subp_num==2) {return subpractice.substring(comma_1_indx+1,comma_2_indx); }
+        else if(subp_num==3) {return subpractice.substring(comma_2_indx+1); }
+        else { return "";  }
+    }
 
     updateSubpractice = e => {
         let { name, value } = e.target;
@@ -201,6 +223,10 @@ class AdminView extends Component {
 
         const issue_area = { ...this.state.issue_area, [field_name]: subpractice };
         this.setState({ issue_area });
+    }
+
+    updateImplementation  = e => {
+        let { name, id, value} = e.target;
     }
 
     increment = e => {
@@ -233,23 +259,29 @@ class AdminView extends Component {
     render() {
 
         var practice_fields = [];
-        var title_str = "Practice #"
-        var name_str = "practice_"
-        var question_str = "_question"
-        var description_str = "_description"
-        var example_str = "_example"
-        var link_str = "_link"
-        var num_subpractices_str = "num_subpractices_"
+        const title_str = "Practice #"
+        const name_str = "practice_"
+        const question_str = "_question"
+        const description_str = "_description"
+        const example_str = "_example"
+        const link_str = "_link"
+        const num_subpractices_str = "num_subpractices_"
+        const subpractice_str = "subpractice_"
+        const underscore = "_"
         for (var i = 1; i <= this.state.issue_area.num_practices; i++) {
-            var num_str = String(i)
+            const num_str = String(i)
 
-            var subpractice_fields = []
+            var subpractice_fields = [];
             for (var j = 1; j<= this.state.issue_area[num_subpractices_str.concat(num_str)]; j++){
                 subpractice_fields.push(
-                    {id_pair: num_str.concat(String(j))})
+                    {id_pair: num_str.concat(String(j)),
+                        id: j,
+                        name: subpractice_str.concat(
+                            underscore.concat(num_str.concat(underscore.concat(String(j)))))})
             }
             
             practice_fields.push({
+                id: i,
                 title: title_str.concat(num_str),
                 name: name_str.concat(num_str),
                 question: name_str.concat(num_str.concat(question_str)),
@@ -257,8 +289,13 @@ class AdminView extends Component {
                 example: example_str.concat(num_str.concat(example_str)),
                 link: name_str.concat(num_str.concat(link_str)),
                 num_subpractices: num_subpractices_str.concat(num_str),
-                subpractice_names: subpractice_fields
+                subpractice_names: subpractice_fields,
             })
+        }
+
+        var new_states_data = [];
+        if(this.state.states_data){
+            new_states_data = this.state.states_data;
         }
 
         if(!this.state.submitted){
@@ -398,6 +435,10 @@ class AdminView extends Component {
                         </div>
                     )}
 
+
+
+
+
                     <button
                         className="admin-submit-button"
                         onClick={() => this.submitNewPractice(this.state.issue_area)}>
@@ -410,6 +451,55 @@ class AdminView extends Component {
                 </div>
 
             );
+        }
+        else if(!this.state.initialized){
+            return (
+                <div className="admin-space">
+                    <div className="admin-space">
+                    <h2>Initialize Data</h2>
+
+                    {new_states_data.map(state =>
+                        <div className="admin-checkbox-area">
+                        <h4>{state.name} </h4>
+                        {practice_fields.map(practice =>
+                            <div>   
+                            <input
+                                type="checkbox"
+                                name={practice.name}
+                                id = {state.id}
+                                value = {this.state.states_data[state.id][practice.name]}
+                                onChange={this.updateImplementation}
+                            ></input>
+                            <label>{this.state.issue_area[practice.name]}</label>
+                            
+                            
+                            {practice.subpractice_names.map(subpractice =>
+
+                                <div className="admin-subpractice-checkbox">
+                                <input
+                                    type="checkbox"
+                                    name={subpractice.id_pair}
+                                    id = {state.id}
+                                    value = {this.state.states_data[state.id][subpractice.name]}
+                                    onChange={this.updateImplementation}
+                                ></input>
+                                <label>{this.getSubpractice(practice.id, subpractice.id)}</label>
+                                </div>
+
+                            )}
+                            </div>
+                        )}
+                    </div>
+                    )}
+                    </div>
+
+                    <button
+                        className="admin-submit-button"
+                        onClick={() => this.initializeImplementations(this.state.issue_area)}>
+                        Initialize Data!
+                    </button>
+                </div>
+            )
         }
         else{
             return (
