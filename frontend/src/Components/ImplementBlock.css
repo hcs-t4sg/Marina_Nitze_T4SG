@@ -100,7 +100,7 @@ p{
     padding-left: 40px;
     padding-right: 40px;
     max-height: 90%;
-    overflow: scroll;
+    overflow-y: scroll;
 }
 
 .display-block {
@@ -115,6 +115,8 @@ p{
     text-align: right;
     padding: 0;
     margin: 0px;
+    width: 100%;
+    height: 30px;
 }
 
 .promising-div {
@@ -174,10 +176,55 @@ p{
 .description-div{
     width: 50%;
     margin: 15px 5px;
-    text-indent: 20px;
     font-size: 0.9em;
 }
 
 .subpractice-block{
     width: 80%;
 }
+
+.right-align-text {
+    text-align: right;
+    margin: auto;
+    padding: 0px;
+    justify-content: flex-end;
+}
+
+.submetrics-num {
+    justify-content: flex-end;
+    width: 70%;
+    margin-top: 10px;
+    height: 100%;
+}
+
+.submetrics-title{
+    width: 30%;
+}
+
+.close {
+    position: absolute;
+    top: 0;
+    right: 0;
+    display: block;
+    width: 50px;
+    height: 50px;
+    font-size: 0;
+    margin: 10px;
+}
+
+    .close:before,
+    .close:after {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        width: 5px;
+        height: 20px;
+        background-color: #C0C0C0;
+        transform: rotate(45deg) translate(-50%, -50%);
+        transform-origin: top left;
+        content: '';
+    }
+
+    .close:after {
+        transform: rotate(-45deg) translate(-50%, -50%);
+    }
